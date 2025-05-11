@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/8b9846c8-f6fb-4349-a233-987a6317481b
+**URL**: **URL**: https://github.com/cristian-h-h/guia-corte-vsc
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8b9846c8-f6fb-4349-a233-987a6317481b) and start prompting.
+Simply visit the [Lovable Project](**URL**: https://github.com/cristian-h-h/guia-corte-vsc) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
@@ -62,7 +62,7 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/8b9846c8-f6fb-4349-a233-987a6317481b) and click on Share -> Publish.
+Simply open (https://github.com/cristian-h-h/guia-corte-vsc) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
@@ -70,4 +70,4 @@ Yes, you can!
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Read more here: [Setting up a custom domain](Simply open https://github.com/cristian-h-h/guia-corte-vsc and click on "Deploy" to publish your project.)
