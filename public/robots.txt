@@ -1,0 +1,29 @@
+
+# Configuración para rastreadores de búsqueda
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /producto/
+Allow: /contacto/
+
+# Sitemap
+Sitemap: https://www.guiadecorte.cl/sitemap.xml
+
+# Directorios específicos
+User-agent: Googlebot
+Allow: /
+Allow: /blog/
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Allow: /blog/
+Disallow: /admin/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /blog/
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /blog/
