@@ -1,86 +1,89 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Check, Plus, Minus, ExternalLink } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Helmet } from "react-helmet-async";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import client from "@/sanityClient"; // Importa el cliente de Sanity
+import { fetchProductById } from "@/api/sanityApi";
+
+type Product = {
+  _id: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  longDescription: string;
+  cashPrice: number;
+  cardPrice: number;
+  features: string[];
+  specifications: string[];
+  images: { asset: { url: string } }[];
+  keywords: string[];
+};
+
+const productosExternos = [
+  {
+    nombre: "Terciado Melamina 15 mm bblanco brillante",
+    imagen: "/guia-imagenes/terciado-melamina-15mm.png",
+    url: "https://www.terciamel.cl",
+  },
+  {
+    nombre: "Carro Clasico desmontable eventos",
+    imagen: "/guia-imagenes/carro-premium.jpg",
+    url: "https://www.carrosdesmontableschile.cl",
+  },
+  {
+    nombre: "Meson desmontable Candy Bar - Snack",
+    imagen: "/guia-imagenes/carro-candybar-desmontable.png",
+    url: "https://www.carrosdesmontableschile.cl",
+  },
+  {
+    nombre: "Carro Premium Desmontable emprendimientos",
+    imagen: "/guia-imagenes/carro-premium-desmontable.png",
+    url: "https://www.carrosdesmontableschile.cl",
+  },
+];
 
 const Producto = () => {
+  const { id } = useParams<{ id: string }>();
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState("");
   const { addToCart } = useCart();
 
-  // Estado para el producto y productos relacionados
-  const [productInfo, setProductInfo] = useState<any>(null);
-  const [relatedProducts, setRelatedProducts] = useState<any[]>([]);
+  const [productInfo, setProductInfo] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Función para cargar datos desde Sanity
   useEffect(() => {
-    const fetchProductData = async () => {
+    const fetchData = async () => {
       try {
-        // Obtén el producto principal
-        const product = await client.fetch(
-          `*[_type == "product" && _id == $id][0]{
-            name,
-            shortDescription,
-            description,
-            longDescription,
-            cashPrice,
-            cardPrice,
-            features,
-            specifications,
-            "images": images[].asset->url,
-            keywords
-          }`,
-          { id: "tu_producto_id" } // Reemplaza con el ID del producto
-        );
-
-        // Obtén productos relacionados
-        const related = await client.fetch(
-          `*[_type == "product" && _id != $id][0...4]{
-            _id,
-            name,
-            cashPrice,
-            "image": images[0].asset->url,
-            "url": "/producto/" + _id
-          }`,
-          { id: "tu_producto_id" }
-        );
-
+        if (!id) return;
+        const product = await fetchProductById(id);
         setProductInfo(product);
-        setRelatedProducts(related);
-        setActiveImage(product.images[0]); // Establece la primera imagen como activa
+        setActiveImage(product?.images?.[0]?.asset?.url || "");
       } catch (error) {
         console.error("Error al cargar los datos del producto:", error);
+      } finally {
+        setLoading(false);
       }
     };
+    fetchData();
+  }, [id]);
 
-    fetchProductData();
-  }, []);
-
-  const incrementQuantity = () => {
-    setQuantity((prev) => prev + 1);
-  };
-
-  const decrementQuantity = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  };
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   const handleAddToCart = () => {
     if (productInfo) {
       addToCart({
-        id: productInfo.id,
+        id: productInfo._id,
         name: productInfo.name,
         price: productInfo.cashPrice,
         priceCard: productInfo.cardPrice,
         quantity: quantity,
-        image: productInfo.images[0],
+        image: productInfo.images?.[0]?.asset?.url,
       });
-
       toast({
         title: "Producto agregado al carrito",
         description: `${quantity} x ${productInfo.name}`,
@@ -88,12 +91,19 @@ const Producto = () => {
     }
   };
 
-  const formatPrice = (price: number) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+  const formatPrice = (price: number) =>
+    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  if (loading) {
+    return <p className="text-center py-8">Cargando producto...</p>;
+  }
 
   if (!productInfo) {
-    return <p className="text-center py-8">Cargando producto...</p>;
+    return (
+      <div className="text-center py-8 text-red-600">
+        Producto no encontrado.
+      </div>
+    );
   }
 
   // Datos estructurados para SEO
@@ -101,16 +111,16 @@ const Producto = () => {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: productInfo.name,
-    image: productInfo.images,
+    image: (productInfo.images || []).map((img) => img.asset.url),
     description: productInfo.description,
-    sku: "GC-AL-126",
+    sku: productInfo._id,
     brand: {
       "@type": "Brand",
       name: "GuiaDeCorte",
     },
     offers: {
       "@type": "Offer",
-      url: "https://www.guiadecorte.cl/producto",
+      url: `https://www.guiadecorte.cl/producto/${productInfo._id}`,
       priceCurrency: "CLP",
       price: productInfo.cashPrice,
       priceValidUntil: new Date(
@@ -127,8 +137,8 @@ const Producto = () => {
       <Helmet>
         <title>{productInfo.name} | Herramienta Profesional para Carpintería</title>
         <meta name="description" content={productInfo.description} />
-        <meta name="keywords" content={productInfo.keywords} />
-        <link rel="canonical" href="https://www.guiadecorte.cl/producto" />
+        <meta name="keywords" content={productInfo.keywords?.join(", ")} />
+        <link rel="canonical" href={`https://www.guiadecorte.cl/producto/${productInfo._id}`} />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
@@ -139,27 +149,26 @@ const Producto = () => {
             <div className="relative aspect-square overflow-hidden rounded-lg mb-4">
               <img
                 src={activeImage}
-                alt={`Guía de Corte Aluminio Ajuste Rápido - ${activeImage
-                  .split("/")
-                  .pop()
-                  ?.split(".")[0]}`}
+                loading="lazy"
+                alt={`Guía de Corte Aluminio Ajuste Rápido`}
                 className="object-cover w-full h-full"
               />
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-              {productInfo.images.map((image: string, index: number) => (
+              {(productInfo.images || []).map((image, index) => (
                 <div
                   key={index}
                   className={`aspect-square rounded-md overflow-hidden border-2 cursor-pointer ${
-                    activeImage === image
+                    activeImage === image.asset.url
                       ? "border-naranja-600"
                       : "border-transparent"
                   }`}
-                  onClick={() => setActiveImage(image)}
+                  onClick={() => setActiveImage(image.asset.url)}
                 >
                   <img
-                    src={image}
-                    alt={`Guía de Corte Aluminio - vista ${index + 1} para carpintería`}
+                    src={image.asset.url}
+                    alt={`Guía de Corte Aluminio - vista ${index + 1}`}
+                    loading="lazy"
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -171,39 +180,73 @@ const Producto = () => {
           <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-bold text-gris-900 mb-2">{productInfo.name}</h1>
             <p className="text-lg text-gris-700 mb-4">{productInfo.shortDescription}</p>
-            {/* Resto del contenido */}
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-bold text-naranja-600">
+                ${formatPrice(productInfo.cashPrice)}
+              </span>
+              <span className="text-gris-500 line-through">
+                ${formatPrice(productInfo.cardPrice)}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mb-6">
+              <Button onClick={decrementQuantity} variant="outline" size="icon">
+                <Minus />
+              </Button>
+              <span className="text-lg font-semibold">{quantity}</span>
+              <Button onClick={incrementQuantity} variant="outline" size="icon">
+                <Plus />
+              </Button>
+              <Button onClick={handleAddToCart} className="ml-4">
+                <Check className="mr-2 h-4 w-4" /> Agregar al carrito
+              </Button>
+            </div>
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">Características</h2>
+              <ul className="list-disc pl-5">
+                {(productInfo.features || []).map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold mb-2">Especificaciones</h2>
+              <ul className="list-disc pl-5">
+                {(productInfo.specifications || []).map((spec, idx) => (
+                  <li key={idx}>{spec}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Productos relacionados */}
+        {/* Productos externos recomendados */}
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-6">También te podría interesar</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {relatedProducts.map((product) => (
-              <div
-                key={product._id}
-                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            {productosExternos.map((prod, idx) => (
+              <a
+                key={idx}
+                href={prod.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow block"
               >
                 <div className="aspect-video bg-white flex items-center justify-center overflow-hidden">
                   <img
-                    src={product.image}
-                    alt={product.name}
+                    src={prod.imagen}
+                    alt={prod.nombre}
+                    loading="lazy"
                     className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium text-lg">{product.name}</h3>
-                  <p className="text-naranja-600 font-bold mt-2">
-                    ${formatPrice(product.cashPrice)}
-                  </p>
-                  <a
-                    href={product.url}
-                    className="mt-3 inline-flex items-center text-naranja-600 hover:text-naranja-800 transition-colors"
-                  >
-                    Ver producto <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  <h3 className="font-medium text-lg">{prod.nombre}</h3>
+                  <span className="text-naranja-600 font-bold mt-2 block">
+                    Ver en tienda
+                  </span>
+                  <ExternalLink className="ml-1 h-4 w-4 inline" />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>

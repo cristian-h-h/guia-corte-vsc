@@ -195,7 +195,7 @@ const Contacto = () => {
                     <h3 className="font-semibold">Correo electrónico</h3>
                     <p className="text-gris-600">
                       <a href="mailto:info@guiadecorte.cl" className="hover:text-naranja-600">
-                        info@guiadecorte.cl
+                        ventas@terciamel.cl
                       </a>
                     </p>
                   </div>
@@ -203,7 +203,18 @@ const Contacto = () => {
               </div>
             </div>
             
-            <GoogleMap location={location} />
+            <div className="rounded-lg overflow-hidden shadow-md">
+             <iframe
+               title="Ubicación en Google Maps"
+               src="https://www.google.com/maps?q=Juan+Hus+145,+Maipú,+Región+Metropolitana,+Chile&output=embed"
+               width="100%"
+               height="300"
+               style={{ border: 0 }}
+               allowFullScreen
+               loading="lazy"
+               referrerPolicy="no-referrer-when-downgrade"
+             ></iframe>
+            </div>
           </div>
         </div>
       </div>

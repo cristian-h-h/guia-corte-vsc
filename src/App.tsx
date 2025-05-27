@@ -22,27 +22,18 @@ import BlogPost from "./pages/BlogPost";
 import Contacto from "./pages/Contacto";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Productos from "./pages/Productos";
 
 const queryClient = new QueryClient();
 
 const Layout = ({ children, showTestimonials = false }: { children: React.ReactNode; showTestimonials?: boolean }) => (
   <>
-    <Navbar>
-      {/* Logo con efecto en el Navbar */}
-      <div className="flex justify-center py-4">
-        <Logo />
-      </div>
-    </Navbar>
+    <Navbar />
     <main className="min-h-screen">
       {children}
       {showTestimonials && <TestimonialsCarousel />}
     </main>
-    <Footer>
-      {/* Logo con efecto en el Footer */}
-      <div className="flex justify-center py-4">
-        <Logo />
-      </div>
-    </Footer>
+    <Footer />
     <WhatsAppButton />
   </>
 );
@@ -51,18 +42,20 @@ const Layout = ({ children, showTestimonials = false }: { children: React.ReactN
 const router = createBrowserRouter(
   [
     { path: "/", element: <Layout showTestimonials={true}><Index /></Layout> },
-    { path: "/producto", element: <Layout><Producto /></Layout> },
+    { path: "/producto/:id", element: <Layout><Producto /></Layout> },
     { path: "/carrito", element: <Layout><Carrito /></Layout> },
     { path: "/blog", element: <Layout><Blog /></Layout> },
-    { path: "/blog/:id", element: <Layout><BlogPost /></Layout> },
+    { path: "/blog/:slug", element: <Layout><BlogPost /></Layout> }, // <--- CAMBIO AQUÍ
     { path: "/contacto", element: <Layout><Contacto /></Layout> },
     { path: "/admin", element: <Layout><Admin /></Layout> },
     { path: "*", element: <Layout><NotFound /></Layout> },
+    { path: "/producto", element: <Layout><Productos /></Layout> },
+    { path: "/producto/:id", element: <Layout><Producto /></Layout> },
   ],
   {
     future: {
-      v7_startTransition: true, // Habilita React.startTransition para actualizaciones de estado
-      v7_relativeSplatPath: true, // Cambia la resolución de rutas relativas en splat routes
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
     },
   }
 );

@@ -15,16 +15,21 @@ const Navbar = () => {
     <nav className="bg-white shadow-md z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          {/* Logo con efecto de espada láser */}
-          <Link to="/" className="flex items-center">
-            <div className="relative group w-48 h-16">
-              {/* Fondo del logo */}
-              <div
-                className="absolute inset-0 bg-[url('/guia-imagenes/guia-corte-logo.png')] bg-cover bg-center rounded-lg"
-                aria-label="Guía de Corte Logo"
-              ></div>
-              {/* Bordes con efecto láser */}
-              <div className="absolute inset-0 rounded-lg border-4 border-transparent group-hover:animate-laser group-hover:border-laser"></div>
+          {/* Logo con efecto especial */}
+          <Link to="/" className="flex items-center group">
+            <div className="relative w-48 h-16 flex items-center">
+              <img
+                 src="/guia-imagenes/guia-corte-logo.png"
+                 alt="Guía de Corte Logo"
+                 className="h-16 w-auto rounded-lg shadow-lg transition duration-300 group-hover:shadow-naranja-500/70 group-hover:scale-110"
+                 style={{
+                boxShadow:
+                   "0 0 32px 8px rgba(255, 115, 0, 0.7), 0 0 64px 16px rgba(255, 115, 0, 0.35)",
+                transition: "box-shadow 0.3s, transform 0.3s",
+             }}
+              />
+              {/* Glow animado */}
+              <span className="absolute inset-0 rounded-lg pointer-events-none animate-glow group-hover:opacity-100 opacity-60"></span>
             </div>
           </Link>
 
@@ -50,7 +55,7 @@ const Navbar = () => {
               <ShoppingCart className="h-6 w-6 text-gris-800 hover:text-naranja-600 transition-colors" />
               {cartItems.length > 0 && (
                 <span className="absolute top-0 right-0 bg-naranja-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  {cartItems.length}
+                  {cartItems.length > 99 ? "99+" : cartItems.length}
                 </span>
               )}
             </Link>
@@ -62,11 +67,11 @@ const Navbar = () => {
               <ShoppingCart className="h-6 w-6 text-gris-800" />
               {cartItems.length > 0 && (
                 <span className="absolute top-0 right-0 bg-naranja-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  {cartItems.length}
+                  {cartItems.length > 99 ? "99+" : cartItems.length}
                 </span>
               )}
             </Link>
-            <button onClick={toggleMenu} className="text-gris-800">
+            <button onClick={toggleMenu} className="text-gris-800" aria-label="Abrir menú de navegación">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

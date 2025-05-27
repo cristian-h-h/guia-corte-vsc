@@ -1,0 +1,145 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "@/api/sanityApi";
+import { ExternalLink } from "lucide-react";
+
+type Product = {
+  _id: string;
+  name: string;
+  shortDescription: string;
+  longDescription?: string;
+  features?: string[];
+  cashPrice: number;
+  images: { asset: { url: string } }[];
+};
+
+const productosExternos = [
+  {
+    nombre: "Carro eventos candybar",
+    imagen: "/guia-imagenes/carro-candybar.jpg",
+    url: "https://www.carrosdesmontableschile.cl",
+  },
+  {
+    nombre: "Terciado melamina 15 mm blanco brilante",
+    imagen: "/guia-imagenes/terciado-melamina-15mm.png",
+    url: "https://www.ferreteria2.cl/producto/guia-universal",
+  },
+  {
+    nombre: "Carro premium eventos",
+    imagen: "/guia-imagenes/carro-premium-desmontable.jpg",
+    url: "hhttps://www.carrosdesmontableschile.cl",
+  },
+  {
+    nombre: "Meson desmontable premium",
+    imagen: "/guia-imagenes/meson-premium.jpg",
+    url: "https://www.carrosdesmontableschile.cl",
+  },
+];
+
+const Productos = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts().then((data) => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <p className="text-center py-8">Cargando productos...</p>;
+  if (!products.length) return <p className="text-center py-8">No hay productos disponibles.</p>;
+
+  // Si solo hay un producto, lo mostramos centrado y grande
+  if (products.length === 1) {
+    const product = products[0];
+    return (
+      <div className="container mx-auto px-4 py-12 flex flex-col items-center">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">{product.name}</h1>
+        <p className="text-lg text-gris-700 mb-6 text-center max-w-2xl">
+          {product.shortDescription}
+        </p>
+        <div className="w-full max-w-3xl flex flex-col md:flex-row items-center gap-8 bg-white rounded-lg shadow-lg p-8 mb-8">
+          <div className="w-full md:w-1/2 flex justify-center">
+            <img
+              src={product.images?.[0]?.asset?.url}
+              alt={product.name}
+              className="rounded-lg object-cover w-full max-w-xs md:max-w-sm shadow"
+            />
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <p className="mb-4 text-gris-700">{product.longDescription}</p>
+            {product.features && product.features.length > 0 && (
+              <ul className="mb-4 list-disc pl-5 text-gris-800">
+                {product.features.map((f, i) => (
+                  <li key={i} className="mb-1">{f}</li>
+                ))}
+              </ul>
+            )}
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-bold text-naranja-600">
+                ${product.cashPrice?.toLocaleString("es-CL")}
+              </span>
+            </div>
+            <Link
+              to={`/producto/${product._id}`}
+              className="inline-block bg-naranja-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-naranja-700 transition"
+            >
+              Ver detalles y comprar
+            </Link>
+          </div>
+        </div>
+        <div className="max-w-2xl text-center mx-auto mb-12">
+          <h2 className="text-xl font-bold mb-2">¿Por qué elegir la Guía de Corte Ajuste Rápido?</h2>
+          <p className="text-gris-700">
+            Esta guía ha sido diseñada para quienes buscan precisión, seguridad y rapidez en cada corte. 
+            Su sistema de ajuste rápido permite adaptarla a distintos materiales y herramientas, 
+            asegurando resultados profesionales incluso para quienes recién comienzan en el mundo de la carpintería.
+            <br /><br />
+            ¡No pierdas tiempo midiendo y corrigiendo! Con nuestra guía, cada corte es perfecto a la primera.
+          </p>
+        </div>
+
+        {/* Sección de productos externos */}
+        <section className="mt-16 w-full">
+          <h2 className="text-2xl font-bold mb-6 text-center">También te podría interesar</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {productosExternos.map((prod, idx) => (
+              <a
+                key={idx}
+                href={prod.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow block"
+              >
+                <div className="aspect-video bg-white flex items-center justify-center overflow-hidden">
+                  <img
+                    src={prod.imagen}
+                    alt={prod.nombre}
+                    loading="lazy"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-medium text-lg">{prod.nombre}</h3>
+                  <span className="text-naranja-600 font-bold mt-2 block">
+                    Ver en tienda <ExternalLink className="ml-1 h-4 w-4 inline" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  // Si hay más de un producto, usa la grilla tradicional
+  return (
+    <div className="container mx-auto px-4 py-8">
+      {/* ...tu grilla de productos como antes... */}
+    </div>
+  );
+};
+
+export default Productos;

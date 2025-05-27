@@ -75,19 +75,19 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <MessageSquare className="h-5 w-5 mr-2 text-naranja-500" />
-                <a 
-                  href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gris-300 hover:text-naranja-500 transition-colors"
-                >
-                  WhatsApp
-                </a>
+               <a 
+                href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gris-300 hover:text-naranja-500 transition-colors"
+               >
+                 WhatsApp: {formattedPhone}
+               </a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-naranja-500" />
-                <a href="mailto:info@guiadecorte.cl" className="text-gris-300 hover:text-naranja-500 transition-colors">
-                  info@guiadecorte.cl
+                <a href="mailto:ventas@terciamel.cl" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                  ventas@terciamel.cl
                 </a>
               </li>
             </ul>

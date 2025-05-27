@@ -1,16 +1,26 @@
+import { PortableText } from "@portabletext/react";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
-import client from "@/sanityClient"; // Importa el cliente de Sanity
+import client from "@/sanityClient";
 
 const BlogPost = () => {
-  const { id } = useParams<{ id: string }>();
+  // =========================
+  // Obtener parámetro slug de la URL
+  // =========================
+  const { slug } = useParams<{ slug: string }>();
+
+  // =========================
+  // Estados para el post y relacionados
+  // =========================
   const [post, setPost] = useState<any>(null);
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
 
+  // =========================
   // Función para formatear la fecha
+  // =========================
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
@@ -20,35 +30,45 @@ const BlogPost = () => {
     return new Date(dateString).toLocaleDateString("es-CL", options);
   };
 
-  // Cargar datos del blog desde Sanity
+  // =========================
+  // Cargar datos del blog y relacionados desde Sanity
+  // =========================
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        // Obtén el blog principal
+        // Obtén el blog principal por slug
         const blog = await client.fetch(
-          `*[_type == "blog" && _id == $id][0]{
+          `*[_type == "blog" && slug.current == $slug][0]{
+            _id,
             title,
+            slug,
+            excerpt,
             content,
-            image,
-            date,
+            mainImage{
+              asset->{url}
+            },
+            publishedAt,
             author,
             category,
             tags,
             metaTitle,
             metaDescription
           }`,
-          { id }
+          { slug }
         );
 
-        // Obtén blogs relacionados
+        // Obtén blogs relacionados (excluyendo el actual)
         const related = await client.fetch(
-          `*[_type == "blog" && _id != $id][0...3]{
+          `*[_type == "blog" && slug.current != $slug][0...3]{
             _id,
             title,
-            image,
-            date
+            slug,
+            mainImage{
+              asset->{url}
+            },
+            publishedAt
           }`,
-          { id }
+          { slug }
         );
 
         setPost(blog);
@@ -58,10 +78,12 @@ const BlogPost = () => {
       }
     };
 
-    fetchBlogData();
-  }, [id]);
+    if (slug) fetchBlogData();
+  }, [slug]);
 
+  // =========================
   // Si no se encuentra el post
+  // =========================
   if (!post) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
@@ -74,13 +96,15 @@ const BlogPost = () => {
     );
   }
 
-  // Construir datos estructurados para el artículo
+  // =========================
+  // Construir datos estructurados para SEO
+  // =========================
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    image: post.image,
-    datePublished: post.date,
+    image: post.mainImage?.asset?.url,
+    datePublished: post.publishedAt,
     author: {
       "@type": "Person",
       name: post.author,
@@ -90,19 +114,26 @@ const BlogPost = () => {
       name: "GuiaDeCorte.cl",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.guiadecorte.cl/logo.png", // URL del logo
+        url: "https://www.guiadecorte.cl/logo.png",
       },
     },
-    description: post.metaDescription || post.content.substring(0, 200).replace(/<[^>]*>/g, ""),
+    description: post.metaDescription || post.excerpt || "",
   };
 
+  // =========================
+  // Renderizado del artículo
+  // =========================
   return (
     <>
+      {/* SEO y metadatos */}
       <Helmet>
         <title>{post.metaTitle || post.title}</title>
-        <meta name="description" content={post.metaDescription || post.content.substring(0, 160).replace(/<[^>]*>/g, "")} />
-        <meta name="keywords" content={post.tags.join(", ")} />
-        <link rel="canonical" href={`https://www.guiadecorte.cl/blog/${id}`} />
+        <meta
+          name="description"
+          content={post.metaDescription || post.excerpt || ""}
+        />
+        <meta name="keywords" content={post.tags?.join(", ") || ""} />
+        <link rel="canonical" href={`https://www.guiadecorte.cl/blog/${post.slug?.current}`} />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
@@ -116,11 +147,13 @@ const BlogPost = () => {
           {/* Encabezado del artículo */}
           <div className="mb-8">
             <div className="flex items-center text-sm text-gris-500 mb-3">
-              <span className="bg-naranja-100 text-naranja-600 rounded-full px-3 py-1">
-                {post.category}
-              </span>
+              {post.category && (
+                <span className="bg-naranja-100 text-naranja-600 rounded-full px-3 py-1">
+                  {post.category}
+                </span>
+              )}
               <span className="mx-2">•</span>
-              <span>{formatDate(post.date)}</span>
+              <span>{formatDate(post.publishedAt)}</span>
               <span className="mx-2">•</span>
               <span>Por {post.author}</span>
             </div>
@@ -128,49 +161,59 @@ const BlogPost = () => {
           </div>
 
           {/* Imagen principal */}
-          <div className="mb-8">
-            <img
-              src={post.image}
-              alt={`Guía de corte aluminio - ${post.title}`}
-              className="w-full h-auto rounded-lg shadow-md"
-            />
-          </div>
+          {post.mainImage?.asset?.url && (
+            <div className="mb-8">
+              <img
+                src={post.mainImage.asset.url}
+                alt={`Guía de corte aluminio - ${post.title}`}
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+            </div>
+          )}
 
           {/* Contenido del artículo */}
-          <article className="prose prose-lg max-w-none mb-12" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <article className="prose prose-lg max-w-none mb-12">
+            <PortableText value={post.content} />
+          </article>
 
           {/* Etiquetas */}
-          <div className="border-t border-b py-6 mb-12">
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag: string, index: number) => (
-                <span key={index} className="bg-gris-100 text-gris-700 px-3 py-1 rounded-full text-sm">
-                  #{tag}
-                </span>
-              ))}
+          {post.tags && post.tags.length > 0 && (
+            <div className="border-t border-b py-6 mb-12">
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag: string, index: number) => (
+                  <span key={index} className="bg-gris-100 text-gris-700 px-3 py-1 rounded-full text-sm">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Artículos relacionados */}
           <div className="border-t pt-8">
             <h3 className="text-xl font-bold mb-6">Artículos relacionados sobre guía de corte</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map((related) => (
-                <Link to={`/blog/${related._id}`} key={related._id} className="group">
-                  <div className="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={related.image}
-                        alt={`Guía de corte aluminio - ${related.title}`}
-                        className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
-                      />
+              {relatedPosts.map((related) =>
+                related.slug?.current ? (
+                  <Link to={`/blog/${related.slug.current}`} key={related._id} className="group block">
+                    <div className="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
+                      <div className="aspect-video overflow-hidden">
+                        {related.mainImage?.asset?.url && (
+                          <img
+                            src={related.mainImage.asset.url}
+                            alt={`Guía de corte aluminio - ${related.title}`}
+                            className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+                          />
+                        )}
+                      </div>
+                      <div className="p-4">
+                        <h4 className="font-medium">{related.title}</h4>
+                        <p className="text-sm text-gris-500 mt-1">{formatDate(related.publishedAt)}</p>
+                      </div>
                     </div>
-                    <div className="p-4">
-                      <h4 className="font-medium">{related.title}</h4>
-                      <p className="text-sm text-gris-500 mt-1">{formatDate(related.date)}</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ) : null
+              )}
             </div>
           </div>
         </div>

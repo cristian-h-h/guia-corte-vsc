@@ -36,6 +36,7 @@ const Index = () => {
                 <img 
                   src="/guia-imagenes/guia-corte-terciamel.png" 
                   alt="Guía de Corte Aluminio" 
+                  loading="lazy"
                   className="w-full h-auto rounded-lg shadow-xl"
                 />
                 <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-naranja-600 text-white px-6 py-3 rounded-full font-bold">
@@ -147,7 +148,8 @@ const Index = () => {
               </p>
               <img 
                 src="/guia-imagenes/guia-corte-recto-terciamel.png" 
-                alt="Paso 1: Ajustar" 
+                alt="Paso 1: Ajustar"
+                loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />
             </div>
@@ -162,7 +164,8 @@ const Index = () => {
               </p>
               <img 
                 src="/guia-imagenes/guia-corte-sierra-circular-terciamel.png" 
-                alt="Paso 2: Fijar" 
+                alt="Paso 2: Fijar"
+                loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />
             </div>
@@ -177,7 +180,8 @@ const Index = () => {
               </p>
               <img 
                 src="/guia-imagenes/guia-corte-ajustable-terciamel.png" 
-                alt="Paso 3: Cortar" 
+                alt="Paso 3: Cortar"
+                loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />
             </div>
