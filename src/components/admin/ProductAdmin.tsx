@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash2, Edit, Plus, Link as LinkIcon } from "lucide-react";
@@ -8,32 +7,18 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-
-// Datos iniciales de productos (simulados)
-const initialProducts = [
-  {
-    id: 1,
-    name: "Guía de Corte Aluminio Ajuste Rápido",
-    description: "Herramienta profesional para realizar cortes precisos en madera con sierra circular, caladora, router y otras herramientas de carpintería.",
-    cashPrice: 35000,
-    cardPrice: 38990,
-    image: "/guia-imagenes/guia-corte-terciamel.png",
-    stock: 25,
-    paymentLink: "",
-    // SEO fields
-    seoTitle: "Guía de Corte Aluminio Ajuste Rápido - Herramienta Profesional",
-    seoDescription: "Herramienta profesional para realizar cortes precisos en madera. Compatible con sierra circular, caladora y router. Envíos a todo Chile.",
-    seoKeywords: "guía de corte, aluminio, carpintería, herramientas, cortes precisos",
-    seoImgAlt: "Guía de Corte Aluminio Ajuste Rápido para carpintería profesional",
-  }
-];
+//import {
+//  fetchProducts,
+//  createProduct,
+//  updateProduct,
+//  deleteProduct,
+//} from "@/api/sanityApi";
 
 // Lista de proveedores de pagos web
 const paymentProviders = [
@@ -44,56 +29,47 @@ const paymentProviders = [
   { id: "custom", name: "Personalizado" }
 ];
 
+const emptyProduct = {
+  _id: "",
+  name: "",
+  description: "",
+  cashPrice: 0,
+  cardPrice: 0,
+  images: [],
+  image: "",
+  stock: 0,
+  paymentLink: "",
+  paymentProvider: "",
+  seoTitle: "",
+  seoDescription: "",
+  seoKeywords: "",
+  seoImgAlt: "",
+};
+
 const ProductAdmin = () => {
   const { toast } = useToast();
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState<any[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState<any>({
-    id: 0,
-    name: "",
-    description: "",
-    cashPrice: 0,
-    cardPrice: 0,
-    image: "",
-    stock: 0,
-    paymentLink: "",
-    paymentProvider: "",
-    // SEO fields
-    seoTitle: "",
-    seoDescription: "",
-    seoKeywords: "",
-    seoImgAlt: "",
-  });
+  const [currentProduct, setCurrentProduct] = useState<any>(emptyProduct);
   const [isEditing, setIsEditing] = useState(false);
+
+//  useEffect(() => {
+//    fetchProducts().then(setProducts);
+//  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setCurrentProduct({
       ...currentProduct,
-      [name]: name === "cashPrice" || name === "cardPrice" || name === "stock" 
-        ? Number(value) 
+      [name]: name === "cashPrice" || name === "cardPrice" || name === "stock"
+        ? Number(value)
         : value
     });
   };
 
   const handleAddProduct = () => {
     setIsEditing(false);
-    setCurrentProduct({
-      id: Date.now(),
-      name: "",
-      description: "",
-      cashPrice: 0,
-      cardPrice: 0,
-      image: "",
-      stock: 0,
-      paymentLink: "",
-      paymentProvider: "",
-      // SEO fields
-      seoTitle: "",
-      seoDescription: "",
-      seoKeywords: "",
-      seoImgAlt: "",
-    });
+    setCurrentProduct(emptyProduct);
     setDialogOpen(true);
   };
 
@@ -101,8 +77,8 @@ const ProductAdmin = () => {
     setIsEditing(true);
     setCurrentProduct({
       ...product,
+      image: product.images?.[0]?.asset?.url || product.image || "",
       paymentProvider: product.paymentProvider || "",
-      // Ensure SEO fields exist
       seoTitle: product.seoTitle || "",
       seoDescription: product.seoDescription || "",
       seoKeywords: product.seoKeywords || "",
@@ -111,35 +87,61 @@ const ProductAdmin = () => {
     setDialogOpen(true);
   };
 
-  const handleDeleteProduct = (id: number) => {
-    setProducts(products.filter(product => product.id !== id));
+  const handleDeleteProduct = async (id: string) => {
+//    await deleteProduct(id);
+//    setProducts(await fetchProducts());
     toast({
       title: "Producto eliminado",
       description: "El producto ha sido eliminado correctamente.",
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (isEditing) {
-      setProducts(products.map(product => 
-        product.id === currentProduct.id ? currentProduct : product
-      ));
-      toast({
-        title: "Producto actualizado",
-        description: "Los cambios han sido guardados correctamente.",
-      });
-    } else {
-      setProducts([...products, currentProduct]);
-      toast({
-        title: "Producto añadido",
-        description: "El nuevo producto ha sido añadido correctamente.",
-      });
-    }
-    
-    setDialogOpen(false);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Prepara el objeto para Sanity (ajusta según tu esquema)
+  const productData = {
+    name: currentProduct.name,
+    description: currentProduct.description,
+    cashPrice: currentProduct.cashPrice,
+    cardPrice: currentProduct.cardPrice,
+    stock: currentProduct.stock,
+    paymentLink: currentProduct.paymentLink,
+    paymentProvider: currentProduct.paymentProvider,
+    seoTitle: currentProduct.seoTitle,
+    seoDescription: currentProduct.seoDescription,
+    seoKeywords: currentProduct.seoKeywords,
+    seoImgAlt: currentProduct.seoImgAlt,
+    // Aquí el mapeo correcto para imágenes con _key único:
+    images: currentProduct.image
+      ? [
+          {
+            _key: typeof crypto !== "undefined" && crypto.randomUUID
+              ? crypto.randomUUID()
+              : Math.random().toString(36).substr(2, 9),
+            asset: { url: currentProduct.image }
+          }
+        ]
+      : [],
   };
+
+  if (isEditing && currentProduct._id) {
+//    await updateProduct(currentProduct._id, productData);
+    toast({
+      title: "Producto actualizado",
+      description: "Los cambios han sido guardados correctamente.",
+    });
+  } else {
+//    await createProduct(productData);
+    toast({
+      title: "Producto añadido",
+      description: "El nuevo producto ha sido añadido correctamente.",
+    });
+  }
+
+  setProducts(await fetchProducts());
+  setDialogOpen(false);
+};
 
   return (
     <div>
@@ -170,13 +172,13 @@ const ProductAdmin = () => {
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr key={product.id} className="border-t">
+                <tr key={product._id} className="border-t">
                   <td className="px-4 py-3">
                     <div className="w-16 h-16 rounded bg-gris-100 overflow-hidden">
-                      {product.image ? (
-                        <img 
-                          src={product.image} 
-                          alt={product.seoImgAlt || product.name} 
+                      {product.images?.[0]?.asset?.url ? (
+                        <img
+                          src={product.images[0].asset.url}
+                          alt={product.seoImgAlt || product.name}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -192,9 +194,9 @@ const ProductAdmin = () => {
                       {product.description}
                     </p>
                   </td>
-                  <td className="px-4 py-3 text-right">${product.cashPrice.toLocaleString()}</td>
-                  <td className="px-4 py-3 text-right">${product.cardPrice.toLocaleString()}</td>
-                  <td className="px-4 py-3 text-right">{product.stock}</td>
+                  <td className="px-4 py-3 text-right">${product.cashPrice?.toLocaleString()}</td>
+                  <td className="px-4 py-3 text-right">${product.cardPrice?.toLocaleString()}</td>
+                  <td className="px-4 py-3 text-right">{product.stock ?? "-"}</td>
                   <td className="px-4 py-3 text-center">
                     {product.paymentLink ? (
                       <div className="flex items-center justify-center">
@@ -207,17 +209,17 @@ const ProductAdmin = () => {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex justify-center gap-2">
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
+                      <Button
+                        size="sm"
+                        variant="outline"
                         onClick={() => handleEditProduct(product)}
                       >
                         <Edit size={16} />
                       </Button>
-                      <Button 
-                        size="sm" 
-                        variant="destructive" 
-                        onClick={() => handleDeleteProduct(product.id)}
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => handleDeleteProduct(product._id)}
                       >
                         <Trash2 size={16} />
                       </Button>
@@ -237,7 +239,7 @@ const ProductAdmin = () => {
               {isEditing ? "Editar Producto" : "Añadir Producto"}
             </DialogTitle>
           </DialogHeader>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <Tabs defaultValue="general" className="w-full">
               <TabsList className="grid grid-cols-3 mb-4">
@@ -261,7 +263,7 @@ const ProductAdmin = () => {
                     className="w-full border border-gris-300 rounded-md px-3 py-2"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="description" className="block text-sm font-medium mb-1">
                     Descripción
@@ -275,7 +277,7 @@ const ProductAdmin = () => {
                     className="w-full border border-gris-300 rounded-md px-3 py-2"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="cashPrice" className="block text-sm font-medium mb-1">
@@ -291,7 +293,7 @@ const ProductAdmin = () => {
                       className="w-full border border-gris-300 rounded-md px-3 py-2"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="cardPrice" className="block text-sm font-medium mb-1">
                       Precio Tarjeta
@@ -307,7 +309,7 @@ const ProductAdmin = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="image" className="block text-sm font-medium mb-1">
@@ -322,7 +324,7 @@ const ProductAdmin = () => {
                       className="w-full border border-gris-300 rounded-md px-3 py-2"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="stock" className="block text-sm font-medium mb-1">
                       Stock
@@ -339,7 +341,7 @@ const ProductAdmin = () => {
                   </div>
                 </div>
               </TabsContent>
-              
+
               <TabsContent value="payment" className="space-y-4">
                 <div>
                   <label htmlFor="paymentProvider" className="block text-sm font-medium mb-1">
@@ -360,26 +362,26 @@ const ProductAdmin = () => {
                     ))}
                   </select>
                 </div>
-                
+
                 <div>
                   <label htmlFor="paymentLink" className="block text-sm font-medium mb-1">
                     Enlace de Pago
                   </label>
                   <input
-                    type="text"
-                    id="paymentLink"
-                    name="paymentLink"
-                    value={currentProduct.paymentLink}
-                    onChange={handleInputChange}
-                    placeholder="https://"
-                    className="w-full border border-gris-300 rounded-md px-3 py-2"
-                  />
+                     type="text"
+                     id="paymentLink"
+                     name="paymentLink"
+                     value={currentProduct.paymentLink}
+                     onChange={handleInputChange}
+                     placeholder="https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd"
+                     className="w-full border border-gris-300 rounded-md px-3 py-2"
+                   />
                   <p className="text-sm text-gris-500 mt-1">
                     Ingrese el enlace proporcionado por su proveedor de pagos
                   </p>
                 </div>
               </TabsContent>
-              
+
               <TabsContent value="seo" className="space-y-4">
                 <div>
                   <Label htmlFor="seoTitle" className="block text-sm font-medium mb-1">
@@ -397,7 +399,7 @@ const ProductAdmin = () => {
                     Recomendado: 50-60 caracteres
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoDescription" className="block text-sm font-medium mb-1">
                     Descripción SEO
@@ -414,7 +416,7 @@ const ProductAdmin = () => {
                     Recomendado: 150-160 caracteres
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoKeywords" className="block text-sm font-medium mb-1">
                     Palabras Clave
@@ -431,7 +433,7 @@ const ProductAdmin = () => {
                     Separe las palabras clave con comas
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoImgAlt" className="block text-sm font-medium mb-1">
                     Texto Alternativo de Imagen
@@ -450,11 +452,11 @@ const ProductAdmin = () => {
                 </div>
               </TabsContent>
             </Tabs>
-            
+
             <DialogFooter>
-              <Button 
-                type="button" 
-                variant="outline" 
+              <Button
+                type="button"
+                variant="outline"
                 onClick={() => setDialogOpen(false)}
               >
                 Cancelar

@@ -11,6 +11,7 @@ type Product = {
   features?: string[];
   cashPrice: number;
   images: { asset: { url: string } }[];
+  paymentLink?: string;
 };
 
 const productosExternos = [
@@ -87,6 +88,16 @@ const Productos = () => {
             >
               Ver detalles y comprar
             </Link>
+            {product.paymentLink && (
+              <a
+                href={product.paymentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-green-700 transition mt-4"
+              >
+                Pagar con Payku
+              </a>
+            )}
           </div>
         </div>
         <div className="max-w-2xl text-center mx-auto mb-12">
@@ -137,7 +148,70 @@ const Productos = () => {
   // Si hay más de un producto, usa la grilla tradicional
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* ...tu grilla de productos como antes... */}
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Productos</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
+        {products.map((product) => (
+          <div key={product._id} className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+            <img
+              src={product.images?.[0]?.asset?.url}
+              alt={product.name}
+              className="rounded-lg object-cover w-full max-w-xs mb-4"
+            />
+            <h2 className="text-lg font-bold mb-2 text-center">{product.name}</h2>
+            <p className="text-gris-700 mb-2 text-center">{product.shortDescription}</p>
+            <span className="text-naranja-600 font-bold mb-2">
+              ${product.cashPrice?.toLocaleString("es-CL")}
+            </span>
+            <Link
+              to={`/producto/${product._id}`}
+              className="inline-block bg-naranja-600 text-white px-4 py-2 rounded font-semibold shadow hover:bg-naranja-700 transition mb-2"
+            >
+              Ver detalles y comprar
+            </Link>
+            {product.paymentLink && (
+              <a
+                href={product.paymentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-4 py-2 rounded font-semibold shadow hover:bg-green-700 transition"
+              >
+                Pagar con Payku
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Sección de productos externos SIEMPRE visible */}
+      <section className="mt-16 w-full">
+        <h2 className="text-2xl font-bold mb-6 text-center">También te podría interesar</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {productosExternos.map((prod, idx) => (
+            <a
+              key={idx}
+              href={prod.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow block"
+            >
+              <div className="aspect-video bg-white flex items-center justify-center overflow-hidden">
+                <img
+                  src={prod.imagen}
+                  alt={prod.nombre}
+                  loading="lazy"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-medium text-lg">{prod.nombre}</h3>
+                <span className="text-naranja-600 font-bold mt-2 block">
+                  Ver en tienda <ExternalLink className="ml-1 h-4 w-4 inline" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

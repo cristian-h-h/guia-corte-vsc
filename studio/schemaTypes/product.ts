@@ -9,6 +9,12 @@ export default {
     { name: 'longDescription', title: 'Descripción larga', type: 'text' },
     { name: 'cashPrice', title: 'Precio efectivo', type: 'number' },
     { name: 'cardPrice', title: 'Precio tarjeta', type: 'number' },
+    // Aquí agregas el campo de pago web:
+    {
+      name: "paymentLink",
+      title: "Enlace de Pago Web",
+      type: "url"
+    },
     { name: 'features', title: 'Características', type: 'array', of: [{ type: 'string' }] },
     { name: 'specifications', title: 'Especificaciones', type: 'array', of: [{ type: 'string' }] },
     {

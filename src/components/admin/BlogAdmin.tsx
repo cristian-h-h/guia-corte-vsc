@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Trash2, Edit, Plus, Eye } from "lucide-react";
+import { Trash2, Edit, Plus } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,134 +13,73 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+// import {
+//  fetchPosts,
+//  createPost,
+//  updatePost,
+//  deletePost,
+//} from "@/api/sanityApi";
 
-// Datos iniciales de artículos (simulados)
-const initialPosts = [
-  {
-    id: 1,
-    title: "Guía completa: Cómo hacer cortes perfectos con guía de aluminio",
-    excerpt: "Aprende técnicas profesionales para utilizar tu guía de corte de aluminio y lograr resultados precisos en todos tus proyectos de carpintería y bricolaje.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-ajustable-terciamel.png",
-    date: "2024-05-01",
-    author: "Roberto Gómez",
-    category: "Tutoriales",
-    // SEO fields
-    seoTitle: "Guía para Cortes Perfectos con Guía de Aluminio | Técnicas Profesionales",
-    seoDescription: "Aprende técnicas profesionales para utilizar tu guía de corte y lograr resultados precisos en carpintería y bricolaje.",
-    seoKeywords: "guía de corte, aluminio, cortes perfectos, carpintería, técnicas profesionales",
-    seoImgAlt: "Demostración de corte perfecto con guía de aluminio",
-  },
-  {
-    id: 2,
-    title: "5 proyectos DIY imprescindibles utilizando tu guía de corte de aluminio",
-    excerpt: "Descubre proyectos prácticos y creativos para poner a prueba tu guía de corte aluminio y mejorar tus habilidades de carpintería casera.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-sierra-circular-terciamel.png",
-    date: "2024-04-25",
-    author: "Ana Martínez",
-    category: "Proyectos DIY"
-  },
-  {
-    id: 3,
-    title: "Mantenimiento profesional para tu guía de corte de aluminio",
-    excerpt: "Guía completa con consejos expertos para mantener tu guía de corte en óptimas condiciones, prolongar su vida útil y garantizar cortes precisos.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-ajuste-rapido-terciamel.png",
-    date: "2024-04-10",
-    author: "Carlos Pérez",
-    category: "Mantenimiento"
-  },
-  {
-    id: 4,
-    title: "Sierra circular vs. Caladora: ¿Qué herramienta es mejor con guía de aluminio?",
-    excerpt: "Análisis detallado sobre qué herramienta ofrece mejores resultados para diferentes tipos de cortes utilizando la guía de aluminio de ajuste rápido.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-terciamel.png",
-    date: "2024-03-20",
-    author: "Miguel Santos",
-    category: "Herramientas"
-  },
-  {
-    id: 5,
-    title: "Ventajas de usar guía de aluminio con router: Resultados profesionales",
-    excerpt: "Descubre cómo la guía de corte aluminio transforma tu router en una herramienta de precisión profesional para trabajos avanzados de carpintería.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-recto-terciamel.png",
-    date: "2024-03-05",
-    author: "Laura Sánchez",
-    category: "Herramientas"
-  },
-  {
-    id: 6,
-    title: "Optimización de espacio en talleres pequeños: Guía de corte multifuncional",
-    excerpt: "Cómo la guía de corte aluminio ajuste rápido puede transformar cualquier espacio reducido en un taller funcional y profesional para carpintería.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-router-terciamel.png",
-    date: "2024-02-15",
-    author: "Javier Méndez",
-    category: "Consejos"
-  },
-  {
-    id: 7,
-    title: "Cómo construir muebles perfectos usando la guía de corte como prensa",
-    excerpt: "Tutorial paso a paso para aprovechar la guía de corte aluminio como sistema de prensado profesional en el armado y ensamblaje de muebles.",
-    content: "<p>Contenido completo del artículo...</p>",
-    image: "/guia-imagenes/guia-corte-ajuste-rapido-terciamel.png",
-    date: "2024-01-30",
-    author: "Martín Torres",
-    category: "Tutoriales"
-  }
-];
+const emptyPost = {
+  _id: "",
+  title: "",
+  excerpt: "",
+  content: "",
+  image: "",
+  date: "",
+  author: "",
+  category: "",
+  seoTitle: "",
+  seoDescription: "",
+  seoKeywords: "",
+  seoImgAlt: "",
+};
 
 const BlogAdmin = () => {
   const { toast } = useToast();
-  const [posts, setPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState<any[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [currentPost, setCurrentPost] = useState<any>({
-    id: 0,
-    title: "",
-    excerpt: "",
-    content: "",
-    image: "",
-    date: "",
-    author: "",
-    category: "",
-    // SEO fields
-    seoTitle: "",
-    seoDescription: "",
-    seoKeywords: "",
-    seoImgAlt: "",
-  });
+  const [currentPost, setCurrentPost] = useState<any>(emptyPost);
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  // MAPEO: Al traer los posts desde Sanity
+//  useEffect(() => {
+//    fetchPosts().then((data) => {
+//      setPosts(
+//        data.map((post: any) => ({
+//          _id: post._id,
+//          title: post.title,
+//          excerpt: post.excerpt,
+//          content: post.content,
+//          image: post.mainImage?.asset?.url || "",
+//          date: post.publishedAt || "",
+//          author: post.author || "",
+//          category: post.tags?.[0] || "",
+//          seoTitle: post.metaTitle || "",
+//          seoDescription: post.metaDescription || "",
+//          seoKeywords: post.tags?.join(", ") || "",
+//          seoImgAlt: post.seoImgAlt || "",
+//        }))
+//      );
+//    });
+//  }, []);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setCurrentPost({
       ...currentPost,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleAddPost = () => {
     setIsEditing(false);
-    // Obtener la fecha actual en formato YYYY-MM-DD
-    const today = new Date().toISOString().split('T')[0];
-    
     setCurrentPost({
-      id: Date.now(),
-      title: "",
-      excerpt: "",
-      content: "",
-      image: "",
-      date: today,
-      author: "",
+      ...emptyPost,
+      date: new Date().toISOString().split("T")[0],
       category: "Tutoriales",
-      // SEO fields
-      seoTitle: "",
-      seoDescription: "",
-      seoKeywords: "",
-      seoImgAlt: "",
     });
     setDialogOpen(true);
   };
@@ -149,7 +88,7 @@ const BlogAdmin = () => {
     setIsEditing(true);
     setCurrentPost({
       ...post,
-      // Ensure SEO fields exist
+      image: post.image || "",
       seoTitle: post.seoTitle || "",
       seoDescription: post.seoDescription || "",
       seoKeywords: post.seoKeywords || "",
@@ -158,35 +97,93 @@ const BlogAdmin = () => {
     setDialogOpen(true);
   };
 
-  const handleDeletePost = (id: number) => {
-    setPosts(posts.filter(post => post.id !== id));
-    toast({
-      title: "Artículo eliminado",
-      description: "El artículo ha sido eliminado correctamente.",
-    });
-  };
+//  const handleDeletePost = async (id: string) => {
+//    await deletePost(id);
+//    // Refresca y mapea de nuevo
+//    fetchPosts().then((data) => {
+//      setPosts(
+//        data.map((post: any) => ({
+//          _id: post._id,
+//          title: post.title,
+//          excerpt: post.excerpt,
+//          content: post.content,
+//          image: post.mainImage?.asset?.url || "",
+//          date: post.publishedAt || "",
+//          author: post.author || "",
+//          category: post.tags?.[0] || "",
+//          seoTitle: post.metaTitle || "",
+//          seoDescription: post.metaDescription || "",
+//          seoKeywords: post.tags?.join(", ") || "",
+//          seoImgAlt: post.seoImgAlt || "",
+//        }))
+//      );
+//    });
+//    toast({
+//      title: "Artículo eliminado",
+//      description: "El artículo ha sido eliminado correctamente.",
+//    });
+//  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (isEditing) {
-      setPosts(posts.map(post => 
-        post.id === currentPost.id ? currentPost : post
-      ));
+
+    // MAPEO: De tu admin a Sanity
+//    const postData = {
+//      title: currentPost.title,
+//      excerpt: currentPost.excerpt,
+//      content: currentPost.content,
+//      mainImage: currentPost.image
+//        ? { asset: { url: currentPost.image } }
+//        : undefined,
+//      publishedAt: currentPost.date,
+//      author: currentPost.author,
+//      tags: currentPost.seoKeywords
+//        ? currentPost.seoKeywords.split(",").map((t: string) => t.trim())
+//        : [],
+//      metaTitle: currentPost.seoTitle,
+//      metaDescription: currentPost.seoDescription,
+//      seoImgAlt: currentPost.seoImgAlt,
+//    };
+
+    if (isEditing && currentPost._id) {
+//      await updatePost(currentPost._id, postData);
       toast({
         title: "Artículo actualizado",
         description: "Los cambios han sido guardados correctamente.",
       });
     } else {
-      setPosts([...posts, currentPost]);
+//      await createPost(postData);
       toast({
         title: "Artículo añadido",
         description: "El nuevo artículo ha sido añadido correctamente.",
       });
     }
-    
+
+    // Refresca y mapea de nuevo
+//    fetchPosts().then((data) => {
+//      setPosts(
+//        data.map((post: any) => ({
+//          _id: post._id,
+//          title: post.title,
+//          excerpt: post.excerpt,
+//          content: post.content,
+//          image: post.mainImage?.asset?.url || "",
+//          date: post.publishedAt || "",
+//          author: post.author || "",
+//          category: post.tags?.[0] || "",
+//          seoTitle: post.metaTitle || "",
+//          seoDescription: post.metaDescription || "",
+//          seoKeywords: post.tags?.join(", ") || "",
+//          seoImgAlt: post.seoImgAlt || "",
+//        }))
+//      );
+//    });
     setDialogOpen(false);
   };
+
+  // SEO helpers
+  const seoTitleLength = currentPost.seoTitle?.length || 0;
+  const seoDescriptionLength = currentPost.seoDescription?.length || 0;
 
   return (
     <div>
@@ -216,13 +213,13 @@ const BlogAdmin = () => {
             </thead>
             <tbody>
               {posts.map((post) => (
-                <tr key={post.id} className="border-t">
+                <tr key={post._id} className="border-t">
                   <td className="px-4 py-3">
                     <div className="w-16 h-16 rounded bg-gris-100 overflow-hidden">
                       {post.image ? (
-                        <img 
-                          src={post.image} 
-                          alt={post.seoImgAlt || post.title} 
+                        <img
+                          src={post.image}
+                          alt={post.seoImgAlt || post.title}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -244,20 +241,20 @@ const BlogAdmin = () => {
                       {post.category}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-center">{post.date}</td>
+                  <td className="px-4 py-3 text-center">{post.date?.split("T")[0]}</td>
                   <td className="px-4 py-3">
                     <div className="flex justify-center gap-2">
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
+                      <Button
+                        size="sm"
+                        variant="outline"
                         onClick={() => handleEditPost(post)}
                       >
                         <Edit size={16} />
                       </Button>
-                      <Button 
-                        size="sm" 
-                        variant="destructive" 
-                        onClick={() => handleDeletePost(post.id)}
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => handleDeletePost(post._id)}
                       >
                         <Trash2 size={16} />
                       </Button>
@@ -277,7 +274,7 @@ const BlogAdmin = () => {
               {isEditing ? "Editar Artículo" : "Añadir Artículo"}
             </DialogTitle>
           </DialogHeader>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <Tabs defaultValue="general" className="w-full">
               <TabsList className="grid grid-cols-2 mb-4">
@@ -300,7 +297,7 @@ const BlogAdmin = () => {
                     className="w-full border border-gris-300 rounded-md px-3 py-2"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="excerpt" className="block text-sm font-medium mb-1">
                     Extracto
@@ -314,7 +311,7 @@ const BlogAdmin = () => {
                     className="w-full border border-gris-300 rounded-md px-3 py-2"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="content" className="block text-sm font-medium mb-1">
                     Contenido (HTML)
@@ -328,7 +325,7 @@ const BlogAdmin = () => {
                     className="w-full border border-gris-300 rounded-md px-3 py-2 font-mono text-sm"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="image" className="block text-sm font-medium mb-1">
@@ -343,7 +340,7 @@ const BlogAdmin = () => {
                       className="w-full border border-gris-300 rounded-md px-3 py-2"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="category" className="block text-sm font-medium mb-1">
                       Categoría
@@ -363,7 +360,7 @@ const BlogAdmin = () => {
                     </select>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="author" className="block text-sm font-medium mb-1">
@@ -378,7 +375,7 @@ const BlogAdmin = () => {
                       className="w-full border border-gris-300 rounded-md px-3 py-2"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="date" className="block text-sm font-medium mb-1">
                       Fecha de publicación
@@ -409,10 +406,10 @@ const BlogAdmin = () => {
                     className="w-full"
                   />
                   <p className="text-xs text-gris-500 mt-1">
-                    Recomendado: 50-60 caracteres
+                    Recomendado: 50-60 caracteres. <span className={seoTitleLength > 60 ? "text-red-500" : ""}>{seoTitleLength}</span>
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoDescription" className="block text-sm font-medium mb-1">
                     Descripción SEO
@@ -426,10 +423,10 @@ const BlogAdmin = () => {
                     rows={3}
                   />
                   <p className="text-xs text-gris-500 mt-1">
-                    Recomendado: 150-160 caracteres
+                    Recomendado: 150-160 caracteres. <span className={seoDescriptionLength > 160 ? "text-red-500" : ""}>{seoDescriptionLength}</span>
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoKeywords" className="block text-sm font-medium mb-1">
                     Palabras Clave
@@ -446,7 +443,7 @@ const BlogAdmin = () => {
                     Separe las palabras clave con comas
                   </p>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="seoImgAlt" className="block text-sm font-medium mb-1">
                     Texto Alternativo de Imagen
@@ -465,11 +462,11 @@ const BlogAdmin = () => {
                 </div>
               </TabsContent>
             </Tabs>
-            
+
             <DialogFooter>
-              <Button 
-                type="button" 
-                variant="outline" 
+              <Button
+                type="button"
+                variant="outline"
                 onClick={() => setDialogOpen(false)}
               >
                 Cancelar

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
@@ -15,6 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import ShippingForm, { ShippingFormData } from "@/components/ShippingForm";
+import { createOrder } from "@/api/sanityApi";
 
 const Carrito = () => {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, getCartTotal } = useCart();
@@ -51,40 +51,72 @@ const Carrito = () => {
     handleCheckout();
   };
 
-  const handleCheckout = () => {
-    if (cartItems.length === 0) {
+  // INTEGRACIÓN CON SANITY
+  const PAYKU_LINK = "https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd"; // Usa aquí tu link real de Payku
+
+const handleCheckout = async () => {
+  if (cartItems.length === 0) {
+    toast({
+      title: "Carrito vacío",
+      description: "Agrega productos al carrito antes de continuar.",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  if (deliveryOption === "shipping") {
+    if (!shippingInfo.nombre || !shippingInfo.email || !shippingInfo.telefono) {
       toast({
-        title: "Carrito vacío",
-        description: "Agrega productos al carrito antes de continuar.",
+        title: "Información incompleta",
+        description: "Por favor completa todos los campos requeridos del formulario de envío.",
         variant: "destructive",
       });
       return;
     }
+  }
 
-    // Para retiro en tienda no se necesita validar datos de envío
-    if (deliveryOption === "shipping") {
-      // Validamos que se hayan completado los datos de envío si es necesario
-      if (!shippingInfo.nombre || !shippingInfo.email || !shippingInfo.telefono) {
-        toast({
-          title: "Información incompleta",
-          description: "Por favor completa todos los campos requeridos del formulario de envío.",
-          variant: "destructive",
-        });
-        return;
-      }
-    }
-
-    setIsOrderPlaced(true);
-    setIsDialogOpen(false);
-    
-    toast({
-      title: "Pedido realizado con éxito",
-      description: deliveryOption === "shipping" 
-        ? "Te contactaremos pronto para coordinar la entrega."
-        : "Te contactaremos para coordinar el retiro en tienda.",
+  try {
+    await createOrder({
+      date: new Date().toISOString(),
+      customer: shippingInfo,
+      tipoEntrega: deliveryOption === "shipping" ? "domicilio" : "retiro",
+      items: cartItems.map(item => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        price: paymentMethod === "card" && item.priceCard ? item.priceCard : item.price,
+      })),
+      total: getCartTotal(paymentMethod),
+      paymentMethod,
+      paymentUrl: paymentMethod === "card" ? PAYKU_LINK : "",
     });
+  } catch (error) {
+    toast({
+      title: "Error al guardar la orden",
+      description: "Intenta nuevamente o contacta soporte.",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  setIsOrderPlaced(true);
+  setIsDialogOpen(false);
+
+  // Redirige a Payku si el método es tarjeta
+  if (paymentMethod === "card") {
     clearCart();
-  };
+    window.location.href = PAYKU_LINK;
+    return;
+  }
+
+  toast({
+    title: "Pedido realizado con éxito",
+    description: deliveryOption === "shipping" 
+      ? "Te contactaremos pronto para coordinar la entrega."
+      : "Te contactaremos para coordinar el retiro en tienda.",
+  });
+  clearCart();
+};
 
   if (isOrderPlaced) {
     return (

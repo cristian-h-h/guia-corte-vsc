@@ -79,3 +79,67 @@ export async function fetchProductById(id: string) {
   }`
   return await client.fetch(query, { id })
 }
+
+
+// Crear una orden en Sanity
+export async function createOrder(orderData: any) {
+  return await client.create({
+    _type: "order",
+    ...orderData,
+  });
+}
+
+
+// Obtener todas las órdenes ordenadas por fecha de creación
+export async function fetchOrders() {
+  const query = `*[_type == "order"] | order(_createdAt desc)`;
+  return await client.fetch(query);
+}
+
+// Crear un post de blog
+export async function createPost(postData: any) {
+  return await client.create({
+    _type: "blog",
+    ...postData,
+  });
+}
+
+// Actualizar un post de blog
+export async function updatePost(id: string, postData: any) {
+  return await client.patch(id).set(postData).commit();
+}
+
+// Eliminar un post de blog
+export async function deletePost(id: string) {
+  return await client.delete(id);
+}
+
+export const fetchPosts = fetchBlogs;
+
+// Crear un producto en Sanity
+export async function createProduct(productData: any) {
+  return await client.create({
+    _type: "product",
+    ...productData,
+  });
+}
+
+// Actualizar un producto en Sanity
+export async function updateProduct(id: string, productData: any) {
+  return await client.patch(id).set(productData).commit();
+}
+
+// Eliminar un producto en Sanity
+export async function deleteProduct(id: string) {
+  return await client.delete(id);
+}
+
+// Eliminar una orden en Sanity
+export async function deleteOrder(id: string) {
+  return await client.delete(id);
+}
+
+// Actualizar el estado de una orden en Sanity
+export async function updateOrderStatus(id: string, status: string) {
+  return await client.patch(id).set({ status }).commit();
+}
