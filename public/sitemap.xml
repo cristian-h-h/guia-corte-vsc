@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
+  <url>
+    <loc>https://www.guiadecorte.cl/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Producto -->
+  <url>
+    <loc>https://www.guiadecorte.cl/producto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Blog principal -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Contacto -->
+  <url>
+    <loc>https://www.guiadecorte.cl/contacto</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- Gracias -->
+  <url>
+    <loc>https://www.guiadecorte.cl/gracias</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <!-- Pago rechazado -->
+  <url>
+    <loc>https://www.guiadecorte.cl/pago-rechazado</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <!-- Artículos del blog -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/as-alla-de-la-madera-que-materiales-puedes-cortar-con-precision-con-tu-guia-de-1-26-metros</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-de-corte-ajustable-como-lograr-cortes-perfectos-en-madera-y-melamina-en-5-pasos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-de-corte-para-routers-desata-el-poder-de-tu-fresadora-en-proyectos-profesionales-de</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-definitiva-para-elegir-la-mejor-guia-de-corte-en-chile-comparativa-2025</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-de-corte-vs-sierra-de-mesa-analisis-completo-para-elegir-la-mejor-opcion-en-chile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/corta-con-confianza-evita-estos-errores-comunes-al-usar-tu-guia-de-corte</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/construye-tu-mesa-de-trabajo-profesional-con-guia-de-corte-guia-paso-a-paso-para-talleres-en</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/10-proyectos-diy-asombrosos-que-puedes-crear-con-tu-guia-de-corte-ajustable-de-1-26-metros</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/cortar-volcanica-con-precision-guia-definitiva-con-herramientas-para-construccion-en-chile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/por-que-la-guia-de-corte-de-1-26-mts-es-la-mejor-inversion-para-tu-taller-en-chile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

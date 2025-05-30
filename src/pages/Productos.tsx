@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "@/api/sanityApi";
 import { ExternalLink } from "lucide-react";
+import testimonials from "@/components/TestimonialsCarousel";
+import { Helmet } from "react-helmet-async";
 
 type Product = {
   _id: string;
@@ -28,7 +30,7 @@ const productosExternos = [
   {
     nombre: "Carro premium eventos",
     imagen: "/guia-imagenes/carro-premium-desmontable.jpg",
-    url: "hhttps://www.carrosdesmontableschile.cl",
+    url: "https://www.carrosdesmontableschile.cl",
   },
   {
     nombre: "Meson desmontable premium",
@@ -54,8 +56,73 @@ const Productos = () => {
   // Si solo hay un producto, lo mostramos centrado y grande
   if (products.length === 1) {
     const product = products[0];
+
+    // --- Schema.org para producto, reviews y aggregateRating ---
+    const reviewsSchema = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": product.images?.[0]?.asset?.url,
+      "description": product.shortDescription,
+      "brand": {
+        "@type": "Organization",
+        "name": "GuiaDeCorte.cl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.guiadecorte.cl/guia-imagenes/guia-corte-logo.png"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "reviewCount": testimonials.length
+      },
+      "review": testimonials.map(t => ({
+        "@type": "Review",
+        "author": t.name,
+        "reviewBody": t.comment,
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": t.rating
+        }
+      })),
+      "offers": [
+        {
+          "@type": "Offer",
+          "priceCurrency": "CLP",
+          "price": 35000,
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": 35000,
+            "priceCurrency": "CLP",
+            "description": "Precio pagando en efectivo"
+          }
+        },
+        {
+          "@type": "Offer",
+          "priceCurrency": "CLP",
+          "price": 38990,
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": 38990,
+            "priceCurrency": "CLP",
+            "description": "Precio pagando con tarjeta"
+          }
+        }
+      ]
+    };
+
     return (
       <div className="container mx-auto px-4 py-12 flex flex-col items-center">
+        {/* Datos estructurados schema.org para el producto */}
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(reviewsSchema)}
+          </script>
+        </Helmet>
+
         <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">{product.name}</h1>
         <p className="text-lg text-gris-700 mb-6 text-center max-w-2xl">
           {product.shortDescription}

@@ -1,29 +1,24 @@
-
-# Configuración para rastreadores de búsqueda
+# Permitir el acceso a todo el sitio para todos los bots
 User-agent: *
 Allow: /
-Allow: /blog/
-Allow: /producto/
-Allow: /contacto/
 
-# Sitemap
+# Sitemap principal
 Sitemap: https://www.guiadecorte.cl/sitemap.xml
 
-# Directorios específicos
+# Reglas específicas para Googlebot y Bingbot
 User-agent: Googlebot
 Allow: /
-Allow: /blog/
 Disallow: /admin/
 
 User-agent: Bingbot
 Allow: /
-Allow: /blog/
 Disallow: /admin/
 
+# Permitir acceso a Twitterbot y Facebookbot
 User-agent: Twitterbot
 Allow: /
-Allow: /blog/
 
 User-agent: facebookexternalhit
 Allow: /
-Allow: /blog/
+
+# Fin del archivo

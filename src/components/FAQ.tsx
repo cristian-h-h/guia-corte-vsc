@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   Collapsible,
   CollapsibleContent,
@@ -31,6 +31,20 @@ const faqData: FAQItem[] = [
   }
 ];
 
+// Genera el schema FAQPage dinámicamente
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
 const FAQItem = ({ item }: { item: FAQItem }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -59,20 +73,27 @@ const FAQItem = ({ item }: { item: FAQItem }) => {
 
 const FAQ = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Preguntas Frecuentes</h2>
-        <p className="text-center text-gris-600 max-w-2xl mx-auto mb-12">
-          Respuestas a las dudas más comunes sobre nuestra Guía de Corte Ajustable
-        </p>
-        
-        <div className="max-w-3xl mx-auto">
-          {faqData.map((item, index) => (
-            <FAQItem key={index} item={item} />
-          ))}
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Preguntas Frecuentes</h2>
+          <p className="text-center text-gris-600 max-w-2xl mx-auto mb-12">
+            Respuestas a las dudas más comunes sobre nuestra Guía de Corte Ajustable
+          </p>
+          
+          <div className="max-w-3xl mx-auto">
+            {faqData.map((item, index) => (
+              <FAQItem key={index} item={item} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
