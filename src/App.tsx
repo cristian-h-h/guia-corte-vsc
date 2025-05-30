@@ -23,6 +23,8 @@ import Contacto from "./pages/Contacto";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Productos from "./pages/Productos";
+import Gracias from "./pages/gracias";
+import PagoRechazado from "./pages/pagorechazado";
 
 const queryClient = new QueryClient();
 
@@ -48,9 +50,11 @@ const router = createBrowserRouter(
     { path: "/blog/:slug", element: <Layout><BlogPost /></Layout> }, // <--- CAMBIO AQUÍ
     { path: "/contacto", element: <Layout><Contacto /></Layout> },
     { path: "/admin", element: <Layout><Admin /></Layout> },
-    { path: "*", element: <Layout><NotFound /></Layout> },
     { path: "/producto", element: <Layout><Productos /></Layout> },
     { path: "/producto/:id", element: <Layout><Producto /></Layout> },
+    { path: "/gracias", element: <Layout><Gracias /></Layout> }, // <--- NUEVA RUTA
+    { path: "/pagorechazado", element: <Layout><PagoRechazado /></Layout> }, // <--- NUEVA RUTA
+    { path: "*", element: <Layout><NotFound /></Layout> },
   ],
   {
     future: {
