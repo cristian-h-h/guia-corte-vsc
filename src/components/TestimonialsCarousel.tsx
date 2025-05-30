@@ -11,7 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 
 // Datos simulados de testimonios de clientes
-const testimonials = [
+export const testimonials = [
   {
     id: 1,
     name: "Carlos Rodríguez",
@@ -163,9 +163,9 @@ const TestimonialsCarousel = () => {
               align: "start",
             }}
           >
-            <CarouselContent>
-              {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 px-2">
+          <CarouselContent>
+            {Array.isArray(testimonials) && testimonials.map((testimonial) => (
+               <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 px-2">
                   <Card className="border-none shadow-md h-full">
                     <CardContent className="p-6 flex flex-col h-full">
                       <div className="mb-4 flex justify-between items-center">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "@/api/sanityApi";
 import { ExternalLink } from "lucide-react";
-import testimonials from "@/components/TestimonialsCarousel";
+import { testimonials } from "@/components/TestimonialsCarousel";
 import { Helmet } from "react-helmet-async";
 
 type Product = {
@@ -77,15 +77,15 @@ const Productos = () => {
         "ratingValue": 5,
         "reviewCount": testimonials.length
       },
-      "review": testimonials.map(t => ({
-        "@type": "Review",
-        "author": t.name,
-        "reviewBody": t.comment,
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": t.rating
-        }
-      })),
+      "review": Array.isArray(testimonials) ? testimonials.map(t => ({
+  "@type": "Review",
+  "author": t.name,
+  "reviewBody": t.comment,
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": t.rating
+  }
+      })) : [],
       "offers": [
         {
           "@type": "Offer",

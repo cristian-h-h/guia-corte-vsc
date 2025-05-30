@@ -59,7 +59,15 @@ export async function fetchProducts() {
     images[]{asset->{url}},
     keywords
   }`
-  return await client.fetch(query)
+  const products = await client.fetch(query);
+  // Asegura que los campos sean arrays
+  return (Array.isArray(products) ? products : []).map(product => ({
+    ...product,
+    features: Array.isArray(product.features) ? product.features : [],
+    specifications: Array.isArray(product.specifications) ? product.specifications : [],
+    images: Array.isArray(product.images) ? product.images : [],
+    keywords: Array.isArray(product.keywords) ? product.keywords : [],
+  }));
 }
 
 // Obtener un producto por su ID
@@ -77,7 +85,15 @@ export async function fetchProductById(id: string) {
     images[]{asset->{url}},
     keywords
   }`
-  return await client.fetch(query, { id })
+  const product = await client.fetch(query, { id });
+  // Asegura que los campos sean arrays
+  return {
+    ...product,
+    features: Array.isArray(product?.features) ? product.features : [],
+    specifications: Array.isArray(product?.specifications) ? product.specifications : [],
+    images: Array.isArray(product?.images) ? product.images : [],
+    keywords: Array.isArray(product?.keywords) ? product.keywords : [],
+  };
 }
 
 
