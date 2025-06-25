@@ -34,8 +34,8 @@ const Index = () => {
             <div className="w-full md:w-1/2 mt-8 md:mt-0">
               <div className="relative">
                 <img 
-                  src="/guia-imagenes/guia-corte-terciamel.png" 
-                  alt="Guía de Corte Aluminio" 
+                  src="/guia-imagenes/guia-corte-profix-126.png" 
+                  alt="Guía Profix 126 Aluminio corte recto" 
                   loading="lazy"
                   className="w-full h-auto rounded-lg shadow-xl"
                 />
@@ -47,6 +47,102 @@ const Index = () => {
           </div>
         </div>
       </section>
+            {/* Descripción SEO del producto principal */}
+<section className="py-12 bg-white">
+  <div className="container mx-auto px-4">
+    <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gris-900">
+      Guía de Corte <span className="text-naranja-600">ProFix 126</span>:
+    </h2>
+    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-gris-800">
+      Precisión Industrial para Profesionales y Hobbistas Exigentes
+    </h3>
+    <p className="text-gris-700 mb-4">
+      Diseñada para superar los desafíos de la carpintería moderna, la <strong>Guía de Corte ProFix 126</strong> es el sistema definitivo para lograr cortes rectos perfectos hasta 1.26 metros de longitud con precisión milimétrica (±0.3 mm certificada). Su innovador sistema <strong>Quick-Change</strong> permite cambiar entre herramientas en solo 15 segundos sin perder calibración, compatible con sierras circulares, routers, fresadoras, esmeriles angulares y sierras caladoras sin importar la marca de tu herramientas sean estas marcas (<strong>DeWalt, Makita, Bosch, Milwaukee, Stanley, Skill, Einhell, Ubermann, Total, Cat, Ingco, Bauker, etc.</strong>).
+    </p>
+    <h3 className="text-xl font-bold mt-6 mb-2">
+      <span className="text-naranja-600">Especificaciones</span>{" "}
+      <span className="text-gris-900">Técnicas Clave:</span>
+    </h3>
+    <ul className="list-disc pl-6 text-gris-700 mb-4">
+      <li>Estructura en aluminio aeronáutico 6061-T6 (resistencia a flexiones y vibraciones).</li>
+      <li>Sistema de sujeción multidireccional con topes ajustables en acero endurecido.</li>
+      <li>Escala métrica e imperial con nonio para ajustes finos (precisión 0.1 mm).</li>
+      <li>Peso optimizado: 1.4 kg con diseño para fácil transporte.</li>
+      <li>Zonas de sujecion confeccionado en material antideslizante que impide el movimiento.</li>
+    </ul>
+      <h3 className="text-xl font-bold mt-6 mb-2">
+          Beneficios <span className="text-naranja-600">Exclusivos</span> para Profesionales:
+      </h3>
+    <ul className="list-disc pl-6 text-gris-700 mb-4">
+      <li>✔ Ahorro de hasta 40% en tiempo por proyecto al eliminar mediciones manuales</li>
+      <li>✔ Reducción de desperdicio de material gracias a cortes precisos en primera pasada</li>
+      <li>✔ Compatibilidad probada con más de 50 modelos de herramientas eléctricas</li>
+      <li>✔ Estabilidad superior incluso en cortes de materiales densos (maderas duras, MDF, melamina)</li>
+    </ul>
+      <h3 className="text-xl font-bold mt-6 mb-2">
+          Ventajas para <span className="text-naranja-600">Hobbistas</span> Avanzados:
+      </h3>
+    <ul className="list-disc pl-6 text-gris-700 mb-4">
+      <li>✓ Fácil instalación sin modificaciones en tus herramientas</li>
+      <li>✓ Resultados profesionales en proyectos domésticos</li>
+      <li>✓ Inversión a largo plazo con garantía extendida de 6 meses</li>
+    </ul>
+    <div className="mb-4">
+      <div className="mb-4">
+  <strong>
+    Utilizar una Guia <span className="text-naranja-600">ProFix 126</span> que la diferencia de la competencia:
+  </strong>
+  <span className="block text-gris-600 mt-1">
+    <li>✓ “guía de corte profesional 1.26 metros” </li>
+      <li>✓ “sistema de precisión para carpintería” </li> 
+        <li>✓ “accesorio universal para herramientas manuales y electricas como sierra circular y router, sierra caladora, etc” </li> 
+          <li>✓ “cortes rectos perfectos en madera” </li> 
+            <li>✓ “herramienta esencial para taller de carpintería” </li>
+  </span>
+</div>
+      
+    </div>
+      <h3 className="text-xl font-bold mt-6 mb-2">
+          ¿Por qué Elegir la <span className="text-naranja-600">ProFix 126</span>?
+      </h3>
+    <ul className="list-disc pl-6 text-gris-700 mb-4">
+      <li>Única guía en el mercado chileno con certificación de precisión industrial.</li>
+      <li>No necesita de un kit o adaptadores para utilizar con herramientas sin importar la marca de ella.</li>
+      <li>No requieres de soporte técnico especializado para utilizarla nuestra Guía Profix 126.</li>
+    </ul>
+    <p className="text-gris-700 mb-6">
+        Optimiza tu flujo de trabajo, eleva tus estándares de calidad y transforma cada proyecto con la <strong>Guía de Corte ProFix 126</strong>
+      <br />
+        – donde la ingeniería de precisión se encuentra con la artesanía en madera.
+    </p>
+    <div className="flex flex-col sm:flex-row justify-center gap-12 my-8">
+  <a
+    href="https://youtube.com/shorts/shIy8jqR0tE?feature=share"
+    className="inline-block bg-naranja-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-naranja-700 transition text-center"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Video 1 demostrativo <span className="text-gris-900">Profix 126</span>
+  </a>
+  <a
+    href="https://youtube.com/shorts/UHUVFCgoRSc?feature=share"
+    className="inline-block bg-naranja-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-naranja-700 transition text-center"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Video 2 demostrativo <span className="text-gris-900">Profix 126</span>
+  </a>
+  <a
+    href="https://youtube.com/shorts/JDyfjvraM2I?feature=share"
+    className="inline-block bg-naranja-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-naranja-700 transition text-center"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Video 3 demostrativo <span className="text-gris-900">Profix 126</span>
+  </a>
+</div>
+  </div>
+</section>
 
       {/* Features Section */}
       <section className="py-16 bg-white">
@@ -147,8 +243,8 @@ const Index = () => {
                 Coloca la guía sobre tu material y ajústala a la medida deseada con el sistema de bloqueo rápido.
               </p>
               <img 
-                src="/guia-imagenes/guia-corte-recto-terciamel.png" 
-                alt="Paso 1: Ajustar"
+                src="/guia-imagenes/ajuste-recto-profix-126.png" 
+                alt="Ajuste Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />
@@ -163,8 +259,8 @@ const Index = () => {
                 Asegura la guía al material con las pinzas de sujeción integradas para un agarre firme.
               </p>
               <img 
-                src="/guia-imagenes/guia-corte-sierra-circular-terciamel.png" 
-                alt="Paso 2: Fijar"
+                src="/guia-imagenes/corte-sierra-circular-profix-126.png" 
+                alt="Fijar Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />
@@ -179,8 +275,8 @@ const Index = () => {
                 Utiliza tu herramienta deslizándola a lo largo de la guía para conseguir un corte perfecto.
               </p>
               <img 
-                src="/guia-imagenes/guia-corte-ajustable-terciamel.png" 
-                alt="Paso 3: Cortar"
+                src="/guia-imagenes/guia-profix-126.png" 
+                alt="Cortar con Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
               />

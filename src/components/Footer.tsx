@@ -15,8 +15,8 @@ const Footer = () => {
           <div>
             <div className="mb-4 bg-white p-2 inline-block rounded-md">
               <img 
-                src="/guia-imagenes/guia-corte-logo.png" 
-                alt="Guía de Corte Ajustable Logo" 
+                src="/guia-imagenes/profix-126-logo.png" 
+                alt="Guía de Corte Ajustable Profix 126 Logo" 
                 className="h-20" 
               />
             </div>
