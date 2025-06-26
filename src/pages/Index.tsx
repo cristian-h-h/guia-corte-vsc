@@ -43,7 +43,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-full md:w-1/2 md:pr-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gris-900 leading-tight">
-                <span style={{ fontFamily: 'AmbiguityInline' }}>Guía de Corte</span> <span className="text-naranja-600">Aluminio</span> Ajuste Rápido
+                <span style={{ fontFamily: 'AmbiguityInline' }}>Guía de Corte</span> <span className="text-naranja-600">ProFix 126</span> Ajuste Rápido
               </h1>
               <p className="mt-6 text-gris-600 text-lg md:text-xl">
                 La herramienta definitiva para carpinteros profesionales y aficionados. 
