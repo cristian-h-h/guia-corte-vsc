@@ -19,22 +19,22 @@ type Product = {
 const productosExternos = [
   {
     nombre: "Carro eventos candybar",
-    imagen: "/guia-imagenes/carro-candybar.jpg",
+    imagen: "/guia-imagenes/carro-candybar.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
   {
     nombre: "Terciado melamina 15 mm blanco brilante",
-    imagen: "/guia-imagenes/terciado-melamina-15mm.png",
+    imagen: "/guia-imagenes/terciado-melamina-15mm.webp",
     url: "https://www.ferreteria2.cl/producto/guia-universal",
   },
   {
     nombre: "Carro premium eventos",
-    imagen: "/guia-imagenes/carro-premium-desmontable.jpg",
+    imagen: "/guia-imagenes/carro-premium-desmontable.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
   {
     nombre: "Meson desmontable premium",
-    imagen: "/guia-imagenes/meson-premium.jpg",
+    imagen: "/guia-imagenes/meson-premium.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
 ];
