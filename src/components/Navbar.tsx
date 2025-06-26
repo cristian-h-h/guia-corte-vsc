@@ -19,7 +19,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center group">
             <div className="relative w-48 h-16 flex items-center">
               <img
-                 src="/guia-imagenes/profix-126-logo.png"
+                 src="/guia-imagenes/profix-126-logo.webp"
                  alt="Logo Guía Corte recto Profix 126"
                  className="h-16 w-auto rounded-lg shadow-lg transition duration-300 group-hover:shadow-naranja-500/70 group-hover:scale-110"
                  style={{

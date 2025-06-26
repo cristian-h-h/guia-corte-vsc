@@ -25,22 +25,22 @@ type Product = {
 const productosExternos = [
   {
     nombre: "Terciado Melamina 15 mm bblanco brillante",
-    imagen: "/guia-imagenes/terciado-melamina-15mm.png",
+    imagen: "/guia-imagenes/terciado-melamina-15mm.webp",
     url: "https://www.terciamel.cl",
   },
   {
     nombre: "Carro Clasico desmontable eventos",
-    imagen: "/guia-imagenes/carro-premium.jpg",
+    imagen: "/guia-imagenes/carro-premium.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
   {
     nombre: "Meson desmontable Candy Bar - Snack",
-    imagen: "/guia-imagenes/carro-candybar-desmontable.png",
+    imagen: "/guia-imagenes/carro-candybar-desmontable.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
   {
     nombre: "Carro Premium Desmontable emprendimientos",
-    imagen: "/guia-imagenes/carro-premium-desmontable.png",
+    imagen: "/guia-imagenes/carro-premium-desmontable.webp",
     url: "https://www.carrosdesmontableschile.cl",
   },
 ];

@@ -2,11 +2,42 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   return (
     <>
-      {/* Hero Section */}
+    <Helmet>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Guía de Corte ProFix 126",
+      "image": "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+      "description": "Guía de corte profesional para carpintería, precisión industrial.",
+      "brand": { "@type": "Brand", "name": "ProFix" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CLP",
+        "price": "99990",
+        "availability": "https://schema.org/InStock"
+      }
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Cómo usar la Guía de Corte ProFix 126",
+      "step": [
+        { "@type": "HowToStep", "text": "Ajusta la guía sobre el material." },
+        { "@type": "HowToStep", "text": "Fija la guía con las pinzas integradas." },
+        { "@type": "HowToStep", "text": "Corta usando tu herramienta eléctrica." }
+      ]
+    })}
+  </script>
+</Helmet>
+       {/* Hero Section */}
       <section className="bg-gradient-to-b from-gris-100 to-white py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -20,12 +51,12 @@ const Index = () => {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Link to="/producto">
-                  <Button className="btn-primary flex items-center gap-2">
+                  <Button className="btn-primary flex items-center gap-2 text-lg">
                     Ver producto <ArrowRight size={18} />
                   </Button>
                 </Link>
                 <Link to="/contacto">
-                  <Button variant="outline" className="border-naranja-500 text-naranja-600 hover:bg-naranja-50">
+                  <Button variant="outline" className="border-naranja-500 text-naranja-600 hover:bg-naranja-50 text-lg">
                     Contactar
                   </Button>
                 </Link>
@@ -34,7 +65,7 @@ const Index = () => {
             <div className="w-full md:w-1/2 mt-8 md:mt-0">
               <div className="relative">
                 <img 
-                  src="/guia-imagenes/guia-corte-profix-126.png" 
+                  src="/guia-imagenes/guia-corte-profix-126.webp" 
                   alt="Guía Profix 126 Aluminio corte recto" 
                   loading="lazy"
                   className="w-full h-auto rounded-lg shadow-xl"
@@ -243,7 +274,7 @@ const Index = () => {
                 Coloca la guía sobre tu material y ajústala a la medida deseada con el sistema de bloqueo rápido.
               </p>
               <img 
-                src="/guia-imagenes/ajuste-recto-profix-126.png" 
+                src="/guia-imagenes/ajuste-recto-profix-126.webp" 
                 alt="Ajuste Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
@@ -259,7 +290,7 @@ const Index = () => {
                 Asegura la guía al material con las pinzas de sujeción integradas para un agarre firme.
               </p>
               <img 
-                src="/guia-imagenes/corte-sierra-circular-profix-126.png" 
+                src="/guia-imagenes/corte-sierra-circular-profix-126.webp" 
                 alt="Fijar Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
@@ -275,7 +306,7 @@ const Index = () => {
                 Utiliza tu herramienta deslizándola a lo largo de la guía para conseguir un corte perfecto.
               </p>
               <img 
-                src="/guia-imagenes/guia-profix-126.png" 
+                src="/guia-imagenes/guia-profix-126.webp" 
                 alt="Cortar con Guia Profix 126"
                 loading="lazy" 
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover"
@@ -297,10 +328,13 @@ const Index = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/producto">
-              <Button className="bg-white text-naranja-600 hover:bg-gris-100 font-bold py-3 px-8 text-lg">
-                Comprar ahora
-              </Button>
-            </Link>
+                <Button className="bg-white text-naranja-700 hover:bg-gris-100 font-bold py-6 px-12 text-xl rounded-lg shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+                    <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68L19 13M7 13V6h10v7"></path>
+                    </svg>
+                  Comprar ahora
+                </Button>
+              </Link>
           </div>
         </div>
       </section>

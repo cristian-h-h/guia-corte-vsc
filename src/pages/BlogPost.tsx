@@ -114,7 +114,7 @@ const BlogPost = () => {
       name: "GuiaDeCorte.cl",
       logo: {
       "@type": "ImageObject",
-      url: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-logo.png", // AQUÍ VA
+      url: "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp", // AQUÍ VA
     },
     },
     description: post.metaDescription || post.excerpt || "",

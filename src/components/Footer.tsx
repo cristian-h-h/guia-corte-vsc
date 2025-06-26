@@ -15,7 +15,7 @@ const Footer = () => {
           <div>
             <div className="mb-4 bg-white p-2 inline-block rounded-md">
               <img 
-                src="/guia-imagenes/profix-126-logo.png" 
+                src="/guia-imagenes/profix-126-logo.webp" 
                 alt="Guía de Corte Ajustable Profix 126 Logo" 
                 className="h-20" 
               />

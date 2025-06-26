@@ -5,15 +5,19 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false
-  }
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./src/*"]
+  },
+  "jsx": "react-jsx",
+  "module": "ESNext",
+  "target": "ES6",
+  "esModuleInterop": true,
+  "noImplicitAny": false,
+  "noUnusedParameters": false,
+  "skipLibCheck": true,
+  "allowJs": true,
+  "noUnusedLocals": false,
+  "strictNullChecks": false
+}
 }

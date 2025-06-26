@@ -1,6 +1,16 @@
 # Permitir el acceso a todo el sitio para todos los bots
 User-agent: *
 Allow: /
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.svg$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
 
 # Sitemap principal
 Sitemap: https://www.guiadecorte.cl/sitemap.xml
