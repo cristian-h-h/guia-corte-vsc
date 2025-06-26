@@ -65,7 +65,7 @@ const Comparativa = () => (
             </tr>
             <tr className="bg-gris-50">
               <td className="py-2 px-4 font-semibold">Cambio de herramienta</td>
-              <td className="py-2 px-4">5-10 min (recalibración)</td>
+              <td className="py-2 px-4">4-8 min (recalibración)</td>
               <td className="py-2 px-4 font-bold">15 segundos <span className="text-xs">(Quick-Change)</span></td>
             </tr>
             <tr>
@@ -80,8 +80,8 @@ const Comparativa = () => (
             </tr>
             <tr>
               <td className="py-2 px-4 font-semibold">Portabilidad</td>
-              <td className="py-2 px-4">8 kg</td>
-              <td className="py-2 px-4 font-bold">4.2 kg <span className="text-xs">(diseño plegable)</span></td>
+              <td className="py-2 px-4">2.1 kg</td>
+              <td className="py-2 px-4 font-bold">1.4 kg <span className="text-xs">(diseño ajustable)</span></td>
             </tr>
           </tbody>
         </table>
