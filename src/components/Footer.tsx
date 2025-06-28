@@ -21,8 +21,8 @@ const Footer = () => {
               />
             </div>
             <p className="text-gris-300 mb-4">
-              Herramienta profesional para realizar cortes precisos en madera. 
-              Compatible con sierra circular, caladora, router y más.
+              Herramienta de caracterisiticas profesionales para uso de carpinteros, mueblistas y aficionados que gusten de trabajos y proyectos en todo tipo de materiales con herramientas manuales y electricas. 
+              La unica que no requiere de kit y accesorios, compatible con herramientas: Makita - Milwaukee - Bosch DeWalt - Stanley - Skill - Ubermann - Ingco - Einhell, etc.
             </p>
             <div className="flex space-x-4 mt-4">
               <a href="#" className="text-white hover:text-naranja-500">
@@ -47,7 +47,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/producto" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                <Link to="/producto/profix-126" className="text-gris-300 hover:text-naranja-500 transition-colors">
                   Producto
                 </Link>
               </li>

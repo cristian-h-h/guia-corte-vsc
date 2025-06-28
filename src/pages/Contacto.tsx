@@ -79,6 +79,7 @@ const Contacto = () => {
                   type="text"
                   id="nombre"
                   name="nombre"
+                  autoComplete="name"
                   value={formData.nombre}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gris-300 rounded-md focus:outline-none focus:ring-2 focus:ring-naranja-500"
@@ -95,6 +96,7 @@ const Contacto = () => {
                     type="email"
                     id="email"
                     name="email"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gris-300 rounded-md focus:outline-none focus:ring-2 focus:ring-naranja-500"
@@ -110,6 +112,9 @@ const Contacto = () => {
                     type="tel"
                     id="telefono"
                     name="telefono"
+                    autoComplete="tel"
+                    pattern="[0-9]{9,15}"
+                    title="Ingresa solo números, mínimo 9 dígitos"
                     value={formData.telefono}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gris-300 rounded-md focus:outline-none focus:ring-2 focus:ring-naranja-500"
@@ -194,7 +199,7 @@ const Contacto = () => {
                   <div>
                     <h3 className="font-semibold">Correo electrónico</h3>
                     <p className="text-gris-600">
-                      <a href="mailto:info@guiadecorte.cl" className="hover:text-naranja-600">
+                      <a href="mailto:ventas@terciamel.cl" className="hover:text-naranja-600">
                         ventas@terciamel.cl
                       </a>
                     </p>

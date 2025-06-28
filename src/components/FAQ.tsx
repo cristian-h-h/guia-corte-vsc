@@ -83,8 +83,8 @@ const FAQ = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Preguntas Frecuentes</h2>
           <p className="text-center text-gris-600 max-w-2xl mx-auto mb-12">
-            Respuestas a las dudas más comunes sobre nuestra Guía de Corte Ajustable
-          </p>
+  Respuestas a las dudas más comunes sobre nuestra Guía de Corte Ajustable <span className="text-black font-bold">ProFix 126</span>
+</p>
           
           <div className="max-w-3xl mx-auto">
             {faqData.map((item, index) => (

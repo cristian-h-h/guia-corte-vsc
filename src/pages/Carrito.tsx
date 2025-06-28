@@ -173,7 +173,7 @@ const handleCheckout = async () => {
           <p className="text-gris-600 mb-6">
             Parece que aún no has agregado productos a tu carrito.
           </p>
-          <Link to="/producto">
+          <Link to="/producto/profix-126">
             <Button>Ver productos</Button>
           </Link>
         </div>
@@ -247,7 +247,7 @@ const handleCheckout = async () => {
                 >
                   Vaciar carrito
                 </button>
-                <Link to="/producto" className="text-naranja-600 hover:text-naranja-700 flex items-center">
+                <Link to="/producto/profix-126" className="text-naranja-600 hover:text-naranja-700 flex items-center">
                   Seguir comprando
                 </Link>
               </div>

@@ -35,16 +35,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors">
+            <Link to="/" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors text-lg">
               Inicio
             </Link>
-            <Link to="/producto" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors">
+            <Link to="/producto/profix-126" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors text-lg">
               Producto
             </Link>
-            <Link to="/blog" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors">
+            <Link to="/blog" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors text-lg">
               Blog
             </Link>
-            <Link to="/contacto" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors">
+            <Link to="/contacto" className="text-gris-800 hover:text-naranja-600 font-medium transition-colors text-lg">
               Contacto
             </Link>
           </div>

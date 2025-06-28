@@ -17,7 +17,7 @@ export const testimonials = [
     name: "Carlos Rodríguez",
     profession: "Carpintero profesional",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80",
-    comment: "La guía de corte aluminio ha revolucionado mi taller. Consigo cortes perfectos en la mitad de tiempo. Increíble precisión y facilidad de uso para todos mis proyectos profesionales.",
+    comment: "La guía de corte en su material de aluminio, ha revolucionado mi taller. Consigo cortes perfectos en la mitad de tiempo. Increíble precisión y facilidad de uso para todos mis proyectos profesionales.",
     rating: 5
   },
   {
@@ -25,7 +25,7 @@ export const testimonials = [
     name: "Ana Martínez",
     profession: "Diseñadora de interiores",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop&q=80",
-    comment: "Como diseñadora, necesito que mis contratistas trabajen con precisión. Les recomendé la guía de corte aluminio y la diferencia en acabado y detalle ha sido notable en todos los proyectos.",
+    comment: "Como diseñadora, necesito que mis contratistas trabajen con precisión. Les recomendé la guía ProFix 126 para la realizacion de cortes rectos y la diferencia en acabado y detalle ha sido notable en todos los proyectos.",
     rating: 5
   },
   {
@@ -33,7 +33,7 @@ export const testimonials = [
     name: "Roberto Gómez",
     profession: "Aficionado al bricolaje",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&q=80", 
-    comment: "Nunca había conseguido cortes tan perfectos como ahora con mi guía de corte aluminio. Es increíble lo que puedo crear en mi pequeño taller de casa con esta herramienta.",
+    comment: "Nunca había conseguido cortes tan perfectos como ahora con mi guía de corte ProFix 126. Es increíble lo que puedo crear en mi pequeño taller de casa con esta herramienta.",
     rating: 5
   },
   {
@@ -41,7 +41,7 @@ export const testimonials = [
     name: "María López",
     profession: "Restauradora de muebles",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&q=80",
-    comment: "Para mi trabajo de restauración, la precisión es fundamental. La guía de corte aluminio me permite replicar piezas antiguas con exactitud milimétrica. Una inversión que vale cada peso.",
+    comment: "Para mi trabajo de restauración, la precisión es fundamental. La guía de corte ProFix 126 me permite replicar piezas antiguas con exactitud milimétrica. Una inversión que vale cada peso.",
     rating: 5
   },
   {
@@ -57,7 +57,7 @@ export const testimonials = [
     name: "Laura Sánchez",
     profession: "Docente de carpintería",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&q=80",
-    comment: "Utilizo la guía de corte aluminio en mis clases de carpintería. Los alumnos aprenden mucho más rápido y consiguen resultados profesionales desde el primer día. Una herramienta educativa fantástica.",
+    comment: "Utilizo la guía de corte ProFix 126 en mis clases de carpintería. Los alumnos aprenden mucho más rápido y consiguen resultados profesionales desde el primer día. Una herramienta educativa fantástica.",
     rating: 5
   },
   {
@@ -65,7 +65,7 @@ export const testimonials = [
     name: "Pedro Alarcón",
     profession: "Contratista",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&q=80",
-    comment: "Para instalaciones en obra, la guía de corte aluminio nos ha permitido hacer ajustes perfectos sin tener que volver al taller. Ahorramos tiempo y el cliente queda más satisfecho con los acabados.",
+    comment: "Para instalaciones en obra, la guía de corte ProFix 126 nos ha permitido hacer ajustes perfectos sin tener que volver al taller. Ahorramos tiempo y el cliente queda más satisfecho con los acabados.",
     rating: 5
   },
   {
@@ -73,7 +73,7 @@ export const testimonials = [
     name: "Carmen Ortiz",
     profession: "Artesana",
     image: "https://images.unsplash.com/photo-1613145997970-db84a7975fbb?w=300&h=300&fit=crop&q=80",
-    comment: "Mis proyectos artesanales han dado un salto de calidad desde que utilizo la guía de corte aluminio. Consigo precisión en materiales que antes me resultaban difíciles de trabajar.",
+    comment: "Mis proyectos artesanales han dado un salto de calidad desde que utilizo la guía de corte ProFix 126. Consigo precisión en materiales que antes me resultaban difíciles de trabajar.",
     rating: 5
   },
   {
@@ -81,7 +81,7 @@ export const testimonials = [
     name: "Javier Méndez",
     profession: "Constructor",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&q=80",
-    comment: "He probado muchas guías de corte en mi carrera, pero ninguna tan versátil y precisa como ésta. La capacidad de ajuste rápido nos permite ser mucho más eficientes en obra.",
+    comment: "He probado muchas guías de corte en mi carrera, pero ninguna tan versátil y precisa como ésta. La capacidad de ajuste rápido nos permite ser mucho más eficientes en obra y en cada proyecto que comienzo.",
     rating: 5
   },
   {
@@ -89,7 +89,7 @@ export const testimonials = [
     name: "Sofía Ramírez",
     profession: "Diseñadora de muebles",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&q=80",
-    comment: "La precisión de la guía de corte aluminio me permite materializar mis diseños exactamente como los concibo. Es una herramienta indispensable para cualquier persona creativa en carpintería.",
+    comment: "La precisión de la guía de corte ProFix 126 me permite materializar mis diseños exactamente como los concibo. Es una herramienta indispensable para cualquier persona creativa en carpintería.",
     rating: 5
   },
   {
@@ -97,7 +97,7 @@ export const testimonials = [
     name: "Antonio Vega",
     profession: "Técnico en escenografía",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&q=80",
-    comment: "Para nuestros decorados teatrales, necesitamos precisión y rapidez. La guía de corte aluminio nos permite cumplir plazos ajustados sin sacrificar la calidad del acabado final.",
+    comment: "Para nuestros decorados teatrales, necesitamos precisión y rapidez. La guía de corte recto ProFix 126 nos permite cumplir plazos ajustados sin sacrificar la calidad del acabado final.",
     rating: 5
   },
   {
@@ -105,7 +105,7 @@ export const testimonials = [
     name: "Elena Torres",
     profession: "Propietaria de tienda de manualidades",
     image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=300&h=300&fit=crop&q=80",
-    comment: "Recomendamos la guía de corte aluminio a todos nuestros clientes de bricolaje avanzado. Los comentarios siempre son positivos y vuelven a la tienda para contarnos sus proyectos exitosos.",
+    comment: "Recomendamos la guía de corte recto ProFix 126 a todos nuestros clientes de bricolaje avanzado. Los comentarios siempre son positivos y vuelven a la tienda para contarnos sus proyectos exitosos.",
     rating: 5
   }
 ];
@@ -149,8 +149,8 @@ const TestimonialsCarousel = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Lo que dicen nuestros clientes</h2>
           <p className="text-gris-600 max-w-2xl mx-auto">
-            Descubre por qué carpinteros profesionales y aficionados al bricolaje confían en la Guía de Corte Aluminio para sus proyectos de precisión.
-          </p>
+  Descubre por qué carpinteros profesionales y aficionados al bricolaje confían en la Guía de Corte recto <span className="text-black font-bold">ProFix 126</span> para sus proyectos de precisión.
+</p>
         </div>
         
         <div className="mx-auto max-w-5xl px-8">
