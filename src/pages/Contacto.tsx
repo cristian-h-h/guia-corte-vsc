@@ -200,7 +200,7 @@ const Contacto = () => {
                     <h3 className="font-semibold">Correo electrónico</h3>
                     <p className="text-gris-600">
                       <a href="mailto:ventas@terciamel.cl" className="hover:text-naranja-600">
-                        ventas@terciamel.cl
+                        ventas@guiadecorte.cl
                       </a>
                     </p>
                   </div>

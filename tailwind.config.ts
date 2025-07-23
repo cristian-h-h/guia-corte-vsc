@@ -63,7 +63,7 @@ export default {
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))'
                 },
-                // Colores personalizados para Guía de Corte
+                // Colores personalizados para Guía de Corte - Paleta actualizada
                 naranja: {
                     50: '#FFF3E0',
                     100: '#FFE0B2',
@@ -87,6 +87,40 @@ export default {
                     700: '#616161',
                     800: '#424242',
                     900: '#212121',
+                },
+                // Nuevos colores para carpintería y construcción
+                madera: {
+                    100: '#F8EFE9', // Madera clara
+                    200: '#F2DFD0', // Pino
+                    300: '#E6C9A8', // Roble claro
+                    400: '#D4A276', // Roble
+                    500: '#B86E20', // Caoba
+                    600: '#8B4513', // Madera oscura
+                    700: '#6B3D1A', // Nogal
+                    800: '#4E2A0C', // Ébano
+                    900: '#301B05', // Madera muy oscura
+                },
+                herramienta: {
+                    100: '#E6F2FF', // Azul claro
+                    200: '#B3D9FF', // Azul medio
+                    300: '#4D94FF', // Azul herramienta
+                    400: '#0066CC', // Azul oscuro
+                    500: '#004C99', // Azul muy oscuro
+                    600: '#CC0000', // Rojo herramienta
+                    700: '#990000', // Rojo oscuro
+                    800: '#FFCC00', // Amarillo herramienta
+                    900: '#B38F00', // Amarillo oscuro
+                },
+                taller: {
+                    100: '#F5F5F5', // Gris muy claro
+                    200: '#E0E0E0', // Gris claro
+                    300: '#BDBDBD', // Gris medio
+                    400: '#757575', // Gris oscuro
+                    500: '#424242', // Gris muy oscuro
+                    600: '#F9A825', // Amarillo seguridad
+                    700: '#E65100', // Naranja seguridad
+                    800: '#B71C1C', // Rojo seguridad
+                    900: '#1B5E20', // Verde seguridad
                 },
                 // Colores para el efecto de espada láser
                 laser: {
@@ -140,6 +174,19 @@ export default {
                     "0%, 100%": { boxShadow: "0 0 10px rgba(0, 255, 0, 0.8)" },
                     "50%": { boxShadow: "0 0 20px rgba(0, 255, 0, 1)" },
                 },
+                // Nuevas animaciones para la sección Hero
+                shine: {
+                    '0%': { transform: 'translateX(-100%) rotate(45deg)' },
+                    '100%': { transform: 'translateX(100%) rotate(45deg)' }
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' }
+                },
+                pulse: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.7' }
+                }
             },
             animation: {
                 // Animaciones existentes
@@ -149,6 +196,10 @@ export default {
                 'slide-in': 'slide-in 0.3s ease-out',
                 // Animación personalizada para el láser
                 laser: 'laser 2s linear infinite',
+                // Nuevas animaciones para la sección Hero
+                shine: 'shine 3s infinite',
+                float: 'float 3s ease-in-out infinite',
+                pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],

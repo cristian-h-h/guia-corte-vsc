@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
-import { Mail, Phone, MessageSquare } from "lucide-react";
+import { Mail, Phone, MessageSquare, ExternalLink } from "lucide-react";
+import RelatedCompaniesCarousel from "./RelatedCompaniesCarousel";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,7 @@ const Footer = () => {
   const whatsappMessage = encodeURIComponent("Hola, estoy interesado en la Guía de Corte Ajustable. ¿Podrían darme más información?");
 
   return (
-    <footer className="bg-gris-900 text-white pt-12 pb-6">
+    <footer className="bg-gradient-to-b from-madera-700 to-madera-900 text-white pt-12 pb-6 border-t-4 border-herramienta-600">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -42,22 +43,27 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Enlaces</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                <Link to="/" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link to="/producto/profix-126" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                <Link to="/producto/profix-126" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
                   Producto
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                <Link to="/galeria" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
+                  Galería
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/contacto" className="text-gris-300 hover:text-naranja-500 transition-colors">
+                <Link to="/contacto" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
                   Contacto
                 </Link>
               </li>
@@ -87,11 +93,17 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-naranja-500" />
                 <a href="mailto:ventas@terciamel.cl" className="text-gris-300 hover:text-naranja-500 transition-colors">
-                  ventas@terciamel.cl
+                  ventas@guiadecorte.cl
                 </a>
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Empresas Relacionadas */}
+        <div className="border-t border-gris-800 mt-8 pt-8">
+          <h3 className="text-xl font-bold mb-6 text-center">Empresas Relacionadas</h3>
+          <RelatedCompaniesCarousel />
         </div>
 
         <div className="border-t border-gris-800 mt-8 pt-6 text-center">

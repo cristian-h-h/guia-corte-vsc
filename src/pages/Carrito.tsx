@@ -14,7 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import ShippingForm, { ShippingFormData } from "@/components/ShippingForm";
-import { createOrder } from "@/api/sanityApi";
+// // import { createOrder } from "@/api/sanityApi"; // Eliminado - ahora usamos Supabase // Eliminado - ahora usamos Supabase
 
 const Carrito = () => {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, getCartTotal } = useCart();
@@ -51,7 +51,7 @@ const Carrito = () => {
     handleCheckout();
   };
 
-  // INTEGRACIÓN CON SANITY
+  // INTEGRACIÓN CON PASARELA DE PAGO
   const PAYKU_LINK = "https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd"; // Usa aquí tu link real de Payku
 
 const handleCheckout = async () => {
@@ -76,20 +76,23 @@ const handleCheckout = async () => {
   }
 
   try {
-    await createOrder({
-      date: new Date().toISOString(),
-      customer: shippingInfo,
-      tipoEntrega: deliveryOption === "shipping" ? "domicilio" : "retiro",
-      items: cartItems.map(item => ({
-        id: item.id,
-        name: item.name,
-        quantity: item.quantity,
-        price: paymentMethod === "card" && item.priceCard ? item.priceCard : item.price,
-      })),
-      total: getCartTotal(paymentMethod),
-      paymentMethod,
-      paymentUrl: paymentMethod === "card" ? PAYKU_LINK : "",
-    });
+    // TODO: Implementar createOrder con Supabase
+    // await createOrder({
+    //   date: new Date().toISOString(),
+    //   customer: shippingInfo,
+    //   tipoEntrega: deliveryOption === "shipping" ? "domicilio" : "retiro",
+    //   items: cartItems.map(item => ({
+    //     id: item.id,
+    //     name: item.name,
+    //     quantity: item.quantity,
+    //     price: paymentMethod === "card" && item.priceCard ? item.priceCard : item.price,
+    //   })),
+    //   total: getCartTotal(paymentMethod),
+    //   paymentMethod,
+    //   paymentUrl: paymentMethod === "card" ? PAYKU_LINK : "",
+    // });
+    
+    console.log("Orden procesada (pendiente implementación con Supabase)");
   } catch (error) {
     toast({
       title: "Error al guardar la orden",

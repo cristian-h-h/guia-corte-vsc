@@ -1,0 +1,122 @@
+/* Estilos para opciones de accesibilidad */
+
+/* Importar fuente OpenDyslexic */
+@import url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/dist/opendyslexic/opendyslexic.css');
+
+/* Alto contraste */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 0%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 0%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 48 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 40%;
+  --input: 0 0% 40%;
+  --ring: 48 100% 50%;
+}
+
+.high-contrast * {
+  border-color: white !important;
+}
+
+.high-contrast a {
+  color: yellow !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast button:not(.bg-transparent):not([aria-checked="true"]) {
+  background-color: white !important;
+  color: black !important;
+}
+
+.high-contrast button[aria-checked="true"] {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+/* Texto grande */
+.large-text {
+  font-size: 125% !important;
+}
+
+.large-text h1 {
+  font-size: 2.5rem !important;
+}
+
+.large-text h2 {
+  font-size: 2rem !important;
+}
+
+.large-text h3 {
+  font-size: 1.75rem !important;
+}
+
+.large-text p, .large-text li, .large-text label, .large-text input, .large-text button {
+  font-size: 1.25rem !important;
+}
+
+/* Reducir movimiento */
+.reduce-motion * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* Fuente para dislexia */
+.dyslexic-font * {
+  font-family: 'OpenDyslexic', sans-serif !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+/* Mejoras de enfoque para navegación por teclado */
+:focus {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.high-contrast :focus {
+  outline: 3px solid yellow;
+  outline-offset: 2px;
+}
+
+/* Mejoras para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Ajustes para skip links (enlaces de salto) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}

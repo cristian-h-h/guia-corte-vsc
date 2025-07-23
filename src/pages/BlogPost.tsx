@@ -4,7 +4,9 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
-import client from "@/sanityClient";
+import { fetchBlogBySlug, fetchRelatedBlogs } from "@/api/supabaseApi"; // Cambiado a supabaseApi
+import SimpleSocialButtons from "@/components/SimpleSocialButtons";
+import CommentSection from "@/components/CommentSection";
 
 const BlogPost = () => {
   // =========================
@@ -31,45 +33,18 @@ const BlogPost = () => {
   };
 
   // =========================
-  // Cargar datos del blog y relacionados desde Sanity
+  // Cargar datos del blog y relacionados desde Supabase
   // =========================
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
+        if (!slug) return;
+        
         // Obtén el blog principal por slug
-        const blog = await client.fetch(
-          `*[_type == "blog" && slug.current == $slug][0]{
-            _id,
-            title,
-            slug,
-            excerpt,
-            content,
-            mainImage{
-              asset->{url}
-            },
-            publishedAt,
-            author,
-            category,
-            tags,
-            metaTitle,
-            metaDescription
-          }`,
-          { slug }
-        );
-
+        const blog = await fetchBlogBySlug(slug);
+        
         // Obtén blogs relacionados (excluyendo el actual)
-        const related = await client.fetch(
-          `*[_type == "blog" && slug.current != $slug][0...3]{
-            _id,
-            title,
-            slug,
-            mainImage{
-              asset->{url}
-            },
-            publishedAt
-          }`,
-          { slug }
-        );
+        const related = await fetchRelatedBlogs(slug, 3);
 
         setPost(blog);
         setRelatedPosts(related);
@@ -176,6 +151,16 @@ const BlogPost = () => {
             <PortableText value={post.content} />
           </article>
 
+          {/* Botones de compartir */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold mb-3">Compartir este artículo</h3>
+            <SimpleSocialButtons 
+              url={`https://www.guiadecorte.cl/blog/${post.slug?.current}`}
+              title={post.title}
+              description={post.excerpt}
+            />
+          </div>
+
           {/* Etiquetas */}
           {post.tags && post.tags.length > 0 && (
             <div className="border-t border-b py-6 mb-12">
@@ -188,6 +173,9 @@ const BlogPost = () => {
               </div>
             </div>
           )}
+          
+          {/* Sección de comentarios */}
+          <CommentSection postId={post._id} />
 
           {/* Artículos relacionados */}
           <div className="border-t pt-8">

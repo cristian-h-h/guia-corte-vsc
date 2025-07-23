@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-//import { fetchOrders, updateOrderStatus, deleteOrder } from "@/api/sanityApi";
+// Importar funciones de Supabase cuando estén implementadas
+// import { fetchOrders, updateOrderStatus, deleteOrder } from "@/api/supabaseApi";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash2, Eye } from "lucide-react";

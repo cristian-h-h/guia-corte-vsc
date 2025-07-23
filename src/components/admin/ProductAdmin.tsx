@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Trash2, Edit, Plus, Link as LinkIcon } from "lucide-react";
+import { Trash2, Edit, Plus, Link as LinkIcon, Image as ImageIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,12 +13,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-//import {
-//  fetchProducts,
-//  createProduct,
-//  updateProduct,
-//  deleteProduct,
-//} from "@/api/sanityApi";
+import ImageGallery from "./ImageGallery";
+import {
+  fetchProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  fetchProductImages,
+  Product
+} from "@/api/productApi";
 
 // Lista de proveedores de pagos web
 const paymentProviders = [
@@ -29,14 +32,12 @@ const paymentProviders = [
   { id: "custom", name: "Personalizado" }
 ];
 
-const emptyProduct = {
-  _id: "",
+const emptyProduct: Product = {
+  id: "",
   name: "",
   description: "",
   cashPrice: 0,
   cardPrice: 0,
-  images: [],
-  image: "",
   stock: 0,
   paymentLink: "",
   paymentProvider: "",
@@ -48,14 +49,35 @@ const emptyProduct = {
 
 const ProductAdmin = () => {
   const { toast } = useToast();
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState<any>(emptyProduct);
+  const [currentProduct, setCurrentProduct] = useState<Product>(emptyProduct);
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [productImages, setProductImages] = useState<any[]>([]);
+  const [selectedProductId, setSelectedProductId] = useState<string>("");
 
-//  useEffect(() => {
-//    fetchProducts().then(setProducts);
-//  }, []);
+  useEffect(() => {
+    loadProducts();
+  }, []);
+  
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error al cargar productos:", error);
+      toast({
+        title: "Error",
+        description: "No se pudieron cargar los productos",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -73,74 +95,130 @@ const ProductAdmin = () => {
     setDialogOpen(true);
   };
 
-  const handleEditProduct = (product: any) => {
+  const handleEditProduct = async (product: Product) => {
     setIsEditing(true);
-    setCurrentProduct({
-      ...product,
-      image: product.images?.[0]?.asset?.url || product.image || "",
-      paymentProvider: product.paymentProvider || "",
-      seoTitle: product.seoTitle || "",
-      seoDescription: product.seoDescription || "",
-      seoKeywords: product.seoKeywords || "",
-      seoImgAlt: product.seoImgAlt || "",
-    });
-    setDialogOpen(true);
+    
+    try {
+      // Cargar imágenes del producto
+      const images = await fetchProductImages(product.id || "");
+      setProductImages(images);
+      
+      // Encontrar la imagen principal
+      const mainImage = images.find(img => img.is_main);
+      
+      setCurrentProduct({
+        ...product,
+        seoTitle: product.seoTitle || product.name,
+        seoDescription: product.seoDescription || product.description?.substring(0, 160) || "",
+        seoKeywords: product.seoKeywords || "",
+        seoImgAlt: product.seoImgAlt || (mainImage ? mainImage.alt_text : ""),
+      });
+      
+      setDialogOpen(true);
+    } catch (error) {
+      console.error("Error al cargar datos del producto:", error);
+      toast({
+        title: "Error",
+        description: "No se pudieron cargar los datos del producto",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleDeleteProduct = async (id: string) => {
-//    await deleteProduct(id);
-//    setProducts(await fetchProducts());
-    toast({
-      title: "Producto eliminado",
-      description: "El producto ha sido eliminado correctamente.",
-    });
+    if (!confirm("¿Estás seguro de que quieres eliminar este producto? Esta acción no se puede deshacer.")) {
+      return;
+    }
+    
+    try {
+      await deleteProduct(id);
+      setProducts(await fetchProducts());
+      toast({
+        title: "Producto eliminado",
+        description: "El producto ha sido eliminado correctamente.",
+      });
+    } catch (error) {
+      console.error("Error al eliminar producto:", error);
+      toast({
+        title: "Error",
+        description: "No se pudo eliminar el producto",
+        variant: "destructive",
+      });
+    }
   };
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
-  // Prepara el objeto para Sanity (ajusta según tu esquema)
-  const productData = {
-    name: currentProduct.name,
-    description: currentProduct.description,
-    cashPrice: currentProduct.cashPrice,
-    cardPrice: currentProduct.cardPrice,
-    stock: currentProduct.stock,
-    paymentLink: currentProduct.paymentLink,
-    paymentProvider: currentProduct.paymentProvider,
-    seoTitle: currentProduct.seoTitle,
-    seoDescription: currentProduct.seoDescription,
-    seoKeywords: currentProduct.seoKeywords,
-    seoImgAlt: currentProduct.seoImgAlt,
-    // Aquí el mapeo correcto para imágenes con _key único:
-    images: currentProduct.image
-      ? [
-          {
-            _key: typeof crypto !== "undefined" && crypto.randomUUID
-              ? crypto.randomUUID()
-              : Math.random().toString(36).substr(2, 9),
-            asset: { url: currentProduct.image }
-          }
-        ]
-      : [],
-  };
+  try {
+    // Prepara el objeto para la base de datos
+    const productData: Product = {
+      name: currentProduct.name,
+      description: currentProduct.description,
+      cashPrice: currentProduct.cashPrice,
+      cardPrice: currentProduct.cardPrice,
+      stock: currentProduct.stock,
+      paymentLink: currentProduct.paymentLink,
+      paymentProvider: currentProduct.paymentProvider,
+      seoTitle: currentProduct.seoTitle,
+      seoDescription: currentProduct.seoDescription,
+      seoKeywords: currentProduct.seoKeywords,
+      seoImgAlt: currentProduct.seoImgAlt,
+    };
 
-  if (isEditing && currentProduct._id) {
-//    await updateProduct(currentProduct._id, productData);
+    if (isEditing && currentProduct.id) {
+      await updateProduct(currentProduct.id, productData);
+      toast({
+        title: "Producto actualizado",
+        description: "Los cambios han sido guardados correctamente.",
+      });
+    } else {
+      // Generar un ID basado en el nombre del producto (slug)
+      const productId = currentProduct.name
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, '')
+        .replace(/\s+/g, '-');
+      
+      await createProduct({
+        ...productData,
+        id: productId
+      });
+      
+      toast({
+        title: "Producto añadido",
+        description: "El nuevo producto ha sido añadido correctamente.",
+      });
+    }
+
+    await loadProducts();
+    setDialogOpen(false);
+  } catch (error) {
+    console.error("Error al guardar producto:", error);
     toast({
-      title: "Producto actualizado",
-      description: "Los cambios han sido guardados correctamente.",
-    });
-  } else {
-//    await createProduct(productData);
-    toast({
-      title: "Producto añadido",
-      description: "El nuevo producto ha sido añadido correctamente.",
+      title: "Error",
+      description: "No se pudo guardar el producto",
+      variant: "destructive",
     });
   }
+};
 
-  setProducts(await fetchProducts());
-  setDialogOpen(false);
+// Función para abrir la galería de imágenes
+const handleOpenGallery = (productId: string) => {
+  setSelectedProductId(productId);
+  setGalleryOpen(true);
+};
+
+// Función para manejar la selección de una imagen
+const handleImageSelect = (imageUrl: string, imageId?: string, altText?: string) => {
+  // Actualizar el texto alternativo SEO si está disponible
+  if (altText) {
+    setCurrentProduct({
+      ...currentProduct,
+      seoImgAlt: altText
+    });
+  }
+  
+  setGalleryOpen(false);
 };
 
   return (
@@ -152,7 +230,11 @@ const handleSubmit = async (e: React.FormEvent) => {
         </Button>
       </div>
 
-      {products.length === 0 ? (
+      {loading ? (
+        <div className="text-center py-12 bg-gris-50 rounded-lg">
+          <p className="text-gris-500">Cargando productos...</p>
+        </div>
+      ) : products.length === 0 ? (
         <div className="text-center py-12 bg-gris-50 rounded-lg">
           <p className="text-gris-500">No hay productos disponibles</p>
         </div>
@@ -172,20 +254,16 @@ const handleSubmit = async (e: React.FormEvent) => {
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr key={product._id} className="border-t">
+                <tr key={product.id} className="border-t">
                   <td className="px-4 py-3">
-                    <div className="w-16 h-16 rounded bg-gris-100 overflow-hidden">
-                      {product.images?.[0]?.asset?.url ? (
-                        <img
-                          src={product.images[0].asset.url}
-                          alt={product.seoImgAlt || product.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gris-400">
-                          Sin imagen
-                        </div>
-                      )}
+                    <div 
+                      className="w-16 h-16 rounded bg-gris-100 overflow-hidden cursor-pointer"
+                      onClick={() => handleOpenGallery(product.id || "")}
+                      title="Gestionar imágenes"
+                    >
+                      <div className="w-full h-full flex items-center justify-center text-gris-400">
+                        <ImageIcon size={24} />
+                      </div>
                     </div>
                   </td>
                   <td className="px-4 py-3">
@@ -218,8 +296,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                       </Button>
                       <Button
                         size="sm"
+                        variant="outline"
+                        onClick={() => handleOpenGallery(product.id || "")}
+                      >
+                        <ImageIcon size={16} />
+                      </Button>
+                      <Button
+                        size="sm"
                         variant="destructive"
-                        onClick={() => handleDeleteProduct(product._id)}
+                        onClick={() => handleDeleteProduct(product.id || "")}
                       >
                         <Trash2 size={16} />
                       </Button>
@@ -232,6 +317,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       )}
 
+      {/* Diálogo de edición/creación de producto */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
@@ -466,6 +552,16 @@ const handleSubmit = async (e: React.FormEvent) => {
           </form>
         </DialogContent>
       </Dialog>
+      
+      {/* Galería de imágenes */}
+      <ImageGallery
+        open={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        onSelect={handleImageSelect}
+        bucketName="product-images"
+        productId={selectedProductId}
+        showMetadata={true}
+      />
     </div>
   );
 };

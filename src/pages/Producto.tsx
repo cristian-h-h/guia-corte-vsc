@@ -234,11 +234,11 @@ const Producto = () => {
       <span className="font-semibold text-black">
         ${formatPrice(producto.cashPrice)} (Efectivo/Transferencia)
       </span>
-      <span className="text-green-700 font-bold ml-2">¡Ahorra $3.000!</span>
+      <span className="text-green-700 font-bold ml-2">¡Ahorra $3.990!</span>
     </div>
     <div>
       <span className="font-semibold text-black">
-        $38.000 (Tarjeta de Crédito)
+        $38.990 (Tarjeta de Crédito)
       </span>
     </div>
   </div>

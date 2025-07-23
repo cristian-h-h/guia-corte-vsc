@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
-import { fetchBlogs } from "@/api/sanityApi";
+import { fetchBlogs } from "@/api/supabaseApi"; // Cambiado a supabaseApi
 
 type BlogPost = {
   _id: string;

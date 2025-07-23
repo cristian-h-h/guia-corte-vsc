@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Trash2, Edit, Plus } from "lucide-react";
+import { Trash2, Edit, Plus, Upload, Image as ImageIcon, Loader2 } from "lucide-react";
+import SimpleEditor from "./SimpleEditor"; // Usar el editor simple en lugar de TinyMCE
 import {
   Dialog,
   DialogContent,
@@ -13,12 +14,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-// import {
-//  fetchPosts,
-//  createPost,
-//  updatePost,
-//  deletePost,
-//} from "@/api/sanityApi";
+import {
+  fetchPosts,
+  createPost,
+  updatePost,
+  deletePost,
+} from "@/api/supabaseApi";
+import { uploadFile } from "@/utils/storageUtils";
 
 const emptyPost = {
   _id: "",
@@ -41,28 +43,30 @@ const BlogAdmin = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentPost, setCurrentPost] = useState<any>(emptyPost);
   const [isEditing, setIsEditing] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // MAPEO: Al traer los posts desde Sanity
-//  useEffect(() => {
-//    fetchPosts().then((data) => {
-//      setPosts(
-//        data.map((post: any) => ({
-//          _id: post._id,
-//          title: post.title,
-//          excerpt: post.excerpt,
-//          content: post.content,
-//          image: post.mainImage?.asset?.url || "",
-//          date: post.publishedAt || "",
-//          author: post.author || "",
-//          category: post.tags?.[0] || "",
-//          seoTitle: post.metaTitle || "",
-//          seoDescription: post.metaDescription || "",
-//          seoKeywords: post.tags?.join(", ") || "",
-//          seoImgAlt: post.seoImgAlt || "",
-//        }))
-//      );
-//    });
-//  }, []);
+  // Cargar posts desde Supabase
+  useEffect(() => {
+    fetchPosts().then((data) => {
+      setPosts(
+        data.map((post: any) => ({
+          _id: post._id,
+          title: post.title,
+          excerpt: post.excerpt,
+          content: post.content,
+          image: post.mainImage?.asset?.url || "",
+          date: post.publishedAt || "",
+          author: post.author || "",
+          category: post.tags?.[0] || post.category || "",
+          seoTitle: post.metaTitle || "",
+          seoDescription: post.metaDescription || "",
+          seoKeywords: post.tags?.join(", ") || "",
+          seoImgAlt: post.seoImgAlt || "",
+        }))
+      );
+    });
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -72,6 +76,41 @@ const BlogAdmin = () => {
       ...currentPost,
       [name]: value,
     });
+  };
+  
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    setUploadingImage(true);
+    
+    try {
+      // Subir el archivo a Supabase Storage
+      const imageUrl = await uploadFile(file, 'blog-images');
+      
+      if (imageUrl) {
+        setCurrentPost({
+          ...currentPost,
+          image: imageUrl,
+        });
+        
+        toast({
+          title: "Imagen subida",
+          description: "La imagen se ha subido correctamente",
+        });
+      } else {
+        throw new Error("No se pudo obtener la URL de la imagen");
+      }
+    } catch (error) {
+      console.error("Error al subir la imagen:", error);
+      toast({
+        title: "Error",
+        description: "No se pudo subir la imagen. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleAddPost = () => {
@@ -97,88 +136,114 @@ const BlogAdmin = () => {
     setDialogOpen(true);
   };
 
-//  const handleDeletePost = async (id: string) => {
-//    await deletePost(id);
-//    // Refresca y mapea de nuevo
-//    fetchPosts().then((data) => {
-//      setPosts(
-//        data.map((post: any) => ({
-//          _id: post._id,
-//          title: post.title,
-//          excerpt: post.excerpt,
-//          content: post.content,
-//          image: post.mainImage?.asset?.url || "",
-//          date: post.publishedAt || "",
-//          author: post.author || "",
-//          category: post.tags?.[0] || "",
-//          seoTitle: post.metaTitle || "",
-//          seoDescription: post.metaDescription || "",
-//          seoKeywords: post.tags?.join(", ") || "",
-//          seoImgAlt: post.seoImgAlt || "",
-//        }))
-//      );
-//    });
-//    toast({
-//      title: "Artículo eliminado",
-//      description: "El artículo ha sido eliminado correctamente.",
-//    });
-//  };
+  const handleDeletePost = async (id: string) => {
+    try {
+      await deletePost(id);
+      // Refresca y mapea de nuevo
+      fetchPosts().then((data) => {
+        setPosts(
+          data.map((post: any) => ({
+            _id: post._id,
+            title: post.title,
+            excerpt: post.excerpt,
+            content: post.content,
+            image: post.mainImage?.asset?.url || "",
+            date: post.publishedAt || "",
+            author: post.author || "",
+            category: post.tags?.[0] || post.category || "",
+            seoTitle: post.metaTitle || "",
+            seoDescription: post.metaDescription || "",
+            seoKeywords: post.tags?.join(", ") || "",
+            seoImgAlt: post.seoImgAlt || "",
+          }))
+        );
+      });
+      toast({
+        title: "Artículo eliminado",
+        description: "El artículo ha sido eliminado correctamente.",
+      });
+    } catch (error) {
+      console.error("Error al eliminar el artículo:", error);
+      toast({
+        title: "Error",
+        description: "No se pudo eliminar el artículo. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // MAPEO: De tu admin a Sanity
-//    const postData = {
-//      title: currentPost.title,
-//      excerpt: currentPost.excerpt,
-//      content: currentPost.content,
-//      mainImage: currentPost.image
-//        ? { asset: { url: currentPost.image } }
-//        : undefined,
-//      publishedAt: currentPost.date,
-//      author: currentPost.author,
-//      tags: currentPost.seoKeywords
-//        ? currentPost.seoKeywords.split(",").map((t: string) => t.trim())
-//        : [],
-//      metaTitle: currentPost.seoTitle,
-//      metaDescription: currentPost.seoDescription,
-//      seoImgAlt: currentPost.seoImgAlt,
-//    };
+    try {
+      // Mapeo para Supabase
+      const tags = currentPost.seoKeywords
+        ? currentPost.seoKeywords.split(",").map((t: string) => t.trim())
+        : [];
+      
+      const postData = {
+        title: currentPost.title,
+        slug: currentPost.title
+          .toLowerCase()
+          .replace(/[^\w\s]/gi, '')
+          .replace(/\s+/g, '-'),
+        excerpt: currentPost.excerpt,
+        content: currentPost.content,
+        main_image_url: currentPost.image,
+        image_url: currentPost.image,
+        image_alt: currentPost.seoImgAlt || currentPost.title,
+        published_at: currentPost.date || new Date().toISOString(),
+        author: currentPost.author,
+        tags: tags,
+        category: currentPost.category,
+        meta_title: currentPost.seoTitle || currentPost.title,
+        meta_description: currentPost.seoDescription || currentPost.excerpt,
+        meta_keywords: currentPost.seoKeywords,
+        is_published: true
+      };
 
-    if (isEditing && currentPost._id) {
-//      await updatePost(currentPost._id, postData);
-      toast({
-        title: "Artículo actualizado",
-        description: "Los cambios han sido guardados correctamente.",
+      if (isEditing && currentPost._id) {
+        await updatePost(currentPost._id, postData);
+        toast({
+          title: "Artículo actualizado",
+          description: "Los cambios han sido guardados correctamente.",
+        });
+      } else {
+        await createPost(postData);
+        toast({
+          title: "Artículo añadido",
+          description: "El nuevo artículo ha sido añadido correctamente.",
+        });
+      }
+
+      // Refresca y mapea de nuevo
+      fetchPosts().then((data) => {
+        setPosts(
+          data.map((post: any) => ({
+            _id: post._id,
+            title: post.title,
+            excerpt: post.excerpt,
+            content: post.content,
+            image: post.mainImage?.asset?.url || "",
+            date: post.publishedAt || "",
+            author: post.author || "",
+            category: post.tags?.[0] || post.category || "",
+            seoTitle: post.metaTitle || "",
+            seoDescription: post.metaDescription || "",
+            seoKeywords: post.tags?.join(", ") || "",
+            seoImgAlt: post.seoImgAlt || "",
+          }))
+        );
       });
-    } else {
-//      await createPost(postData);
+      setDialogOpen(false);
+    } catch (error) {
+      console.error("Error al guardar el artículo:", error);
       toast({
-        title: "Artículo añadido",
-        description: "El nuevo artículo ha sido añadido correctamente.",
+        title: "Error",
+        description: "No se pudo guardar el artículo. Inténtalo de nuevo.",
+        variant: "destructive",
       });
     }
-
-    // Refresca y mapea de nuevo
-//    fetchPosts().then((data) => {
-//      setPosts(
-//        data.map((post: any) => ({
-//          _id: post._id,
-//          title: post.title,
-//          excerpt: post.excerpt,
-//          content: post.content,
-//          image: post.mainImage?.asset?.url || "",
-//          date: post.publishedAt || "",
-//          author: post.author || "",
-//          category: post.tags?.[0] || "",
-//          seoTitle: post.metaTitle || "",
-//          seoDescription: post.metaDescription || "",
-//          seoKeywords: post.tags?.join(", ") || "",
-//          seoImgAlt: post.seoImgAlt || "",
-//        }))
-//      );
-//    });
-    setDialogOpen(false);
   };
 
   // SEO helpers
@@ -316,29 +381,69 @@ const BlogAdmin = () => {
                   <label htmlFor="content" className="block text-sm font-medium mb-1">
                     Contenido (HTML)
                   </label>
-                  <textarea
-                    id="content"
-                    name="content"
+                  <SimpleEditor
                     value={currentPost.content}
-                    onChange={handleInputChange}
-                    rows={10}
-                    className="w-full border border-gris-300 rounded-md px-3 py-2 font-mono text-sm"
+                    onChange={(content) => setCurrentPost({...currentPost, content})}
+                    height={400}
+                    placeholder="Escribe el contenido del artículo aquí... Puedes usar HTML para dar formato."
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="image" className="block text-sm font-medium mb-1">
-                      URL de la Imagen
+                      Imagen
                     </label>
-                    <input
-                      type="text"
-                      id="image"
-                      name="image"
-                      value={currentPost.image}
-                      onChange={handleInputChange}
-                      className="w-full border border-gris-300 rounded-md px-3 py-2"
-                    />
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        id="image"
+                        name="image"
+                        value={currentPost.image}
+                        onChange={handleInputChange}
+                        className="w-full border border-gris-300 rounded-md px-3 py-2"
+                        placeholder="URL de la imagen"
+                      />
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={uploadingImage}
+                        className="whitespace-nowrap"
+                      >
+                        {uploadingImage ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            <span>Subiendo...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="mr-2 h-4 w-4" />
+                            <span>Subir</span>
+                          </>
+                        )}
+                      </Button>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                      />
+                    </div>
+                    {currentPost.image && (
+                      <div className="mt-2">
+                        <img 
+                          src={currentPost.image} 
+                          alt="Vista previa" 
+                          className="h-20 w-auto object-cover rounded-md"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://via.placeholder.com/150?text=Error+de+imagen";
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <div>

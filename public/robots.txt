@@ -1,34 +1,71 @@
-# Permitir el acceso a todo el sitio para todos los bots
+# www.robotstxt.org/
+
+# Permitir a todos los robots de búsqueda acceder a todo el sitio
 User-agent: *
 Allow: /
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.woff$
-Allow: /*.woff2$
-Allow: /*.ttf$
-Allow: /*.svg$
+
+# Bloquear acceso a directorios específicos
+Disallow: /admin/
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /cuenta/
+Disallow: /gracias
+Disallow: /pagorechazado
+
+# Bloquear archivos específicos
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Permitir explícitamente el acceso al sitemap
+Allow: /sitemap.xml
+
+# Reglas específicas para bots conocidos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /guia-imagenes/
 Allow: /*.jpg$
 Allow: /*.jpeg$
+Allow: /*.gif$
 Allow: /*.png$
 Allow: /*.webp$
 
-# Sitemap principal
-Sitemap: https://www.guiadecorte.cl/sitemap.xml
-
-# Reglas específicas para Googlebot y Bingbot
-User-agent: Googlebot
-Allow: /
-Disallow: /admin/
-
 User-agent: Bingbot
 Allow: /
-Disallow: /admin/
+Crawl-delay: 2
 
-# Permitir acceso a Twitterbot y Facebookbot
-User-agent: Twitterbot
+User-agent: Slurp
 Allow: /
+Crawl-delay: 2
 
-User-agent: facebookexternalhit
+User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 2
 
-# Fin del archivo
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Bloquear bots agresivos o no deseados
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Ubicación del sitemap
+Sitemap: https://www.guiadecorte.cl/sitemap.xml

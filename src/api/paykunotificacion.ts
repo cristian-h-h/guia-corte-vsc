@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createOrder } from "@/api/sanityApi";
+// import { createOrder } from "@/api/sanityApi"; // Eliminado - ahora usamos Supabase
+// TODO: Implementar createOrder con Supabase
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -13,8 +14,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // Aquí puedes mapear los datos de Payku a tu modelo de orden
   try {
-    await createOrder({
-      // Mapea los campos según lo que envía Payku y tu modelo de Sanity
+    // TODO: Implementar createOrder con Supabase
+    console.log('Crear orden en Supabase:', {
       paymentId: data.transaction_id,
       status: data.status,
       amount: data.amount,
@@ -22,8 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         nombre: data.customer_name,
         email: data.customer_email,
         telefono: data.customer_phone,
-      },
-      // ...otros campos relevantes
+      }
     });
 
     res.status(200).json({ message: "Notificación recibida y orden creada" });
