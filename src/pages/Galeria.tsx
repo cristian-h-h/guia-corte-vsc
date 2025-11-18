@@ -87,27 +87,27 @@ const Galeria = () => {
   const defaultGalleryImages: GalleryImage[] = [
     {
       src: "/guia-imagenes/guia-corte-profix-126.webp",
-      alt: "Guía de Corte ProFix 126 - Vista general del producto",
+      alt: "Guía de corte ProFix 126 - Guía banco sierra de aluminio - Vista general del producto",
       description: "Vista general de la Guía de Corte ProFix 126, mostrando su diseño en aluminio aeronáutico y sistema de ajuste rápido."
     },
     {
       src: "/guia-imagenes/corte-sierra-circular-profix-126.webp",
-      alt: "Guía ProFix 126 en uso con sierra circular para corte recto",
+      alt: "Guía de corte recto para sierra circular - Guía banco sierra ProFix 126 en uso",
       description: "Demostración de corte recto con sierra circular utilizando la guía ProFix 126 en tablero de melamina."
     },
     {
       src: "/guia-imagenes/ajuste-recto-profix-126.webp",
-      alt: "Sistema de ajuste rápido de la Guía ProFix 126",
+      alt: "Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra",
       description: "Detalle del sistema de ajuste rápido Quick-Lock que permite cambios de configuración en segundos."
     },
     {
       src: "/guia-imagenes/guia-profix-126.webp",
-      alt: "Guía ProFix 126 con sistema de sujeción multidireccional",
+      alt: "Guía de corte ProFix 126 - Guía banco sierra con sistema de sujeción multidireccional",
       description: "Vista del sistema de sujeción multidireccional con topes ajustables en acero endurecido."
     },
     {
       src: "/guia-imagenes/profix-126-guia-corte-recto.webp",
-      alt: "Guía ProFix 126 para cortes rectos de precisión",
+      alt: "Guía de corte ProFix 126 - Guía banco sierra para cortes rectos de precisión",
       description: "Guía ProFix 126 preparada para realizar cortes rectos de precisión industrial en diversos materiales."
     },
     {

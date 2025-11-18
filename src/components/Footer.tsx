@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="mb-4 bg-white p-2 inline-block rounded-md">
               <img 
                 src="/guia-imagenes/profix-126-logo.webp" 
-                alt="Guía de Corte Ajustable Profix 126 Logo" 
+                alt="Logo Guía de corte ProFix 126 - Guía banco sierra profesional de aluminio" 
                 className="h-20" 
               />
             </div>
@@ -93,7 +93,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-naranja-500" />
                 <a href="mailto:ventas@terciamel.cl" className="text-gris-300 hover:text-naranja-500 transition-colors">
-                  ventas@guiadecorte.cl
+                  ventas@terciamel.cl
                 </a>
               </li>
             </ul>

@@ -24,7 +24,7 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
   const currentUrl = url || `https://www.guiadecorte.cl${location.pathname}`;
   const defaultTitle = 'ProFix 126 Guía de Corte | Carpintería Profesional';
   const defaultDescription = 'Guía de corte recto ProFix 126, para sierra circular y todo tipo de herramientas eléctricas. Realiza cortes rectos hasta 1,26 metros.';
-  const defaultImage = 'https://www.guiadecorte.cl/guia-imagenes/guia-corte-logo.png';
+  const defaultImage = 'https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp';
 
   // Valores finales
   const metaTitle = title || defaultTitle;
@@ -46,6 +46,13 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
+      <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:type" content="image/webp" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={metaTitle} />
+      <meta property="og:site_name" content="GuiaDeCorte.cl" />
+      <meta property="og:locale" content="es_CL" />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -53,6 +60,7 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content={metaTitle} />
     </Helmet>
   );
 };

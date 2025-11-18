@@ -30,19 +30,39 @@ export async function fetchBlogs() {
   }
   
   // Transformar los datos para mantener compatibilidad con el formato anterior
-  return data.map(blog => ({
-    _id: blog.id,
-    title: blog.title,
-    slug: { current: blog.slug },
-    excerpt: blog.excerpt,
-    content: blog.content,
-    mainImage: { asset: { url: blog.image_url } },
-    publishedAt: blog.published_at,
-    author: blog.author,
-    tags: blog.tags,
-    metaTitle: blog.meta_title,
-    metaDescription: blog.meta_description
-  }));
+  return data.map(blog => {
+    // Procesar el contenido: solo parsear si parece ser JSON válido
+    let processedContent = blog.content;
+    if (typeof blog.content === 'string' && blog.content.trim()) {
+      // Solo intentar parsear si empieza con { o [ (formato JSON)
+      const trimmed = blog.content.trim();
+      if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && (trimmed.endsWith('}') || trimmed.endsWith(']'))) {
+        try {
+          processedContent = JSON.parse(blog.content);
+        } catch (e) {
+          // Si no es JSON válido, mantener como string (será renderizado como HTML)
+          processedContent = blog.content;
+        }
+      } else {
+        // Es texto plano o HTML, mantener como string
+        processedContent = blog.content;
+      }
+    }
+
+    return {
+      _id: blog.id,
+      title: blog.title,
+      slug: { current: blog.slug },
+      excerpt: blog.excerpt,
+      content: processedContent,
+      mainImage: { asset: { url: blog.image_url } },
+      publishedAt: blog.published_at,
+      author: blog.author,
+      tags: blog.tags,
+      metaTitle: blog.meta_title,
+      metaDescription: blog.meta_description
+    };
+  });
 }
 
 // Obtener un blog por su slug
@@ -58,13 +78,31 @@ export async function fetchBlogBySlug(slug: string) {
     return null;
   }
   
+  // Procesar el contenido: solo parsear si parece ser JSON válido
+  let processedContent = data.content;
+  if (typeof data.content === 'string' && data.content.trim()) {
+    // Solo intentar parsear si empieza con { o [ (formato JSON)
+    const trimmed = data.content.trim();
+    if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && (trimmed.endsWith('}') || trimmed.endsWith(']'))) {
+      try {
+        processedContent = JSON.parse(data.content);
+      } catch (e) {
+        // Si no es JSON válido, mantener como string (será renderizado como HTML)
+        processedContent = data.content;
+      }
+    } else {
+      // Es texto plano o HTML, mantener como string
+      processedContent = data.content;
+    }
+  }
+
   // Transformar los datos para mantener compatibilidad con el formato anterior
   return {
     _id: data.id,
     title: data.title,
     slug: { current: data.slug },
     excerpt: data.excerpt,
-    content: data.content,
+    content: processedContent,
     mainImage: { asset: { url: data.image_url } },
     publishedAt: data.published_at,
     author: data.author,

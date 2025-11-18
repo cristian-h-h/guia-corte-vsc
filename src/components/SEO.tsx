@@ -41,10 +41,10 @@ const SEO: React.FC<SEOProps> = ({
   children
 }) => {
   // Valores por defecto
-  const defaultTitle = "Guía de Corte ProFix 126 | Precisión Profesional para Carpintería";
-  const defaultDescription = "Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas. Realiza cortes rectos perfectos hasta 1,26 metros en madera, melamina y más.";
-  const defaultKeywords = "guía de corte, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso";
-  const defaultImage = "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp";
+  const defaultTitle = "Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes con Herramientas Eléctricas";
+  const defaultDescription = "Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortes sierra circular compatible con herramientas eléctricas e inalámbricas. Guía para realizar cortes con sierra circular hasta 1,26 metros. Ideal como guía de corte banco de sierra.";
+  const defaultKeywords = "guia de corte recto, guia de corte, guía de corte, guia corte, guía de corte recto para sierra circular, guia aluminio para cortes sierra circular, guia de corte banco de sierra, guia banco sierra, guia de corte con herramientas electricas, guia de corte para herramientas inalambricas, guia para realizar cortes con sierra circular, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso";
+  const defaultImage = "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp";
   const defaultUrl = "https://www.guiadecorte.cl";
 
   // Valores finales
@@ -80,8 +80,11 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
+      <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:type" content="image/webp" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={metaTitle} />
       <meta property="og:site_name" content="GuiaDeCorte.cl" />
       <meta property="og:locale" content={locale} />
 
@@ -113,6 +116,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content={metaTitle} />
       <meta name="twitter:creator" content="@guiadecorte" />
 
       {/* Video (si existe) */}

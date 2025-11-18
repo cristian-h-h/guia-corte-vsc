@@ -11,9 +11,9 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Guía de Corte ProFix 126 | Precisión Profesional para Carpintería"
-        description="Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas. Realiza cortes rectos perfectos hasta 1,26 metros en madera, melamina y más."
-        keywords="guía de corte, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso"
+        title="Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes con Herramientas Eléctricas"
+        description="Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortes sierra circular compatible con herramientas eléctricas e inalámbricas. Guía para realizar cortes con sierra circular hasta 1,26 metros. Ideal como guía de corte banco de sierra."
+        keywords="guia de corte recto, guia de corte, guía de corte, guia corte, guía de corte recto para sierra circular, guia aluminio para cortes sierra circular, guia de corte banco de sierra, guia banco sierra, guia de corte con herramientas electricas, guia de corte para herramientas inalambricas, guia para realizar cortes con sierra circular, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso"
         image="https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"
         url="https://www.guiadecorte.cl/"
         schema={[organizationSchema, websiteSchema, productSchema, {
@@ -100,9 +100,9 @@ const Index = () => {
                 Precisión Profesional para Carpinteros
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-madera-800 leading-tight">
-                <span style={{ fontFamily: 'AmbiguityInline' }}>Guía de Corte</span> <br />
+                <span style={{ fontFamily: 'AmbiguityInline' }}>Guía de Corte Recto</span> <br />
                 <span className="text-herramienta-600 drop-shadow-md">ProFix 126</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-taller-700 to-taller-600"> Ajuste Rápido</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-taller-700 to-taller-600"> para Sierra Circular</span>
               </h1>
 
               <div className="mt-6 space-y-4">
@@ -172,7 +172,7 @@ const Index = () => {
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-105">
                   <img
                     src="/guia-imagenes/guia-corte-profix-126.webp"
-                    alt="Guía Profix 126 Aluminio corte recto"
+                    alt="Guía de corte ProFix 126 - Guía banco sierra de aluminio para corte recto con sierra circular"
                     loading="lazy"
                     className="w-full h-auto rounded-lg"
                   />
@@ -192,7 +192,7 @@ const Index = () => {
                 <div className="absolute -right-4 top-1/4 w-24 h-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform rotate-6">
                   <img
                     src="/guia-imagenes/corte-sierra-circular-profix-126.webp"
-                    alt="Uso con sierra circular"
+                    alt="Guía de corte recto para sierra circular - Uso de guía banco sierra ProFix 126"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -200,7 +200,7 @@ const Index = () => {
                 <div className="absolute -left-4 bottom-1/4 w-24 h-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform -rotate-6">
                   <img
                     src="/guia-imagenes/ajuste-recto-profix-126.webp"
-                    alt="Ajuste de la guía"
+                    alt="Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -231,13 +231,13 @@ const Index = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gris-900">
-            Guía de Corte <span className="text-naranja-600">ProFix 126</span>:
+            Guía de Corte Recto <span className="text-naranja-600">ProFix 126</span> para Sierra Circular:
           </h2>
           <h3 className="text-xl md:text-2xl font-semibold mb-4 text-gris-800">
-            Precisión Industrial para Carpinteros Profesionales y Hobbistas Exigentes
+            Guía de Aluminio para Cortes con Herramientas Eléctricas e Inalámbricas
           </h3>
           <p className="text-gris-700 mb-4">
-            Diseñada para superar los desafíos de la carpintería moderna, la <strong>Guía de Corte ProFix 126</strong> es el sistema definitivo para lograr cortes rectos perfectos hasta 1.26 metros de longitud con precisión milimétrica (±0.3 mm certificada). Su innovador sistema <strong>Quick-Change</strong> permite cambiar entre herramientas en solo 15 segundos sin perder calibración, compatible con sierras circulares, routers, fresadoras, esmeriles angulares y sierras caladoras sin importar la marca de tu herramientas sean estas marcas (<strong>DeWalt, Makita, Bosch, Milwaukee, Stanley, Skill, Einhell, Ubermann, Total, Cat, Ingco, Bauker, etc.</strong>).
+            Diseñada para superar los desafíos de la carpintería moderna, la <strong>guía de corte recto ProFix 126</strong> es el sistema definitivo para realizar cortes rectos perfectos hasta 1.26 metros de longitud con precisión milimétrica (±0.3 mm certificada). Esta <strong>guía de corte con herramientas eléctricas</strong> cuenta con un innovador sistema <strong>Quick-Change</strong> que permite cambiar entre herramientas en solo 15 segundos sin perder calibración. Compatible con <strong>guía de corte recto para sierra circular</strong>, routers, fresadoras, esmeriles angulares y sierras caladoras, ideal como <strong>guía para realizar cortes con sierra circular</strong>. Perfecta para uso con <strong>guía de corte para herramientas inalámbricas</strong> y herramientas eléctricas de todas las marcas (<strong>DeWalt, Makita, Bosch, Milwaukee, Stanley, Skill, Einhell, Ubermann, Total, Cat, Ingco, Bauker, etc.</strong>). Fabricada en <strong>guía aluminio para cortes sierra circular</strong>, también funciona como <strong>guía de corte banco de sierra</strong> y como <strong>guía banco sierra</strong> para proyectos más grandes.
           </p>
           <h3 className="text-xl font-bold mt-6 mb-2">
             <span className="text-naranja-600">Especificaciones</span>{" "}
@@ -327,7 +327,7 @@ const Index = () => {
       {/* Features Section */}
       <section className="py-16 bg-gradient-to-r from-madera-100 to-madera-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-madera-800">Características Principales de Guía ProFix 126</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-madera-800">Características Principales de la Guía de Corte ProFix 126</h2>
           <div className="w-24 h-2 bg-herramienta-600 mx-auto mb-16 rounded-full"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -349,9 +349,9 @@ const Index = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h3 className="feature-title">Versatilidad Máxima</h3>
+              <h3 className="feature-title">Guía de Corte con Herramientas Eléctricas</h3>
               <p className="feature-text">
-                Compatible con múltiples herramientas: sierra circular, caladora, router, tupí y fresadora. Todo en un solo producto.
+                Esta guía de corte es compatible con múltiples herramientas eléctricas e inalámbricas: sierra circular, caladora, router, tupí y fresadora. Perfecta como guía para realizar cortes con sierra circular de cualquier marca.
               </p>
             </div>
 
@@ -409,10 +409,10 @@ const Index = () => {
       {/* How it Works */}
       <section className="py-16 bg-gradient-to-b from-madera-300 to-madera-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-madera-800">Cómo Funciona</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-madera-800">Cómo Funciona la Guía de Corte Recto</h2>
           <div className="w-24 h-2 bg-herramienta-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-center text-madera-700 max-w-2xl mx-auto mb-16 text-lg font-medium">
-            Nuestra guía de corte es fácil de usar y se adapta a múltiples herramientas.
+            Nuestra guía de corte recto para sierra circular es fácil de usar y se adapta a múltiples herramientas eléctricas e inalámbricas. La guía de aluminio para cortes sierra circular permite realizar cortes precisos en cualquier proyecto.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -426,7 +426,7 @@ const Index = () => {
               </p>
               <img
                 src="/guia-imagenes/ajuste-recto-profix-126.webp"
-                alt="Ajuste Guia Profix 126"
+                alt="Guía de corte ProFix 126 - Ajuste rápido de guía banco sierra para corte recto"
                 loading="lazy"
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
               />
@@ -442,7 +442,7 @@ const Index = () => {
               </p>
               <img
                 src="/guia-imagenes/corte-sierra-circular-profix-126.webp"
-                alt="Fijar Guia Profix 126"
+                alt="Guía de corte recto para sierra circular - Fijación de guía banco sierra ProFix 126"
                 loading="lazy"
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
               />
@@ -452,13 +452,13 @@ const Index = () => {
               <div className="step-number">
                 3
               </div>
-              <h3 className="text-xl font-bold mb-3 text-herramienta-700">Corta</h3>
+              <h3 className="text-xl font-bold mb-3 text-herramienta-700">Corta con la Guía</h3>
               <p className="text-madera-700 mb-4">
-                Utiliza tu herramienta deslizándola a lo largo de la guía para conseguir un corte perfecto.
+                Utiliza tu sierra circular u otra herramienta eléctrica deslizándola a lo largo de la guía de corte recto para conseguir un corte perfecto. Esta guía para realizar cortes con sierra circular garantiza precisión profesional en cada proyecto.
               </p>
               <img
                 src="/guia-imagenes/guia-profix-126.webp"
-                alt="Cortar con Guia Profix 126"
+                alt="Guía de corte ProFix 126 - Realizando cortes con guía banco sierra de aluminio"
                 loading="lazy"
                 className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
               />
@@ -474,18 +474,18 @@ const Index = () => {
       <section className="py-16 bg-naranja-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            ¡Mejora tus Proyectos de Carpintería con nuestra
+            ¡Mejora tus Proyectos con nuestra
             <br />
-            Guia de corte{" "}
+            Guía de Corte Recto{" "}
             <span className="text-black font-bold border-2 border-white px-2 rounded">
               ProFix 126
             </span>
             !
           </h2>
           <p className="text-xl max-w-2xl mx-auto mb-8">
-            Adquiere tu Guía de Corte en material de Aluminio que posee un Ajuste Rápido{" "}
+            Adquiere tu guía de corte recto en material de aluminio que posee un Ajuste Rápido{" "}
             <span className="text-gris-900 font-bold">"ProFix 126"</span>
-            {" "}y llevaras tus habilidades al siguiente nivel en cada proyecto que realices.
+            {" "}para sierra circular y llevarás tus habilidades al siguiente nivel. Esta guía de corte con herramientas eléctricas es perfecta para proyectos profesionales con herramientas inalámbricas y eléctricas.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/producto/profix-126">

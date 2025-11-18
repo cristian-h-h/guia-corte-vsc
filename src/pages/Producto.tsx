@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Check, Plus, Minus, ExternalLink } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const producto = {
   _id: "profix-126",
-  name: "Guía de Corte ProFix 126 | Sistema Ajustable para Cortes Rectos de 1.26m (Sierras Circulares, Routers y Fresadoras)",
-  shortDescription: "Guía de Corte ProFix 126: La solución profesional para cortes rectos milimétricos hasta 1.26m. Compatible con sierras circulares, routers y fresadoras DeWalt, Makita y Bosch, Einhell, Ingco, Total, Skill, Ubermann, etc. ¡Precisión industrial en tu taller! ✔️ Garantía 6 meses.",
+  name: "Guía de Corte Recto ProFix 126 | Guía de Aluminio para Cortes Sierra Circular con Herramientas Eléctricas e Inalámbricas",
+  shortDescription: "Guía de corte recto ProFix 126: La solución profesional para realizar cortes rectos con sierra circular hasta 1.26m. Guía de aluminio para cortes sierra circular compatible con herramientas eléctricas e inalámbricas. Ideal como guía de corte banco de sierra, guía banco sierra y guía para realizar cortes con sierra circular. Compatible con DeWalt, Makita, Bosch, Einhell, Ingco, Total, Skill, Ubermann. ¡Precisión industrial! ✔️ Garantía 6 meses.",
   description: `Precisión Industrial en Cada Corte: La Guía ProFix 126
 
 Fabricada en aluminio aeronáutico grado 6061-T6 y reforzada con poliuretano ABS de alta densidad, la Guía ProFix 126 es el accesorio definitivo para talleres profesionales y carpinteros exigentes.
@@ -64,13 +64,13 @@ Escalas: Métrica e imperial con nonio de 0.1 mm.
     "Materiales no ferrosos (aluminio, PVC, mármol artificial"
   ],
   images: [
-  { url: "/guia-imagenes/profix-126-guia-corte-recto.webp", alt: "Guía de Corte ProFix 126 imagen principal" },
-  { url: "/guia-imagenes/guia-corte-profix-126.webp", alt: "Guía de Corte ProFix 126 en uso" },
-  { url: "/guia-imagenes/corte-sierra-circular-profix-126.webp", alt: "Detalle de corte con ProFix 126" },
-  { url: "/guia-imagenes/ajuste-recto-profix-126.webp", alt: "Sistema de ajuste rápido ProFix 126" }
+  { url: "/guia-imagenes/profix-126-guia-corte-recto.webp", alt: "Guía de corte ProFix 126 - Guía banco sierra de aluminio para corte recto con sierra circular" },
+  { url: "/guia-imagenes/guia-corte-profix-126.webp", alt: "Guía de corte ProFix 126 en uso - Guía banco sierra profesional" },
+  { url: "/guia-imagenes/corte-sierra-circular-profix-126.webp", alt: "Guía de corte recto para sierra circular - Detalle de corte con guía banco sierra ProFix 126" },
+  { url: "/guia-imagenes/ajuste-recto-profix-126.webp", alt: "Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra" }
 ],
   keywords: [
-    "carpintería", "herramienta", "aluminio", "corte recto", "melamina", "guía de corte", "profix 126", "guía de corte para sierra circular", "corte recto preciso 1.26 metros", "guía de aluminio para carpintería", "mejor guía de corte para router DeWalt", "guía de 1.26m para cortar melamina", "profix 126 vs guía festool", "cómo hacer cortes rectos con sierra circular", "guía profesional para fresadora de palma", "guía corte sierra circular Makita", "accesorio para router Bosch GKF 600", "guía ajustable para esmeril angular", "cortar melamina sin astillar", "guía para cortar terciado grueso", "corte preciso en MDF", "guía de corte más larga de Chile", "sistema quick-lock para cambio rápido", "garantía 3 años guía carpintería"
+    "guia de corte recto", "guia de corte", "guía de corte", "guia corte", "guía de corte recto para sierra circular", "guia aluminio para cortes sierra circular", "guia de corte banco de sierra", "guia banco sierra", "guia de corte con herramientas electricas", "guia de corte para herramientas inalambricas", "guia para realizar cortes con sierra circular", "carpintería", "herramienta", "aluminio", "corte recto", "melamina", "profix 126", "corte recto preciso 1.26 metros", "guía de aluminio para carpintería", "mejor guía de corte para router DeWalt", "guía de 1.26m para cortar melamina", "profix 126 vs guía festool", "cómo hacer cortes rectos con sierra circular", "guía profesional para fresadora de palma", "guía corte sierra circular Makita", "accesorio para router Bosch GKF 600", "guía ajustable para esmeril angular", "cortar melamina sin astillar", "guía para cortar terciado grueso", "corte preciso en MDF", "guía de corte más larga de Chile", "sistema quick-lock para cambio rápido", "garantía 3 años guía carpintería"
   ],
   paymentLink: "https://www.payku.cl/pagar/profix-126"
 };
@@ -131,9 +131,31 @@ const Producto = () => {
     // Solo muestra el producto si el id es "profix-126"
   if (id !== "profix-126") {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-center text-red-600">Producto no encontrado</h1>
-      </div>
+      <>
+        <Helmet>
+          <title>Producto no encontrado | GuiaDeCorte.cl</title>
+          <meta name="description" content="El producto que buscas no existe. Conoce nuestra Guía de Corte ProFix 126 para herramientas profesionales de carpintería." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <div className="container mx-auto px-4 py-12">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-3xl font-bold text-red-600 mb-4">Producto no encontrado</h1>
+            <p className="text-gris-600 mb-8">
+              Lo sentimos, el producto que buscas no existe o ha sido removido de nuestro catálogo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/producto/profix-126">
+                <Button className="bg-herramienta-600 hover:bg-herramienta-700 text-white">
+                  Ver Guía ProFix 126
+                </Button>
+              </Link>
+              <Link to="/">
+                <Button variant="outline">Ir al inicio</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
   // Datos estructurados para SEO

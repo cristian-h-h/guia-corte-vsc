@@ -109,7 +109,7 @@ const BlogPreview: React.FC = () => {
           <div className="mb-8">
             <img
               src={currentPost.main_image_url}
-              alt={`Guía de corte aluminio - ${currentPost.title}`}
+              alt={`Guía de corte ProFix 126 - Guía banco sierra - ${currentPost.title}`}
               className="w-full h-auto rounded-lg shadow-md"
             />
             <p className="text-sm text-gray-500 mt-2 italic">

@@ -47,9 +47,24 @@ const Blog = () => {
 
   if (!blogPosts.length) {
     return (
-      <div className="container mx-auto px-4 py-12 text-center">
-        <p>No hay artículos de blog disponibles.</p>
-      </div>
+      <>
+        <Helmet>
+          <title>Blog - Guía de Corte | GuiaDeCorte.cl</title>
+          <meta name="description" content="Explora nuestros artículos sobre guías de corte, herramientas de carpintería y técnicas profesionales." />
+          <meta name="robots" content="index, follow" />
+        </Helmet>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <h1 className="text-3xl font-bold mb-4">Blog - Guía de Corte</h1>
+          <p className="text-gris-600 mb-8">
+            Próximamente publicaremos artículos útiles sobre guías de corte, herramientas de carpintería y técnicas profesionales.
+          </p>
+          <Link to="/">
+            <Button className="bg-herramienta-600 hover:bg-herramienta-700 text-white">
+              Volver al inicio
+            </Button>
+          </Link>
+        </div>
+      </>
     );
   }
 
@@ -88,7 +103,7 @@ const Blog = () => {
             <div className="lg:w-1/2">
               <img
                 src={blogPosts[0].mainImage?.asset?.url}
-                alt={`Guía de corte aluminio - ${blogPosts[0].title}`}
+                alt={`Guía de corte ProFix 126 - Guía banco sierra - ${blogPosts[0].title}`}
                 className="w-full h-full object-cover object-center"
               />
             </div>
@@ -130,7 +145,7 @@ const Blog = () => {
               <div className="aspect-video overflow-hidden">
                 <img
                   src={post.mainImage?.asset?.url}
-                  alt={`Guía de corte aluminio - ${post.title}`}
+                  alt={`Guía de corte ProFix 126 - Guía banco sierra - ${post.title}`}
                   className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
                 />
               </div>

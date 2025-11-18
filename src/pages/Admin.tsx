@@ -62,7 +62,7 @@ const Admin = () => {
     setLoading(true);
 
     // Primero verificamos las credenciales locales
-    if (loginData.username === "asescont.cyl@gmail.com" && loginData.password === "Guias@1977") {
+    if (loginData.username === "ventas@terciamel.cl" && loginData.password === "Guias@1977") {
       setIsLoggedIn(true);
       toast({
         title: "Inicio de sesión exitoso",

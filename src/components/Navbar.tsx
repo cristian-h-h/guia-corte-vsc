@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="relative w-48 h-16 flex items-center">
               <img
                  src="/guia-imagenes/profix-126-logo.webp"
-                 alt="Logo Guía Corte recto Profix 126"
+                 alt="Logo Guía de corte ProFix 126 - Guía banco sierra profesional"
                  className="h-16 w-auto rounded-lg shadow-lg transition duration-300 group-hover:shadow-naranja-500/70 group-hover:scale-110"
                  style={{
                 boxShadow:

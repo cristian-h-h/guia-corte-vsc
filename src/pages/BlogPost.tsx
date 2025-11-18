@@ -8,6 +8,75 @@ import { fetchBlogBySlug, fetchRelatedBlogs } from "@/api/supabaseApi"; // Cambi
 import SimpleSocialButtons from "@/components/SimpleSocialButtons";
 import CommentSection from "@/components/CommentSection";
 
+// Componente para formatear contenido HTML o texto plano con estilos mejorados
+const FormattedContent = ({ content }: { content: string }) => {
+  // Verificar si el contenido tiene HTML
+  const hasHTML = /<[a-z][\s\S]*>/i.test(content);
+  
+  // Si no tiene HTML, convertir texto plano a HTML formateado
+  const formattedContent = hasHTML 
+    ? content 
+    : content
+        .split(/\n\s*\n/) // Dividir por párrafos (doble salto de línea)
+        .map((paragraph) => {
+          const trimmed = paragraph.trim();
+          if (!trimmed) return '';
+          
+          // Detectar títulos (líneas cortas sin punto final o con patrones de título)
+          if (trimmed.length < 80 && !trimmed.match(/[\.\,\;]$/) && !trimmed.includes('\n')) {
+            // Convertir a H2 si parece un título
+            return `<h2 class="text-2xl md:text-3xl font-bold text-madera-800 mt-10 mb-6 pb-3 border-b-2 border-naranja-300 font-heading">${trimmed}</h2>`;
+          }
+          
+          // Formatear listas con viñetas o números
+          if (trimmed.match(/^[•\-\*]\s/) || trimmed.match(/^\d+[\.\)]\s/)) {
+            const items = trimmed.split('\n').filter(item => item.trim());
+            const listItems = items.map(item => {
+              const text = item.replace(/^[•\-\*\d+\.\)]\s*/, '').trim();
+              // Formatear negritas dentro de items
+              const formattedText = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-madera-900">$1</strong>');
+              return `<li class="mb-3 text-gris-700 leading-relaxed text-base pl-2">${formattedText}</li>`;
+            }).join('');
+            return `<ul class="list-disc list-outside space-y-2 mb-8 text-gris-700 ml-6 pl-4 border-l-4 border-naranja-200 py-2">${listItems}</ul>`;
+          }
+          
+          // Formatear párrafos normales
+          let formatted = trimmed
+            // Formatear negritas **texto**
+            .replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-madera-900">$1</strong>')
+            // Formatear cursivas *texto*
+            .replace(/\*(.+?)\*/g, '<em class="italic text-gris-600">$1</em>')
+            // Convertir saltos de línea simples en <br>
+            .replace(/\n/g, '<br>');
+          
+          return `<p class="mb-6 text-gris-700 leading-relaxed text-lg md:text-xl">${formatted}</p>`;
+        })
+        .filter(p => p) // Eliminar párrafos vacíos
+        .join('');
+  
+  return (
+    <div 
+      className="prose prose-lg md:prose-xl max-w-none 
+        prose-headings:text-madera-800 prose-headings:font-bold prose-headings:font-heading
+        prose-p:text-gris-700 prose-p:leading-relaxed prose-p:mb-6
+        prose-strong:text-madera-900 prose-strong:font-bold
+        prose-a:text-herramienta-600 prose-a:no-underline hover:prose-a:underline prose-a:font-semibold
+        prose-ul:text-gris-700 prose-ul:my-6
+        prose-li:mb-3 prose-li:leading-relaxed prose-li:marker:text-naranja-600
+        prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-naranja-300
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-madera-800
+        prose-blockquote:border-l-4 prose-blockquote:border-naranja-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gris-600 prose-blockquote:bg-naranja-50 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:rounded-r-lg
+        prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto
+        prose-code:text-herramienta-600 prose-code:bg-gris-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
+        prose-pre:bg-gris-900 prose-pre:text-gris-100 prose-pre:rounded-lg prose-pre:p-4"
+      dangerouslySetInnerHTML={{ __html: formattedContent }}
+      style={{
+        maxWidth: '100%',
+      }}
+    />
+  );
+};
+
 const BlogPost = () => {
   // =========================
   // Obtener parámetro slug de la URL
@@ -19,6 +88,8 @@ const BlogPost = () => {
   // =========================
   const [post, setPost] = useState<any>(null);
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   // =========================
   // Función para formatear la fecha
@@ -38,18 +109,47 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        if (!slug) return;
+        if (!slug) {
+          setLoading(false);
+          setNotFound(true);
+          return;
+        }
+        
+        setLoading(true);
+        setNotFound(false);
         
         // Obtén el blog principal por slug
         const blog = await fetchBlogBySlug(slug);
+        
+        if (!blog) {
+          setNotFound(true);
+          setLoading(false);
+          return;
+        }
+        
+        // Verificar el contenido del artículo (solo en desarrollo)
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Blog cargado:', {
+            title: blog.title,
+            hasContent: !!blog.content,
+            contentType: typeof blog.content,
+            contentIsArray: Array.isArray(blog.content),
+            contentLength: Array.isArray(blog.content) ? blog.content.length : typeof blog.content === 'string' ? blog.content.length : 'N/A',
+            excerpt: blog.excerpt
+          });
+        }
         
         // Obtén blogs relacionados (excluyendo el actual)
         const related = await fetchRelatedBlogs(slug, 3);
 
         setPost(blog);
         setRelatedPosts(related);
+        setNotFound(false);
       } catch (error) {
         console.error("Error al cargar los datos del blog:", error);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -57,17 +157,54 @@ const BlogPost = () => {
   }, [slug]);
 
   // =========================
+  // Estado de carga
+  // =========================
+  if (loading) {
+    return (
+      <>
+        <Helmet>
+          <title>Cargando... | GuiaDeCorte.cl</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-lg text-gris-600">Cargando artículo...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // =========================
   // Si no se encuentra el post
   // =========================
-  if (!post) {
+  if (notFound || !post) {
     return (
-      <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold mb-4">Artículo no encontrado</h1>
-        <p className="mb-8">El artículo de carpintería que estás buscando no existe o ha sido eliminado.</p>
-        <Link to="/blog">
-          <Button>Volver al blog de carpintería</Button>
-        </Link>
-      </div>
+      <>
+        <Helmet>
+          <title>Artículo no encontrado | GuiaDeCorte.cl</title>
+          <meta name="description" content="El artículo que buscas no existe o ha sido eliminado. Explora nuestro blog sobre guías de corte y carpintería." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <div className="max-w-2xl mx-auto">
+            <h1 className="text-3xl font-bold mb-4 text-red-600">Artículo no encontrado</h1>
+            <p className="mb-8 text-gris-600">
+              Lo sentimos, el artículo que buscas no existe o ha sido eliminado de nuestro blog.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/blog">
+                <Button className="bg-herramienta-600 hover:bg-herramienta-700 text-white">
+                  Volver al blog
+                </Button>
+              </Link>
+              <Link to="/">
+                <Button variant="outline">Ir al inicio</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -140,15 +277,43 @@ const BlogPost = () => {
             <div className="mb-8">
               <img
                 src={post.mainImage.asset.url}
-                alt={`Guía de corte aluminio - ${post.title}`}
+                alt={`Guía de corte ProFix 126 - Guía banco sierra - ${post.title}`}
                 className="w-full h-auto rounded-lg shadow-md"
               />
             </div>
           )}
 
           {/* Contenido del artículo */}
-          <article className="prose prose-lg max-w-none mb-12">
-            <PortableText value={post.content} />
+          <article className="prose prose-lg md:prose-xl max-w-none mb-12 prose-headings:text-madera-800 prose-headings:font-bold prose-headings:font-heading prose-p:text-gris-700 prose-p:leading-relaxed prose-p:mb-6 prose-strong:text-madera-900 prose-strong:font-bold prose-a:text-herramienta-600 prose-a:no-underline hover:prose-a:underline prose-ul:text-gris-700 prose-li:mb-3 prose-li:leading-relaxed prose-li:marker:text-naranja-600 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-naranja-300 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-madera-800 prose-blockquote:border-l-4 prose-blockquote:border-naranja-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gris-600 prose-blockquote:bg-naranja-50 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:rounded-r-lg prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto">
+            {post.content && Array.isArray(post.content) && post.content.length > 0 ? (
+              // Contenido en formato PortableText (JSON)
+              <PortableText value={post.content} />
+            ) : post.content && typeof post.content === 'string' && post.content.trim() ? (
+              // Contenido como string (HTML o texto plano) - mejorado con formato
+              <FormattedContent content={post.content} />
+            ) : (
+              // Sin contenido - mostrar excerpt y mensaje
+              <div className="space-y-4">
+                {post.excerpt && (
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-gris-600 text-lg leading-relaxed mb-6">{post.excerpt}</p>
+                  </div>
+                )}
+                <div className="bg-naranja-50 border-l-4 border-naranja-600 p-4 rounded">
+                  <p className="text-gris-700 mb-2">
+                    <strong>Contenido del artículo en desarrollo</strong>
+                  </p>
+                  <p className="text-gris-600 text-sm">
+                    Este artículo está siendo actualizado con contenido completo. Mientras tanto, puedes leer el resumen arriba o explorar otros artículos en nuestro blog.
+                  </p>
+                  <Link to="/blog">
+                    <Button variant="outline" className="mt-4">
+                      Ver otros artículos
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            )}
           </article>
 
           {/* Botones de compartir */}
@@ -189,7 +354,7 @@ const BlogPost = () => {
                         {related.mainImage?.asset?.url && (
                           <img
                             src={related.mainImage.asset.url}
-                            alt={`Guía de corte aluminio - ${related.title}`}
+                            alt={`Guía de corte ProFix 126 - Guía banco sierra - ${related.title}`}
                             className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
                           />
                         )}
