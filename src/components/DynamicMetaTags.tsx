@@ -24,7 +24,7 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
   const currentUrl = url || `https://www.guiadecorte.cl${location.pathname}`;
   const defaultTitle = 'ProFix 126 Guía de Corte | Carpintería Profesional';
   const defaultDescription = 'Guía de corte recto ProFix 126, para sierra circular y todo tipo de herramientas eléctricas. Realiza cortes rectos hasta 1,26 metros.';
-  const defaultImage = 'https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp';
+  const defaultImage = 'https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp?v=2';
 
   // Valores finales
   const metaTitle = title || defaultTitle;
@@ -48,8 +48,6 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
       <meta property="og:image" content={metaImage} />
       <meta property="og:image:secure_url" content={metaImage} />
       <meta property="og:image:type" content="image/webp" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={metaTitle} />
       <meta property="og:site_name" content="GuiaDeCorte.cl" />
       <meta property="og:locale" content="es_CL" />
@@ -61,6 +59,22 @@ const DynamicMetaTags: React.FC<MetaTagsProps> = ({
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
       <meta name="twitter:image:alt" content={metaTitle} />
+
+      {/* Favicon y iconos */}
+      <link rel="icon" type="image/webp" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="shortcut icon" type="image/webp" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="152x152" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="144x144" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="120x120" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="114x114" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="76x76" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="72x72" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" sizes="57x57" href="/guia-imagenes/profix-126-logo.webp" />
+      <link rel="apple-touch-icon" href="/guia-imagenes/profix-126-logo.webp" />
+      <meta name="msapplication-TileImage" content={metaImage} />
+      <meta name="msapplication-TileColor" content="#FF6600" />
     </Helmet>
   );
 };
