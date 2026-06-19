@@ -1,12 +1,14 @@
 import fs from "fs";
 import path from "path";
+import { execSync } from "child_process";
 import { fileURLToPath, pathToFileURL } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const distDir = path.join(__dirname, "..", "dist");
-const serverEntryPath = path.join(__dirname, "..", "dist-server", "entry-server.js");
+const serverDistDir = path.join(__dirname, "..", "dist-server");
+const serverEntryPath = path.join(serverDistDir, "entry-server.js");
 const templatePath = path.join(distDir, "index.html");
 const BASE_URL = "https://www.guiadecorte.cl";
 const DEFAULT_SOCIAL_IMAGE = `${BASE_URL}/social/profix-126-share.jpg`;
@@ -595,12 +597,75 @@ const writePrerenderedPage = (route, html) => {
   fs.writeFileSync(targetFile, html, "utf-8");
 };
 
+const findServerEntry = (dirPath) => {
+  if (!fs.existsSync(dirPath)) {
+    return null;
+  }
+
+  const directCandidates = [
+    path.join(dirPath, "entry-server.js"),
+    path.join(dirPath, "entry-server.mjs"),
+    path.join(dirPath, "src", "entry-server.js"),
+    path.join(dirPath, "src", "entry-server.mjs"),
+  ];
+
+  for (const candidate of directCandidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  const stack = [dirPath];
+
+  while (stack.length > 0) {
+    const currentDir = stack.pop();
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+
+      if (entry.isDirectory()) {
+        stack.push(fullPath);
+        continue;
+      }
+
+      if (/^entry-server\.(?:js|mjs|cjs)$/i.test(entry.name)) {
+        return fullPath;
+      }
+    }
+  }
+
+  return null;
+};
+
+const ensureServerEntry = () => {
+  const existingEntry = findServerEntry(serverDistDir);
+  if (existingEntry) {
+    return existingEntry;
+  }
+
+  console.log("SSR entry no encontrado. Reconstruyendo dist-server...");
+  execSync("npx vite build --ssr src/entry-server.tsx --outDir dist-server", {
+    stdio: "inherit",
+  });
+
+  const rebuiltEntry = findServerEntry(serverDistDir);
+  if (rebuiltEntry) {
+    return rebuiltEntry;
+  }
+
+  throw new Error(
+    `No se pudo localizar el entry SSR despues de reconstruir dist-server. Ruta esperada inicial: ${serverEntryPath}`
+  );
+};
+
 async function prerender() {
   if (!fs.existsSync(templatePath)) {
     throw new Error("No se encontró dist/index.html para prerenderizar.");
   }
 
-  const { render, getPrerenderRoutes } = await import(pathToFileURL(serverEntryPath).href);
+  const resolvedServerEntryPath = ensureServerEntry();
+  const { render, getPrerenderRoutes } = await import(pathToFileURL(resolvedServerEntryPath).href);
   const template = fs.readFileSync(templatePath, "utf-8");
   const prerenderRoutes = [...new Set([...(await getPrerenderRoutes()), ...Object.keys(manualPrerenderPages)])];
 
