@@ -1,4 +1,4 @@
-import { execSync } from "child_process";
+import { spawnSync } from "child_process";
 
 const steps = [
   ["SSR build", "vite build --ssr src/entry-server.tsx --outDir dist-server"],
@@ -9,11 +9,31 @@ const steps = [
 
 for (const [label, command] of steps) {
   console.log(`\n== ${label} ==`);
-  try {
-    execSync(command, { stdio: "inherit" });
-  } catch (error) {
+  const result = spawnSync(command, {
+    shell: true,
+    encoding: "utf8",
+    stdio: "pipe",
+  });
+
+  if (result.stdout) {
+    process.stdout.write(result.stdout);
+  }
+
+  if (result.stderr) {
+    process.stderr.write(result.stderr);
+  }
+
+  if (result.status !== 0) {
     console.error(`\nPostbuild fallo en el paso: ${label}`);
     console.error(`Comando: ${command}`);
-    throw error;
+    console.error(`Exit code: ${result.status}`);
+
+    if (result.signal) {
+      console.error(`Signal: ${result.signal}`);
+    }
+
+    throw new Error(
+      `Postbuild fallo en "${label}" (exit ${result.status ?? "unknown"})`
+    );
   }
 }
