@@ -37,7 +37,7 @@ const sampleArticle = {
       markDefs: []
     }
   ]),
-  image_url: 'https://www.guiadecorte.cl/blog-imagenes/articulo-prueba.webp',
+  image_url: 'https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp',
   published_at: new Date().toISOString(),
   author: 'Script de prueba',
   tags: ['prueba', 'javascript', 'supabase'],

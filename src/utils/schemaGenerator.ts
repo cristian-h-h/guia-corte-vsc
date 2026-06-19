@@ -12,14 +12,13 @@ export const generateOrganizationSchema = () => {
     "url": "https://www.guiadecorte.cl",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.guiadecorte.cl/guia-imagenes/logo-guia-de-corte.webp",
-      "width": 600,
+      "url": "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp",
+      "width": 180,
       "height": 60
     },
     "sameAs": [
       "https://www.facebook.com/guiadecorte",
-      "https://www.instagram.com/guiadecorte.cl/",
-      "https://www.youtube.com/channel/UCXcYP9xDZWvmRhg4dkKimQQ"
+      "https://www.instagram.com/guiadecorte"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -42,11 +41,6 @@ export const generateWebsiteSchema = () => {
     "description": "Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas.",
     "publisher": {
       "@id": "https://www.guiadecorte.cl/#organization"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.guiadecorte.cl/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
     }
   };
 };

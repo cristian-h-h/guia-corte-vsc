@@ -101,50 +101,50 @@ WHERE NOT EXISTS (
 
 INSERT INTO gallery_images (src, alt, description, "order", category)
 SELECT 
-  '/guia-imagenes/guia-corte-logo.png',
+  '/guia-imagenes/profix-126-logo.webp',
   'Logo oficial de Guía de Corte ProFix 126',
   'Logo oficial del producto Guía de Corte ProFix 126, símbolo de precisión en carpintería.',
   5,
   'detalle'
 WHERE NOT EXISTS (
   SELECT 1 FROM gallery_images 
-  WHERE src = '/guia-imagenes/guia-corte-logo.png'
+  WHERE src = '/guia-imagenes/profix-126-logo.webp'
 );
 
 INSERT INTO gallery_images (src, alt, description, "order", category)
 SELECT 
-  '/guia-imagenes/guia-corte-router.webp',
+  '/guia-imagenes/guia-corte-router-terciamel.webp',
   'Guía ProFix 126 con router para trabajos de precisión',
   'Uso de la guía ProFix 126 con router para realizar ranurados y acabados de precisión.',
   6,
   'uso'
 WHERE NOT EXISTS (
   SELECT 1 FROM gallery_images 
-  WHERE src = '/guia-imagenes/guia-corte-router.webp'
+  WHERE src = '/guia-imagenes/guia-corte-router-terciamel.webp'
 );
 
 INSERT INTO gallery_images (src, alt, description, "order", category)
 SELECT 
-  '/guia-imagenes/guia-corte-caladora.webp',
+  '/guia-imagenes/guia-profix-126.webp',
   'Guía ProFix 126 con sierra caladora para cortes rectos',
   'Aplicación de la guía ProFix 126 con sierra caladora para lograr cortes rectos perfectos.',
   7,
   'uso'
 WHERE NOT EXISTS (
   SELECT 1 FROM gallery_images 
-  WHERE src = '/guia-imagenes/guia-corte-caladora.webp'
+  WHERE src = '/guia-imagenes/guia-profix-126.webp'
 );
 
 INSERT INTO gallery_images (src, alt, description, "order", category)
 SELECT 
-  '/guia-imagenes/guia-corte-materiales.webp',
+  '/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp',
   'Guía ProFix 126 con diversos materiales compatibles',
   'Demostración de la versatilidad de la guía ProFix 126 con diferentes materiales como madera, melamina y MDF.',
   8,
   'proyecto'
 WHERE NOT EXISTS (
   SELECT 1 FROM gallery_images 
-  WHERE src = '/guia-imagenes/guia-corte-materiales.webp'
+  WHERE src = '/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp'
 );
 
 -- Crear tabla para videos de galería si no existe

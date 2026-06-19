@@ -1,10 +1,9 @@
 import { PortableText } from "@portabletext/react";
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useLoaderData, type LoaderFunctionArgs } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
-import { fetchBlogBySlug, fetchRelatedBlogs } from "@/api/supabaseApi"; // Cambiado a supabaseApi
+import { fetchBlogBySlug, fetchRelatedBlogs } from "@/api/supabaseApi";
 import SimpleSocialButtons from "@/components/SimpleSocialButtons";
 import CommentSection from "@/components/CommentSection";
 
@@ -77,19 +76,36 @@ const FormattedContent = ({ content }: { content: string }) => {
   );
 };
 
-const BlogPost = () => {
-  // =========================
-  // Obtener parámetro slug de la URL
-  // =========================
-  const { slug } = useParams<{ slug: string }>();
+export async function blogPostLoader({ params }: LoaderFunctionArgs) {
+  const slug = params.slug;
 
-  // =========================
-  // Estados para el post y relacionados
-  // =========================
-  const [post, setPost] = useState<any>(null);
-  const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
+  if (!slug) {
+    return {
+      post: null,
+      relatedPosts: [],
+    };
+  }
+
+  const post = await fetchBlogBySlug(slug);
+  if (!post) {
+    return {
+      post: null,
+      relatedPosts: [],
+    };
+  }
+
+  const relatedPosts = await fetchRelatedBlogs(slug, 3);
+  return {
+    post,
+    relatedPosts,
+  };
+}
+
+const BlogPost = () => {
+  const { post, relatedPosts } = useLoaderData() as {
+    post: any | null;
+    relatedPosts: any[];
+  };
 
   // =========================
   // Función para formatear la fecha
@@ -103,82 +119,7 @@ const BlogPost = () => {
     return new Date(dateString).toLocaleDateString("es-CL", options);
   };
 
-  // =========================
-  // Cargar datos del blog y relacionados desde Supabase
-  // =========================
-  useEffect(() => {
-    const fetchBlogData = async () => {
-      try {
-        if (!slug) {
-          setLoading(false);
-          setNotFound(true);
-          return;
-        }
-        
-        setLoading(true);
-        setNotFound(false);
-        
-        // Obtén el blog principal por slug
-        const blog = await fetchBlogBySlug(slug);
-        
-        if (!blog) {
-          setNotFound(true);
-          setLoading(false);
-          return;
-        }
-        
-        // Verificar el contenido del artículo (solo en desarrollo)
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Blog cargado:', {
-            title: blog.title,
-            hasContent: !!blog.content,
-            contentType: typeof blog.content,
-            contentIsArray: Array.isArray(blog.content),
-            contentLength: Array.isArray(blog.content) ? blog.content.length : typeof blog.content === 'string' ? blog.content.length : 'N/A',
-            excerpt: blog.excerpt
-          });
-        }
-        
-        // Obtén blogs relacionados (excluyendo el actual)
-        const related = await fetchRelatedBlogs(slug, 3);
-
-        setPost(blog);
-        setRelatedPosts(related);
-        setNotFound(false);
-      } catch (error) {
-        console.error("Error al cargar los datos del blog:", error);
-        setNotFound(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (slug) fetchBlogData();
-  }, [slug]);
-
-  // =========================
-  // Estado de carga
-  // =========================
-  if (loading) {
-    return (
-      <>
-        <Helmet>
-          <title>Cargando... | GuiaDeCorte.cl</title>
-          <meta name="robots" content="noindex, nofollow" />
-        </Helmet>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-lg text-gris-600">Cargando artículo...</p>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  // =========================
-  // Si no se encuentra el post
-  // =========================
-  if (notFound || !post) {
+  if (!post) {
     return (
       <>
         <Helmet>

@@ -6,12 +6,21 @@ import SEO from "@/components/SEO";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
 
 const Index = () => {
+  const topSearchPhrases = [
+    "guia de corte recto para sierra circular",
+    "guia de corte para sierra circular",
+    "guia de aluminio para sierra circular",
+    "guia recta para sierra circular",
+    "guia corte madera",
+    "guia de corte Ubermann",
+  ];
+
   return (
     <>
       <SEO
-        title="Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes con Herramientas Eléctricas"
-        description="Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortes sierra circular compatible con herramientas eléctricas e inalámbricas. Guía para realizar cortes con sierra circular hasta 1,26 metros. Ideal como guía de corte banco de sierra."
-        keywords="guia de corte recto, guia de corte, guía de corte, guia corte, guía de corte recto para sierra circular, guia aluminio para cortes sierra circular, guia de corte banco de sierra, guia banco sierra, guia de corte con herramientas electricas, guia de corte para herramientas inalambricas, guia para realizar cortes con sierra circular, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso"
+        title="Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes Rectos"
+        description="Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortar melamina, MDF, terciado y madera con más precisión, repetición y control en taller u obra."
+        keywords="guia de corte recto, guia de corte para sierra circular, guia de aluminio para sierra circular, guia recta para sierra circular, guia corte sierra circular, guia corte madera, guia de corte Ubermann, guia de corte Makita, guia de corte Bosch, guia de corte DeWalt, melamina, MDF, terciado, profix 126"
         image="https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"
         url="https://www.guiadecorte.cl/"
         schema={[organizationSchema, websiteSchema, productSchema, {
@@ -105,9 +114,20 @@ const Index = () => {
 
               <div className="mt-6 space-y-4">
                 <p className="text-madera-700 text-lg md:text-xl font-medium">
-                  Una guía de corte recto pensada para talleres, mueblistas, instaladores y aficionados avanzados
-                  que necesitan cortes limpios, repetibles y mejor control sobre piezas largas.
+                  La <strong>ProFix 126</strong> es una guia de corte recto para sierra circular pensada para quienes
+                  buscan cortes limpios, repetibles y con mejor control al trabajar melamina, MDF, terciado y madera
+                  en taller, instalacion u obra.
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  {topSearchPhrases.map((phrase) => (
+                    <span
+                      key={phrase}
+                      className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-sm font-medium text-madera-800 shadow-sm"
+                    >
+                      {phrase}
+                    </span>
+                  ))}
+                </div>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                   <li className="flex items-center text-madera-800 bg-madera-100 p-2 rounded-lg shadow-sm">
@@ -250,6 +270,29 @@ const Index = () => {
             Tambien puede acompañar trabajos con <strong>router o fresadora</strong> cuando la base de la herramienta es compatible.
             Su objetivo es simple: ayudarte a repetir medidas, mejorar la terminación y reducir desperdicio en cortes largos.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+            <div className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold text-lg mb-2">Si buscas una guia de corte para sierra circular</h3>
+              <p className="text-gris-700 text-sm">
+                Aqui aterrizas en el uso principal de la ProFix 126: guiar cortes rectos, largos y repetibles sin depender
+                de soluciones improvisadas o maquinas grandes.
+              </p>
+            </div>
+            <div className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold text-lg mb-2">Si comparas una guia de aluminio</h3>
+              <p className="text-gris-700 text-sm">
+                El cuerpo en aluminio 6061-T6 aporta rigidez, portabilidad y mejor estabilidad para trabajar tableros,
+                muebles y piezas largas con una referencia mas confiable.
+              </p>
+            </div>
+            <div className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold text-lg mb-2">Si necesitas confirmar compatibilidad</h3>
+              <p className="text-gris-700 text-sm">
+                Muchas visitas llegan buscando Makita, Bosch, DeWalt o Ubermann. Por eso la web hoy comunica compatibilidad
+                responsable por marca, base y tipo de trabajo.
+              </p>
+            </div>
+          </div>
           <h3 className="text-xl font-bold mt-6 mb-2">
             <span className="text-naranja-600">Especificaciones</span>{" "}
             <span className="text-gris-900">Técnicas Clave:</span>
@@ -503,6 +546,10 @@ const Index = () => {
             <span className="text-gris-900 font-bold">"ProFix 126"</span>
             {" "}para sierra circular y llevarás tus habilidades al siguiente nivel. Esta guía de corte con herramientas eléctricas es perfecta para proyectos profesionales con herramientas inalámbricas y eléctricas.
           </p>
+          <p className="text-base max-w-3xl mx-auto mb-8 text-naranja-50">
+            Si llegaste buscando "guia de corte recto", "guia de corte para sierra circular" o incluso "tienes link",
+            aqui puedes pasar directo a compra, producto o compatibilidad segun el punto en que estes de la decision.
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/producto/profix-126">
               <Button
@@ -514,6 +561,18 @@ const Index = () => {
                 Comprar ahora
               </Button>
             </Link>
+            <a
+              href="https://www.payku.cl/pagar/profix-126"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="outline"
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-naranja-700 font-bold py-6 px-8 text-lg rounded-lg"
+              >
+                Pedir link directo de compra
+              </Button>
+            </a>
           </div>
         </div>
       </section>

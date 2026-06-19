@@ -17,11 +17,100 @@ export interface Blog {
   category?: string;
 }
 
+const PLACEHOLDER_TITLES = new Set(["Título por defecto"]);
+const PLACEHOLDER_PATTERNS = [
+  /contenido del artículo en desarrollo/i,
+  /próximamente publicaremos/i,
+];
+const IMAGE_URL_REPLACEMENTS: Array<[string, string]> = [
+  ["https://www.guiadecorte.cl/blog-imagenes/cortes-perfectos-guia.webp", "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp"],
+  ["https://www.guiadecorte.cl/blog-imagenes/proyectos-principiantes.webp", "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"],
+  ["https://www.guiadecorte.cl/blog-imagenes/mantenimiento-herramientas.webp", "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp"],
+];
+
+const hasMeaningfulString = (value: unknown, minLength: number = 120) => {
+  if (typeof value !== "string") return false;
+  const trimmed = value.trim();
+  return trimmed.length >= minLength && !PLACEHOLDER_PATTERNS.some((pattern) => pattern.test(trimmed));
+};
+
+const hasMeaningfulPortableText = (value: unknown) => {
+  if (!Array.isArray(value) || value.length === 0) return false;
+
+  const text = value
+    .flatMap((block: any) => Array.isArray(block?.children) ? block.children : [])
+    .map((child: any) => child?.text || "")
+    .join(" ")
+    .trim();
+
+  return hasMeaningfulString(text, 120);
+};
+
+const isIndexableBlog = (blog: any) => {
+  if (!blog?.slug || !blog?.title || PLACEHOLDER_TITLES.has(blog.title)) {
+    return false;
+  }
+
+  if (blog.is_published === false) {
+    return false;
+  }
+
+  return (
+    hasMeaningfulPortableText(blog.content) ||
+    hasMeaningfulString(blog.content) ||
+    hasMeaningfulString(blog.excerpt, 140)
+  );
+};
+
+const parseBlogContent = (content: unknown) => {
+  if (typeof content !== "string" || !content.trim()) {
+    return content;
+  }
+
+  const trimmed = content.trim();
+  if ((trimmed.startsWith("{") || trimmed.startsWith("[")) && (trimmed.endsWith("}") || trimmed.endsWith("]"))) {
+    try {
+      return JSON.parse(content);
+    } catch (e) {
+      return content;
+    }
+  }
+
+  return content;
+};
+
+const normalizeImageUrl = (value: unknown) => {
+  if (typeof value !== "string" || !value.trim()) {
+    return undefined;
+  }
+
+  return IMAGE_URL_REPLACEMENTS.reduce(
+    (current, [from, to]) => current === from ? to : current,
+    value.trim()
+  );
+};
+
+const transformBlog = (blog: any) => ({
+  _id: blog.id,
+  title: blog.title,
+  slug: { current: blog.slug },
+  excerpt: blog.excerpt,
+  content: parseBlogContent(blog.content),
+  mainImage: normalizeImageUrl(blog.image_url) ? { asset: { url: normalizeImageUrl(blog.image_url)! } } : undefined,
+  publishedAt: blog.published_at,
+  author: blog.author,
+  tags: blog.tags,
+  metaTitle: blog.meta_title,
+  metaDescription: blog.meta_description,
+  category: blog.category
+});
+
 // Obtener todos los blogs ordenados por fecha de publicación
 export async function fetchBlogs() {
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
+    .eq('is_published', true)
     .order('published_at', { ascending: false });
   
   if (error) {
@@ -29,40 +118,14 @@ export async function fetchBlogs() {
     return [];
   }
   
-  // Transformar los datos para mantener compatibilidad con el formato anterior
-  return data.map(blog => {
-    // Procesar el contenido: solo parsear si parece ser JSON válido
-    let processedContent = blog.content;
-    if (typeof blog.content === 'string' && blog.content.trim()) {
-      // Solo intentar parsear si empieza con { o [ (formato JSON)
-      const trimmed = blog.content.trim();
-      if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && (trimmed.endsWith('}') || trimmed.endsWith(']'))) {
-        try {
-          processedContent = JSON.parse(blog.content);
-        } catch (e) {
-          // Si no es JSON válido, mantener como string (será renderizado como HTML)
-          processedContent = blog.content;
-        }
-      } else {
-        // Es texto plano o HTML, mantener como string
-        processedContent = blog.content;
-      }
-    }
+  return data.filter(isIndexableBlog).map(transformBlog);
+}
 
-    return {
-      _id: blog.id,
-      title: blog.title,
-      slug: { current: blog.slug },
-      excerpt: blog.excerpt,
-      content: processedContent,
-      mainImage: { asset: { url: blog.image_url } },
-      publishedAt: blog.published_at,
-      author: blog.author,
-      tags: blog.tags,
-      metaTitle: blog.meta_title,
-      metaDescription: blog.meta_description
-    };
-  });
+export async function fetchBlogSlugs() {
+  const blogs = await fetchBlogs();
+  return blogs
+    .map((blog) => blog.slug?.current)
+    .filter((slug): slug is string => Boolean(slug));
 }
 
 // Obtener un blog por su slug
@@ -71,46 +134,15 @@ export async function fetchBlogBySlug(slug: string) {
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
-    .single();
+    .eq('is_published', true)
+    .maybeSingle();
   
-  if (error) {
+  if (error || !data || !isIndexableBlog(data)) {
     console.error(`Error al obtener blog con slug ${slug}:`, error);
     return null;
   }
-  
-  // Procesar el contenido: solo parsear si parece ser JSON válido
-  let processedContent = data.content;
-  if (typeof data.content === 'string' && data.content.trim()) {
-    // Solo intentar parsear si empieza con { o [ (formato JSON)
-    const trimmed = data.content.trim();
-    if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && (trimmed.endsWith('}') || trimmed.endsWith(']'))) {
-      try {
-        processedContent = JSON.parse(data.content);
-      } catch (e) {
-        // Si no es JSON válido, mantener como string (será renderizado como HTML)
-        processedContent = data.content;
-      }
-    } else {
-      // Es texto plano o HTML, mantener como string
-      processedContent = data.content;
-    }
-  }
 
-  // Transformar los datos para mantener compatibilidad con el formato anterior
-  return {
-    _id: data.id,
-    title: data.title,
-    slug: { current: data.slug },
-    excerpt: data.excerpt,
-    content: processedContent,
-    mainImage: { asset: { url: data.image_url } },
-    publishedAt: data.published_at,
-    author: data.author,
-    tags: data.tags,
-    metaTitle: data.meta_title,
-    metaDescription: data.meta_description,
-    category: data.category
-  };
+  return transformBlog(data);
 }
 
 // Obtener blogs relacionados (excluyendo el actual)
@@ -118,23 +150,26 @@ export async function fetchRelatedBlogs(currentSlug: string, limit: number = 3) 
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
+    .eq('is_published', true)
     .neq('slug', currentSlug)
     .order('published_at', { ascending: false })
-    .limit(limit);
+    .limit(limit * 3);
   
   if (error) {
     console.error('Error al obtener blogs relacionados:', error);
     return [];
   }
   
-  // Transformar los datos para mantener compatibilidad con el formato anterior
-  return data.map(blog => ({
-    _id: blog.id,
-    title: blog.title,
-    slug: { current: blog.slug },
-    mainImage: { asset: { url: blog.image_url } },
-    publishedAt: blog.published_at
-  }));
+  return data
+    .filter(isIndexableBlog)
+    .slice(0, limit)
+    .map(blog => ({
+      _id: blog.id,
+      title: blog.title,
+      slug: { current: blog.slug },
+      mainImage: normalizeImageUrl(blog.image_url) ? { asset: { url: normalizeImageUrl(blog.image_url)! } } : undefined,
+      publishedAt: blog.published_at
+    }));
 }
 
 // Crear un nuevo blog

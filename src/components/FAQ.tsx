@@ -14,20 +14,28 @@ type FAQItem = {
 
 const faqData: FAQItem[] = [
   {
-    question: "¿De qué material es la guía?",
-    answer: "La Guía de corte ajustable es de aluminio de primera calidad y PVC ABS."
+    question: "¿La ProFix 126 sirve como guía de corte para sierra circular?",
+    answer: "Si. Ese es su uso principal recomendado. La ProFix 126 esta pensada como guia de corte recto para sierra circular en tableros, muebles y piezas largas donde importa mantener una referencia estable."
   },
   {
-    question: "¿Desde qué medida puedo usar para realizar cortes?",
-    answer: "Puedes utilizar la Guía de corte ajustable desde los 10 cms hasta 1,26 metros."
+    question: "¿De qué material es la guía de corte?",
+    answer: "La ProFix 126 combina aluminio de alta resistencia con componentes tecnicos que ayudan a mantener rigidez, portabilidad y mejor estabilidad al trabajar como guia de aluminio para sierra circular."
   },
   {
-    question: "¿Para qué más la puedo utilizar?",
-    answer: "Así como la puedes utilizar como guía de corte, también la puedes utilizar como prensa carpintera para armado de muebles y todo tipo de materiales que requieran de un apriete."
+    question: "¿Sirve para melamina, MDF, terciado y madera?",
+    answer: "Si. Son justamente algunos de los materiales donde mas se nota la diferencia entre una referencia improvisada y una guia recta estable, sobre todo cuando debes repetir piezas o cuidar terminacion."
+  },
+  {
+    question: "¿Es compatible con Ubermann, Makita, Bosch o DeWalt?",
+    answer: "Puede ser compatible con muchas marcas, pero la validacion responsable depende de la base, el apoyo y el modelo exacto. Si tienes dudas, conviene consultar antes de comprar y enviar foto o modelo de tu herramienta."
+  },
+  {
+    question: "¿Me pueden enviar el link directo de compra?",
+    answer: "Si. Puedes pedir el link directo por WhatsApp o entrar a la ficha de producto y comprar de inmediato. Esa ruta ayuda mucho a quien llega con intencion alta y solo quiere avanzar rapido."
   },
   {
     question: "¿Hacen envíos a domicilio?",
-    answer: "Se realizan envíos a domicilio tanto en región metropolitana como a cualquier región de Chile. Se utiliza Starken, Bluexpress, puedes recibir en tu domicilio o retirar en agencias."
+    answer: "Se realizan envios a domicilio tanto en Region Metropolitana como a cualquier region de Chile. Se utiliza Starken o Bluexpress y puedes recibir en tu domicilio o retirar en agencia segun disponibilidad."
   }
 ];
 
@@ -83,8 +91,9 @@ const FAQ = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Preguntas Frecuentes</h2>
           <p className="text-center text-gris-600 max-w-2xl mx-auto mb-12">
-  Respuestas a las dudas más comunes sobre nuestra Guía de Corte Ajustable <span className="text-black font-bold">ProFix 126</span>
-</p>
+            Respuestas a las dudas mas comunes sobre nuestra guia de corte recto <span className="text-black font-bold">ProFix 126</span>,
+            especialmente para quienes buscan una guia de corte para sierra circular, una guia de aluminio o compatibilidad por marca.
+          </p>
           
           <div className="max-w-3xl mx-auto">
             {faqData.map((item, index) => (

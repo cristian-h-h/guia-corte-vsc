@@ -1,10 +1,8 @@
-
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { GoogleMap } from "@/components/GoogleMap";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { Helmet } from "react-helmet-async";
 
 const Contacto = () => {
@@ -52,14 +50,41 @@ const Contacto = () => {
   return (
     <>
       <Helmet>
-        <title>Contacto | Guía de Corte Ajustable</title>
-        <meta name="description" content="Contáctanos para más información sobre la Guía de Corte Ajustable. Estamos aquí para atender tus consultas y pedidos." />
+        <title>Contacto y Compatibilidad | Guía de Corte ProFix 126 para Sierra Circular</title>
+        <meta name="description" content="Contacta a GuiaDeCorte.cl para resolver compatibilidad, pedir el link de compra o consultar por la guía de corte ProFix 126 para sierra circular, melamina, MDF, terciado y madera." />
       </Helmet>
       
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-12">
           Contacto
         </h1>
+        <div className="max-w-4xl mx-auto text-center mb-10">
+          <p className="text-lg text-gris-700 mb-6">
+            Si llegaste buscando una <strong>guia de corte para sierra circular</strong>, una <strong>guia de aluminio</strong>,
+            compatibilidad con tu marca o simplemente el <strong>link directo de compra</strong>, esta es la pagina correcta
+            para cerrar dudas y avanzar con seguridad.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h2 className="font-bold mb-2">Compatibilidad por marca o modelo</h2>
+              <p className="text-sm text-gris-700">
+                Envianos marca, modelo y una foto de la base si quieres validar tu sierra circular, router o herramienta.
+              </p>
+            </article>
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h2 className="font-bold mb-2">Pedir link de compra</h2>
+              <p className="text-sm text-gris-700">
+                Si ya decidiste, tambien puedes escribir solo para pedir el link directo de pago o consultar stock y envio.
+              </p>
+            </article>
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h2 className="font-bold mb-2">Resolver uso en materiales</h2>
+              <p className="text-sm text-gris-700">
+                Pregunta por trabajo en melamina, MDF, terciado o madera y te orientamos segun tu caso real.
+              </p>
+            </article>
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Formulario de contacto */}
@@ -184,7 +209,7 @@ const Contacto = () => {
                     <h3 className="font-semibold">WhatsApp</h3>
                     <p className="text-gris-600">+56935777727</p>
                     <a 
-                      href="https://wa.me/56935777727?text=Hola,%20estoy%20interesado%20en%20la%20Guía%20de%20Corte%20Ajustable.%20¿Podrían%20darme%20más%20información?"
+                      href="https://wa.me/56935777727?text=Hola,%20quiero%20informacion%20de%20la%20guia%20de%20corte%20ProFix%20126,%20pedir%20el%20link%20de%20compra%20o%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-2 text-sm text-[#25D366] hover:underline"
@@ -219,6 +244,24 @@ const Contacto = () => {
                loading="lazy"
                referrerPolicy="no-referrer-when-downgrade"
              ></iframe>
+            </div>
+            <div className="mt-8 bg-gris-50 border border-gris-200 rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-3">Antes de escribir, tambien puedes avanzar por aqui</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <Link to="/producto/profix-126">
+                  <Button className="w-full">Ver producto</Button>
+                </Link>
+                <Link to="/guias/compatibilidad-por-marcas-frecuentes">
+                  <Button variant="outline" className="w-full">Ver compatibilidad</Button>
+                </Link>
+                <a
+                  href="https://www.payku.cl/pagar/profix-126"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="w-full">Abrir link de compra</Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -119,6 +119,36 @@ const routeMetaFallbacks = {
     type: "article",
     image: DEFAULT_SOCIAL_IMAGE,
   },
+  "/guias/guia-de-corte-para-sierra-circular": {
+    title: "Guia de corte para sierra circular: que revisar antes de comprar | GuiaDeCorte.cl",
+    description:
+      "Aprende que debe ofrecer una guia de corte para sierra circular, cuando vale la pena comprarla y como mejora cortes rectos, repetibilidad y control.",
+    canonical: `${BASE_URL}/guias/guia-de-corte-para-sierra-circular`,
+    keywords:
+      "guia de corte para sierra circular, guias de corte para sierra circular, guia corte sierra circular, sierra con guia de corte, guia para corte sierra circular",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
+  "/guias/guia-recta-para-sierra-circular": {
+    title: "Guia recta para sierra circular: precision y repeticion en tableros | GuiaDeCorte.cl",
+    description:
+      "Descubre por que una guia recta para sierra circular mejora precision, terminacion y repeticion en melamina, MDF, terciado y madera.",
+    canonical: `${BASE_URL}/guias/guia-recta-para-sierra-circular`,
+    keywords:
+      "guia recta para sierra circular, guia de corte recta, guia de corte recto sierra circular, guia corte recto sierra circular, guia de corte recto",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
+  "/guias/guia-de-aluminio-para-sierra-circular": {
+    title: "Guia de aluminio para sierra circular: rigidez, portabilidad y control | GuiaDeCorte.cl",
+    description:
+      "Conoce por que una guia de aluminio para sierra circular aporta rigidez, portabilidad y mejor estabilidad al trabajar tableros y piezas largas.",
+    canonical: `${BASE_URL}/guias/guia-de-aluminio-para-sierra-circular`,
+    keywords:
+      "guia de aluminio para sierra circular, guia de corte aluminio, guia aluminio para corte, guia de aluminio carpinteria",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
   "/guias/guia-de-corte-para-router": {
     title: "Guia de corte para router: cuando tiene sentido y que revisar antes de usarla | GuiaDeCorte.cl",
     description:
@@ -232,6 +262,24 @@ const manualPrerenderPages = {
           <h2 class="text-2xl font-bold mb-3">Cortes rectos con sierra circular</h2>
           <p class="text-gris-600 mb-4">Descubre por que una guia recta mejora la repetibilidad, el control y la terminacion en tableros y piezas largas.</p>
           <a href="/guias/como-hacer-cortes-rectos-con-sierra-circular" class="text-naranja-600 font-medium hover:text-naranja-700">Abrir guia</a>
+        </article>
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <p class="text-xs uppercase tracking-wide text-naranja-600 font-semibold mb-2">guia de corte para sierra circular</p>
+          <h2 class="text-2xl font-bold mb-3">Guia de corte para sierra circular</h2>
+          <p class="text-gris-600 mb-4">Explica que debe ofrecer una guia dedicada y por que cambia mucho el resultado en tableros, muebles e instalacion.</p>
+          <a href="/guias/guia-de-corte-para-sierra-circular" class="text-naranja-600 font-medium hover:text-naranja-700">Abrir guia</a>
+        </article>
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <p class="text-xs uppercase tracking-wide text-naranja-600 font-semibold mb-2">guia recta para sierra circular</p>
+          <h2 class="text-2xl font-bold mb-3">Guia recta para sierra circular</h2>
+          <p class="text-gris-600 mb-4">Aterriza la necesidad de cortar recto con mejor precision, terminacion y repeticion en piezas visibles.</p>
+          <a href="/guias/guia-recta-para-sierra-circular" class="text-naranja-600 font-medium hover:text-naranja-700">Abrir guia</a>
+        </article>
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <p class="text-xs uppercase tracking-wide text-naranja-600 font-semibold mb-2">guia de aluminio para sierra circular</p>
+          <h2 class="text-2xl font-bold mb-3">Guia de aluminio para sierra circular</h2>
+          <p class="text-gris-600 mb-4">Refuerza rigidez, portabilidad y estabilidad para usuarios que ya comparan material y calidad antes de comprar.</p>
+          <a href="/guias/guia-de-aluminio-para-sierra-circular" class="text-naranja-600 font-medium hover:text-naranja-700">Abrir guia</a>
         </article>
         <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
           <p class="text-xs uppercase tracking-wide text-naranja-600 font-semibold mb-2">guia de corte para router</p>
@@ -367,6 +415,100 @@ const manualPrerenderPages = {
         <div class="flex flex-col sm:flex-row gap-3">
           <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
           <a href="/contacto" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Resolver compatibilidad</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/guia-de-corte-para-sierra-circular": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Guia de corte para sierra circular</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">guia de corte para sierra circular</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Guia de corte para sierra circular: que revisar antes de comprar y por que si cambia el resultado</h1>
+        <p class="text-xl text-gris-600 mb-5">Aprende que debe ofrecer una guia de corte para sierra circular, cuando vale la pena comprarla y como mejora cortes rectos, repetibilidad y control.</p>
+      </header>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Que deberia entregarte una guia dedicada</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">Una guia real para sierra circular debe ayudarte a repetir medidas, reducir desviacion y mantener mejor control en tableros y piezas largas. No se trata solo de marcar una linea.</p>
+        <ul class="list-disc pl-6 text-gris-700 space-y-2">
+          <li>Referencia estable para cortes rectos.</li>
+          <li>Mejor repetibilidad entre piezas.</li>
+          <li>Mas orden al trabajar tableros grandes.</li>
+          <li>Menor dependencia de reglas improvisadas.</li>
+        </ul>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Cuando si se nota la diferencia</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">Se nota mucho cuando el trabajo se repite, cuando el tablero es grande o cuando una pequena desviacion ya significa rehacer material. Ahi la guia deja de ser accesorio y pasa a ser parte del metodo.</p>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Siguiente paso recomendado</h2>
+        <p class="text-gris-700 mb-4">Si ya sabes que buscas una guia de corte para sierra circular, el siguiente paso logico es revisar la ficha de producto o confirmar compatibilidad.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/contacto" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Resolver compatibilidad</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/guia-recta-para-sierra-circular": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Guia recta para sierra circular</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">guia recta para sierra circular</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Guia recta para sierra circular: por que mejora precision, terminacion y repeticion en tableros</h1>
+        <p class="text-xl text-gris-600 mb-5">Descubre por que una guia recta para sierra circular mejora precision, terminacion y repeticion en melamina, MDF, terciado y madera.</p>
+      </header>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Por que esta busqueda es tan concreta</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">Cuando alguien busca una guia recta normalmente no quiere teoria. Quiere una forma mas confiable de mantener el recorrido, cerrar mejor el corte y evitar piezas desviadas.</p>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Donde se nota mas la mejora</h2>
+        <ul class="list-disc pl-6 text-gris-700 space-y-2">
+          <li>Melamina, MDF y terciado donde una variacion pequena se nota mucho.</li>
+          <li>Piezas visibles que deben quedar derechas y limpias.</li>
+          <li>Repeticion de cortes en muebles o instalaciones.</li>
+          <li>Trabajo portable donde no tienes una maquina estacionaria.</li>
+        </ul>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Siguiente paso recomendado</h2>
+        <p class="text-gris-700 mb-4">Si tu necesidad principal es cortar recto con mas consistencia, lo mejor es revisar producto, materiales y una comparativa contra soluciones improvisadas.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/guias/profix-126-vs-regla-casera" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver comparativa</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/guia-de-aluminio-para-sierra-circular": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Guia de aluminio para sierra circular</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">guia de aluminio para sierra circular</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Guia de aluminio para sierra circular: ventajas reales en rigidez, portabilidad y trabajo sobre tableros</h1>
+        <p class="text-xl text-gris-600 mb-5">Conoce por que una guia de aluminio para sierra circular aporta rigidez, portabilidad y mejor estabilidad al trabajar tableros y piezas largas.</p>
+      </header>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Por que el aluminio importa tanto</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">El aluminio ayuda a combinar rigidez, peso razonable y mejor estabilidad en una guia para sierra circular. Eso importa mucho cuando buscas una solucion portable pero seria para trabajo repetido.</p>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Ventajas reales frente a opciones mas pobres</h2>
+        <ul class="list-disc pl-6 text-gris-700 space-y-2">
+          <li>Rigidez mas favorable en largos utiles.</li>
+          <li>Buena relacion entre peso y estabilidad.</li>
+          <li>Mejor experiencia de transporte y uso portable.</li>
+          <li>Mayor sensacion de herramienta durable para trabajo frecuente.</li>
+        </ul>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Siguiente paso recomendado</h2>
+        <p class="text-gris-700 mb-4">Si estas comparando una guia de aluminio para sierra circular, lo mejor es revisar la ficha de producto y el trabajo por materiales para aterrizar mejor la compra.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/guias/cortes-en-melamina-mdf-terciado" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver materiales</a>
         </div>
       </section>
     </article>

@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   Tabs,
   TabsContent,
@@ -19,11 +18,18 @@ import {
 } from "@/components/ui/dialog";
 import { supabase } from "@/supabaseClient";
 
-// Componentes de administración
-import ProductAdmin from "@/components/admin/ProductAdmin";
-import BlogAdmin from "@/components/admin/BlogAdmin";
-import OrdersAdmin from "@/components/admin/OrdersAdmin";
-import GalleryAdmin from "@/components/admin/GalleryAdmin";
+const ProductAdmin = lazy(() => import("@/components/admin/ProductAdmin"));
+const BlogAdmin = lazy(() => import("@/components/admin/BlogAdmin"));
+const OrdersAdmin = lazy(() => import("@/components/admin/OrdersAdmin"));
+const GalleryAdmin = lazy(() => import("@/components/admin/GalleryAdmin"));
+
+type AdminTab = "products" | "blog" | "gallery" | "orders";
+
+const AdminSectionFallback = () => (
+  <div className="rounded-lg border border-gris-200 bg-gris-50 p-8 text-center text-gris-600">
+    Cargando herramienta de administracion...
+  </div>
+);
 
 const Admin = () => {
   const { toast } = useToast();
@@ -34,6 +40,7 @@ const Admin = () => {
   });
   const [resetEmail, setResetEmail] = useState("");
   const [showResetForm, setShowResetForm] = useState(false);
+  const [activeTab, setActiveTab] = useState<AdminTab>("products");
 
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -273,7 +280,7 @@ const Admin = () => {
         </Button>
       </div>
 
-      <Tabs defaultValue="products">
+      <Tabs defaultValue="products" value={activeTab} onValueChange={(value) => setActiveTab(value as AdminTab)}>
         <TabsList className="grid grid-cols-4 mb-8">
           <TabsTrigger value="products">Productos</TabsTrigger>
           <TabsTrigger value="blog">Blog</TabsTrigger>
@@ -282,19 +289,35 @@ const Admin = () => {
         </TabsList>
 
         <TabsContent value="products">
-          <ProductAdmin />
+          {activeTab === "products" && (
+            <Suspense fallback={<AdminSectionFallback />}>
+              <ProductAdmin />
+            </Suspense>
+          )}
         </TabsContent>
 
         <TabsContent value="blog">
-          <BlogAdmin />
+          {activeTab === "blog" && (
+            <Suspense fallback={<AdminSectionFallback />}>
+              <BlogAdmin />
+            </Suspense>
+          )}
         </TabsContent>
 
         <TabsContent value="gallery">
-          <GalleryAdmin />
+          {activeTab === "gallery" && (
+            <Suspense fallback={<AdminSectionFallback />}>
+              <GalleryAdmin />
+            </Suspense>
+          )}
         </TabsContent>
         
         <TabsContent value="orders">
-          <OrdersAdmin />
+          {activeTab === "orders" && (
+            <Suspense fallback={<AdminSectionFallback />}>
+              <OrdersAdmin />
+            </Suspense>
+          )}
         </TabsContent>
       </Tabs>
     </div>

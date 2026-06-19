@@ -147,14 +147,14 @@ const Galeria = () => {
   return (
     <>
       <Helmet>
-        <title>Galería ProFix 126 | Fotos y Videos de Nuestra Guía de Corte</title>
+        <title>Galería ProFix 126 | Fotos y Videos de la Guía de Corte para Sierra Circular</title>
         <meta 
           name="description" 
-          content="Explora nuestra galería de imágenes y videos de la Guía de Corte ProFix 126. Descubre su funcionamiento, versatilidad y precisión en diferentes aplicaciones de carpintería." 
+          content="Explora fotos y videos de la guía de corte ProFix 126 para sierra circular. Revisa aplicaciones reales en melamina, MDF, terciado y madera, además de detalles de ajuste y compatibilidad." 
         />
         <meta 
           name="keywords" 
-          content="galería guía de corte, videos ProFix 126, imágenes guía carpintería, demostración cortes rectos, fotos herramientas carpintería" 
+          content="galería guía de corte, guía de corte para sierra circular, videos ProFix 126, guía de aluminio para sierra circular, demostración cortes rectos, fotos herramientas carpintería" 
         />
         <link rel="canonical" href="https://www.guiadecorte.cl/galeria" />
         
@@ -201,8 +201,8 @@ const Galeria = () => {
               Galería <span className="text-herramienta-400">ProFix 126</span>
             </h1>
             <p className="text-xl md:text-2xl text-madera-200 mb-8">
-              Explora nuestra colección de imágenes y videos que muestran la precisión, 
-              versatilidad y calidad de nuestra guía de corte profesional.
+              Explora fotos y videos de una guia de corte recto para sierra circular pensada para melamina,
+              MDF, terciado y madera, con foco en precision, ajuste rapido y trabajo real.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#imagenes" className="bg-herramienta-600 hover:bg-herramienta-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg hover:shadow-xl border-2 border-white">
@@ -222,8 +222,8 @@ const Galeria = () => {
           <h2 className="text-3xl font-bold text-center mb-2 text-madera-800">Galería de Imágenes</h2>
           <div className="w-24 h-2 bg-herramienta-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-madera-700 text-center max-w-2xl mx-auto mb-10 text-lg">
-            Descubre todos los detalles de nuestra Guía de Corte ProFix 126 a través de estas imágenes 
-            que muestran su diseño, funcionalidad y aplicaciones en diferentes proyectos.
+            Descubre todos los detalles de nuestra guia de corte de aluminio para sierra circular a traves de imagenes
+            que muestran su diseño, funcionalidad y aplicaciones reales en proyectos de carpinteria.
           </p>
           
           {loadingImages ? (
@@ -261,9 +261,9 @@ const Galeria = () => {
           
           <div className="mt-10 text-center">
             <p className="text-madera-800 max-w-3xl mx-auto bg-madera-100 p-6 rounded-lg shadow-inner border-l-4 border-herramienta-600 text-lg">
-              Nuestra Guía de Corte ProFix 126 está diseñada para ofrecer la máxima precisión en tus proyectos 
-              de carpintería. Fabricada con materiales de alta calidad, esta guía te permite realizar cortes 
-              rectos perfectos hasta 1.26 metros de longitud con una precisión milimétrica certificada de ±0.3 mm.
+              Aqui puedes revisar de cerca como se ve la ProFix 126 en fotos reales: guia de corte recto, guia de aluminio,
+              sistema de ajuste rapido y uso sobre tableros. Es la mejor seccion para quien aun necesita evidencia visual
+              antes de comprar o confirmar compatibilidad.
             </p>
           </div>
         </div>
@@ -275,8 +275,8 @@ const Galeria = () => {
           <h2 className="text-3xl font-bold text-center mb-2 text-madera-800">Videos Demostrativos</h2>
           <div className="w-24 h-2 bg-herramienta-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-madera-700 text-center max-w-2xl mx-auto mb-10 text-lg">
-            Mira nuestra Guía de Corte ProFix 126 en acción. Estos videos te mostrarán cómo utilizarla 
-            correctamente y todas las posibilidades que ofrece para tus proyectos.
+            Mira la guia de corte ProFix 126 en accion y entiende mejor por que tantas busquedas apuntan a
+            "guia de corte para sierra circular", "guia de corte recto" y "guia de aluminio para sierra circular".
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

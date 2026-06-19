@@ -24,6 +24,14 @@ export async function blogLoader() {
 
 const Blog = () => {
   const blogPosts = useLoaderData() as BlogPost[];
+  const highIntentQueries = [
+    "guia de corte recto",
+    "guia de corte para sierra circular",
+    "guia recta para sierra circular",
+    "guia de aluminio para sierra circular",
+    "guia corte madera",
+    "guia de corte Ubermann",
+  ];
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -65,11 +73,11 @@ const Blog = () => {
         </title>
         <meta
           name="description"
-          content="Encuentra articulos especializados para carpinteros, mueblistas, instaladores y aficionados avanzados sobre corte recto, sierra circular, router y uso real de la ProFix 126."
+          content="Encuentra articulos especializados sobre guia de corte recto, guia de corte para sierra circular, compatibilidad por marca, melamina, MDF, terciado y uso real de la ProFix 126."
         />
         <meta
           name="keywords"
-          content="blog carpinteria, guia de corte recto, sierra circular, router, melamina, mdf, profix 126, tutoriales carpinteria"
+          content="blog carpinteria, guia de corte recto, guia de corte para sierra circular, guia recta para sierra circular, guia de aluminio para sierra circular, melamina, mdf, profix 126, tutoriales carpinteria"
         />
         <link rel="canonical" href="https://www.guiadecorte.cl/blog" />
       </Helmet>
@@ -84,6 +92,16 @@ const Blog = () => {
             router o herramientas de base compatible. La idea del blog es ayudarte a comprar mejor, cortar mejor
             y sacar más provecho real a la <strong>ProFix 126</strong>.
           </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
+            {highIntentQueries.map((query) => (
+              <span
+                key={query}
+                className="inline-flex items-center rounded-full bg-gris-100 px-3 py-1 text-sm font-medium text-gris-700"
+              >
+                {query}
+              </span>
+            ))}
+          </div>
         </div>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">

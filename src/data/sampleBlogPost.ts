@@ -553,7 +553,7 @@ export const sampleBlogPost: Blog = {
   slug: "como-lograr-cortes-perfectos-guia-profix-126",
   excerpt: "Descubre las mejores técnicas y consejos para aprovechar al máximo tu guía de corte ProFix 126 y conseguir resultados profesionales en todos tus proyectos de carpintería.",
   content: portableTextContent,
-  main_image_url: "https://www.guiadecorte.cl/blog-imagenes/cortes-perfectos-guia.webp",
+  main_image_url: "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
   published_at: new Date().toISOString(),
   author: "Carlos Martínez",
   tags: ["carpintería", "guía de corte", "técnicas", "herramientas", "ProFix 126"],
@@ -581,7 +581,7 @@ export const secondBlogPost: Blog = {
       markDefs: []
     }
   ],
-  main_image_url: "https://www.guiadecorte.cl/blog-imagenes/proyectos-principiantes.webp",
+  main_image_url: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
   published_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), // Una semana atrás
   author: "Ana Gómez",
   tags: ["principiantes", "proyectos", "carpintería", "guía de corte", "DIY"],
@@ -609,7 +609,7 @@ export const thirdBlogPost: Blog = {
       markDefs: []
     }
   ],
-  main_image_url: "https://www.guiadecorte.cl/blog-imagenes/mantenimiento-herramientas.webp",
+  main_image_url: "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
   published_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(), // Dos semanas atrás
   author: "Roberto Sánchez",
   tags: ["mantenimiento", "herramientas", "carpintería", "cuidados", "durabilidad"],

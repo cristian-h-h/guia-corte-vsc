@@ -74,7 +74,7 @@ const sampleBlogPosts = [
         markDefs: []
       }
     ],
-    image_url: "https://www.guiadecorte.cl/blog-imagenes/cortes-perfectos-guia.webp",
+    image_url: "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
     published_at: new Date().toISOString(),
     author: "Carlos Martínez",
     tags: ["carpintería", "guía de corte", "técnicas", "herramientas", "ProFix 126"],
@@ -101,7 +101,7 @@ const sampleBlogPosts = [
         markDefs: []
       }
     ],
-    image_url: "https://www.guiadecorte.cl/blog-imagenes/proyectos-principiantes.webp",
+    image_url: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
     published_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
     author: "Ana Gómez",
     tags: ["principiantes", "proyectos", "carpintería", "guía de corte", "DIY"],
@@ -128,7 +128,7 @@ const sampleBlogPosts = [
         markDefs: []
       }
     ],
-    image_url: "https://www.guiadecorte.cl/blog-imagenes/mantenimiento-herramientas.webp",
+    image_url: "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
     published_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
     author: "Roberto Sánchez",
     tags: ["mantenimiento", "herramientas", "carpintería", "cuidados", "durabilidad"],

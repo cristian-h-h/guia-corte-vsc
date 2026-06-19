@@ -53,28 +53,28 @@ const defaultGalleryImages = [
     category: "producto"
   },
   {
-    src: "/guia-imagenes/guia-corte-logo.png",
+    src: "/guia-imagenes/profix-126-logo.webp",
     alt: "Logo oficial de Guía de Corte ProFix 126",
     description: "Logo oficial del producto Guía de Corte ProFix 126, símbolo de precisión en carpintería.",
     order: 5,
     category: "detalle"
   },
   {
-    src: "/guia-imagenes/guia-corte-router.webp",
+    src: "/guia-imagenes/guia-corte-router-terciamel.webp",
     alt: "Guía ProFix 126 con router para trabajos de precisión",
     description: "Uso de la guía ProFix 126 con router para realizar ranurados y acabados de precisión.",
     order: 6,
     category: "uso"
   },
   {
-    src: "/guia-imagenes/guia-corte-caladora.webp",
+    src: "/guia-imagenes/guia-profix-126.webp",
     alt: "Guía ProFix 126 con sierra caladora para cortes rectos",
     description: "Aplicación de la guía ProFix 126 con sierra caladora para lograr cortes rectos perfectos.",
     order: 7,
     category: "uso"
   },
   {
-    src: "/guia-imagenes/guia-corte-materiales.webp",
+    src: "/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp",
     alt: "Guía ProFix 126 con diversos materiales compatibles",
     description: "Demostración de la versatilidad de la guía ProFix 126 con diferentes materiales como madera, melamina y MDF.",
     order: 8,

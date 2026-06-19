@@ -4,6 +4,15 @@ import SEO from "@/components/SEO";
 import { supportGuides } from "@/data/supportGuides";
 
 const SupportGuides = () => {
+  const gscQueries = [
+    "guia de corte recto",
+    "guia de corte",
+    "guia de corte para sierra circular",
+    "guia recta para sierra circular",
+    "guia de aluminio para sierra circular",
+    "guia de corte Ubermann",
+  ];
+
   const guideGroups = [
     {
       title: "Compatibilidad y validacion",
@@ -28,9 +37,9 @@ const SupportGuides = () => {
   return (
     <>
       <SEO
-        title="Guias, Comparativas y Compatibilidad ProFix 126"
-        description="Centro de guias sobre compatibilidad por herramienta o modelo, comparativas, cortes rectos, uso en melamina, MDF, terciado y escenarios reales para sacar mayor provecho a la ProFix 126."
-        keywords="guias de corte, comparativas de guias, compatibilidad por modelo de herramienta, guia para router, cortar melamina recto, profix 126 usos"
+        title="Guias de Corte, Compatibilidad y Sierra Circular | ProFix 126"
+        description="Centro de guias sobre compatibilidad por herramienta o modelo, comparativas, guia de corte para sierra circular, uso en melamina, MDF, terciado y escenarios reales para sacar mayor provecho a la ProFix 126."
+        keywords="guia de corte recto, guia de corte para sierra circular, guias de corte, guia recta para sierra circular, compatibilidad por modelo de herramienta, guia de corte Ubermann, guia para router, cortar melamina recto, profix 126 usos"
         url="https://www.guiadecorte.cl/guias"
       />
 
@@ -40,14 +49,51 @@ const SupportGuides = () => {
             Centro de contenido
           </p>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Guias, comparativas y compatibilidad por herramienta
+            Guias, comparativas y compatibilidad para quienes buscan una guia de corte real
           </h1>
           <p className="text-gris-600 text-lg">
             Esta seccion responde las preguntas que aparecen antes de comprar y tambien durante el uso real:
             compatibilidad con herramientas, marcas o modelos, materiales de trabajo, comparativas reales,
             cortes rectos con sierra circular y usos complementarios con router.
           </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
+            {gscQueries.map((query) => (
+              <span
+                key={query}
+                className="inline-flex items-center rounded-full bg-gris-100 px-3 py-1 text-sm font-medium text-gris-700"
+              >
+                {query}
+              </span>
+            ))}
+          </div>
         </header>
+
+        <section className="bg-gris-50 border border-gris-200 rounded-xl p-8 mb-14">
+          <h2 className="text-2xl font-bold mb-4">Lo que mas conviene resolver desde esta pagina</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-gris-700">
+            <article className="bg-white rounded-lg border border-gris-200 p-5">
+              <h3 className="font-bold mb-2">Compatibilidad por marca y modelo</h3>
+              <p className="text-sm">
+                Ideal si la visita llega buscando Makita, Bosch, DeWalt, Stanley, Skil, Einhell, Ingco o Ubermann y
+                necesita una respuesta concreta antes de comprar.
+              </p>
+            </article>
+            <article className="bg-white rounded-lg border border-gris-200 p-5">
+              <h3 className="font-bold mb-2">Uso real con sierra circular</h3>
+              <p className="text-sm">
+                Estas guias conectan la busqueda "guia de corte para sierra circular" con escenarios concretos:
+                tableros, muebles, obra, repeticion de medidas y mejor terminacion.
+              </p>
+            </article>
+            <article className="bg-white rounded-lg border border-gris-200 p-5">
+              <h3 className="font-bold mb-2">Comparativas para decidir mejor</h3>
+              <p className="text-sm">
+                Si el visitante aun compara contra reglas caseras o soluciones grandes, aqui encuentra el argumento
+                tecnico y comercial para entender cuando la ProFix 126 tiene mas sentido.
+              </p>
+            </article>
+          </div>
+        </section>
 
         <div className="space-y-14 mb-14">
           {guideGroups.map((group) => (

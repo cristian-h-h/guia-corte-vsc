@@ -9,13 +9,13 @@ import { useParams, Link } from "react-router-dom";
 const producto = {
   _id: "profix-126",
   name: "Guía de Corte Recto ProFix 126",
-  seoTitle: "Guía de Corte Recto ProFix 126 para Sierra Circular y Router",
+  seoTitle: "Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio 1.26 m",
   seoDescription:
-    "ProFix 126 es una guía de corte recto de 1.26 metros para sierra circular, router y otras herramientas con base compatible. Ideal para melamina, MDF, terciado y trabajo de carpintería con precisión profesional.",
+    "ProFix 126 es una guía de corte recto de aluminio de 1.26 metros para sierra circular y herramientas con base compatible. Ideal para melamina, MDF, terciado y madera cuando buscas cortes rectos, repetibles y mejor terminación.",
   shortDescription:
-    "Guía de corte recto de 1.26 metros para talleres, mueblistas, instaladores y aficionados avanzados que necesitan cortes rectos, repetibles y limpios sin depender de maquinaria grande.",
+    "Guia de corte recto de 1.26 metros para sierra circular, talleres, mueblistas, instaladores y aficionados avanzados que necesitan cortes rectos, repetibles y limpios sin depender de maquinaria grande.",
   overview:
-    "ProFix 126 combina estructura de aluminio, ajuste rápido y una superficie de guiado pensada para trabajo real en carpintería. Su mayor fortaleza es ayudarte a repetir medidas, reducir error humano y mantener el corte estable en piezas largas.",
+    "ProFix 126 combina estructura de aluminio, ajuste rapido y una superficie de guiado pensada para trabajo real en carpinteria. Su mayor fortaleza es ayudarte a repetir medidas, reducir error humano y mantener el corte estable en piezas largas de melamina, MDF, terciado o madera.",
   cashPrice: 35000,
   cardPrice: 38990,
   keyPoints: [
@@ -24,7 +24,8 @@ const producto = {
     "Ajuste rápido para preparación del corte",
     "Peso aproximado de 1.4 kg",
     "Pensada para cortes rectos repetibles",
-    "Compatibilidad sujeta al tipo de base y herramienta"
+    "Compatibilidad sujeta al tipo de base y herramienta",
+    "Uso estrella como guia de corte para sierra circular"
   ],
   materials: [
     "Melamina",
@@ -71,10 +72,14 @@ const producto = {
   keywords: [
     "guía de corte recto",
     "guía de corte para sierra circular",
+    "guía recta para sierra circular",
     "guía de aluminio para carpintería",
+    "guía de aluminio para sierra circular",
     "guía de corte 1.26 metros",
     "guía de corte para melamina",
     "guía de corte para MDF",
+    "guía corte madera",
+    "guía de corte Ubermann",
     "profix 126",
     "guía para router",
     "accesorio para carpintería"
@@ -226,6 +231,22 @@ const Producto = () => {
 
             <p className="text-base text-gris-600 mb-4">{producto.shortDescription}</p>
             <p className="text-gris-700 mb-6">{producto.overview}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <div className="rounded-lg border border-gris-200 bg-gris-50 p-4">
+                <h2 className="font-bold mb-2">Si llegaste buscando una guia de corte para sierra circular</h2>
+                <p className="text-sm text-gris-700">
+                  Esta es la aplicacion principal de la ProFix 126: ordenar cortes rectos y repetibles en tableros,
+                  muebles y piezas largas con mejor control.
+                </p>
+              </div>
+              <div className="rounded-lg border border-gris-200 bg-gris-50 p-4">
+                <h2 className="font-bold mb-2">Si comparas una guia de aluminio</h2>
+                <p className="text-sm text-gris-700">
+                  Aqui importa la rigidez del cuerpo, la longitud de trabajo y el ajuste rapido para repetir referencias
+                  sin perder tiempo entre corte y corte.
+                </p>
+              </div>
+            </div>
 
             <div className="mb-4">
               <div className="flex items-center gap-4">
@@ -280,6 +301,13 @@ const Producto = () => {
               <Link to="/contacto">
                 <Button variant="outline" className="w-full sm:w-auto">Resolver dudas antes de comprar</Button>
               </Link>
+              <a
+                href="https://wa.me/56935777727?text=Hola,%20quiero%20el%20link%20de%20compra%20de%20la%20guia%20de%20corte%20ProFix%20126%20y%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="w-full sm:w-auto">Pedir link por WhatsApp</Button>
+              </a>
             </div>
 
             <div className="mb-6">
@@ -335,6 +363,40 @@ const Producto = () => {
                 <li key={idx}>{item}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="my-12 bg-white rounded-lg shadow p-6 max-w-5xl mx-auto border border-gris-200">
+          <h2 className="text-2xl font-bold mb-4 text-center">Consultas reales que esta pagina responde mejor</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gris-700">
+            <div className="rounded-lg bg-gris-50 p-5 border border-gris-200">
+              <h3 className="font-bold mb-2">Guia de corte recto y guia de corte</h3>
+              <p>
+                Esta ficha deja claro que la ProFix 126 no es una referencia improvisada: es una guia recta de aluminio
+                pensada para cortes repetibles y mejor terminacion.
+              </p>
+            </div>
+            <div className="rounded-lg bg-gris-50 p-5 border border-gris-200">
+              <h3 className="font-bold mb-2">Guia de corte para sierra circular</h3>
+              <p>
+                El uso principal recomendado es con sierra circular. Por eso la pagina prioriza tableros, melamina, MDF,
+                terciado y madera antes que promesas genericas.
+              </p>
+            </div>
+            <div className="rounded-lg bg-gris-50 p-5 border border-gris-200">
+              <h3 className="font-bold mb-2">Guia de aluminio para sierra circular</h3>
+              <p>
+                El cuerpo en aluminio 6061-T6 aporta rigidez y portabilidad para trabajo real en taller u obra cuando
+                necesitas una referencia larga pero transportable.
+              </p>
+            </div>
+            <div className="rounded-lg bg-gris-50 p-5 border border-gris-200">
+              <h3 className="font-bold mb-2">Guia de corte Ubermann y otras marcas</h3>
+              <p>
+                Si llegaste por una marca especifica, el siguiente paso correcto no es adivinar: es revisar compatibilidad
+                por base, modelo y tipo de trabajo.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -435,6 +497,39 @@ const Producto = () => {
               <h3 className="font-bold mb-2">Uso con router</h3>
               <p className="text-sm text-gris-700">Revisa cuando tiene sentido y que conviene mirar antes de validarlo.</p>
             </Link>
+          </div>
+        </section>
+
+        <section className="my-12 bg-white rounded-lg shadow p-6 max-w-5xl mx-auto border border-gris-200">
+          <h2 className="text-2xl font-bold mb-4 text-center">Preguntas clave antes de comprar</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <article className="border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Sirve para cortar madera, melamina, MDF o terciado?</h3>
+              <p className="text-gris-700">
+                Si, esos son precisamente los escenarios donde una guia recta suele marcar mas diferencia por control,
+                repeticion de medidas y calidad de terminacion.
+              </p>
+            </article>
+            <article className="border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Sirve con cualquier sierra circular?</h3>
+              <p className="text-gris-700">
+                No conviene prometer compatibilidad universal. La mejor recomendacion depende de la base, el apoyo y el
+                tipo de trabajo que quieres hacer.
+              </p>
+            </article>
+            <article className="border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Puedo pedir el link directo de compra?</h3>
+              <p className="text-gris-700">
+                Si. Puedes comprar de inmediato o pedir el link por WhatsApp si primero quieres validar compatibilidad o envio.
+              </p>
+            </article>
+            <article className="border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Vale la pena frente a una regla casera?</h3>
+              <p className="text-gris-700">
+                Cuando el trabajo exige repetir medidas, cuidar terminacion y reducir desperdicio, una guia dedicada suele
+                justificar mucho mejor la inversion.
+              </p>
+            </article>
           </div>
         </section>
 

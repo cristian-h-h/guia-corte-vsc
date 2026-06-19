@@ -332,6 +332,270 @@ export const supportGuides: SupportGuide[] = [
     ],
   },
   {
+    slug: "guia-de-corte-para-sierra-circular",
+    path: "/guias/guia-de-corte-para-sierra-circular",
+    title: "Guia de corte para sierra circular: que revisar antes de comprar y por que si cambia el resultado",
+    shortTitle: "Guia de corte para sierra circular",
+    category: "tecnica",
+    categoryLabel: "Tecnica",
+    description:
+      "Aprende que debe ofrecer una guia de corte para sierra circular, cuando vale la pena comprarla y como mejora cortes rectos, repetibilidad y control en tableros y piezas largas.",
+    keywords:
+      "guia de corte para sierra circular, guias de corte para sierra circular, guia corte sierra circular, sierra con guia de corte, guia para corte sierra circular",
+    primaryKeyword: "guia de corte para sierra circular",
+    searchIntent: "Resolver una busqueda comercial alta de usuarios que ya quieren una solucion concreta para cortar con sierra circular.",
+    audience: "Usuarios que ya tienen sierra circular y buscan una guia real para tableros, muebles, instalacion o trabajo portable.",
+    summary:
+      "Esta guia responde una consulta clave de Google con lenguaje directo: que debe ofrecer una guia de corte para sierra circular y por que una referencia dedicada puede mejorar mucho el proceso.",
+    problemStatement:
+      "Mucha gente busca una guia de corte para sierra circular, pero no siempre entiende que diferencias reales hay entre una referencia improvisada y una guia dedicada. Sin esa explicacion, el usuario termina comparando mal o postergando la compra.",
+    useCases: [
+      "Cortar tableros grandes con mejor control.",
+      "Repetir medidas en muebles o instalaciones.",
+      "Trabajar con sierra circular en taller pequeno u obra.",
+    ],
+    toolFocus: ["Sierra circular", "Guia recta", "Tableros", "Trabajo portable"],
+    relatedSearches: [
+      "guia de corte para sierra circular",
+      "guias de corte para sierra circular",
+      "guia corte sierra circular",
+      "sierra con guia de corte",
+    ],
+    sections: [
+      {
+        title: "Que deberia entregarte una guia de corte para sierra circular",
+        paragraphs: [
+          "Una buena guia de corte para sierra circular no solo marca una linea. Debe ayudarte a repetir medidas, reducir desviacion y mantener mejor control cuando trabajas melamina, MDF, terciado o madera.",
+          "Por eso la comparacion correcta no es solo largo o precio. Tambien importa la rigidez, el ajuste, la portabilidad y que tan facil te resulta usarla varias veces en una jornada real de trabajo.",
+        ],
+        bullets: [
+          "Referencia estable para cortes rectos.",
+          "Mejor repetibilidad en piezas iguales.",
+          "Mas orden al trabajar tableros largos.",
+          "Menor dependencia del pulso o de reglas improvisadas.",
+        ],
+      },
+      {
+        title: "Cuando si marca diferencia frente a una solucion improvisada",
+        paragraphs: [
+          "La diferencia se nota mas cuando el trabajo se repite, cuando el tablero es grande o cuando una pequena desviacion ya significa rehacer material. Ahi una guia dedicada deja de ser accesorio y pasa a ser parte del metodo de trabajo.",
+          "Ese es el punto donde ProFix 126 hace mas sentido comercial: no promete magia, pero si ordena mucho mejor el proceso de corte con sierra circular.",
+        ],
+      },
+      {
+        title: "Como saber si es para tu caso",
+        paragraphs: [
+          "Si trabajas muebles, instalaciones, tableros o piezas largas y ya tienes sierra circular, esta suele ser una de las rutas mas logicas para mejorar terminacion y reducir error sin comprar una maquina grande.",
+        ],
+        bullets: [
+          "Buena opcion para talleres pequenos.",
+          "Muy util para instaladores y trabajo portable.",
+          "Especialmente valiosa en melamina, MDF y terciado.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Que tan util es una guia de corte para sierra circular?",
+        answer:
+          "Es muy util cuando necesitas cortes rectos, repetibles y mejor control en tableros o piezas largas. Ahi se nota mucho frente a una referencia improvisada.",
+      },
+      {
+        question: "Sirve solo para profesionales?",
+        answer:
+          "No. Tambien ayuda mucho a aficionados avanzados que ya quieren resultados mas consistentes sin pasar a maquinaria estacionaria.",
+      },
+      {
+        question: "La ProFix 126 entra en esta categoria?",
+        answer:
+          "Si. De hecho, su uso principal recomendado es justamente como guia de corte para sierra circular en trabajo real de taller, instalacion u obra.",
+      },
+      {
+        question: "Conviene si ya tengo una regla casera?",
+        answer:
+          "Si el trabajo se repite, si cortas tableros o si quieres reducir desperdicio, una guia dedicada suele aportar bastante mas orden y repetibilidad.",
+      },
+    ],
+    relatedGuideSlugs: [
+      "como-hacer-cortes-rectos-con-sierra-circular",
+      "guia-recta-para-sierra-circular",
+      "guia-de-aluminio-para-sierra-circular",
+      "profix-126-vs-regla-casera",
+    ],
+  },
+  {
+    slug: "guia-recta-para-sierra-circular",
+    path: "/guias/guia-recta-para-sierra-circular",
+    title: "Guia recta para sierra circular: por que mejora precision, terminacion y repeticion en tableros",
+    shortTitle: "Guia recta para sierra circular",
+    category: "tecnica",
+    categoryLabel: "Tecnica",
+    description:
+      "Descubre por que una guia recta para sierra circular mejora precision, terminacion y repeticion en melamina, MDF, terciado y madera, especialmente cuando trabajas piezas largas.",
+    keywords:
+      "guia recta para sierra circular, guia de corte recta, guia de corte recto sierra circular, guia corte recto sierra circular, guia de corte recto",
+    primaryKeyword: "guia recta para sierra circular",
+    searchIntent: "Capturar busquedas que mezclan precision con uso especifico en sierra circular y llevarlas a una explicacion comercial clara.",
+    audience: "Personas que ya entendieron la necesidad de cortar recto y ahora comparan cual tipo de guia realmente les conviene.",
+    summary:
+      "Esta pagina baja la idea de guia recta a situaciones reales: tableros grandes, repeticion de piezas, terminacion visible y mejor control del recorrido.",
+    problemStatement:
+      "Muchos usuarios saben que necesitan cortar recto, pero Google les muestra resultados mezclados entre reglas, accesorios genericos y soluciones poco claras. Esta guia ordena esa decision con ejemplos concretos.",
+    useCases: [
+      "Cortar frentes, costados y repisas con menos variacion.",
+      "Mantener mejor terminacion en piezas visibles.",
+      "Trabajar con sierra circular sin perder control al final del recorrido.",
+    ],
+    toolFocus: ["Sierra circular", "Guia recta", "Melamina", "MDF", "Terciado"],
+    relatedSearches: [
+      "guia de corte recta",
+      "guia de corte recto sierra circular",
+      "guia corte recto sierra circular",
+      "guia de corte recto",
+    ],
+    sections: [
+      {
+        title: "Por que la idea de guia recta conecta tan bien con esta necesidad",
+        paragraphs: [
+          "Cuando alguien busca una guia recta para sierra circular normalmente no esta buscando teoria. Esta buscando una forma mas confiable de mantener el recorrido y terminar el corte sin desviarse.",
+          "La palabra recta pesa mucho porque conecta directo con el dolor real del usuario: piezas que no calzan, cortes que se abren al final y tiempo perdido corrigiendo errores evitables.",
+        ],
+      },
+      {
+        title: "Donde se nota mas la mejora",
+        paragraphs: [
+          "La mejora se nota especialmente en tableros, muebles a medida y cortes que deben quedar visibles. Melamina, MDF y terciado castigan bastante cualquier variacion pequena, por eso una guia recta tiene tanto valor en ese tipo de trabajo.",
+        ],
+        bullets: [
+          "Mas confianza al iniciar y cerrar el corte.",
+          "Mejor consistencia entre pieza y pieza.",
+          "Menos correcciones posteriores.",
+          "Mayor control visual y mecanico del recorrido.",
+        ],
+      },
+      {
+        title: "Que relacion tiene esto con ProFix 126",
+        paragraphs: [
+          "ProFix 126 entra exactamente en este espacio: una guia recta larga, portable y pensada para sierra circular, donde el objetivo no es impresionar en ficha tecnica sino mejorar el trabajo diario.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Guia recta y guia de corte es lo mismo?",
+        answer:
+          "En muchas busquedas si se usan casi como sinonimos, pero la expresion guia recta suele enfatizar el resultado que el usuario quiere obtener: mantener un recorrido realmente lineal.",
+      },
+      {
+        question: "Esto ayuda de verdad en melamina y MDF?",
+        answer:
+          "Si, porque ahi una desviacion pequena se nota mucho mas. Por eso una guia recta estable suele aportar bastante valor en ese tipo de materiales.",
+      },
+      {
+        question: "Sirve si hago trabajo en obra?",
+        answer:
+          "Si. De hecho una de sus ventajas es combinar mejor control con portabilidad, algo muy util fuera de un taller fijo.",
+      },
+      {
+        question: "La ProFix 126 esta pensada para esto?",
+        answer:
+          "Si. Su propuesta principal es justamente ayudarte a lograr cortes rectos repetibles con sierra circular y trabajo real sobre tableros.",
+      },
+    ],
+    relatedGuideSlugs: [
+      "guia-de-corte-para-sierra-circular",
+      "como-hacer-cortes-rectos-con-sierra-circular",
+      "cortes-en-melamina-mdf-terciado",
+      "profix-126-vs-regla-casera",
+    ],
+  },
+  {
+    slug: "guia-de-aluminio-para-sierra-circular",
+    path: "/guias/guia-de-aluminio-para-sierra-circular",
+    title: "Guia de aluminio para sierra circular: ventajas reales en rigidez, portabilidad y trabajo sobre tableros",
+    shortTitle: "Guia de aluminio para sierra circular",
+    category: "materiales",
+    categoryLabel: "Materiales",
+    description:
+      "Conoce por que una guia de aluminio para sierra circular aporta rigidez, portabilidad y mejor estabilidad al trabajar melamina, MDF, terciado y madera en taller u obra.",
+    keywords:
+      "guia de aluminio para sierra circular, guía de aluminio para sierra circular, guia aluminio para corte, guia de corte aluminio, guia de aluminio carpinteria",
+    primaryKeyword: "guia de aluminio para sierra circular",
+    searchIntent: "Responder una busqueda mas especifica que ya compara material de fabricacion y calidad percibida antes de comprar.",
+    audience: "Usuarios que no solo buscan una guia, sino una guia que se sienta mas estable, durable y transportable en trabajo real.",
+    summary:
+      "Esta guia explica por que el aluminio importa tanto en una guia para sierra circular y como esa cualidad se traduce en mejor experiencia para tableros, muebles e instalacion.",
+    problemStatement:
+      "Cuando el usuario ya pregunta por aluminio, normalmente esta comparando seriedad de construccion, estabilidad y durabilidad. Si tu sitio no responde eso, la visita se va a fichas tecnicas frias o marketplaces.",
+    useCases: [
+      "Comparar materiales antes de comprar una guia.",
+      "Entender por que la rigidez importa en piezas largas.",
+      "Valorar portabilidad sin perder estabilidad.",
+    ],
+    toolFocus: ["Sierra circular", "Aluminio 6061-T6", "Tableros", "Trabajo portable"],
+    relatedSearches: [
+      "guia de aluminio para sierra circular",
+      "guia de corte aluminio",
+      "guia aluminio para corte",
+      "guia de aluminio carpinteria",
+    ],
+    sections: [
+      {
+        title: "Por que el aluminio importa tanto en una guia",
+        paragraphs: [
+          "El aluminio no es solo un argumento de venta. En una guia para sierra circular ayuda a combinar rigidez, peso razonable y mejor estabilidad para el trabajo diario sobre tableros y piezas largas.",
+          "Eso es clave cuando quieres una solucion portable que no se sienta blanda ni excesivamente pesada al moverla entre taller, obra e instalacion.",
+        ],
+      },
+      {
+        title: "Ventajas reales frente a opciones mas pobres o improvisadas",
+        paragraphs: [
+          "Una guia de aluminio bien planteada suele transmitir mas confianza en el recorrido, menos variacion por flexion y mejor sensacion general de herramienta seria para trabajo repetido.",
+        ],
+        bullets: [
+          "Rigidez mas favorable en largos utiles.",
+          "Buena relacion entre peso y estabilidad.",
+          "Mejor experiencia de transporte y uso portable.",
+          "Mayor sensacion de herramienta durable para trabajo frecuente.",
+        ],
+      },
+      {
+        title: "Como conversa esto con ProFix 126",
+        paragraphs: [
+          "La ProFix 126 usa aluminio 6061-T6 justamente para sostener esa promesa: una guia larga, portable y mas estable para sierra circular cuando necesitas cortar melamina, MDF, terciado o madera con mayor control.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Una guia de aluminio realmente se siente mejor en uso?",
+        answer:
+          "En muchos casos si, especialmente cuando el trabajo exige longitud util, estabilidad y una herramienta que puedas mover sin que se vuelva torpe o demasiado pesada.",
+      },
+      {
+        question: "Eso importa solo para profesionales?",
+        answer:
+          "No. Tambien importa mucho para aficionados avanzados que buscan una compra mejor pensada y menos improvisada.",
+      },
+      {
+        question: "La ProFix 126 es una guia de aluminio para sierra circular?",
+        answer:
+          "Si. Esa es una de sus fortalezas clave y una parte importante de su propuesta de valor en taller, obra e instalacion.",
+      },
+      {
+        question: "El aluminio reemplaza la necesidad de validar compatibilidad?",
+        answer:
+          "No. El material de la guia ayuda mucho, pero la compatibilidad final siempre depende tambien de la base, el apoyo y el tipo de herramienta.",
+      },
+    ],
+    relatedGuideSlugs: [
+      "guia-de-corte-para-sierra-circular",
+      "guia-recta-para-sierra-circular",
+      "cortes-en-melamina-mdf-terciado",
+      "compatibilidad-herramientas",
+    ],
+  },
+  {
     slug: "guia-de-corte-para-router",
     path: "/guias/guia-de-corte-para-router",
     title: "Guia de corte para router: cuando tiene sentido y que revisar antes de usarla",
