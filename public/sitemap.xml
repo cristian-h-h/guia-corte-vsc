@@ -5,7 +5,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://www.guiadecorte.cl/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -17,60 +17,50 @@
   <!-- Blog -->
   <url>
     <loc>https://www.guiadecorte.cl/blog</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Galería -->
   <url>
     <loc>https://www.guiadecorte.cl/galeria</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp</image:loc>
-      <image:title>Guía de Corte ProFix 126 - Vista general del producto</image:title>
-      <image:caption>Vista general de la Guía de Corte ProFix 126, mostrando su diseño en aluminio aeronáutico y sistema de ajuste rápido.</image:caption>
+      <image:title>Guía de corte ProFix 126 en aluminio para sierra circular</image:title>
+      <image:caption>Vista general del producto y su estructura de aluminio para cortes rectos en taller u obra.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp</image:loc>
-      <image:title>Guía ProFix 126 en uso con sierra circular para corte recto</image:title>
-      <image:caption>Demostración de corte recto con sierra circular utilizando la guía ProFix 126 en tablero de melamina.</image:caption>
+      <image:title>ProFix 126 guiando una sierra circular en tablero de melamina</image:title>
+      <image:caption>Demostración real de corte recto con sierra circular, uno de los usos principales del sistema.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp</image:loc>
-      <image:title>Sistema de ajuste rápido de la Guía ProFix 126</image:title>
-      <image:caption>Detalle del sistema de ajuste rápido Quick-Lock que permite cambios de configuración en segundos.</image:caption>
+      <image:title>Sistema de ajuste rápido de la guía de corte ProFix 126</image:title>
+      <image:caption>Detalle del ajuste rápido para calibrar la medida de trabajo antes del corte.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-profix-126.webp</image:loc>
-      <image:title>Guía ProFix 126 con sistema de sujeción multidireccional</image:title>
-      <image:caption>Vista del sistema de sujeción multidireccional con topes ajustables en acero endurecido.</image:caption>
+      <image:title>Vista lateral de la ProFix 126 con sujeción y escala de apoyo</image:title>
+      <image:caption>Detalle del cuerpo principal y la superficie de apoyo para trabajos repetibles y precisos.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.guiadecorte.cl/guia-imagenes/profix-126-guia-corte-recto.webp</image:loc>
-      <image:title>Guía ProFix 126 para cortes rectos de precisión</image:title>
-      <image:caption>Guía ProFix 126 preparada para realizar cortes rectos de precisión industrial en diversos materiales.</image:caption>
+      <image:title>ProFix 126 preparada para cortes rectos de precisión</image:title>
+      <image:caption>Presentación del formato completo de 1.26 metros para tableros, muebles y piezas largas.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-logo.png</image:loc>
-      <image:title>Logo oficial de Guía de Corte ProFix 126</image:title>
-      <image:caption>Logo oficial del producto Guía de Corte ProFix 126, símbolo de precisión en carpintería.</image:caption>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-router-terciamel.webp</image:loc>
+      <image:title>Aplicación de ProFix 126 con router en trabajo de carpintería</image:title>
+      <image:caption>Ejemplo de uso con router para ranurados, rebajes o recorridos rectos controlados.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-router.webp</image:loc>
-      <image:title>Guía ProFix 126 con router para trabajos de precisión</image:title>
-      <image:caption>Uso de la guía ProFix 126 con router para realizar ranurados y acabados de precisión.</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-caladora.webp</image:loc>
-      <image:title>Guía ProFix 126 con sierra caladora para cortes rectos</image:title>
-      <image:caption>Aplicación de la guía ProFix 126 con sierra caladora para lograr cortes rectos perfectos.</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-materiales.webp</image:loc>
-      <image:title>Guía ProFix 126 con diversos materiales compatibles</image:title>
-      <image:caption>Demostración de la versatilidad de la guía ProFix 126 con diferentes materiales como madera, melamina y MDF.</image:caption>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp</image:loc>
+      <image:title>Ajuste rápido de ProFix 126 previo al corte o al guiado</image:title>
+      <image:caption>Uso práctico del sistema de ajuste para agilizar preparación y repetición de medidas.</image:caption>
     </image:image>
     <video:video>
       <video:thumbnail_loc>https://img.youtube.com/vi/shIy8jqR0tE/maxresdefault.jpg</video:thumbnail_loc>
@@ -103,14 +93,77 @@
   <!-- Contacto -->
   <url>
     <loc>https://www.guiadecorte.cl/contacto</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <!-- Centro de guias -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Guia: compatibilidad -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/compatibilidad-herramientas</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: compatibilidad por modelo -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/compatibilidad-por-modelo-de-herramienta</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: compatibilidad por marcas -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/compatibilidad-por-marcas-frecuentes</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: materiales -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/cortes-en-melamina-mdf-terciado</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: sierra circular -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/como-hacer-cortes-rectos-con-sierra-circular</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: router -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/guia-de-corte-para-router</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: comparativa vs regla -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/profix-126-vs-regla-casera</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: comparativa vs sierra de mesa -->
+  <url>
+    <loc>https://www.guiadecorte.cl/guias/sierra-circular-con-guia-vs-sierra-de-mesa</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <!-- Carrito -->
   <url>
     <loc>https://www.guiadecorte.cl/carrito</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -141,24 +194,12 @@
       <image:caption>Guía de Corte ProFix 126 | Sistema Ajustable para Cortes Rectos de 1.26m</image:caption>
     </image:image>
   </url>
-  <!-- Blog: Título por defecto -->
-  <url>
-    <loc>https://www.guiadecorte.cl/blog/slug-por-defecto-1</loc>
-    <lastmod>2025-07-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
   <!-- Blog: Cómo lograr cortes perfectos con tu guía ProFix 126 -->
   <url>
     <loc>https://www.guiadecorte.cl/blog/como-lograr-cortes-perfectos-guia-profix-126</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://www.guiadecorte.cl/blog-imagenes/cortes-perfectos-guia.webp</image:loc>
-      <image:title>Cómo lograr cortes perfectos con tu guía ProFix 126</image:title>
-      <image:caption>Cómo lograr cortes perfectos con tu guía ProFix 126</image:caption>
-    </image:image>
   </url>
   <!-- Blog: 5 proyectos de carpintería para principiantes con guía de corte -->
   <url>
@@ -166,11 +207,6 @@
     <lastmod>2025-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://www.guiadecorte.cl/blog-imagenes/proyectos-principiantes.webp</image:loc>
-      <image:title>5 proyectos de carpintería para principiantes con guía de corte</image:title>
-      <image:caption>5 proyectos de carpintería para principiantes con guía de corte</image:caption>
-    </image:image>
   </url>
   <!-- Blog: Guía de mantenimiento para herramientas de carpintería -->
   <url>
@@ -178,10 +214,125 @@
     <lastmod>2025-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <!-- Blog: Makita, Bosch o DeWalt: como revisar compatibilidad real antes de comprar una guia de corte -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/compatibilidad-guia-corte-makita-bosch-dewalt</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
     <image:image>
-      <image:loc>https://www.guiadecorte.cl/blog-imagenes/mantenimiento-herramientas.webp</image:loc>
-      <image:title>Guía de mantenimiento para herramientas de carpintería</image:title>
-      <image:caption>Guía de mantenimiento para herramientas de carpintería</image:caption>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp</image:loc>
+      <image:title>Makita, Bosch o DeWalt: como revisar compatibilidad real antes de comprar una guia de corte</image:title>
+      <image:caption>Makita, Bosch o DeWalt: como revisar compatibilidad real antes de comprar una guia de corte</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Cuando una regla casera deja de ser suficiente para cortar tableros con sierra circular -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/cuando-una-regla-casera-no-alcanza</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp</image:loc>
+      <image:title>Cuando una regla casera deja de ser suficiente para cortar tableros con sierra circular</image:title>
+      <image:caption>Cuando una regla casera deja de ser suficiente para cortar tableros con sierra circular</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Sierra circular con guia o sierra de mesa: que conviene para un taller pequeno -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/sierra-circular-con-guia-o-sierra-de-mesa-para-taller-pequeno</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp</image:loc>
+      <image:title>Sierra circular con guia o sierra de mesa: que conviene para un taller pequeno</image:title>
+      <image:caption>Sierra circular con guia o sierra de mesa: que conviene para un taller pequeno</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Como cortar melamina, MDF y terciado con menos error y mejor repeticion -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/como-cortar-melamina-mdf-y-terciado-con-menos-error</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-profix-126.webp</image:loc>
+      <image:title>Como cortar melamina, MDF y terciado con menos error y mejor repeticion</image:title>
+      <image:caption>Como cortar melamina, MDF y terciado con menos error y mejor repeticion</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Guia de corte para router: cuando si conviene y cuando es mejor validar primero -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-de-corte-para-router-cuando-si-conviene</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-router-terciamel.webp</image:loc>
+      <image:title>Guia de corte para router: cuando si conviene y cuando es mejor validar primero</image:title>
+      <image:caption>Guia de corte para router: cuando si conviene y cuando es mejor validar primero</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Errores comunes al usar sierra circular con guia de corte y como evitarlos -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/errores-comunes-sierra-circular-con-guia-de-corte</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp</image:loc>
+      <image:title>Errores comunes al usar sierra circular con guia de corte y como evitarlos</image:title>
+      <image:caption>Errores comunes al usar sierra circular con guia de corte y como evitarlos</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Como confirmar compatibilidad de una guia de corte enviando bien la foto de tu herramienta -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/como-confirmar-compatibilidad-guia-de-corte-con-foto-de-herramienta</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp</image:loc>
+      <image:title>Como confirmar compatibilidad de una guia de corte enviando bien la foto de tu herramienta</image:title>
+      <image:caption>Como confirmar compatibilidad de una guia de corte enviando bien la foto de tu herramienta</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Por que ProFix 126 tiene sentido para mueblistas, instaladores y talleres pequenos -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/por-que-profix-126-tiene-sentido-para-mueblistas-instaladores-y-talleres-pequenos</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/profix-126-guia-corte-recto.webp</image:loc>
+      <image:title>Por que ProFix 126 tiene sentido para mueblistas, instaladores y talleres pequenos</image:title>
+      <image:caption>Por que ProFix 126 tiene sentido para mueblistas, instaladores y talleres pequenos</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Como reducir desperdicio al cortar tableros largos con una guia recta -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/como-reducir-desperdicio-al-cortar-tableros-largos</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/guia-profix-126.webp</image:loc>
+      <image:title>Como reducir desperdicio al cortar tableros largos con una guia recta</image:title>
+      <image:caption>Como reducir desperdicio al cortar tableros largos con una guia recta</image:caption>
+    </image:image>
+  </url>
+  <!-- Blog: Guia de corte portable para obra y taller: cuando una solucion liviana vale mas que una grande -->
+  <url>
+    <loc>https://www.guiadecorte.cl/blog/guia-de-corte-portable-para-obra-y-taller</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.guiadecorte.cl/guia-imagenes/profix-126-guia-corte-recto.webp</image:loc>
+      <image:title>Guia de corte portable para obra y taller: cuando una solucion liviana vale mas que una grande</image:title>
+      <image:caption>Guia de corte portable para obra y taller: cuando una solucion liviana vale mas que una grande</image:caption>
     </image:image>
   </url>
 </urlset>

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Play, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { supabase } from "@/supabaseClient";
+import { Button } from "@/components/ui/button";
 
 // Definición de tipos para las imágenes y videos
 interface GalleryImage {
@@ -16,13 +18,70 @@ interface GalleryVideo {
   description: string;
 }
 
+const defaultGalleryImages: GalleryImage[] = [
+  {
+    src: "/guia-imagenes/guia-corte-profix-126.webp",
+    alt: "Guía de corte ProFix 126 en aluminio para sierra circular",
+    description: "Vista general del producto y su estructura de aluminio para cortes rectos en taller u obra."
+  },
+  {
+    src: "/guia-imagenes/corte-sierra-circular-profix-126.webp",
+    alt: "ProFix 126 guiando una sierra circular en tablero de melamina",
+    description: "Demostración real de corte recto con sierra circular, uno de los usos principales del sistema."
+  },
+  {
+    src: "/guia-imagenes/ajuste-recto-profix-126.webp",
+    alt: "Sistema de ajuste rápido de la guía de corte ProFix 126",
+    description: "Detalle del ajuste rápido para calibrar la medida de trabajo antes del corte."
+  },
+  {
+    src: "/guia-imagenes/guia-profix-126.webp",
+    alt: "Vista lateral de la ProFix 126 con sujeción y escala de apoyo",
+    description: "Detalle del cuerpo principal y la superficie de apoyo para trabajos repetibles y precisos."
+  },
+  {
+    src: "/guia-imagenes/profix-126-guia-corte-recto.webp",
+    alt: "ProFix 126 preparada para cortes rectos de precisión",
+    description: "Presentación del formato completo de 1.26 metros para tableros, muebles y piezas largas."
+  },
+  {
+    src: "/guia-imagenes/guia-corte-router-terciamel.webp",
+    alt: "Aplicación de ProFix 126 con router en trabajo de carpintería",
+    description: "Ejemplo de uso con router para ranurados, rebajes o recorridos rectos controlados."
+  },
+  {
+    src: "/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp",
+    alt: "Ajuste rápido de ProFix 126 previo al corte o al guiado",
+    description: "Uso práctico del sistema de ajuste para agilizar preparación y repetición de medidas."
+  }
+];
+
+const defaultGalleryVideos: GalleryVideo[] = [
+  {
+    id: "shIy8jqR0tE",
+    title: "Guía de Corte ProFix 126 - Demostración de uso",
+    description: "Video demostrativo del uso de la Guía de Corte ProFix 126 para realizar cortes rectos perfectos con sierra circular."
+  },
+  {
+    id: "UHUVFCgoRSc",
+    title: "Sistema Quick-Lock de la Guía ProFix 126",
+    description: "Explicación detallada del sistema de ajuste rápido Quick-Lock que permite cambiar entre herramientas en 15 segundos."
+  },
+  {
+    id: "JDyfjvraM2I",
+    title: "Versatilidad de la Guía ProFix 126",
+    description: "Demostración de la versatilidad de la Guía ProFix 126 con diferentes herramientas y materiales."
+  }
+];
+
 const Galeria = () => {
   // Estado para el modal de imagen ampliada
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   // Estado para las imágenes de la galería
-  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(defaultGalleryImages);
+  const [videos, setVideos] = useState<GalleryVideo[]>(defaultGalleryVideos);
   // Estado para indicar si se están cargando las imágenes
-  const [loadingImages, setLoadingImages] = useState(true);
+  const [loadingImages, setLoadingImages] = useState(false);
 
   // Cargar imágenes y videos desde Supabase
   useEffect(() => {
@@ -68,13 +127,15 @@ const Galeria = () => {
             title: video.title,
             description: video.description
           }));
-          // Actualizar el estado de videos
-          galleryVideos.splice(0, galleryVideos.length, ...videos);
+          setVideos(videos);
+        } else {
+          setVideos(defaultGalleryVideos);
         }
       } catch (error) {
         console.error('Error al cargar datos de la galería:', error);
         // En caso de error, usar imágenes predeterminadas
         setGalleryImages(defaultGalleryImages);
+        setVideos(defaultGalleryVideos);
       } finally {
         setLoadingImages(false);
       }
@@ -82,74 +143,6 @@ const Galeria = () => {
     
     fetchGalleryData();
   }, []);
-
-  // Imágenes predeterminadas en caso de que no haya imágenes en la base de datos
-  const defaultGalleryImages: GalleryImage[] = [
-    {
-      src: "/guia-imagenes/guia-corte-profix-126.webp",
-      alt: "Guía de corte ProFix 126 - Guía banco sierra de aluminio - Vista general del producto",
-      description: "Vista general de la Guía de Corte ProFix 126, mostrando su diseño en aluminio aeronáutico y sistema de ajuste rápido."
-    },
-    {
-      src: "/guia-imagenes/corte-sierra-circular-profix-126.webp",
-      alt: "Guía de corte recto para sierra circular - Guía banco sierra ProFix 126 en uso",
-      description: "Demostración de corte recto con sierra circular utilizando la guía ProFix 126 en tablero de melamina."
-    },
-    {
-      src: "/guia-imagenes/ajuste-recto-profix-126.webp",
-      alt: "Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra",
-      description: "Detalle del sistema de ajuste rápido Quick-Lock que permite cambios de configuración en segundos."
-    },
-    {
-      src: "/guia-imagenes/guia-profix-126.webp",
-      alt: "Guía de corte ProFix 126 - Guía banco sierra con sistema de sujeción multidireccional",
-      description: "Vista del sistema de sujeción multidireccional con topes ajustables en acero endurecido."
-    },
-    {
-      src: "/guia-imagenes/profix-126-guia-corte-recto.webp",
-      alt: "Guía de corte ProFix 126 - Guía banco sierra para cortes rectos de precisión",
-      description: "Guía ProFix 126 preparada para realizar cortes rectos de precisión industrial en diversos materiales."
-    },
-    {
-      src: "/guia-imagenes/guia-corte-logo.png",
-      alt: "Logo oficial de Guía de Corte ProFix 126",
-      description: "Logo oficial del producto Guía de Corte ProFix 126, símbolo de precisión en carpintería."
-    },
-    {
-      src: "/guia-imagenes/guia-corte-router.webp",
-      alt: "Guía ProFix 126 con router para trabajos de precisión",
-      description: "Uso de la guía ProFix 126 con router para realizar ranurados y acabados de precisión."
-    },
-    {
-      src: "/guia-imagenes/guia-corte-caladora.webp",
-      alt: "Guía ProFix 126 con sierra caladora para cortes rectos",
-      description: "Aplicación de la guía ProFix 126 con sierra caladora para lograr cortes rectos perfectos."
-    },
-    {
-      src: "/guia-imagenes/guia-corte-materiales.webp",
-      alt: "Guía ProFix 126 con diversos materiales compatibles",
-      description: "Demostración de la versatilidad de la guía ProFix 126 con diferentes materiales como madera, melamina y MDF."
-    }
-  ];
-
-  // Datos de videos para la galería
-  const galleryVideos: GalleryVideo[] = [
-    {
-      id: "shIy8jqR0tE",
-      title: "Guía de Corte ProFix 126 - Demostración de uso",
-      description: "Video demostrativo del uso de la Guía ProFix 126 para realizar cortes rectos perfectos con sierra circular."
-    },
-    {
-      id: "UHUVFCgoRSc",
-      title: "Sistema Quick-Lock de la Guía ProFix 126",
-      description: "Explicación detallada del sistema de ajuste rápido Quick-Lock que permite cambiar entre herramientas en 15 segundos."
-    },
-    {
-      id: "JDyfjvraM2I",
-      title: "Versatilidad de la Guía ProFix 126",
-      description: "Demostración de la versatilidad de la Guía ProFix 126 con diferentes herramientas y materiales."
-    }
-  ];
 
   return (
     <>
@@ -183,7 +176,7 @@ const Galeria = () => {
             "@type": "VideoGallery",
             "name": "Videos Demostrativos ProFix 126",
             "description": "Colección de videos que muestran el uso y características de la Guía de Corte ProFix 126.",
-            "video": galleryVideos.map(video => ({
+            "video": videos.map(video => ({
               "@type": "VideoObject",
               "name": video.title,
               "description": video.description,
@@ -287,7 +280,7 @@ const Galeria = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {galleryVideos.map((video, index) => (
+            {videos.map((video, index) => (
               <div key={index} className="overflow-hidden rounded-lg shadow-md transform transition-transform hover:scale-105 border-2 border-madera-300 hover:border-herramienta-600">
                 <div className="aspect-video relative">
                   <iframe 
@@ -304,6 +297,43 @@ const Galeria = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto bg-gris-50 border border-gris-200 rounded-xl p-8">
+            <h2 className="text-3xl font-bold text-center mb-4 text-madera-800">Sigue explorando antes de comprar</h2>
+            <p className="text-gris-700 text-center max-w-3xl mx-auto mb-8">
+              Si la galeria ya te mostro el producto en uso, el siguiente paso es resolver compatibilidad, comparar
+              alternativas y aterrizar mejor el tipo de trabajo que quieres hacer con sierra circular, router o tableros.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <Link to="/guias/compatibilidad-por-marcas-frecuentes" className="bg-white border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+                <h3 className="font-bold text-lg mb-2">Compatibilidad por marcas</h3>
+                <p className="text-sm text-gris-700">Ideal si llegaste buscando Makita, Bosch, DeWalt, Stanley, Skil, Einhell, Ingco, Ubermann o Milwaukee.</p>
+              </Link>
+              <Link to="/guias/cortes-en-melamina-mdf-terciado" className="bg-white border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+                <h3 className="font-bold text-lg mb-2">Melamina, MDF y terciado</h3>
+                <p className="text-sm text-gris-700">Buena ruta para entender donde la guia agrega mas valor al trabajar tableros y piezas repetidas.</p>
+              </Link>
+              <Link to="/guias/profix-126-vs-regla-casera" className="bg-white border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+                <h3 className="font-bold text-lg mb-2">Comparativa vs regla casera</h3>
+                <p className="text-sm text-gris-700">Aclara cuando una solucion improvisada ya no alcanza para mantener ritmo, precision y terminacion.</p>
+              </Link>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/producto/profix-126">
+                <Button className="bg-herramienta-600 hover:bg-herramienta-700 text-white">Ver producto</Button>
+              </Link>
+              <Link to="/guias">
+                <Button variant="outline">Explorar guias</Button>
+              </Link>
+              <Link to="/contacto">
+                <Button variant="outline">Resolver compatibilidad</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

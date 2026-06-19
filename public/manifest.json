@@ -3,6 +3,7 @@
   "short_name": "GuiaDeCorte",
   "description": "Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#FF6600",
@@ -12,49 +13,49 @@
       "src": "/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "shortcuts": [
@@ -63,28 +64,28 @@
       "short_name": "Producto",
       "description": "Ver detalles del producto ProFix 126",
       "url": "/producto/profix-126",
-      "icons": [{ "src": "/icons/product-icon.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/product-icon.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Contacto",
       "short_name": "Contacto",
       "description": "Contactar con nosotros",
       "url": "/contacto",
-      "icons": [{ "src": "/icons/contact-icon.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/contact-icon.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/home.webp",
+      "src": "/screenshots/home.jpg",
       "sizes": "1280x720",
-      "type": "image/webp",
+      "type": "image/jpeg",
       "platform": "wide",
       "label": "Página principal de GuiaDeCorte.cl"
     },
     {
-      "src": "/screenshots/product.webp",
+      "src": "/screenshots/product.jpg",
       "sizes": "1280x720",
-      "type": "image/webp",
+      "type": "image/jpeg",
       "platform": "wide",
       "label": "Página de producto ProFix 126"
     }

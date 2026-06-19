@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run generate-sitemap",
+    "build": "tsc && vite build && node scripts/postbuild.js",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-server",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "prerender": "node scripts/prerender.js",
+    "prerender:blog": "node scripts/prerender-blog.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "blog:drafts": "node scripts/insertSeoBlogDrafts.js"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",

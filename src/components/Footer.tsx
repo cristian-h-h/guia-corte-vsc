@@ -1,9 +1,18 @@
-
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MessageSquare, ExternalLink } from "lucide-react";
-import RelatedCompaniesCarousel from "./RelatedCompaniesCarousel";
+import { Mail, Phone, MessageSquare } from "lucide-react";
 
-const Footer = () => {
+const RelatedCompaniesCarousel = lazy(() => import("./RelatedCompaniesCarousel"));
+
+interface FooterProps {
+  renderRelatedCompanies?: boolean;
+}
+
+const relatedCompaniesFallback = (
+  <div className="text-center text-gris-400">Cargando empresas relacionadas...</div>
+);
+
+const Footer = ({ renderRelatedCompanies = true }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   const phoneNumber = "+56935777727";
   const formattedPhone = "+569 3577 7727";
@@ -63,6 +72,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/guias" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
+                  Guias
+                </Link>
+              </li>
+              <li>
                 <Link to="/contacto" className="text-madera-200 hover:text-herramienta-800 transition-colors hover:underline">
                   Contacto
                 </Link>
@@ -103,7 +117,13 @@ const Footer = () => {
         {/* Empresas Relacionadas */}
         <div className="border-t border-gris-800 mt-8 pt-8">
           <h3 className="text-xl font-bold mb-6 text-center">Empresas Relacionadas</h3>
-          <RelatedCompaniesCarousel />
+          {renderRelatedCompanies ? (
+            <Suspense fallback={relatedCompaniesFallback}>
+              <RelatedCompaniesCarousel />
+            </Suspense>
+          ) : (
+            relatedCompaniesFallback
+          )}
         </div>
 
         <div className="border-t border-gris-800 mt-8 pt-6 text-center">

@@ -10,13 +10,17 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 
 // Configuración de Supabase
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.VITE_SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('Error: Se requieren las variables de entorno VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY');
+  console.error('Error: Se requieren las variables de entorno de Supabase para generar el sitemap');
   process.exit(1);
 }
 
@@ -48,6 +52,113 @@ const ensureFullUrl = (url) => {
   return `${BASE_URL}/${url}`;
 };
 
+const PLACEHOLDER_TITLES = new Set(['Título por defecto']);
+const PLACEHOLDER_PATTERNS = [
+  /contenido del artículo en desarrollo/i,
+  /próximamente publicaremos/i,
+];
+const BLOCKED_SLUG_PATTERNS = [/^slug-por-defecto/i];
+
+const FALLBACK_GALLERY_IMAGES = [
+  {
+    src: '/guia-imagenes/guia-corte-profix-126.webp',
+    alt: 'Guía de corte ProFix 126 en aluminio para sierra circular',
+    description: 'Vista general del producto y su estructura de aluminio para cortes rectos en taller u obra.'
+  },
+  {
+    src: '/guia-imagenes/corte-sierra-circular-profix-126.webp',
+    alt: 'ProFix 126 guiando una sierra circular en tablero de melamina',
+    description: 'Demostración real de corte recto con sierra circular, uno de los usos principales del sistema.'
+  },
+  {
+    src: '/guia-imagenes/ajuste-recto-profix-126.webp',
+    alt: 'Sistema de ajuste rápido de la guía de corte ProFix 126',
+    description: 'Detalle del ajuste rápido para calibrar la medida de trabajo antes del corte.'
+  },
+  {
+    src: '/guia-imagenes/guia-profix-126.webp',
+    alt: 'Vista lateral de la ProFix 126 con sujeción y escala de apoyo',
+    description: 'Detalle del cuerpo principal y la superficie de apoyo para trabajos repetibles y precisos.'
+  },
+  {
+    src: '/guia-imagenes/profix-126-guia-corte-recto.webp',
+    alt: 'ProFix 126 preparada para cortes rectos de precisión',
+    description: 'Presentación del formato completo de 1.26 metros para tableros, muebles y piezas largas.'
+  },
+  {
+    src: '/guia-imagenes/guia-corte-router-terciamel.webp',
+    alt: 'Aplicación de ProFix 126 con router en trabajo de carpintería',
+    description: 'Ejemplo de uso con router para ranurados, rebajes o recorridos rectos controlados.'
+  },
+  {
+    src: '/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp',
+    alt: 'Ajuste rápido de ProFix 126 previo al corte o al guiado',
+    description: 'Uso práctico del sistema de ajuste para agilizar preparación y repetición de medidas.'
+  }
+];
+
+const hasMeaningfulString = (value, minLength = 120) => {
+  if (typeof value !== 'string') return false;
+  const trimmed = value.trim();
+  return trimmed.length >= minLength && !PLACEHOLDER_PATTERNS.some((pattern) => pattern.test(trimmed));
+};
+
+const hasMeaningfulPortableText = (value) => {
+  if (!Array.isArray(value) || value.length === 0) return false;
+
+  const text = value
+    .flatMap((block) => Array.isArray(block?.children) ? block.children : [])
+    .map((child) => child?.text || '')
+    .join(' ')
+    .trim();
+
+  return hasMeaningfulString(text, 120);
+};
+
+const isIndexableBlog = (post) => {
+  const normalizedTitle = typeof post?.title === 'string' ? post.title.trim() : '';
+  const normalizedSlug = typeof post?.slug === 'string' ? post.slug.trim() : '';
+
+  if (!normalizedSlug || !normalizedTitle || PLACEHOLDER_TITLES.has(normalizedTitle) || post.is_published === false) {
+    return false;
+  }
+
+  if (BLOCKED_SLUG_PATTERNS.some((pattern) => pattern.test(normalizedSlug))) {
+    return false;
+  }
+
+  return (
+    hasMeaningfulPortableText(post.content) ||
+    hasMeaningfulString(post.content) ||
+    hasMeaningfulString(post.excerpt, 140)
+  );
+};
+
+const assetExistsInPublic = (url) => {
+  if (!url) return false;
+
+  try {
+    let pathname = url;
+
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      const parsed = new URL(url);
+      if (parsed.origin !== BASE_URL) {
+        return true;
+      }
+      pathname = parsed.pathname;
+    }
+
+    if (!pathname.startsWith('/')) {
+      pathname = `/${pathname}`;
+    }
+
+    const assetPath = path.join(PUBLIC_DIR, pathname.replace(/^\//, ''));
+    return fs.existsSync(assetPath);
+  } catch (error) {
+    return false;
+  }
+};
+
 // Función para generar el sitemap
 async function generateSitemap() {
   try {
@@ -69,8 +180,9 @@ async function generateSitemap() {
     console.log('📝 Obteniendo artículos de blog...');
     const { data: blogPosts, error: blogError } = await supabase
       .from('blog_posts')
-      .select('slug, title, image_url, updated_at, published_at')
-      .eq('is_published', true);
+      .select('slug, title, image_url, updated_at, published_at, excerpt, content, is_published')
+      .eq('is_published', true)
+      .not('slug', 'like', 'slug-por-defecto%');
     
     if (blogError) {
       console.error('❌ Error al obtener artículos de blog:', blogError);
@@ -170,10 +282,13 @@ async function generateSitemap() {
 `;
     
     // Agregar imágenes de galería a la página de galería
-    if (galleryImages && galleryImages.length > 0) {
-      galleryImages.slice(0, 10).forEach(img => { // Máximo 10 imágenes por página
+    const curatedGalleryImages = FALLBACK_GALLERY_IMAGES.filter((img) => assetExistsInPublic(img.src));
+    const galleryImagesForSitemap = curatedGalleryImages.length > 0 ? curatedGalleryImages : (galleryImages || []);
+
+    if (galleryImagesForSitemap.length > 0) {
+      galleryImagesForSitemap.slice(0, 10).forEach(img => { // Máximo 10 imágenes por página
         const imgUrl = ensureFullUrl(img.src);
-        if (imgUrl) {
+        if (imgUrl && assetExistsInPublic(imgUrl)) {
           sitemap += `    <image:image>
       <image:loc>${imgUrl}</image:loc>
       <image:title>${(img.alt || 'Imagen de galería').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</image:title>
@@ -215,6 +330,72 @@ async function generateSitemap() {
     <priority>0.6</priority>
   </url>
 `;
+
+    // Centro de guias y paginas soporte SEO
+    sitemap += `  <!-- Centro de guias -->
+  <url>
+    <loc>${BASE_URL}/guias</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Guia: compatibilidad -->
+  <url>
+    <loc>${BASE_URL}/guias/compatibilidad-herramientas</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: compatibilidad por modelo -->
+  <url>
+    <loc>${BASE_URL}/guias/compatibilidad-por-modelo-de-herramienta</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: compatibilidad por marcas -->
+  <url>
+    <loc>${BASE_URL}/guias/compatibilidad-por-marcas-frecuentes</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: materiales -->
+  <url>
+    <loc>${BASE_URL}/guias/cortes-en-melamina-mdf-terciado</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: sierra circular -->
+  <url>
+    <loc>${BASE_URL}/guias/como-hacer-cortes-rectos-con-sierra-circular</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: router -->
+  <url>
+    <loc>${BASE_URL}/guias/guia-de-corte-para-router</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: comparativa vs regla -->
+  <url>
+    <loc>${BASE_URL}/guias/profix-126-vs-regla-casera</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: comparativa vs sierra de mesa -->
+  <url>
+    <loc>${BASE_URL}/guias/sierra-circular-con-guia-vs-sierra-de-mesa</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+`;
     
     // Página de carrito
     sitemap += `  <!-- Carrito -->
@@ -249,7 +430,7 @@ async function generateSitemap() {
         if (imagesByProduct[product.id] && imagesByProduct[product.id].length > 0) {
           imagesByProduct[product.id].forEach(img => {
             const imgUrl = ensureFullUrl(img.url);
-            if (imgUrl) {
+            if (imgUrl && assetExistsInPublic(imgUrl)) {
               sitemap += `    <image:image>
       <image:loc>${imgUrl}</image:loc>
       <image:title>${(img.alt || product.name || product.id).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</image:title>
@@ -272,7 +453,7 @@ async function generateSitemap() {
     console.log('📰 Agregando artículos de blog...');
     
     if (blogPosts && blogPosts.length > 0) {
-      blogPosts.forEach(post => {
+      blogPosts.filter(isIndexableBlog).forEach(post => {
         const lastmod = formatDate(post.updated_at || post.published_at);
         const blogUrl = `${BASE_URL}/blog/${post.slug}`;
         const postTitle = (post.title || post.slug).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -287,9 +468,9 @@ async function generateSitemap() {
         
         // Agregar imagen del blog
         const blogImage = post.image_url;
-        if (blogImage) {
+        if (blogImage && blogImage.includes('/guia-imagenes/')) {
           const imgUrl = ensureFullUrl(blogImage);
-          if (imgUrl) {
+          if (imgUrl && assetExistsInPublic(imgUrl)) {
             sitemap += `    <image:image>
       <image:loc>${imgUrl}</image:loc>
       <image:title>${postTitle}</image:title>
@@ -317,10 +498,15 @@ async function generateSitemap() {
     
     const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
     fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
+
+    const distSitemapPath = path.join(__dirname, '..', 'dist', 'sitemap.xml');
+    if (fs.existsSync(path.join(__dirname, '..', 'dist'))) {
+      fs.writeFileSync(distSitemapPath, sitemap, 'utf-8');
+    }
     
     console.log('✅ Sitemap generado correctamente en:', sitemapPath);
     console.log(`📊 Estadísticas:`);
-    console.log(`   - Páginas web: 5`);
+    console.log(`   - Páginas web: 14`);
     console.log(`   - Productos: ${products?.length || 0}`);
     console.log(`   - Blogs: ${blogPosts?.length || 0}`);
     console.log(`   - Imágenes de productos: ${productImages?.length || 0}`);

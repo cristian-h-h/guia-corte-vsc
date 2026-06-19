@@ -34,6 +34,11 @@ Si prefieres usar el script JavaScript, sigue estos pasos:
    VITE_SUPABASE_ANON_KEY=tu_clave_anonima_de_supabase
    ```
 
+   Si quieres insertar o actualizar articulos desde script y tu tabla `blog_posts` tiene RLS activa, agrega tambien:
+   ```
+   SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key
+   ```
+
 2. Asegúrate de que la tabla `blog_posts` existe en tu base de datos con la siguiente estructura:
    - `id`: UUID (clave primaria)
    - `title`: texto
@@ -55,6 +60,29 @@ Ejecuta el script con Node.js:
 ```bash
 node scripts/insertSampleBlogPosts.js
 ```
+
+## Opcion 3: Insertar los nuevos borradores SEO redactados
+
+Si quieres cargar las nuevas entradas comerciales y SEO ya redactadas, usa el script:
+
+```bash
+npm run blog:drafts
+```
+
+Si `blog_posts` tiene RLS activa, este script necesitara `SUPABASE_SERVICE_ROLE_KEY` o `VITE_SUPABASE_SERVICE_ROLE_KEY` para poder escribir.
+
+Este script inserta o actualiza estos articulos:
+
+- `compatibilidad-guia-corte-makita-bosch-dewalt`
+- `cuando-una-regla-casera-no-alcanza`
+- `sierra-circular-con-guia-o-sierra-de-mesa-para-taller-pequeno`
+- `como-cortar-melamina-mdf-y-terciado-con-menos-error`
+- `guia-de-corte-para-router-cuando-si-conviene`
+
+Los datos fuente quedan en:
+
+- `scripts/blogDraftPosts.js`
+- `scripts/insertSeoBlogDrafts.js`
 
 ## Solución de problemas
 

@@ -19,6 +19,22 @@ interface SEOProps {
   children?: React.ReactNode;
 }
 
+const BASE_URL = "https://www.guiadecorte.cl";
+const DEFAULT_SOCIAL_IMAGE = `${BASE_URL}/social/profix-126-share.jpg`;
+const DEFAULT_APP_ICON = `${BASE_URL}/icons/apple-touch-icon.png`;
+
+const stripQueryParams = (value: string) => value.split("?")[0];
+
+const toAbsoluteUrl = (value: string) => {
+  if (/^https?:\/\//i.test(value)) {
+    return value;
+  }
+
+  return value.startsWith("/") ? `${BASE_URL}${value}` : `${BASE_URL}/${value}`;
+};
+
+const isSocialFriendlyImage = (value: string) => /\.(png|jpe?g)$/i.test(stripQueryParams(value));
+
 /**
  * Componente SEO mejorado para gestionar todas las metaetiquetas, Open Graph, Twitter Cards y datos estructurados
  */
@@ -44,15 +60,16 @@ const SEO: React.FC<SEOProps> = ({
   const defaultTitle = "Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes con Herramientas Eléctricas";
   const defaultDescription = "Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortes sierra circular compatible con herramientas eléctricas e inalámbricas. Guía para realizar cortes con sierra circular hasta 1,26 metros. Ideal como guía de corte banco de sierra.";
   const defaultKeywords = "guia de corte recto, guia de corte, guía de corte, guia corte, guía de corte recto para sierra circular, guia aluminio para cortes sierra circular, guia de corte banco de sierra, guia banco sierra, guia de corte con herramientas electricas, guia de corte para herramientas inalambricas, guia para realizar cortes con sierra circular, sierra circular, router, carpintería, bricolaje, herramientas precisión, cortes madera, profix 126, guía aluminio, corte recto preciso";
-  const defaultImage = "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp?v=2";
-  const defaultUrl = "https://www.guiadecorte.cl";
+  const defaultUrl = BASE_URL;
 
   // Valores finales
   const metaTitle = title ? `${title} | GuiaDeCorte.cl` : defaultTitle;
   const metaDescription = description || defaultDescription;
   const metaKeywords = keywords || defaultKeywords;
-  const metaImage = image || defaultImage;
-  const metaUrl = url || defaultUrl;
+  const metaUrl = url ? toAbsoluteUrl(url) : defaultUrl;
+  const requestedImage = image ? toAbsoluteUrl(image) : DEFAULT_SOCIAL_IMAGE;
+  const metaImage = isSocialFriendlyImage(requestedImage) ? requestedImage : DEFAULT_SOCIAL_IMAGE;
+  const usesDefaultSocialImage = metaImage === DEFAULT_SOCIAL_IMAGE;
 
   // Determinar si es una página de artículo/blog
   const isArticle = type === 'article';
@@ -81,7 +98,9 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:image:secure_url" content={metaImage} />
-      <meta property="og:image:type" content="image/webp" />
+      {usesDefaultSocialImage && <meta property="og:image:type" content="image/jpeg" />}
+      {usesDefaultSocialImage && <meta property="og:image:width" content="1200" />}
+      {usesDefaultSocialImage && <meta property="og:image:height" content="630" />}
       <meta property="og:image:alt" content={metaTitle} />
       <meta property="og:site_name" content="GuiaDeCorte.cl" />
       <meta property="og:locale" content={locale} />
@@ -116,6 +135,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:image" content={metaImage} />
       <meta name="twitter:image:alt" content={metaTitle} />
       <meta name="twitter:creator" content="@guiadecorte" />
+      <meta name="twitter:site" content="@guiadecorte" />
 
       {/* Video (si existe) */}
       {videoUrl && (
@@ -138,27 +158,19 @@ const SEO: React.FC<SEOProps> = ({
       {/* Metaetiquetas de accesibilidad */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="apple-mobile-web-app-title" content="GuiaDeCorte" />
 
       {/* Favicon y iconos */}
-      <link rel="icon" type="image/webp" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="shortcut icon" type="image/webp" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="152x152" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="144x144" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="120x120" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="114x114" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="76x76" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="72x72" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="60x60" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" sizes="57x57" href="/guia-imagenes/profix-126-logo.webp" />
-      <link rel="apple-touch-icon" href="/guia-imagenes/profix-126-logo.webp" />
-      <meta name="msapplication-TileImage" content={metaImage} />
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+      <meta name="msapplication-TileImage" content={DEFAULT_APP_ICON} />
       <meta name="msapplication-TileColor" content="#FF6600" />
 
       {/* Enlaces para precargar recursos críticos */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="preload" as="image" href={metaImage} />
 
       {/* Contenido adicional */}
       {children}

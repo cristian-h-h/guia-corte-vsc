@@ -47,6 +47,9 @@ const Navbar = () => {
             <Link to="/blog" className="text-madera-600 hover:text-herramienta-600 font-medium transition-colors text-lg hover:scale-105 transform duration-200">
               Blog
             </Link>
+            <Link to="/guias" className="text-madera-600 hover:text-herramienta-600 font-medium transition-colors text-lg hover:scale-105 transform duration-200">
+              Guias
+            </Link>
             <Link to="/contacto" className="text-madera-600 hover:text-herramienta-600 font-medium transition-colors text-lg hover:scale-105 transform duration-200">
               Contacto
             </Link>
@@ -119,6 +122,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Contacto
+            </Link>
+            <Link
+              to="/guias"
+              className="text-gris-800 hover:text-naranja-600 py-2 text-center font-medium"
+              onClick={toggleMenu}
+            >
+              Guias
             </Link>
           </div>
         </div>

@@ -3,8 +3,6 @@ import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
 import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import OptimizedImage from "@/components/OptimizedImage";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
 
 const Index = () => {
@@ -107,8 +105,8 @@ const Index = () => {
 
               <div className="mt-6 space-y-4">
                 <p className="text-madera-700 text-lg md:text-xl font-medium">
-                  La herramienta definitiva para carpinteros profesionales y aficionados.
-                  Realiza cortes rectos, precisos y terminaciones profesionales con cualquier herramienta.
+                  Una guía de corte recto pensada para talleres, mueblistas, instaladores y aficionados avanzados
+                  que necesitan cortes limpios, repetibles y mejor control sobre piezas largas.
                 </p>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
@@ -122,7 +120,7 @@ const Index = () => {
                     <span className="bg-herramienta-600 p-1 rounded-full mr-2 shadow-md">
                       <Check size={16} className="text-white" />
                     </span>
-                    Compatible con todas las marcas
+                    Compatible con múltiples marcas según base
                   </li>
                   <li className="flex items-center text-madera-800 bg-madera-100 p-2 rounded-lg shadow-sm">
                     <span className="bg-herramienta-600 p-1 rounded-full mr-2 shadow-md">
@@ -150,6 +148,11 @@ const Index = () => {
                     Contactar
                   </Button>
                 </Link>
+                <Link to="/guias/compatibilidad-por-marcas-frecuentes">
+                  <Button variant="outline" className="border-2 border-herramienta-600 text-herramienta-700 hover:bg-herramienta-100 text-lg px-8 py-6 rounded-xl shadow-md hover:shadow-lg">
+                    Ver compatibilidad por marcas
+                  </Button>
+                </Link>
               </div>
 
               <div className="mt-6 flex items-center bg-madera-100 p-3 rounded-lg shadow-inner">
@@ -161,7 +164,7 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-full bg-taller-800 flex items-center justify-center text-taller-100 text-xs shadow-md">★</div>
                 </div>
                 <span className="ml-3 text-madera-800 font-medium">
-                  <span className="font-bold">4.9/5</span> basado en más de 100 reseñas de carpinteros
+                  Elegida por carpinteros, mueblistas y usuarios que buscan más precisión en cada corte
                 </span>
               </div>
             </div>
@@ -185,7 +188,7 @@ const Index = () => {
 
                 {/* Etiqueta de beneficio principal */}
                 <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-herramienta-600 text-white px-8 py-3 rounded-full font-bold shadow-lg z-20 text-lg border-2 border-white">
-                  ¡Cortes perfectos garantizados!
+                  Más control en cada corte
                 </div>
 
                 {/* Imágenes pequeñas de uso del producto */}
@@ -213,7 +216,7 @@ const Index = () => {
 
           {/* Marcas compatibles */}
           <div className="mt-12 pt-8 border-t border-gris-200">
-            <p className="text-center text-gris-500 mb-4">Compatible con todas las marcas líderes:</p>
+            <p className="text-center text-gris-500 mb-4">Compatible con múltiples marcas y modelos de base similar:</p>
             <div className="flex flex-wrap justify-center items-center gap-6 opacity-70">
               <span className="text-gris-700 font-bold">DeWalt</span>
               <span className="text-gris-700 font-bold">Makita</span>
@@ -223,6 +226,11 @@ const Index = () => {
               <span className="text-gris-700 font-bold">Skill</span>
               <span className="text-gris-700 font-bold">Einhell</span>
               <span className="text-gris-700 font-bold">Ubermann</span>
+            </div>
+            <div className="text-center mt-5">
+              <Link to="/guias/compatibilidad-por-marcas-frecuentes" className="text-herramienta-700 font-semibold hover:text-herramienta-800">
+                Revisa compatibilidad por marcas frecuentes
+              </Link>
             </div>
           </div>
         </div>
@@ -237,7 +245,10 @@ const Index = () => {
             Guía de Aluminio para Cortes con Herramientas Eléctricas e Inalámbricas
           </h3>
           <p className="text-gris-700 mb-4">
-            Diseñada para superar los desafíos de la carpintería moderna, la <strong>guía de corte recto ProFix 126</strong> es el sistema definitivo para realizar cortes rectos perfectos hasta 1.26 metros de longitud con precisión milimétrica (±0.3 mm certificada). Esta <strong>guía de corte con herramientas eléctricas</strong> cuenta con un innovador sistema <strong>Quick-Change</strong> que permite cambiar entre herramientas en solo 15 segundos sin perder calibración. Compatible con <strong>guía de corte recto para sierra circular</strong>, routers, fresadoras, esmeriles angulares y sierras caladoras, ideal como <strong>guía para realizar cortes con sierra circular</strong>. Perfecta para uso con <strong>guía de corte para herramientas inalámbricas</strong> y herramientas eléctricas de todas las marcas (<strong>DeWalt, Makita, Bosch, Milwaukee, Stanley, Skill, Einhell, Ubermann, Total, Cat, Ingco, Bauker, etc.</strong>). Fabricada en <strong>guía aluminio para cortes sierra circular</strong>, también funciona como <strong>guía de corte banco de sierra</strong> y como <strong>guía banco sierra</strong> para proyectos más grandes.
+            La <strong>ProFix 126</strong> es una guía de corte recto de <strong>1.26 metros</strong> creada para personas
+            que trabajan melamina, MDF, terciado y madera en general con <strong>sierra circular</strong> como uso principal.
+            Tambien puede acompañar trabajos con <strong>router o fresadora</strong> cuando la base de la herramienta es compatible.
+            Su objetivo es simple: ayudarte a repetir medidas, mejorar la terminación y reducir desperdicio en cortes largos.
           </p>
           <h3 className="text-xl font-bold mt-6 mb-2">
             <span className="text-naranja-600">Especificaciones</span>{" "}
@@ -245,7 +256,7 @@ const Index = () => {
           </h3>
           <ul className="list-disc pl-6 text-gris-700 mb-4">
             <li>Estructura en aluminio aeronáutico 6061-T6 (resistencia a flexiones y vibraciones).</li>
-            <li>Sistema de sujeción multidireccional con topes ajustables en acero endurecido.</li>
+            <li>Sistema de ajuste rápido para preparar medidas de trabajo con mayor agilidad.</li>
             <li>Escala métrica e imperial con nonio para ajustes finos (precisión 0.1 mm).</li>
             <li>Peso optimizado: 1.4 kg con diseño para fácil transporte.</li>
             <li>Zonas de sujecion confeccionado en material antideslizante que impide el movimiento.</li>
@@ -256,39 +267,24 @@ const Index = () => {
           <ul className="list-disc pl-6 text-gris-700 mb-4">
             <li>✔ Ahorro de hasta 40% en tiempo por proyecto al eliminar mediciones manuales</li>
             <li>✔ Reducción de desperdicio de material gracias a cortes precisos en primera pasada</li>
-            <li>✔ Compatibilidad probada con más de 50 modelos de herramientas eléctricas</li>
+            <li>✔ Mejor control del corte en piezas largas y tableros de mueblería</li>
             <li>✔ Estabilidad superior incluso en cortes de materiales densos (maderas duras, MDF, melamina)</li>
           </ul>
           <h3 className="text-xl font-bold mt-6 mb-2">
             Ventajas para <span className="text-naranja-600">Hobbistas</span> Avanzados:
           </h3>
           <ul className="list-disc pl-6 text-gris-700 mb-4">
-            <li>✓ Fácil instalación sin modificaciones en tus herramientas</li>
+            <li>✓ Preparación rápida para trabajos domésticos y de taller</li>
             <li>✓ Resultados profesionales en proyectos domésticos</li>
-            <li>✓ Inversión a largo plazo con garantía extendida de 6 meses</li>
+            <li>✓ Mejor repetibilidad cuando necesitas varias piezas iguales</li>
           </ul>
-          <div className="mb-4">
-            <div className="mb-4">
-              <strong>
-                Utilizar una Guia <span className="text-naranja-600">ProFix 126</span> que la diferencia de la competencia:
-              </strong>
-              <span className="block text-gris-600 mt-1">
-                <li>✓ “guía de corte profesional 1.26 metros” </li>
-                <li>✓ “sistema de precisión para carpintería” </li>
-                <li>✓ “accesorio universal para herramientas manuales y electricas como sierra circular y router, sierra caladora, etc” </li>
-                <li>✓ “cortes rectos perfectos en madera” </li>
-                <li>✓ “herramienta esencial para taller de carpintería” </li>
-              </span>
-            </div>
-
-          </div>
           <h3 className="text-xl font-bold mt-6 mb-2">
             ¿Por qué Elegir la <span className="text-naranja-600">ProFix 126</span>?
           </h3>
           <ul className="list-disc pl-6 text-gris-700 mb-4">
-            <li>Única guía en el mercado chileno con certificación de precisión industrial.</li>
-            <li>No necesita de un kit o adaptadores para utilizar con herramientas sin importar la marca de ella.</li>
-            <li>No requieres de soporte técnico especializado para utilizarla nuestra Guía Profix 126.</li>
+            <li>Te entrega un formato de trabajo largo y portable para taller u obra.</li>
+            <li>Prioriza sierra circular y herramientas de base compatible, sin vender compatibilidades dudosas.</li>
+            <li>Ayuda a trabajar con más confianza cuando necesitas cortes rectos repetibles y mejor terminación.</li>
           </ul>
           <p className="text-gris-700 mb-6">
             Optimiza tu flujo de trabajo, eleva tus estándares de calidad y transforma cada proyecto con la <strong>Guía de Corte ProFix 126</strong>
@@ -321,6 +317,26 @@ const Index = () => {
               Video 3 demostrativo <span className="text-gris-900">Profix 126</span>
             </a>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+            <Link to="/guias/cortes-en-melamina-mdf-terciado" className="bg-gris-50 border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+              <h3 className="font-bold text-lg mb-2">Trabajas melamina, MDF o terciado?</h3>
+              <p className="text-gris-700 text-sm">
+                Mira cuando una guia recta realmente ayuda a cortar tableros con mejor repeticion y menos error.
+              </p>
+            </Link>
+            <Link to="/guias/profix-126-vs-regla-casera" className="bg-gris-50 border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+              <h3 className="font-bold text-lg mb-2">Sigues usando una regla casera?</h3>
+              <p className="text-gris-700 text-sm">
+                Compara cuando una guia dedicada ya marca diferencia real en flujo, precision y desperdicio.
+              </p>
+            </Link>
+            <Link to="/guias/compatibilidad-por-modelo-de-herramienta" className="bg-gris-50 border border-gris-200 rounded-lg p-5 hover:border-herramienta-600 transition-colors">
+              <h3 className="font-bold text-lg mb-2">Tienes una marca o modelo especifico?</h3>
+              <p className="text-gris-700 text-sm">
+                Revisa que datos conviene validar antes de comprar para confirmar compatibilidad responsable.
+              </p>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -351,7 +367,7 @@ const Index = () => {
               </div>
               <h3 className="feature-title">Guía de Corte con Herramientas Eléctricas</h3>
               <p className="feature-text">
-                Esta guía de corte es compatible con múltiples herramientas eléctricas e inalámbricas: sierra circular, caladora, router, tupí y fresadora. Perfecta como guía para realizar cortes con sierra circular de cualquier marca.
+                Diseñada principalmente para sierra circular y también utilizable con router o fresadora cuando la base de la herramienta es compatible con el sistema.
               </p>
             </div>
 

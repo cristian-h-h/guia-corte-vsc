@@ -9,14 +9,13 @@ export const organizationSchema = {
   "url": "https://www.guiadecorte.cl",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp",
+    "url": "https://www.guiadecorte.cl/icons/apple-touch-icon.png",
     "width": 180,
-    "height": 60
+    "height": 180
   },
   "sameAs": [
     "https://www.facebook.com/guiadecorte",
-    "https://www.instagram.com/guiadecorte",
-    "https://www.youtube.com/channel/UCxxxxxxxxxxxxxxx"
+    "https://www.instagram.com/guiadecorte"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -45,11 +44,6 @@ export const websiteSchema = {
   "description": "Guía de corte profesional para carpintería y bricolaje",
   "publisher": {
     "@id": "https://www.guiadecorte.cl/#organization"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.guiadecorte.cl/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
   }
 };
 
@@ -66,7 +60,7 @@ export const productSchema = {
     "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
     "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp"
   ],
-  "description": "Guía de corte profesional para carpintería con precisión industrial. Realiza cortes rectos perfectos hasta 1.26 metros con cualquier herramienta.",
+  "description": "Guía de corte profesional para carpintería y mueblería. Pensada para sierra circular y herramientas de base compatible en trabajos rectos de hasta 1.26 metros.",
   "sku": "PROFIX-126",
   "mpn": "PROFIX-126",
   "brand": {
@@ -88,42 +82,7 @@ export const productSchema = {
     "seller": {
       "@id": "https://www.guiadecorte.cl/#organization"
     }
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "87"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Carlos Méndez"
-      },
-      "datePublished": "2025-05-15",
-      "reviewBody": "Esta guía ha transformado mi taller. La precisión y facilidad de uso es impresionante. Recomiendo totalmente este producto."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Andrea Soto"
-      },
-      "datePublished": "2025-04-22",
-      "reviewBody": "Como aficionada al bricolaje, esta guía ha sido un descubrimiento. Ahora mis cortes son precisos y profesionales. ¡Una inversión que vale la pena!"
-    }
-  ]
+  }
 };
 
 /**
