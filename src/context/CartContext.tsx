@@ -22,12 +22,20 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const canUseBrowserStorage = () =>
+  typeof globalThis !== "undefined" &&
+  typeof globalThis.localStorage !== "undefined";
+
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // Cargar el carrito desde localStorage cuando se inicia la aplicación
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
+    if (!canUseBrowserStorage()) {
+      return;
+    }
+
+    const savedCart = globalThis.localStorage.getItem("cart");
     if (savedCart) {
       setCartItems(JSON.parse(savedCart));
     }
@@ -35,7 +43,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Guardar el carrito en localStorage cada vez que cambia
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    if (!canUseBrowserStorage()) {
+      return;
+    }
+
+    globalThis.localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (item: CartItem) => {

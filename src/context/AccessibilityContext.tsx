@@ -26,6 +26,11 @@ const defaultOptions: AccessibilityOptions = {
   dyslexicFont: false,
 };
 
+const canUseBrowserStorage = () =>
+  typeof globalThis !== 'undefined' &&
+  typeof globalThis.localStorage !== 'undefined' &&
+  typeof document !== 'undefined';
+
 // Crear el contexto
 const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);
 
@@ -33,14 +38,26 @@ const AccessibilityContext = createContext<AccessibilityContextType | undefined>
 export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Estado para las opciones de accesibilidad
   const [options, setOptions] = useState<AccessibilityOptions>(() => {
+    if (!canUseBrowserStorage()) {
+      return defaultOptions;
+    }
+
     // Intentar cargar las opciones guardadas en localStorage
-    const savedOptions = localStorage.getItem('accessibility-options');
-    return savedOptions ? JSON.parse(savedOptions) : defaultOptions;
+    try {
+      const savedOptions = globalThis.localStorage.getItem('accessibility-options');
+      return savedOptions ? JSON.parse(savedOptions) : defaultOptions;
+    } catch {
+      return defaultOptions;
+    }
   });
 
   // Guardar las opciones en localStorage cuando cambien
   useEffect(() => {
-    localStorage.setItem('accessibility-options', JSON.stringify(options));
+    if (!canUseBrowserStorage()) {
+      return;
+    }
+
+    globalThis.localStorage.setItem('accessibility-options', JSON.stringify(options));
     
     // Aplicar clases CSS basadas en las opciones
     document.documentElement.classList.toggle('high-contrast', options.highContrast);
