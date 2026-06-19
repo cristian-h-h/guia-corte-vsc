@@ -9,10 +9,6 @@ import SkipLink from "@/components/SkipLink";
 import Index from "./pages/Index";
 import Producto from "./pages/Producto";
 import Contacto from "./pages/Contacto";
-import Galeria from "./pages/Galeria";
-import NotFound from "./pages/NotFound";
-import SupportGuides from "./pages/SupportGuides";
-import SupportGuideDetail from "./pages/SupportGuideDetail";
 
 const StaticLayout = ({
   children,
@@ -60,38 +56,6 @@ const prerenderRoutes: RouteObject[] = [
       </StaticLayout>
     ),
   },
-  {
-    path: "/guias",
-    element: (
-      <StaticLayout>
-        <SupportGuides />
-      </StaticLayout>
-    ),
-  },
-  {
-    path: "/guias/:slug",
-    element: (
-      <StaticLayout>
-        <SupportGuideDetail />
-      </StaticLayout>
-    ),
-  },
-  {
-    path: "/galeria",
-    element: (
-      <StaticLayout>
-        <Galeria />
-      </StaticLayout>
-    ),
-  },
-  {
-    path: "*",
-    element: (
-      <StaticLayout>
-        <NotFound />
-      </StaticLayout>
-    ),
-  },
 ];
 
 export async function render(url: string) {
@@ -121,15 +85,5 @@ export async function getPrerenderRoutes() {
     "/",
     "/producto/profix-126",
     "/contacto",
-    "/galeria",
-    "/guias",
-    "/guias/compatibilidad-herramientas",
-    "/guias/compatibilidad-por-modelo-de-herramienta",
-    "/guias/compatibilidad-por-marcas-frecuentes",
-    "/guias/cortes-en-melamina-mdf-terciado",
-    "/guias/como-hacer-cortes-rectos-con-sierra-circular",
-    "/guias/guia-de-corte-para-router",
-    "/guias/profix-126-vs-regla-casera",
-    "/guias/sierra-circular-con-guia-vs-sierra-de-mesa",
   ];
 }

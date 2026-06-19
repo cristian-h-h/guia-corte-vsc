@@ -162,6 +162,48 @@ const routeMetaFallbacks = {
 };
 
 const manualPrerenderPages = {
+  "/galeria": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <span>Galeria</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">galeria de uso y aplicaciones reales</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Galeria de uso de la guia ProFix 126</h1>
+        <p class="text-xl text-gris-600 mb-5">Revisa imagenes y aplicaciones reales de la guia de corte ProFix 126 en sierra circular, ajuste rapido y trabajo sobre tableros.</p>
+      </header>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <h2 class="text-xl font-bold mb-3">Cortes rectos en tableros</h2>
+          <p class="text-gris-700">Visualiza escenarios donde una referencia estable ayuda a trabajar melamina, MDF y terciado con mejor control.</p>
+        </article>
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <h2 class="text-xl font-bold mb-3">Ajuste rapido en terreno</h2>
+          <p class="text-gris-700">Mira el tipo de uso que hace sentido para instaladores, obra y trabajos donde la portabilidad importa.</p>
+        </article>
+        <article class="bg-white border border-gris-200 rounded-xl p-6 shadow-sm">
+          <h2 class="text-xl font-bold mb-3">Aplicaciones para taller</h2>
+          <p class="text-gris-700">Entiende mejor como la ProFix 126 se integra a flujos de trabajo repetitivos en talleres pequenos y medianos.</p>
+        </article>
+      </section>
+      <section class="bg-gris-50 border border-gris-200 rounded-xl p-8 mb-10">
+        <h2 class="text-2xl font-bold mb-3">Que deberias buscar en esta galeria</h2>
+        <ul class="list-disc pl-6 text-gris-700 space-y-2">
+          <li>Tipo de herramienta utilizada.</li>
+          <li>Material o tablero trabajado.</li>
+          <li>Largo de corte y referencia visual.</li>
+          <li>Contexto de uso: taller, instalacion u obra.</li>
+        </ul>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Siguiente paso recomendado</h2>
+        <p class="text-gris-700 mb-4">Si ya viste una aplicacion parecida a tu caso, el mejor siguiente paso es revisar compatibilidad o pasar al producto.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/guias/compatibilidad-herramientas" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver compatibilidad</a>
+          <a href="/contacto" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Hacer una consulta</a>
+        </div>
+      </section>
+    </article>
+  `,
   "/guias": `
     <div class="container mx-auto px-4 py-12">
       <header class="text-center max-w-4xl mx-auto mb-12">
