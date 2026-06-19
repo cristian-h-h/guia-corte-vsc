@@ -10,44 +10,9 @@ const distDir = path.join(__dirname, "..", "dist");
 const serverDistDir = path.join(__dirname, "..", "dist-server");
 const serverEntryPath = path.join(serverDistDir, "entry-server.js");
 const templatePath = path.join(distDir, "index.html");
-const debugEnvPath = path.join(__dirname, "..", ".dbg", "vercel-prerender-fail.env");
 const BASE_URL = "https://www.guiadecorte.cl";
 const DEFAULT_SOCIAL_IMAGE = `${BASE_URL}/social/profix-126-share.jpg`;
 const DEFAULT_APP_ICON = `${BASE_URL}/icons/apple-touch-icon.png`;
-const pendingDebugRequests = [];
-
-const queueDebugLog = (payload) => {
-  let debugUrl = "http://127.0.0.1:7777/event";
-  let sessionId = "vercel-prerender-fail";
-
-  try {
-    const envFile = fs.readFileSync(debugEnvPath, "utf8");
-    debugUrl = envFile.match(/DEBUG_SERVER_URL=(.+)/)?.[1] || debugUrl;
-    sessionId = envFile.match(/DEBUG_SESSION_ID=(.+)/)?.[1] || sessionId;
-  } catch {}
-
-  const request = fetch(debugUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ...payload,
-      sessionId,
-      ts: payload.ts || Date.now(),
-    }),
-  }).catch(() => {});
-
-  pendingDebugRequests.push(request);
-  return request;
-};
-
-const flushDebugLogs = async () => {
-  if (pendingDebugRequests.length === 0) {
-    return;
-  }
-
-  const queuedRequests = pendingDebugRequests.splice(0, pendingDebugRequests.length);
-  await Promise.allSettled(queuedRequests);
-};
 
 const toDebuggableError = (phase, error, extra = {}) => {
   const detailText = Object.entries(extra)
@@ -689,9 +654,6 @@ const findServerEntry = (dirPath) => {
 const ensureServerEntry = async () => {
   const existingEntry = findServerEntry(serverDistDir);
   if (existingEntry) {
-    // #region debug-point A:existing-server-entry
-    await queueDebugLog({runId:"pre-fix",hypothesisId:"A",location:"scripts/prerender.js:ensureServerEntry",msg:"[DEBUG] SSR entry encontrado antes de reconstruir",data:{existingEntry}});
-    // #endregion
     return existingEntry;
   }
 
@@ -702,15 +664,9 @@ const ensureServerEntry = async () => {
 
   const rebuiltEntry = findServerEntry(serverDistDir);
   if (rebuiltEntry) {
-    // #region debug-point A:rebuilt-server-entry
-    await queueDebugLog({runId:"pre-fix",hypothesisId:"A",location:"scripts/prerender.js:ensureServerEntry",msg:"[DEBUG] SSR entry encontrado despues de reconstruir",data:{rebuiltEntry}});
-    // #endregion
     return rebuiltEntry;
   }
 
-  // #region debug-point A:server-entry-missing
-  await queueDebugLog({runId:"pre-fix",hypothesisId:"A",location:"scripts/prerender.js:ensureServerEntry",msg:"[DEBUG] No se encontro SSR entry tras reconstruir",data:{serverDistDir,expectedServerEntryPath:serverEntryPath}});
-  // #endregion
   throw new Error(
     `No se pudo localizar el entry SSR despues de reconstruir dist-server. Ruta esperada inicial: ${serverEntryPath}`
   );
@@ -727,20 +683,11 @@ const loadServerRenderer = async () => {
   const initialEntry = await ensureServerEntry();
 
   try {
-    // #region debug-point B:import-initial-entry
-    await queueDebugLog({runId:"pre-fix",hypothesisId:"B",location:"scripts/prerender.js:loadServerRenderer",msg:"[DEBUG] Intentando importar SSR entry inicial",data:{initialEntry}});
-    // #endregion
     return await import(pathToFileURL(initialEntry).href);
   } catch (error) {
-    // #region debug-point B:initial-entry-import-failed
-    await queueDebugLog({runId:"pre-fix",hypothesisId:"B",location:"scripts/prerender.js:loadServerRenderer",msg:"[DEBUG] Fallo import del SSR entry inicial",data:{initialEntry,errorName:error?.name||null,errorMessage:error?.message||String(error)}});
-    // #endregion
     console.warn("Fallo al importar el entry SSR inicial. Se reintentara tras reconstruir dist-server.");
     rebuildServerEntry();
     const rebuiltEntry = await ensureServerEntry();
-    // #region debug-point B:import-rebuilt-entry
-    await queueDebugLog({runId:"pre-fix",hypothesisId:"B",location:"scripts/prerender.js:loadServerRenderer",msg:"[DEBUG] Reintentando import del SSR entry reconstruido",data:{rebuiltEntry}});
-    // #endregion
     return await import(pathToFileURL(rebuiltEntry).href);
   }
 };
@@ -768,15 +715,8 @@ async function prerender() {
     throw toDebuggableError("get-prerender-routes", error);
   }
 
-  // #region debug-point D:prerender-routes-loaded
-  await queueDebugLog({runId:"pre-fix",hypothesisId:"D",location:"scripts/prerender.js:prerender",msg:"[DEBUG] Rutas de prerender cargadas",data:{prerenderRoutes}});
-  // #endregion
-
   for (const route of prerenderRoutes) {
     try {
-      // #region debug-point D:route-start
-      await queueDebugLog({runId:"pre-fix",hypothesisId:"D",location:"scripts/prerender.js:route-loop",msg:"[DEBUG] Iniciando prerender de ruta",data:{route,isManual:Boolean(manualPrerenderPages[route])}});
-      // #endregion
       let finalHtml;
 
       if (manualPrerenderPages[route]) {
@@ -797,21 +737,14 @@ async function prerender() {
       writePrerenderedPage(route, finalHtml);
       console.log(`Prerender OK: ${route}`);
     } catch (error) {
-      // #region debug-point D:route-failed
-      await queueDebugLog({runId:"pre-fix",hypothesisId:"D",location:"scripts/prerender.js:route-loop",msg:"[DEBUG] Fallo prerender de ruta",data:{route,errorName:error?.name||null,errorMessage:error?.message||String(error),stack:error?.stack||null}});
-      // #endregion
-      await flushDebugLogs();
       throw toDebuggableError("route-render", error, { route });
     }
   }
-
-  await flushDebugLogs();
 }
 
 try {
   await prerender();
 } catch (error) {
-  await flushDebugLogs();
   console.error("Error al prerenderizar rutas:", error);
   process.exit(1);
 }
