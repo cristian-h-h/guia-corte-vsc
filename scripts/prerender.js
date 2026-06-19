@@ -659,13 +659,32 @@ const ensureServerEntry = () => {
   );
 };
 
+const rebuildServerEntry = () => {
+  console.log("Reconstruyendo dist-server para prerender...");
+  execSync("npx vite build --ssr src/entry-server.tsx --outDir dist-server", {
+    stdio: "inherit",
+  });
+};
+
+const loadServerRenderer = async () => {
+  const initialEntry = ensureServerEntry();
+
+  try {
+    return await import(pathToFileURL(initialEntry).href);
+  } catch (error) {
+    console.warn("Fallo al importar el entry SSR inicial. Se reintentara tras reconstruir dist-server.");
+    rebuildServerEntry();
+    const rebuiltEntry = ensureServerEntry();
+    return await import(pathToFileURL(rebuiltEntry).href);
+  }
+};
+
 async function prerender() {
   if (!fs.existsSync(templatePath)) {
     throw new Error("No se encontró dist/index.html para prerenderizar.");
   }
 
-  const resolvedServerEntryPath = ensureServerEntry();
-  const { render, getPrerenderRoutes } = await import(pathToFileURL(resolvedServerEntryPath).href);
+  const { render, getPrerenderRoutes } = await loadServerRenderer();
   const template = fs.readFileSync(templatePath, "utf-8");
   const prerenderRoutes = [...new Set([...(await getPrerenderRoutes()), ...Object.keys(manualPrerenderPages)])];
 

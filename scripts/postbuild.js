@@ -9,5 +9,11 @@ const steps = [
 
 for (const [label, command] of steps) {
   console.log(`\n== ${label} ==`);
-  execSync(command, { stdio: "inherit" });
+  try {
+    execSync(command, { stdio: "inherit" });
+  } catch (error) {
+    console.error(`\nPostbuild fallo en el paso: ${label}`);
+    console.error(`Comando: ${command}`);
+    throw error;
+  }
 }
