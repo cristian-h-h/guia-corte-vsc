@@ -124,16 +124,6 @@ export async function generateSitemap() {
     <priority>0.6</priority>
   </url>`;
     
-    // Añadir página de carrito
-    sitemap += `
-  <!-- Carrito -->
-  <url>
-    <loc>https://www.guiadecorte.cl/carrito</loc>
-    <lastmod>${getCurrentDate()}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>`;
-    
     // Cerrar el sitemap
     sitemap += `
 </urlset>`;

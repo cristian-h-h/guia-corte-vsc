@@ -6,6 +6,7 @@ import { Home, Search } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
+  const canonicalUrl = `https://www.guiadecorte.cl${location.pathname}`;
 
   useEffect(() => {
     console.error(
@@ -20,7 +21,7 @@ const NotFound = () => {
         <title>404 - Página no encontrada | GuiaDeCorte.cl</title>
         <meta name="description" content="La página que buscas no existe. Visita nuestra guía de corte ProFix 126 para herramientas profesionales de carpintería." />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://www.guiadecorte.cl/404" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-madera-100 to-madera-200 py-12 px-4">

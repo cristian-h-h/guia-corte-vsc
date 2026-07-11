@@ -5,7 +5,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://www.guiadecorte.cl/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -17,14 +17,14 @@
   <!-- Blog -->
   <url>
     <loc>https://www.guiadecorte.cl/blog</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Galería -->
   <url>
     <loc>https://www.guiadecorte.cl/galeria</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -93,79 +93,72 @@
   <!-- Contacto -->
   <url>
     <loc>https://www.guiadecorte.cl/contacto</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <!-- Centro de guias -->
   <url>
     <loc>https://www.guiadecorte.cl/guias</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Guia: compatibilidad -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/compatibilidad-herramientas</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: compatibilidad por modelo -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/compatibilidad-por-modelo-de-herramienta</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: compatibilidad por marcas -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/compatibilidad-por-marcas-frecuentes</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: materiales -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/cortes-en-melamina-mdf-terciado</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: sierra circular -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/como-hacer-cortes-rectos-con-sierra-circular</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: router -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/guia-de-corte-para-router</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: comparativa vs regla -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/profix-126-vs-regla-casera</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Guia: comparativa vs sierra de mesa -->
   <url>
     <loc>https://www.guiadecorte.cl/guias/sierra-circular-con-guia-vs-sierra-de-mesa</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <!-- Carrito -->
-  <url>
-    <loc>https://www.guiadecorte.cl/carrito</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <!-- Producto: Guía de Corte ProFix 126 | Sistema Ajustable para Cortes Rectos de 1.26m -->
   <url>

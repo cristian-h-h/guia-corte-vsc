@@ -397,16 +397,6 @@ async function generateSitemap() {
   </url>
 `;
     
-    // Página de carrito
-    sitemap += `  <!-- Carrito -->
-  <url>
-    <loc>${BASE_URL}/carrito</loc>
-    <lastmod>${getCurrentDate()}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-`;
-    
     // ============================================
     // 4. PRODUCTOS (CON IMÁGENES)
     // ============================================
