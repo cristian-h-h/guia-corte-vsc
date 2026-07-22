@@ -15,6 +15,33 @@ const Index = () => {
     "guia de corte Ubermann",
   ];
 
+  const homeUseCases = [
+    {
+      title: "Cortes rectos en melamina y MDF",
+      description:
+        "Si buscas una guia para cortar melamina o trabajar MDF con mejor repeticion, la ProFix 126 ordena la referencia y ayuda a reducir errores en tableros largos.",
+    },
+    {
+      title: "Guia de corte para sierra circular en obra o taller",
+      description:
+        "La ProFix 126 funciona como guia de corte para sierra circular cuando necesitas portabilidad, rapidez de ajuste y una base de trabajo mas controlada que una regla improvisada.",
+    },
+    {
+      title: "Guia de aluminio para cortar madera",
+      description:
+        "El cuerpo de aluminio entrega rigidez y estabilidad para cortes rectos en madera, terciado y piezas donde una desviacion pequena ya afecta terminacion y encastre.",
+    },
+  ];
+
+  const homeBenefits = [
+    "Mejor repetibilidad cuando debes sacar varias piezas iguales.",
+    "Menor desperdicio al trabajar melamina, MDF, terciado y madera.",
+    "Mas control en cortes largos con sierra circular y base compatible.",
+    "Referencia portable para taller pequeno, instalacion y obra.",
+    "Ajuste rapido para pasar de medir a cortar con menos tiempo muerto.",
+    "Mejor claridad comercial para quien compara guia de corte recto, guia de aluminio o soluciones tipo Ubermann.",
+  ];
+
   return (
     <>
       <SEO
@@ -379,6 +406,59 @@ const Index = () => {
                 Revisa que datos conviene validar antes de comprar para confirmar compatibilidad responsable.
               </p>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 bg-gris-50 border-y border-gris-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gris-900 mb-4">
+              Usos y beneficios de una <span className="text-naranja-600">guia de corte recto ProFix 126</span>
+            </h2>
+            <p className="text-lg text-gris-700">
+              Esta seccion responde una duda comercial concreta: para que sirve realmente una guia de corte recto
+              para sierra circular y por que una guia de aluminio como la ProFix 126 puede ayudarte a vender mejor
+              precision, menos desperdicio y mas confianza en cada trabajo.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {homeUseCases.map((item) => (
+              <article key={item.title} className="bg-white rounded-xl border border-gris-200 p-6 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 text-gris-900">{item.title}</h3>
+                <p className="text-gris-700">{item.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="bg-white rounded-xl border border-gris-200 p-6 md:p-8 shadow-sm">
+            <h3 className="text-2xl font-bold mb-5 text-gris-900">
+              Beneficios reales al usar una guia recta para sierra circular
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {homeBenefits.map((benefit) => (
+                <div key={benefit} className="flex items-start gap-3 rounded-lg bg-gris-50 p-4 border border-gris-200">
+                  <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-naranja-600 text-white">
+                    <Check size={14} />
+                  </span>
+                  <p className="text-gris-700">{benefit}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Link to="/producto/profix-126">
+                <Button className="bg-naranja-600 hover:bg-naranja-700 text-white">
+                  Ver la ProFix 126
+                </Button>
+              </Link>
+              <Link to="/guias/como-hacer-cortes-rectos-con-sierra-circular">
+                <Button variant="outline">Ver usos con sierra circular</Button>
+              </Link>
+              <Link to="/guias/cortes-en-melamina-mdf-terciado">
+                <Button variant="outline">Ver usos en melamina y MDF</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

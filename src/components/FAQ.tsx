@@ -36,6 +36,26 @@ const faqData: FAQItem[] = [
   {
     question: "¿Hacen envíos a domicilio?",
     answer: "Se realizan envios a domicilio tanto en Region Metropolitana como a cualquier region de Chile. Se utiliza Starken o Bluexpress y puedes recibir en tu domicilio o retirar en agencia segun disponibilidad."
+  },
+  {
+    question: "¿La ProFix 126 sirve como guia recta para sierra circular en melamina y MDF?",
+    answer: "Si. De hecho es uno de los escenarios donde mas sentido tiene. Cuando trabajas melamina y MDF, una guia recta para sierra circular ayuda a repetir medidas, reducir desperdicio y mejorar la terminacion final."
+  },
+  {
+    question: "¿Es una guia de aluminio para sierra circular o tambien sirve en otros trabajos?",
+    answer: "La ProFix 126 se posiciona primero como guia de aluminio para sierra circular, pero tambien puede acompañar usos con router, fresadora u otras herramientas de base compatible, siempre validando apoyo y geometria real."
+  },
+  {
+    question: "¿Sirve como guia para cortar madera y tableros largos?",
+    answer: "Si. Si llegaste buscando una guia para cortar madera, la ProFix 126 apunta justamente a ese problema: mantener el recorrido mas estable en tableros, repisas, muebles y cortes largos donde una referencia improvisada suele fallar."
+  },
+  {
+    question: "¿Dónde se puede comprar en Chile?",
+    answer: "Puedes comprar la ProFix 126 desde la ficha de producto, pedir el link directo de compra por WhatsApp o escribir por contacto para resolver compatibilidad antes de pagar. Se despacha dentro de Chile segun cobertura disponible."
+  },
+  {
+    question: "¿Conviene frente a una regla de corte casera o una alternativa tipo Ubermann?",
+    answer: "Depende del uso, pero la ProFix 126 tiene sentido cuando buscas una guia de corte recto mas repetible, portable y enfocada en trabajo real con sierra circular. Si comparas con soluciones tipo regla casera o referencias Ubermann, conviene mirar estabilidad, longitud, ajuste y compatibilidad."
   }
 ];
 
@@ -94,6 +114,27 @@ const FAQ = () => {
             Respuestas a las dudas mas comunes sobre nuestra guia de corte recto <span className="text-black font-bold">ProFix 126</span>,
             especialmente para quienes buscan una guia de corte para sierra circular, una guia de aluminio o compatibilidad por marca.
           </p>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Compra y despacho</h3>
+              <p className="text-sm text-gris-700">
+                Ideal para quien llega preguntando si hay stock, si existe link directo o donde comprar en Chile.
+              </p>
+            </article>
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Usos reales</h3>
+              <p className="text-sm text-gris-700">
+                Responde consultas sobre sierra circular, melamina, MDF, madera, tableros y trabajo repetible.
+              </p>
+            </article>
+            <article className="bg-gris-50 border border-gris-200 rounded-lg p-5">
+              <h3 className="font-bold mb-2">Compatibilidad responsable</h3>
+              <p className="text-sm text-gris-700">
+                Aclara dudas con marcas como Ubermann, Makita, Bosch o DeWalt sin prometer compatibilidad universal.
+              </p>
+            </article>
+          </div>
           
           <div className="max-w-3xl mx-auto">
             {faqData.map((item, index) => (

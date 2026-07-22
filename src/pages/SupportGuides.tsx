@@ -13,6 +13,13 @@ const SupportGuides = () => {
     "guia de corte Ubermann",
   ];
 
+  const guideBenefits = [
+    "Aterrizan dudas que frenan la compra, como compatibilidad, materiales y tipo de trabajo.",
+    "Refuerzan busquedas con impresiones reales como guia de corte para sierra circular, guia recta para sierra circular y guia de aluminio para sierra circular.",
+    "Conectan trafico informativo con la ficha de producto, la galeria y el contacto de compatibilidad.",
+    "Ayudan a filtrar intencion equivocada antes de que el usuario abandone la web.",
+  ];
+
   const guideGroups = [
     {
       title: "Compatibilidad y validacion",
@@ -92,6 +99,26 @@ const SupportGuides = () => {
                 tecnico y comercial para entender cuando la ProFix 126 tiene mas sentido.
               </p>
             </article>
+          </div>
+        </section>
+
+        <section className="bg-white border border-gris-200 rounded-xl p-8 mb-14">
+          <div className="max-w-4xl mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Por que este centro de guias ayuda al SEO y a la venta de <span className="text-naranja-600">ProFix 126</span>
+            </h2>
+            <p className="text-gris-700 text-lg">
+              Las guias sirven para captar al usuario que todavia no esta listo para comprar, pero ya muestra una necesidad real.
+              Aqui trabajamos keywords con impresiones reales y las convertimos en paginas utiles que responden mejor que una ficha
+              comercial sola.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {guideBenefits.map((benefit) => (
+              <div key={benefit} className="rounded-lg bg-gris-50 border border-gris-200 p-5">
+                <p className="text-gris-700">{benefit}</p>
+              </div>
+            ))}
           </div>
         </section>
 

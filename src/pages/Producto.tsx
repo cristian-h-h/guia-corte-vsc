@@ -89,7 +89,32 @@ const producto = {
     { href: "https://youtube.com/shorts/shIy8jqR0tE?feature=share", label: "Ver demostración de corte" },
     { href: "https://youtube.com/shorts/UHUVFCgoRSc?feature=share", label: "Ver ajuste rápido" },
     { href: "https://youtube.com/shorts/JDyfjvraM2I?feature=share", label: "Ver aplicaciones y usos" }
-  ]
+  ],
+  mainUses: [
+    {
+      title: "Guia de corte para sierra circular en tableros",
+      description:
+        "Es el uso principal de la ProFix 126: ayudarte a cortar melamina, MDF, terciado y madera con una referencia mas estable, especialmente cuando trabajas piezas largas o repetidas.",
+    },
+    {
+      title: "Guia recta para sierra circular en muebles e instalaciones",
+      description:
+        "Si fabricas muebles o trabajas en terreno, esta guia recta para sierra circular te ayuda a repetir medidas con mas control sin depender de una sierra de mesa grande.",
+    },
+    {
+      title: "Guia de aluminio para trabajos repetibles",
+      description:
+        "La estructura de aluminio 6061-T6 entrega rigidez y portabilidad para quien compara una guia de aluminio para sierra circular y necesita algo mas confiable que una regla casera.",
+    },
+  ],
+  mainBenefits: [
+    "Reduce desperdicio cuando trabajas melamina, MDF, terciado o madera.",
+    "Mejora la repetibilidad en cortes rectos para muebles, repisas y piezas largas.",
+    "Aporta mas control visual y mecanico al usar sierra circular con guia de corte.",
+    "Ayuda a ordenar el flujo de trabajo en taller pequeno, instalacion u obra.",
+    "Permite validar compatibilidad responsable cuando vienes buscando Ubermann, Makita, Bosch o DeWalt.",
+    "Acerca una terminacion mas limpia sin sobredimensionar la solucion.",
+  ],
 };
 
 const Producto = () => {
@@ -155,14 +180,36 @@ const Producto = () => {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: producto.seoTitle,
+    alternateName: "Guia de corte recto ProFix 126 para sierra circular",
     image: producto.images.map((img) => `https://www.guiadecorte.cl${img.url}`),
     description: producto.seoDescription,
+    keywords: producto.keywords.join(", "),
     sku: producto._id,
+    mpn: "PROFIX-126",
     url: `https://www.guiadecorte.cl/producto/${producto._id}`,
+    category: "Guia de corte recto para sierra circular",
+    material: "Aluminio 6061-T6",
     brand: {
       "@type": "Brand",
       name: "ProFix",
     },
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Longitud",
+        value: "1.26 m",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Uso principal",
+        value: "Guia de corte para sierra circular",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Materiales recomendados",
+        value: "Melamina, MDF, terciado y madera",
+      },
+    ],
     offers: {
       "@type": "Offer",
       url: `https://www.guiadecorte.cl/producto/${producto._id}`,
@@ -363,6 +410,57 @@ const Producto = () => {
                 <li key={idx}>{item}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="my-12 bg-gris-50 border border-gris-200 rounded-xl p-6 md:p-8">
+          <div className="max-w-4xl mb-8">
+            <h2 className="text-3xl font-bold text-gris-900 mb-3">
+              Principales usos de la <span className="text-naranja-600">guia de corte recto ProFix 126</span>
+            </h2>
+            <p className="text-gris-700 text-lg">
+              Esta ficha no busca solo describir el producto. Busca responder para que sirve realmente una guia de corte
+              para sierra circular, cuando una guia recta marca diferencia y por que una guia de aluminio como la ProFix 126
+              puede ayudarte a cortar con mas precision, repeticion y confianza.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            {producto.mainUses.map((use) => (
+              <article key={use.title} className="bg-white rounded-lg border border-gris-200 p-5 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 text-gris-900">{use.title}</h3>
+                <p className="text-gris-700">{use.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg border border-gris-200 p-5 shadow-sm">
+              <h3 className="text-2xl font-bold mb-4 text-gris-900">Beneficios reales que obtienes</h3>
+              <ul className="list-disc pl-5 text-gris-700 space-y-3">
+                {producto.mainBenefits.map((benefit) => (
+                  <li key={benefit}>{benefit}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border border-gris-200 p-5 shadow-sm">
+              <h3 className="text-2xl font-bold mb-4 text-gris-900">Busquedas que esta pagina ataca mejor</h3>
+              <p className="text-gris-700 mb-4">
+                Aqui reforzamos consultas como <strong>guia de corte recto</strong>, <strong>guia de corte para sierra circular</strong>,
+                <strong> guia recta para sierra circular</strong>, <strong>guia de aluminio para sierra circular</strong> y
+                variantes ligadas a melamina, MDF, madera y compatibilidad por marca.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {producto.keywords.map((keyword) => (
+                  <span
+                    key={keyword}
+                    className="inline-flex items-center rounded-full bg-naranja-50 px-3 py-1 text-sm text-naranja-700 border border-naranja-200"
+                  >
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

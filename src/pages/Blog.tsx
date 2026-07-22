@@ -33,6 +33,24 @@ const Blog = () => {
     "guia de corte Ubermann",
   ];
 
+  const commercialAngles = [
+    {
+      title: "Buscar una guia de corte recto con intención real de compra",
+      description:
+        "Muchos usuarios no buscan teoria. Buscan una guia de corte recto que les ayude a cortar mejor, perder menos material y decidir rapido si la ProFix 126 les sirve.",
+    },
+    {
+      title: "Resolver dudas de materiales y trabajo diario",
+      description:
+        "El blog ahora empuja mejor terminos como melamina, MDF, madera, tableros y sierra circular con guia de corte para capturar trafico util y no solo visitas vagas.",
+    },
+    {
+      title: "Conectar contenido con producto y contacto",
+      description:
+        "Cada bloque editorial deberia acercar al usuario a una accion concreta: ver la ProFix 126, revisar compatibilidad o pedir el link directo de compra.",
+    },
+  ];
+
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
@@ -117,6 +135,25 @@ const Blog = () => {
               </Link>
             </article>
           ))}
+        </section>
+
+        <section className="mb-16 bg-gris-50 border border-gris-200 rounded-xl p-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Como este blog ayuda a vender mejor la ProFix 126</h2>
+            <p className="text-gris-600 max-w-3xl mx-auto">
+              El blog no solo existe para posicionar. Existe para capturar dudas reales, responder objeciones antes de comprar
+              y reforzar keywords como guia de corte para sierra circular, guia recta para sierra circular, guia de aluminio
+              para sierra circular y usos en melamina, MDF o madera.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {commercialAngles.map((angle) => (
+              <article key={angle.title} className="bg-white border border-gris-200 rounded-lg p-5 shadow-sm">
+                <h3 className="text-xl font-bold mb-3">{angle.title}</h3>
+                <p className="text-gris-700">{angle.description}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="mb-16">

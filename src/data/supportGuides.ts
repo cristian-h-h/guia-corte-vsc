@@ -360,6 +360,9 @@ export const supportGuides: SupportGuide[] = [
       "guias de corte para sierra circular",
       "guia corte sierra circular",
       "sierra con guia de corte",
+      "guia de corte para sierra",
+      "sierra circular con guia de corte",
+      "guia de corte recto para sierra circular",
     ],
     sections: [
       {
@@ -393,6 +396,13 @@ export const supportGuides: SupportGuide[] = [
           "Especialmente valiosa en melamina, MDF y terciado.",
         ],
       },
+      {
+        title: "Que gana quien llega buscando sierra circular con guia de corte",
+        paragraphs: [
+          "Cuando la busqueda cambia de guia de corte para sierra circular a sierra circular con guia de corte, la intencion suele ser todavia mas practica: la persona ya imagina el uso real y quiere saber si vale la pena pasar de una regla casera a un sistema mas repetible.",
+          "En ese escenario la ProFix 126 aporta una referencia larga, portable y orientada a trabajo real en melamina, MDF, madera y tableros, donde cada error de recorrido cuesta tiempo y material.",
+        ],
+      },
     ],
     faq: [
       {
@@ -414,6 +424,11 @@ export const supportGuides: SupportGuide[] = [
         question: "Conviene si ya tengo una regla casera?",
         answer:
           "Si el trabajo se repite, si cortas tableros o si quieres reducir desperdicio, una guia dedicada suele aportar bastante mas orden y repetibilidad.",
+      },
+      {
+        question: "Sirve si llegue buscando una guia de corte recto para sierra circular?",
+        answer:
+          "Si. Esa busqueda encaja muy bien con la propuesta de la ProFix 126, porque apunta justamente a lograr cortes rectos, repetibles y mas controlados con sierra circular en trabajo real.",
       },
     ],
     relatedGuideSlugs: [
@@ -452,6 +467,9 @@ export const supportGuides: SupportGuide[] = [
       "guia de corte recto sierra circular",
       "guia corte recto sierra circular",
       "guia de corte recto",
+      "guia de corte recto para sierra circular",
+      "guia para cortes rectos sierra circular",
+      "guia para cortar madera",
     ],
     sections: [
       {
@@ -478,6 +496,18 @@ export const supportGuides: SupportGuide[] = [
         paragraphs: [
           "ProFix 126 entra exactamente en este espacio: una guia recta larga, portable y pensada para sierra circular, donde el objetivo no es impresionar en ficha tecnica sino mejorar el trabajo diario.",
         ],
+        bullets: [
+          "Ayuda a mantener una linea mas estable en piezas largas.",
+          "Tiene mas sentido cuando cortas tableros, melamina, MDF o madera visible.",
+          "Conecta muy bien con quien busca una guia para cortes rectos con sierra circular.",
+        ],
+      },
+      {
+        title: "Cuando una guia recta tambien es una guia para cortar madera",
+        paragraphs: [
+          "Muchas personas no buscan la expresion tecnica exacta. Buscan simplemente una guia para cortar madera y terminar mejor sus piezas. En esos casos, la idea de guia recta ayuda a explicar por que el recorrido lineal importa tanto en costados, repisas, tapas y frentes.",
+          "Eso vuelve esta URL muy valiosa para SEO comercial: responde una duda concreta y la conecta con un escenario real donde la ProFix 126 si puede marcar diferencia.",
+        ],
       },
     ],
     faq: [
@@ -500,6 +530,11 @@ export const supportGuides: SupportGuide[] = [
         question: "La ProFix 126 esta pensada para esto?",
         answer:
           "Si. Su propuesta principal es justamente ayudarte a lograr cortes rectos repetibles con sierra circular y trabajo real sobre tableros.",
+      },
+      {
+        question: "Sirve si lo que quiero es una guia para cortar madera?",
+        answer:
+          "Si, especialmente si cortas madera, melamina, MDF o terciado y te importa terminar con mejor linea, menos correccion y mas consistencia entre piezas.",
       },
     ],
     relatedGuideSlugs: [
@@ -538,6 +573,9 @@ export const supportGuides: SupportGuide[] = [
       "guia de corte aluminio",
       "guia aluminio para corte",
       "guia de aluminio carpinteria",
+      "guia aluminio sierra circular",
+      "guia aluminio para sierra circular",
+      "guias de aluminio para sierra circular",
     ],
     sections: [
       {
@@ -565,6 +603,13 @@ export const supportGuides: SupportGuide[] = [
           "La ProFix 126 usa aluminio 6061-T6 justamente para sostener esa promesa: una guia larga, portable y mas estable para sierra circular cuando necesitas cortar melamina, MDF, terciado o madera con mayor control.",
         ],
       },
+      {
+        title: "Por que esta busqueda suele estar tan cerca de la compra",
+        paragraphs: [
+          "Quien ya busca guia de aluminio para sierra circular normalmente no esta en descubrimiento puro. Ya entendio que necesita una guia y ahora compara calidad percibida, rigidez, peso y sensacion de herramienta seria.",
+          "Eso hace que esta URL sea especialmente util para capturar trafico valioso y llevarlo a la ficha de producto, la galeria o la validacion de compatibilidad antes de cerrar la compra.",
+        ],
+      },
     ],
     faq: [
       {
@@ -586,6 +631,11 @@ export const supportGuides: SupportGuide[] = [
         question: "El aluminio reemplaza la necesidad de validar compatibilidad?",
         answer:
           "No. El material de la guia ayuda mucho, pero la compatibilidad final siempre depende tambien de la base, el apoyo y el tipo de herramienta.",
+      },
+      {
+        question: "Si busco guia aluminio sierra circular, la ProFix 126 entra en esa categoria?",
+        answer:
+          "Si. Justamente responde a esa necesidad: una guia de aluminio para sierra circular pensada para sentirse mas estable, portable y confiable en trabajo real.",
       },
     ],
     relatedGuideSlugs: [

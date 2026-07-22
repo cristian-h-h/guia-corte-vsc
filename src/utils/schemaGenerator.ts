@@ -2,6 +2,16 @@
  * Utilidad para generar esquemas JSON-LD para SEO
  */
 
+const defaultCommercialKeywords = [
+  "guia de corte recto",
+  "guia de corte para sierra circular",
+  "guia recta para sierra circular",
+  "guia de aluminio para sierra circular",
+  "guia para cortar melamina",
+  "guia corte madera",
+  "profix 126",
+];
+
 // Esquema de la organización
 export const generateOrganizationSchema = () => {
   return {
@@ -9,7 +19,11 @@ export const generateOrganizationSchema = () => {
     "@type": "Organization",
     "@id": "https://www.guiadecorte.cl/#organization",
     "name": "GuiaDeCorte.cl",
+    "alternateName": "Guia de Corte Recto ProFix 126",
     "url": "https://www.guiadecorte.cl",
+    "description":
+      "GuiaDeCorte.cl comercializa la guia de corte recto ProFix 126 para sierra circular y herramientas con base compatible.",
+    "keywords": defaultCommercialKeywords.join(", "),
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp",
@@ -38,7 +52,9 @@ export const generateWebsiteSchema = () => {
     "@id": "https://www.guiadecorte.cl/#website",
     "url": "https://www.guiadecorte.cl",
     "name": "GuiaDeCorte.cl",
-    "description": "Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas.",
+    "description":
+      "Guia de corte recto ProFix 126 para sierra circular, melamina, MDF, terciado y madera con mejor precision y repetibilidad.",
+    "keywords": defaultCommercialKeywords.join(", "),
     "publisher": {
       "@id": "https://www.guiadecorte.cl/#organization"
     }
@@ -57,17 +73,20 @@ export const generateProductSchema = (
   availability: "InStock" | "OutOfStock" = "InStock",
   brand: string = "ProFix",
   reviewCount?: number,
-  ratingValue?: number
+  ratingValue?: number,
+  keywords: string[] = defaultCommercialKeywords
 ) => {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productName,
     "description": description,
+    "keywords": keywords.join(", "),
     "sku": sku,
     "mpn": sku,
     "image": image,
     "url": url,
+    "category": "Guia de corte recto para sierra circular",
     "brand": {
       "@type": "Brand",
       "name": brand
@@ -137,7 +156,10 @@ export const generateContactPageSchema = (url: string) => {
     "@type": "ContactPage",
     "url": url,
     "name": "Contacto - GuiaDeCorte.cl",
-    "description": "Contáctanos para más información sobre nuestros productos y servicios.",
+    "description":
+      "Contacta a GuiaDeCorte.cl para consultar stock, compra y compatibilidad de la guia de corte recto ProFix 126.",
+    "keywords":
+      "contacto guia de corte recto, comprar profix 126, stock guia de corte para sierra circular",
     "mainEntity": {
       "@type": "Organization",
       "@id": "https://www.guiadecorte.cl/#organization"
@@ -234,7 +256,9 @@ export const generateHomePageSchema = () => {
       "@id": "https://www.guiadecorte.cl/#webpage",
       "url": "https://www.guiadecorte.cl",
       "name": "Guía de Corte ProFix 126 | Precisión Profesional para Carpintería",
-      "description": "Guía de corte recto ProFix 126, para sierra circular profesional y todo tipo de herramientas eléctricas. Realiza cortes rectos perfectos hasta 1,26 metros en madera, melamina y más.",
+      "description":
+        "Guia de corte recto ProFix 126 para sierra circular. Guia de aluminio para cortar madera, melamina, MDF y terciado con mayor control.",
+      "keywords": defaultCommercialKeywords.join(", "),
       "isPartOf": {
         "@id": "https://www.guiadecorte.cl/#website"
       },
