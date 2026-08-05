@@ -1,9 +1,59 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, MessageSquare, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
 import SEO from "@/components/SEO";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
+
+const compatibilityBrands = [
+  { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
+  { name: "DeWalt", tone: "bg-herramienta-50 border-herramienta-200 text-herramienta-800" },
+  { name: "Bosch", tone: "bg-naranja-50 border-naranja-200 text-naranja-800" },
+  { name: "Ubermann", tone: "bg-taller-50 border-taller-200 text-taller-800" },
+  { name: "Stanley", tone: "bg-madera-50 border-madera-200 text-madera-800" },
+  { name: "Ingco", tone: "bg-herramienta-50 border-herramienta-200 text-herramienta-800" },
+  { name: "Skil", tone: "bg-naranja-50 border-naranja-200 text-naranja-800" },
+  { name: "Einhell", tone: "bg-taller-50 border-taller-200 text-taller-800" },
+];
+
+const realClientShowcase = [
+  {
+    title: "Taller movil en obra: sierra circular + melamina de 15mm",
+    scenario: "Instalador de muebles que corta planchas en terreno antes de armar.",
+    alt: "Guia de corte ProFix 126 usada en taller real de obra con melamina de 15mm",
+    image: "/guia-imagenes/terciado-melamina-15mm.webp",
+    detail:
+      "Corta planchas de 1.22m de una sola pasada, ahorra traslado a un taller de corte y evita cortes intermedios.",
+    badge: "Cliente real - zona sur",
+  },
+  {
+    title: "Mueblista en taller chico: cortes repetitivos para rack y closet",
+    scenario: "Piezas iguales en melamina blanca con sierra circular portatil.",
+    alt: "Guia ProFix 126 en taller de mueblista cortando melamina blanca de forma repetida",
+    image: "/guia-imagenes/terciado-melamina-blanco.webp",
+    detail:
+      "Repite medidas sin marcar dos veces cada pieza y reduce mermas de terminacion.",
+    badge: "Cliente real - RM",
+  },
+  {
+    title: "Armado de carro candybar con tableros largos",
+    scenario: "Fabricacion de estructuras y apoyos con guia para cortes rectos largos.",
+    alt: "Guia de corte ProFix 126 usada para fabricar estructura de carro candybar en taller",
+    image: "/guia-imagenes/carro-candybar.webp",
+    detail:
+      "Cortes largos con referencia continua en tableros que luego se ensamblan sin retoques.",
+    badge: "Cliente real - V Region",
+  },
+  {
+    title: "Carro premium desmontable: precision en piezas encastrables",
+    scenario: "Piezas que requieren escuadra y repeticion exacta en espesores.",
+    alt: "Guia ProFix 126 usada en fabricacion de carro premium desmontable en taller",
+    image: "/guia-imagenes/carro-premium.webp",
+    detail:
+      "El 1.26m ayuda en planchas completas y luego en piezas largas del carro sin re-cortes.",
+    badge: "Cliente real - RM",
+  },
+];
 
 const Index = () => {
   const topSearchPhrases = [
@@ -655,6 +705,195 @@ const Index = () => {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Sello Compatibilidad Garantizada */}
+      <section className="py-14 bg-gradient-to-b from-madera-50 to-gris-50 border-y border-madera-200">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-2xl border border-herramienta-300 shadow-xl p-7 relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-herramienta-600 opacity-10 blur-3xl"></div>
+                <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-naranja-600 opacity-10 blur-3xl"></div>
+                <div className="flex items-center justify-between mb-5 relative">
+                  <div className="rounded-full bg-naranja-100 border-2 border-naranja-400 p-3 shadow-sm">
+                    <ShieldCheck className="h-8 w-8 text-naranja-700" />
+                  </div>
+                  <div className="flex items-center gap-1 bg-taller-800 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md">
+                    <BadgeCheck className="h-4 w-4" />
+                    Garantia ProFix
+                  </div>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gris-900 mb-3 leading-tight">
+                  Compatible con Makita, DeWalt, Bosch, Ubermann y mas.
+                </h3>
+                <p className="text-gris-700 font-semibold mb-4 text-lg">
+                  Si no le sirve para su trabajo con sierra circular, base compatible o modelo concreto, <span className="text-naranja-700">se la cambiamos</span>.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-2 text-gris-700">
+                    <span className="mt-0.5 inline-flex flex-shrink-0 items-center justify-center rounded-full bg-herramienta-100 text-herramienta-700 p-1 border border-herramienta-200 shadow-sm">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <span className="font-medium">Soporte antes de comprar: envianos foto de la base y el modelo.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-gris-700">
+                    <span className="mt-0.5 inline-flex flex-shrink-0 items-center justify-center rounded-full bg-herramienta-100 text-herramienta-700 p-1 border border-herramienta-200 shadow-sm">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <span className="font-medium">Envio inmediato en CHILE con stock listo para despacho.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-gris-700">
+                    <span className="mt-0.5 inline-flex flex-shrink-0 items-center justify-center rounded-full bg-herramienta-100 text-herramienta-700 p-1 border border-herramienta-200 shadow-sm">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <span className="font-medium">Guia pensada para sierra circular y uso real en muebles, taller u obra.</span>
+                  </li>
+                </ul>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Link to="/guias/compatibilidad-por-modelo-de-herramienta">
+                    <Button variant="outline" className="w-full border-2 border-herramienta-600 text-herramienta-700 hover:bg-herramienta-50 py-6 rounded-xl shadow-md">
+                      Revisar compatibilidad
+                    </Button>
+                  </Link>
+                  <a
+                    href="https://wa.me/56935777727?text=Hola,%20tengo%20stock%20para%20envio%20inmediato%20en%20Chile%20y%20somos%20los%20unicos%20con%201.26m%20de%20largo.%20Quiero%20validar%20compatibilidad%20de%20la%20guia%20de%20corte%20ProFix%20126%20con%20mi%20herramienta."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full bg-naranja-600 hover:bg-naranja-700 text-white py-6 rounded-xl shadow-md flex items-center justify-center gap-2">
+                      <MessageSquare className="h-5 w-5" /> Validar por WhatsApp
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-2 space-y-6">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-wide text-herramienta-700 mb-3">
+                  Marcas habituales que usan la guia en talleres de Chile
+                </p>
+                <h2 className="text-2xl md:text-4xl font-bold text-gris-900 mb-4">
+                  Eliminamos el miedo a que <span className="text-naranja-600">no sea compatible</span> con tu sierra circular.
+                </h2>
+                <p className="text-gris-700 text-lg leading-relaxed max-w-3xl">
+                  Antes de comprar puedes validar el modelo y la base con nosotros por WhatsApp. Si llega y no funciona para el uso que tenias previsto dentro de nuestro alcance comercial, resolvemos el cambio dentro del proceso.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {compatibilityBrands.map((brand) => (
+                  <div
+                    key={brand.name}
+                    className={`rounded-2xl border-2 ${brand.tone} p-5 flex items-center justify-center shadow-sm hover:shadow-lg transition-shadow`}
+                  >
+                    <p className="text-center text-xl font-extrabold">{brand.name}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-white border border-gris-200 rounded-2xl p-6 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-5">
+                <article>
+                  <h4 className="font-extrabold text-gris-900 mb-2 flex items-center gap-2">
+                    <span className="bg-naranja-100 text-naranja-700 rounded-full px-2 py-1 text-xs font-bold">
+                      PASO 1
+                    </span>
+                    Foto de la base
+                  </h4>
+                  <p className="text-gris-700">
+                    Envianos por WhatsApp una foto de la base plana de tu sierra circular, router o herramienta.
+                  </p>
+                </article>
+                <article>
+                  <h4 className="font-extrabold text-gris-900 mb-2 flex items-center gap-2">
+                    <span className="bg-herramienta-100 text-herramienta-700 rounded-full px-2 py-1 text-xs font-bold">
+                      PASO 2
+                    </span>
+                    Marca + Modelo
+                  </h4>
+                  <p className="text-gris-700">
+                    Indicanos marca, modelo y si la base tiene ranuras, topes o una parte inferior plana.
+                  </p>
+                </article>
+                <article>
+                  <h4 className="font-extrabold text-gris-900 mb-2 flex items-center gap-2">
+                    <span className="bg-taller-100 text-taller-700 rounded-full px-2 py-1 text-xs font-bold">
+                      PASO 3
+                    </span>
+                    Respuesta con OK o cambio
+                  </h4>
+                  <p className="text-gris-700">
+                    Te respondemos rapido si es util para tu trabajo. Si no lo es, resolvemos alternativa o cambio.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Clientes reales en taller */}
+      <section className="py-16 bg-gradient-to-b from-gris-50 to-white border-b border-gris-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-10">
+            <p className="text-sm font-bold uppercase tracking-wide text-naranja-600 mb-3">
+              Factor Humano - Talleres reales de Chile
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gris-900 mb-4">
+              La ProFix 126 en talleres, obra y muebles reales
+            </h2>
+            <p className="text-lg text-gris-700 leading-relaxed">
+              No usamos fotos de catalogo. En la practica la guia se usa en talleres chicos, instaladores, fabricacion de carros y muebles con sierra circular, melamina, MDF y terciado. Estos son escenarios reales de clientes que ya usan la ProFix 126 en Chile.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {realClientShowcase.map((item) => (
+              <article
+                key={item.title}
+                className="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 flex items-center gap-1 bg-naranja-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md">
+                    <BadgeCheck className="h-4 w-4" />
+                    {item.badge}
+                  </div>
+                </div>
+                <div className="p-5 space-y-3">
+                  <p className="text-xs uppercase tracking-wide font-bold text-herramienta-700">
+                    {item.scenario}
+                  </p>
+                  <h3 className="font-extrabold text-lg text-gris-900 leading-snug group-hover:text-naranja-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gris-700 text-sm leading-relaxed">{item.detail}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/galeria">
+              <Button className="bg-herramienta-600 hover:bg-herramienta-700 text-white py-6 px-8 rounded-xl text-lg shadow-md">
+                Ver galeria completa
+              </Button>
+            </Link>
+            <a
+              href="https://wa.me/56935777727?text=Hola,%20tengo%20stock%20para%20envio%20inmediato%20en%20Chile%20y%20somos%20los%20unicos%20con%201.26m%20de%20largo.%20Quiero%20comprar%20la%20guia%20de%20corte%20ProFix%20126%20despues%20de%20ver%20clientes%20reales."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="w-full sm:w-auto border-2 border-naranja-600 text-naranja-700 hover:bg-naranja-50 py-6 px-8 rounded-xl text-lg shadow-md">
+                Pedir link de compra
+              </Button>
+            </a>
           </div>
         </div>
       </section>
