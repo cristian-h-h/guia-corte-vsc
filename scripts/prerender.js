@@ -30,22 +30,22 @@ const toDebuggableError = (phase, error, extra = {}) => {
 const routeMetaFallbacks = {
   "/": {
     title:
-      "Guia de Corte Recto ProFix 126 para Sierra Circular | Guia de Aluminio para Cortes con Herramientas Electricas",
+      "Guía de Corte Sierra Circular 1.26m | Precisión Profesional Chile",
     description:
-      "Guia de corte recto ProFix 126 para sierra circular y herramientas con base compatible. Ideal para melamina, MDF, terciado y trabajos de carpinteria con precision, portabilidad y ajuste rapido.",
+      "Guía de corte recto ProFix 126 de 1.26m para sierra circular y herramientas con base compatible. Envío inmediato en Chile, ideal para melamina, MDF, terciado y madera con precisión y control.",
     canonical: `${BASE_URL}/`,
     keywords:
-      "guia de corte recto, guia para sierra circular, profix 126, guia de aluminio para carpinteria, guia para melamina, guia para MDF, guia para router",
+      "guia de corte recto, guia de corte para sierra circular, guia de aluminio para sierra circular, guia recta para sierra circular, profix 126, 1.26m, Chile, guia para melamina, guia para MDF, guia para router",
     type: "website",
     image: DEFAULT_SOCIAL_IMAGE,
   },
   "/producto/profix-126": {
-    title: "Guia de Corte Recto ProFix 126 para Sierra Circular y Router | GuiaDeCorte.cl",
+    title: "Guía de Corte Sierra Circular 1.26m | ProFix 126 Chile",
     description:
-      "ProFix 126 es una guia de corte recto de 1.26 metros para sierra circular, router y herramientas con base compatible. Ideal para melamina, MDF, terciado y carpinteria de precision.",
+      "ProFix 126 es una guía de corte recto de 1.26m para sierra circular, router y herramientas con base compatible. Envío inmediato en Chile para trabajar melamina, MDF, terciado y madera.",
     canonical: `${BASE_URL}/producto/profix-126`,
     keywords:
-      "guia de corte recto, profix 126, guia para sierra circular, guia para router, guia para melamina, guia de aluminio",
+      "guia de corte recto, guia de corte para sierra circular, guia recta para sierra circular, profix 126, 1.26m, Chile, guia para router, guia para melamina, guia de aluminio",
     type: "product",
     image: DEFAULT_SOCIAL_IMAGE,
   },

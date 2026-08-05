@@ -45,9 +45,9 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio para Cortes Rectos"
-        description="Guía de corte recto ProFix 126 para sierra circular. Guía de aluminio para cortar melamina, MDF, terciado y madera con más precisión, repetición y control en taller u obra."
-        keywords="guia de corte recto, guia de corte para sierra circular, guia de aluminio para sierra circular, guia recta para sierra circular, guia corte sierra circular, guia corte madera, guia de corte Ubermann, guia de corte Makita, guia de corte Bosch, guia de corte DeWalt, melamina, MDF, terciado, profix 126"
+        title="Guía de Corte Sierra Circular 1.26m | Precisión Profesional Chile"
+        description="Guía de corte recto ProFix 126 para sierra circular y herramientas con base compatible. Guía de aluminio de 1.26m en Chile para cortar melamina, MDF, terciado y madera con precisión y menos desperdicio."
+        keywords="guia de corte recto, guia de corte para sierra circular, guia de aluminio para sierra circular, guia recta para sierra circular, guia corte sierra circular, guia corte madera, guia de corte Ubermann, guia de corte Makita, guia de corte Bosch, guia de corte DeWalt, melamina, MDF, terciado, profix 126, 1.26 metros, Chile"
         image="https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"
         url="https://www.guiadecorte.cl/"
         schema={[organizationSchema, websiteSchema, productSchema, {
@@ -606,6 +606,59 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Ventaja 1.26m */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Tu ventaja con los <span className="text-naranja-600">1.26m</span> frente a Sodimac, Imperial y Kreg
+          </h2>
+          <div className="w-24 h-2 bg-naranja-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-center text-gris-700 max-w-3xl mx-auto mb-12 text-lg">
+            La mayoria de las guias en Chile se quedan en 1.00 - 1.22m. Eso no alcanza para una plancha estandar de 1.22m.
+            La ProFix 126 llega a 1.26m, asi que cortas la plancha completa de una sola vez, sin cortes intermedios, sin desviaciones y sin perder tiempo.
+          </p>
+          <div className="overflow-x-auto max-w-5xl mx-auto">
+            <table className="min-w-full bg-white rounded-lg shadow text-left border border-gris-200">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-gris-50 border-b border-gris-200 font-bold text-gris-900">
+                    Característica
+                  </th>
+                  <th className="py-3 px-4 bg-gris-50 border-b border-gris-200 font-bold text-gris-700">
+                    Competencia estándar (Sodimac, Imperial, Kreg)
+                  </th>
+                  <th className="py-3 px-4 bg-naranja-600 border-b border-naranja-700 font-bold text-white">
+                    ProFix 126 en Chile
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gris-200">
+                  <td className="py-3 px-4 font-semibold text-gris-900">Largo total</td>
+                  <td className="py-3 px-4 text-gris-700">1.00 - 1.22m (quedan cortas para planchas)</td>
+                  <td className="py-3 px-4 font-bold text-naranja-700">1.26m, corta planchas de 1.22m de una vez</td>
+                </tr>
+                <tr className="border-b border-gris-200">
+                  <td className="py-3 px-4 font-semibold text-gris-900">Material</td>
+                  <td className="py-3 px-4 text-gris-700">Plástico o aluminio delgado</td>
+                  <td className="py-3 px-4 font-bold text-naranja-700">Aluminio aeronáutico 6061-T6</td>
+                </tr>
+                <tr className="border-b border-gris-200">
+                  <td className="py-3 px-4 font-semibold text-gris-900">Precio</td>
+                  <td className="py-3 px-4 text-gris-700">$43.990+ o $300.000+ en opciones premium</td>
+                  <td className="py-3 px-4 font-bold text-naranja-700">$35.000 por transferencia. Ahorro real.</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-semibold text-gris-900">Despacho</td>
+                  <td className="py-3 px-4 text-gris-700">Depende de stock regional o espera</td>
+                  <td className="py-3 px-4 font-bold text-naranja-700">Stock para envío inmediato en Chile</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <FAQ />
 
@@ -642,7 +695,7 @@ const Index = () => {
               </Button>
             </Link>
             <a
-              href="https://www.payku.cl/pagar/profix-126"
+              href="https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd"
               target="_blank"
               rel="noopener noreferrer"
             >

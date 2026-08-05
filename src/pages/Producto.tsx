@@ -9,9 +9,9 @@ import { useParams, Link } from "react-router-dom";
 const producto = {
   _id: "profix-126",
   name: "Guía de Corte Recto ProFix 126",
-  seoTitle: "Guía de Corte Recto ProFix 126 para Sierra Circular | Guía de Aluminio 1.26 m",
+  seoTitle: "Guía de Corte Sierra Circular 1.26m | ProFix 126 Chile",
   seoDescription:
-    "ProFix 126 es una guía de corte recto de aluminio de 1.26 metros para sierra circular y herramientas con base compatible. Ideal para melamina, MDF, terciado y madera cuando buscas cortes rectos, repetibles y mejor terminación.",
+    "Guía de corte recto ProFix 126 de 1.26m para sierra circular y herramientas con base compatible. Envío inmediato en Chile, ideal para melamina, MDF, terciado y madera con precisión profesional.",
   shortDescription:
     "Guia de corte recto de 1.26 metros para sierra circular, talleres, mueblistas, instaladores y aficionados avanzados que necesitan cortes rectos, repetibles y limpios sin depender de maquinaria grande.",
   overview:
@@ -84,7 +84,7 @@ const producto = {
     "guía para router",
     "accesorio para carpintería"
   ],
-  paymentLink: "https://www.payku.cl/pagar/profix-126",
+  paymentLink: "https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd",
   videos: [
     { href: "https://youtube.com/shorts/shIy8jqR0tE?feature=share", label: "Ver demostración de corte" },
     { href: "https://youtube.com/shorts/UHUVFCgoRSc?feature=share", label: "Ver ajuste rápido" },
@@ -349,7 +349,7 @@ const Producto = () => {
                 <Button variant="outline" className="w-full sm:w-auto">Resolver dudas antes de comprar</Button>
               </Link>
               <a
-                href="https://wa.me/56935777727?text=Hola,%20quiero%20el%20link%20de%20compra%20de%20la%20guia%20de%20corte%20ProFix%20126%20y%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
+                href="https://wa.me/56935777727?text=Hola,%20tengo%20stock%20para%20envio%20inmediato%20en%20Chile%20y%20somos%20los%20unicos%20con%201.26m%20de%20largo.%20Quiero%20el%20link%20de%20compra%20de%20la%20guia%20de%20corte%20ProFix%20126%20y%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -503,8 +503,9 @@ const Producto = () => {
             Por que elegir <span className="text-naranja-600">ProFix 126</span>
           </h2>
           <p className="text-lg text-center mb-6 max-w-3xl mx-auto">
-            El valor del sistema no esta solo en la longitud. Esta en combinar estabilidad, ajuste rapido y una forma de trabajo
-            pensada para talleres, muebles a medida e instalaciones donde el tiempo y la precision importan.
+            El valor del sistema no esta solo en la longitud de 1.26m. Esta en combinar estabilidad, ajuste rapido y una forma de trabajo
+            pensada para talleres, muebles a medida e instalaciones donde el tiempo y la precision importan. Con 1.26m cortas la plancha estandar
+            de 1.22m de una sola vez, a diferencia de la mayoria de guias que quedan cortas.
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white rounded-lg shadow text-left">
@@ -517,7 +518,7 @@ const Producto = () => {
                   </th>
                   <th className="py-2 px-4 text-center">
                     <div className="bg-gris-200 rounded-lg px-4 py-2 font-bold text-black text-center">
-                      Solución genérica
+                      Competencia estandar (Sodimac, Imperial, Kreg)
                     </div>
                   </th>
                   <th className="py-2 px-4 text-center">
@@ -529,24 +530,24 @@ const Producto = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td className="py-2 px-4 font-semibold text-left">Longitud de trabajo</td>
-                  <td className="py-2 px-4 text-left">Limitada para piezas largas</td>
-                  <td className="py-2 px-4 font-bold text-left">Hasta 126 cm</td>
+                  <td className="py-2 px-4 font-semibold text-left">Largo total</td>
+                  <td className="py-2 px-4 text-left">1.00 - 1.22m (insuficiente para planchas completas)</td>
+                  <td className="py-2 px-4 font-bold text-left">1.26m, corta planchas de 1.22m de una sola vez</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-4 font-semibold text-left">Preparación</td>
-                  <td className="py-2 px-4 text-left">Ajustes lentos y repetitivos</td>
-                  <td className="py-2 px-4 font-bold text-left">Ajuste rápido para preparar y repetir medidas</td>
+                  <td className="py-2 px-4 font-semibold text-left">Material</td>
+                  <td className="py-2 px-4 text-left">Plastico o aluminio delgado</td>
+                  <td className="py-2 px-4 font-bold text-left">Aluminio aeronáutico 6061-T6, rigido y estable</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-4 font-semibold text-left">Rigidez del cuerpo</td>
-                  <td className="py-2 px-4 text-left">Menor estabilidad en piezas largas</td>
-                  <td className="py-2 px-4 font-bold text-left">Aluminio 6061-T6 para trabajo más estable</td>
+                  <td className="py-2 px-4 font-semibold text-left">Precio</td>
+                  <td className="py-2 px-4 text-left">$43.990+ o $300.000+ en sistemas premium</td>
+                  <td className="py-2 px-4 font-bold text-left">$35.000 / transferencia. Ahorro real en Chile</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-4 font-semibold text-left">Portabilidad</td>
-                  <td className="py-2 px-4 text-left">Mayor volumen o peso</td>
-                  <td className="py-2 px-4 font-bold text-left">Aprox. 1.4 kg para taller y obra</td>
+                  <td className="py-2 px-4 font-semibold text-left">Despacho</td>
+                  <td className="py-2 px-4 text-left">Depende de stock regional o espera</td>
+                  <td className="py-2 px-4 font-bold text-left">Stock para envio inmediato en Chile</td>
                 </tr>
               </tbody>
             </table>

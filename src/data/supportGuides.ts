@@ -334,27 +334,28 @@ export const supportGuides: SupportGuide[] = [
   {
     slug: "guia-de-corte-para-sierra-circular",
     path: "/guias/guia-de-corte-para-sierra-circular",
-    title: "Guia de corte para sierra circular: que revisar antes de comprar y por que si cambia el resultado",
+    title: "Guia de corte para sierra circular: 1.26m para planchas completas en Chile | ProFix 126",
     shortTitle: "Guia de corte para sierra circular",
     category: "tecnica",
     categoryLabel: "Tecnica",
     description:
-      "Aprende que debe ofrecer una guia de corte para sierra circular, cuando vale la pena comprarla y como mejora cortes rectos, repetibilidad y control en tableros y piezas largas.",
+      "Guia de corte para sierra circular de 1.26m en Chile: corta planchas de 1.22m de una sola vez, mejor que una regla casera. Ventaja real frente a Sodimac, Imperial y Ubermann para melamina, MDF, terciado y madera.",
     keywords:
-      "guia de corte para sierra circular, guias de corte para sierra circular, guia corte sierra circular, sierra con guia de corte, guia para corte sierra circular",
+      "guia de corte para sierra circular, guias de corte para sierra circular, guia corte sierra circular, sierra con guia de corte, guia para corte sierra circular, sierra circular con guia de corte, guia de corte recto para sierra circular, 1.26m, Chile",
     primaryKeyword: "guia de corte para sierra circular",
     searchIntent: "Resolver una busqueda comercial alta de usuarios que ya quieren una solucion concreta para cortar con sierra circular.",
     audience: "Usuarios que ya tienen sierra circular y buscan una guia real para tableros, muebles, instalacion o trabajo portable.",
     summary:
-      "Esta guia responde una consulta clave de Google con lenguaje directo: que debe ofrecer una guia de corte para sierra circular y por que una referencia dedicada puede mejorar mucho el proceso.",
+      "Esta guia responde una consulta clave de Google con lenguaje directo: que debe ofrecer una guia de corte para sierra circular y por que una referencia dedicada de 1.26m puede mejorar mucho el proceso frente a una regla casera.",
     problemStatement:
-      "Mucha gente busca una guia de corte para sierra circular, pero no siempre entiende que diferencias reales hay entre una referencia improvisada y una guia dedicada. Sin esa explicacion, el usuario termina comparando mal o postergando la compra.",
+      "Mucha gente busca una guia de corte para sierra circular, pero no siempre entiende que diferencias reales hay entre una referencia improvisada y una guia dedicada. Sin esa explicacion, el usuario termina comparando mal o postergando la compra. El punto ciego mas frecuente es la longitud: las guias estandar de 1.00-1.22m no alcanzan para planchas completas de 1.22m.",
     useCases: [
       "Cortar tableros grandes con mejor control.",
       "Repetir medidas en muebles o instalaciones.",
       "Trabajar con sierra circular en taller pequeno u obra.",
+      "Cortar planchas estandar de 1.22m de una sola vez en Chile.",
     ],
-    toolFocus: ["Sierra circular", "Guia recta", "Tableros", "Trabajo portable"],
+    toolFocus: ["Sierra circular", "Guia recta", "Tableros", "Trabajo portable", "1.26m"],
     relatedSearches: [
       "guia de corte para sierra circular",
       "guias de corte para sierra circular",
@@ -363,6 +364,8 @@ export const supportGuides: SupportGuide[] = [
       "guia de corte para sierra",
       "sierra circular con guia de corte",
       "guia de corte recto para sierra circular",
+      "mejor guia de corte para sierra circular Chile",
+      "regla de corte para sierra circular",
     ],
     sections: [
       {
@@ -376,13 +379,27 @@ export const supportGuides: SupportGuide[] = [
           "Mejor repetibilidad en piezas iguales.",
           "Mas orden al trabajar tableros largos.",
           "Menor dependencia del pulso o de reglas improvisadas.",
+          "Longitud suficiente para planchas estandar sin cortes intermedios.",
+        ],
+      },
+      {
+        title: "Por que 1.26m cambia la decision en Chile: mejor que regla casera y Sodimac",
+        paragraphs: [
+          "La mayoria de las guias que encuentras en Sodimac, Imperial o opciones genericas se quedan entre 1.00m y 1.22m. Eso significa que una plancha estandar de 1.22m te obliga a cortar por la mitad o a improvisar una segunda referencia. En ese punto aparecen desviaciones y desperdicio.",
+          "La ProFix 126 entrega 1.26m de largo, justo el margen necesario para cubrir la plancha completa de una sola vez. Si buscas una guia de corte para sierra circular y cortas tableros con frecuencia, esta diferencia no es un detalle: es la ventaja que mas tiempo y material te ahorra.",
+        ],
+        bullets: [
+          "Cubre planchas de 1.22m sin cortes intermedios.",
+          "Mejor recorrido contra una regla casera.",
+          "Ahorro de tiempo en trabajos repetitivos.",
+          "Menor desperdicio en melamina, MDF y terciado.",
         ],
       },
       {
         title: "Cuando si marca diferencia frente a una solucion improvisada",
         paragraphs: [
           "La diferencia se nota mas cuando el trabajo se repite, cuando el tablero es grande o cuando una pequena desviacion ya significa rehacer material. Ahi una guia dedicada deja de ser accesorio y pasa a ser parte del metodo de trabajo.",
-          "Ese es el punto donde ProFix 126 hace mas sentido comercial: no promete magia, pero si ordena mucho mejor el proceso de corte con sierra circular.",
+          "Ese es el punto donde ProFix 126 hace mas sentido comercial: no promete magia, pero si ordena mucho mejor el proceso de corte con sierra circular, especialmente en contexto de taller pequeno, instalaciones o venta en Chile.",
         ],
       },
       {
@@ -394,13 +411,14 @@ export const supportGuides: SupportGuide[] = [
           "Buena opcion para talleres pequenos.",
           "Muy util para instaladores y trabajo portable.",
           "Especialmente valiosa en melamina, MDF y terciado.",
+          "Ideal si cortas planchas de 1.22m o piezas largas con frecuencia.",
         ],
       },
       {
         title: "Que gana quien llega buscando sierra circular con guia de corte",
         paragraphs: [
           "Cuando la busqueda cambia de guia de corte para sierra circular a sierra circular con guia de corte, la intencion suele ser todavia mas practica: la persona ya imagina el uso real y quiere saber si vale la pena pasar de una regla casera a un sistema mas repetible.",
-          "En ese escenario la ProFix 126 aporta una referencia larga, portable y orientada a trabajo real en melamina, MDF, madera y tableros, donde cada error de recorrido cuesta tiempo y material.",
+          "En ese escenario la ProFix 126 aporta una referencia larga, portable y orientada a trabajo real en melamina, MDF, madera y tableros, donde cada error de recorrido cuesta tiempo y material. Ademas, al ser un producto con stock inmediato en Chile, se convierte en una solucion rapida, no en una espera de importacion.",
         ],
       },
     ],
@@ -418,17 +436,27 @@ export const supportGuides: SupportGuide[] = [
       {
         question: "La ProFix 126 entra en esta categoria?",
         answer:
-          "Si. De hecho, su uso principal recomendado es justamente como guia de corte para sierra circular en trabajo real de taller, instalacion u obra.",
+          "Si. De hecho, su uso principal recomendado es justamente como guia de corte para sierra circular en trabajo real de taller, instalacion u obra, con ventaja de 1.26m sobre opciones estandar.",
       },
       {
         question: "Conviene si ya tengo una regla casera?",
         answer:
-          "Si el trabajo se repite, si cortas tableros o si quieres reducir desperdicio, una guia dedicada suele aportar bastante mas orden y repetibilidad.",
+          "Si el trabajo se repite, si cortas tableros o si quieres reducir desperdicio, una guia dedicada de 1.26m suele aportar bastante mas orden y repetibilidad que una regla casera.",
       },
       {
         question: "Sirve si llegue buscando una guia de corte recto para sierra circular?",
         answer:
           "Si. Esa busqueda encaja muy bien con la propuesta de la ProFix 126, porque apunta justamente a lograr cortes rectos, repetibles y mas controlados con sierra circular en trabajo real.",
+      },
+      {
+        question: "Por que es mejor 1.26m que 1.22m o menos?",
+        answer:
+          "Porque las planchas estandar son de 1.22m. Con 1.26m puedes cortarlas completas de una sola vez. Con 1.22m o menos te quedas corto y terminas improvisando la segunda mitad del corte.",
+      },
+      {
+        question: "Hay despacho inmediato en Chile?",
+        answer:
+          "Si. En GuiaDeCorte.cl tenemos stock para envio inmediato dentro de Chile, para que no tengas que esperar semanas despues de decidir la compra.",
       },
     ],
     relatedGuideSlugs: [
@@ -436,6 +464,7 @@ export const supportGuides: SupportGuide[] = [
       "guia-recta-para-sierra-circular",
       "guia-de-aluminio-para-sierra-circular",
       "profix-126-vs-regla-casera",
+      "sierra-circular-con-guia-vs-sierra-de-mesa",
     ],
   },
   {
@@ -648,56 +677,69 @@ export const supportGuides: SupportGuide[] = [
   {
     slug: "guia-de-corte-para-router",
     path: "/guias/guia-de-corte-para-router",
-    title: "Guia de corte para router: cuando tiene sentido y que revisar antes de usarla",
+    title: "Guia de corte para router: estabilidad real para ranurados largos en melamina | ProFix 126 Chile",
     shortTitle: "Guia de corte para router",
     category: "compatibilidad",
     categoryLabel: "Compatibilidad",
     description:
-      "Descubre en que escenarios una guia recta puede ayudar al router o fresadora, que debes revisar en la base de la herramienta y cuando conviene validar compatibilidad antes de comprar.",
+      "Guia de corte para router y fresadora en Chile: orientada a estabilidad real en ranurados largos sobre melamina, MDF y tableros. Uso complementario validable con ProFix 126, con base plana y apoyo controlado.",
     keywords:
-      "guia de corte para router, guia para fresadora, router con guia recta, compatibilidad router con guia de corte, profix 126 router",
+      "guia de corte para router, guia para fresadora, router con guia recta, compatibilidad router con guia de corte, profix 126 router, guia para ranurar melamina, router en Chile",
     primaryKeyword: "guia de corte para router",
-    searchIntent: "Evaluar uso complementario del producto con router o fresadora.",
-    audience: "Usuarios que buscan lineas rectas, rebajes o recorridos guiados con router.",
+    searchIntent: "Evaluar uso complementario del producto con router o fresadora, capturando busquedas tecnicas y comerciales muy cercanas a compra.",
+    audience: "Usuarios que buscan lineas rectas, rebajes o recorridos guiados con router, en talleres, mueblistas o instaladores que trabajan melamina y tableros.",
     summary:
-      "Esta pagina ayuda a capturar una busqueda muy valiosa porque combina intencion tecnica con posible compra: quien busca una guia para router normalmente ya entiende el valor de trabajar con referencia.",
+      "Esta pagina ayuda a capturar una busqueda muy valiosa porque combina intencion tecnica con posible compra: quien busca una guia para router normalmente ya entiende el valor de trabajar con referencia y necesita estabilidad real para recorridos largos.",
     problemStatement:
-      "No todos los routers se comportan igual y no toda guia recta sirve de la misma manera. Lo importante es explicar donde si agrega valor y donde hay que validar antes.",
+      "No todos los routers se comportan igual y no toda guia recta sirve de la misma manera. Muchas opciones en Chile son cortas, fragiles o no aguantan recorridos continuos. El usuario necesita saber donde si agrega valor y donde conviene validar la base antes de comprar.",
     useCases: [
-      "Guiado recto para rebajes o recorridos controlados.",
+      "Guiado recto para rebajes o recorridos controlados en melamina.",
       "Apoyo mas estable en tableros y piezas largas.",
+      "Ranurados o lineas guia que requieren apoyo constante.",
       "Consulta previa de compatibilidad segun base y forma de trabajo.",
     ],
-    toolFocus: ["Router", "Fresadora", "Base plana compatible"],
+    toolFocus: ["Router", "Fresadora", "Base plana compatible", "Melamina y MDF", "1.26m"],
     relatedSearches: [
       "guia para router recto",
       "como usar router con guia",
       "compatibilidad router con guia de corte",
+      "guia para ranurar melamina",
+      "fresadora con guia recta",
+      "guia de corte para router Chile",
     ],
     sections: [
       {
         title: "Cuando una guia recta si aporta al router",
         paragraphs: [
-          "En router y fresadora, la guia recta sirve para ordenar recorridos donde la referencia visual sola no alcanza. Es especialmente util cuando debes mantener lineas consistentes en tableros o piezas largas.",
-          "No es una pagina para prometer compatibilidad universal. Es una pagina para educar y responder mejor que la competencia, explicando el criterio correcto de uso.",
+          "En router y fresadora, la guia recta sirve para ordenar recorridos donde la referencia visual sola no alcanza. Es especialmente util cuando debes mantener lineas consistentes en tableros o piezas largas, o cuando necesitas ranurados continuos en melamina, MDF o terciado.",
+          "En Chile, la mayoria de opciones accesibles quedan cortas en longitud o dan juego en el apoyo. ProFix 126 entrega 1.26m de referencia continua, lo que marca diferencia cuando necesitas mantener el mismo eje durante todo el recorrido sin cambiar de referencia a mitad de trabajo.",
+          "No es una pagina para prometer compatibilidad universal. Es una pagina para educar y responder mejor que la competencia, explicando el criterio correcto de uso y como validar antes de comprar.",
         ],
       },
       {
         title: "Que debes revisar en la base del router",
         paragraphs: [
-          "Lo principal es que la base tenga apoyo estable, recorrido controlado y capacidad de mantener referencia contra la guia sin generar juego o inclinacion no deseada.",
+          "Lo principal es que la base tenga apoyo estable, recorrido controlado y capacidad de mantener referencia contra la guia sin generar juego o inclinacion no deseada. En bases pequeñas o muy irregulares, el mejor camino no es inventar compatibilidad: es validar antes con foto, marca y modelo.",
         ],
         bullets: [
           "Tamano y forma de la base.",
           "Apoyo suficiente sobre la superficie de trabajo.",
           "Tipo de operacion que se quiere hacer.",
           "Seguridad y control del avance.",
+          "Longitud de trabajo: mas de 1.20m pide una guia de 1.26m.",
+        ],
+      },
+      {
+        title: "Por que esta guia compite bien para router en melamina",
+        paragraphs: [
+          "Quien busca una guia de corte para router y planea trabajar melamina o tableros de MDF suele sufrir con referencias cortas o que se mueven a mitad de recorrido. La rigidez del aluminio 6061-T6 y los 1.26m de longitud ayudan a evitar ese salto de referencia y a mantener el mismo apoyo desde el inicio hasta el cierre del ranurado.",
+          "Esto no convierte a la ProFix 126 en solucion para todo tipo de router, pero si la hace una opcion muy competitiva para casos reales de mueblería, ensambles y trabajos donde la consistencia importa mas que promesas genericas.",
         ],
       },
       {
         title: "Como comunicar este uso sin confundir al cliente",
         paragraphs: [
-          "La recomendacion comercial correcta es mostrar sierra circular como uso principal y router como uso complementario validable. Esa comunicacion genera confianza, atrae busquedas tecnicas y reduce objeciones posteriores.",
+          "La recomendacion comercial correcta es mostrar sierra circular como uso principal y router como uso complementario validable. Esa comunicacion genera confianza, atrae busquedas tecnicas y reduce objeciones posteriores, especialmente cuando el cliente esta en Chile comparando contra opciones locales de dudosa rigidez.",
         ],
       },
     ],
@@ -705,28 +747,40 @@ export const supportGuides: SupportGuide[] = [
       {
         question: "La ProFix 126 fue pensada solo para sierra circular?",
         answer:
-          "La recomendacion principal es sierra circular, pero tambien puede aportar en trabajos con router o fresadora cuando la base y el apoyo son compatibles.",
+          "La recomendacion principal es sierra circular, pero tambien puede aportar en trabajos con router o fresadora cuando la base y el apoyo son compatibles, especialmente para ranurados o recorridos rectos en melamina y MDF.",
       },
       {
         question: "Conviene validar mi router antes de comprar?",
         answer:
-          "Si, especialmente si tu base es pequena, irregular o si el trabajo requiere una referencia muy estable.",
+          "Si, especialmente si tu base es pequena, irregular o si el trabajo requiere una referencia muy estable. En GuiaDeCorte.cl recomendamos validar con marca, modelo y foto antes de comprar para no generar falsas expectativas.",
       },
       {
         question: "Que tipo de trabajo con router aprovecha mejor una guia recta?",
         answer:
-          "Rebajes, recorridos lineales y trabajos en tableros donde la referencia visual sola no basta y necesitas apoyo constante durante el avance.",
+          "Rebajes, recorridos lineales, ranurados continuos y trabajos en tableros donde la referencia visual sola no basta y necesitas apoyo constante durante el avance.",
       },
       {
         question: "Esta guia sirve para cualquier router compacto?",
         answer:
           "No necesariamente. Hay routers compactos que se comportan bien y otros que requieren revisar apoyo y geometria de la base antes de recomendarse con confianza.",
       },
+      {
+        question: "Por que son importantes los 1.26m para uso en router?",
+        answer:
+          "Porque muchos ranurados o lineas guia en muebles y tableros superan el metro. Con 1.26m puedes cubrer la plancha estandar de 1.22m de una sola vez, manteniendo el mismo recorrido sin cambiar de referencia.",
+      },
+      {
+        question: "Tienen stock para envio inmediato en Chile?",
+        answer:
+          "Si. Tenemos stock para envio inmediato en Chile, para que no tengas que esperar importaciones largas cuando ya tienes un trabajo pendiente con router o sierra circular.",
+      },
     ],
     relatedGuideSlugs: [
       "compatibilidad-herramientas",
       "compatibilidad-por-modelo-de-herramienta",
       "profix-126-vs-regla-casera",
+      "guia-de-aluminio-para-sierra-circular",
+      "cortes-en-melamina-mdf-terciado",
     ],
   },
   {

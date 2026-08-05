@@ -8,7 +8,7 @@ interface WhatsAppButtonProps {
 
 const WhatsAppButton = ({ 
   phoneNumber = "56935777727",
-  message = "Hola, estoy interesado en la Guía de Corte Ajustable. ¿Podrían darme más información?"
+  message = "Hola, tengo stock para envio inmediato en Chile y somos los unicos con 1.26m de largo. Quisiera consultar por la guia de corte ProFix 126."
 }: WhatsAppButtonProps) => {
   
   // Formatear número de teléfono (eliminar + si existe)

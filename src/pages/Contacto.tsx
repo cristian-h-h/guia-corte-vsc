@@ -209,7 +209,7 @@ const Contacto = () => {
                     <h3 className="font-semibold">WhatsApp</h3>
                     <p className="text-gris-600">+56935777727</p>
                     <a 
-                      href="https://wa.me/56935777727?text=Hola,%20quiero%20informacion%20de%20la%20guia%20de%20corte%20ProFix%20126,%20pedir%20el%20link%20de%20compra%20o%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
+                      href="https://wa.me/56935777727?text=Hola,%20tenemos%20stock%20para%20envio%20inmediato%20en%20Chile%20y%20somos%20los%20unicos%20con%201.26m%20de%20largo.%20Quiero%20informacion%20de%20la%20guia%20de%20corte%20ProFix%20126,%20pedir%20el%20link%20de%20compra%20o%20validar%20compatibilidad%20con%20mi%20sierra%20circular."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-2 text-sm text-[#25D366] hover:underline"
@@ -255,7 +255,7 @@ const Contacto = () => {
                   <Button variant="outline" className="w-full">Ver compatibilidad</Button>
                 </Link>
                 <a
-                  href="https://www.payku.cl/pagar/profix-126"
+                  href="https://app.payku.cl/botonpago/index?qr=ku26722-verif-35a175cd"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
