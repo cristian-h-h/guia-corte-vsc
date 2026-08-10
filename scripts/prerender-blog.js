@@ -350,15 +350,19 @@ const buildHead = ({
   image = "",
   schema = "",
   ogType = "article",
+  noindex = false,
 }) => {
   const socialImage = resolveSocialImage(image);
   const usesDefaultSocialImage = socialImage === DEFAULT_SOCIAL_IMAGE;
+  const robotsDirective = noindex
+    ? "noindex, nofollow, max-image-preview:large"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
   return `
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     ${keywords ? `<meta name="keywords" content="${escapeHtml(keywords)}" />` : ""}
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="${robotsDirective}" />
     <meta name="theme-color" content="#FF6600" />
     <link rel="canonical" href="${escapeHtml(canonical)}" />
     <meta property="og:type" content="${escapeHtml(ogType)}" />
@@ -428,6 +432,7 @@ async function prerenderBlog() {
 
   posts.forEach((post) => {
     const related = posts.filter((candidate) => candidate.slug !== post.slug).slice(0, 3);
+    const blockedSlug = typeof post.slug === "string" && /^slug-por-defecto/i.test(post.slug);
     const articleHead = buildHead({
       title: `${post.metaTitle || post.title} | GuiaDeCorte.cl`,
       description: post.metaDescription || post.excerpt,
@@ -436,6 +441,7 @@ async function prerenderBlog() {
       image: post.imageUrl,
       schema: buildBlogPostingSchema(post),
       ogType: "article",
+      noindex: blockedSlug,
     });
 
     const articleHtml = injectPage(template, articleHead, renderArticle(post, related));

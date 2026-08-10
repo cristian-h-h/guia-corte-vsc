@@ -189,6 +189,73 @@ const routeMetaFallbacks = {
     type: "website",
     image: DEFAULT_SOCIAL_IMAGE,
   },
+  "/blog": {
+    title:
+      "Blog de Carpinteria | Guia de Corte Recto | Tutoriales y Consejos | GuiaDeCorte.cl",
+    description:
+      "Encuentra articulos especializados sobre guia de corte recto, guia de corte para sierra circular, compatibilidad por marca, melamina, MDF, terciado y uso real de la ProFix 126.",
+    canonical: `${BASE_URL}/blog`,
+    keywords:
+      "blog carpinteria, guia de corte recto, guia de corte para sierra circular, guia recta para sierra circular, guia de aluminio para sierra circular, melamina, mdf, profix 126, tutoriales carpinteria",
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
+  "/search": {
+    title: "Buscar en GuiaDeCorte.cl",
+    description:
+      "Pagina de busqueda para encontrar contenido sobre guia de corte ProFix 126, compatibilidad por herramienta, sierra circular, router, melamina, MDF y terciado dentro del sitio.",
+    canonical: `${BASE_URL}/search`,
+    keywords:
+      "buscar guia de corte, busqueda sitio guia de corte, guia de corte chile",
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
+  "/carrito": {
+    title: "Carrito y Pedido | ProFix 126",
+    description:
+      "Pagina de carrito y proceso de pedido para la guia de corte ProFix 126. No es una pagina de contenido indexable.",
+    canonical: `${BASE_URL}/carrito`,
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
+  "/gracias": {
+    title: "Gracias por tu pedido | ProFix 126",
+    description:
+      "Confirmacion de pedido para la guia de corte ProFix 126. Pagina de conversion no indexable.",
+    canonical: `${BASE_URL}/gracias`,
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
+  "/pagorechazado": {
+    title: "Pago rechazado | ProFix 126",
+    description:
+      "Pagina de pago rechazado para el flujo de compra de ProFix 126. No es contenido indexable.",
+    canonical: `${BASE_URL}/pagorechazado`,
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
+  "/blog-preview": {
+    title: "Vista previa de articulo de blog | ProFix 126",
+    description:
+      "Vista previa interna de articulo de blog. No es contenido indexable.",
+    canonical: `${BASE_URL}/blog-preview`,
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
+  "/admin": {
+    title: "Administracion interna | ProFix 126",
+    description:
+      "Panel interno de administracion. No es contenido indexable para SEO publico.",
+    canonical: `${BASE_URL}/admin`,
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
 };
 
 const manualPrerenderPages = {
@@ -724,12 +791,15 @@ const buildHead = (route, helmet) => {
   const socialImage = resolveSocialImage(meta.image);
   const usesDefaultSocialImage = socialImage === DEFAULT_SOCIAL_IMAGE;
   const schema = normalizeHelmetMarkup(helmet?.script?.toString() || "");
+  const robotsDirective = meta.noindex
+    ? "noindex, nofollow, max-image-preview:large"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
   return `
     <title>${escapeHtml(meta.title)}</title>
     <meta name="description" content="${escapeHtml(meta.description)}" />
     ${meta.keywords ? `<meta name="keywords" content="${escapeHtml(meta.keywords)}" />` : ""}
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content="${robotsDirective}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FF6600" />
     <link rel="canonical" href="${escapeHtml(meta.canonical)}" />

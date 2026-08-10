@@ -98,6 +98,7 @@ export const appRoutes: RouteObject[] = [
   { path: "/carrito", lazy: lazyLayoutRoute(() => import("./pages/Carrito")) },
   { path: "/blog", lazy: lazyLayoutRoute(() => import("./pages/Blog"), { loaderName: "blogLoader" }) },
   { path: "/blog/:slug", lazy: lazyLayoutRoute(() => import("./pages/BlogPost"), { loaderName: "blogPostLoader" }) },
+  { path: "/search", lazy: lazyLayoutRoute(() => import("./pages/Search")) },
   { path: "/guias", lazy: lazyLayoutRoute(() => import("./pages/SupportGuides")) },
   { path: "/guias/:slug", lazy: lazyLayoutRoute(() => import("./pages/SupportGuideDetail")) },
   { path: "/blog-preview", lazy: lazyLayoutRoute(() => import("@/components/BlogPreview")) },

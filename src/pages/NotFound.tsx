@@ -6,7 +6,7 @@ import { Home, Search } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
-  const canonicalUrl = `https://www.guiadecorte.cl${location.pathname}`;
+  const canonicalUrl = "https://www.guiadecorte.cl/";
 
   useEffect(() => {
     console.error(

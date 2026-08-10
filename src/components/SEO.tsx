@@ -16,6 +16,7 @@ interface SEOProps {
   category?: string;
   tags?: string[];
   videoUrl?: string;
+  noindex?: boolean;
   children?: React.ReactNode;
 }
 
@@ -54,6 +55,7 @@ const SEO: React.FC<SEOProps> = ({
   category,
   tags,
   videoUrl,
+  noindex = false,
   children
 }) => {
   // Valores por defecto
@@ -70,6 +72,9 @@ const SEO: React.FC<SEOProps> = ({
   const requestedImage = image ? toAbsoluteUrl(image) : DEFAULT_SOCIAL_IMAGE;
   const metaImage = isSocialFriendlyImage(requestedImage) ? requestedImage : DEFAULT_SOCIAL_IMAGE;
   const usesDefaultSocialImage = metaImage === DEFAULT_SOCIAL_IMAGE;
+  const robotsDirective = noindex
+    ? "noindex, nofollow, max-image-preview:large"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
   // Determinar si es una página de artículo/blog
   const isArticle = type === 'article';
@@ -84,7 +89,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="author" content={author} />
 
       {/* Metaetiquetas para SEO */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="robots" content={robotsDirective} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#FF6600" />
 

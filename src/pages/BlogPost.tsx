@@ -173,6 +173,9 @@ const BlogPost = () => {
     description: post.metaDescription || post.excerpt || "",
   };
 
+  const slug = typeof post.slug === "string" ? post.slug : post.slug?.current;
+  const isBlockedSlug = typeof slug === "string" && /^slug-por-defecto/i.test(slug);
+
   // =========================
   // Renderizado del artículo
   // =========================
@@ -186,7 +189,11 @@ const BlogPost = () => {
           content={post.metaDescription || post.excerpt || ""}
         />
         <meta name="keywords" content={post.tags?.join(", ") || ""} />
-        <link rel="canonical" href={`https://www.guiadecorte.cl/blog/${post.slug?.current}`} />
+        <meta
+          name="robots"
+          content={isBlockedSlug ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+        />
+        <link rel="canonical" href={`https://www.guiadecorte.cl/blog/${slug}`} />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
