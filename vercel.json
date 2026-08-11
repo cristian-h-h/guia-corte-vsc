@@ -1,19 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "guiadecorte.cl"
-        }
-      ],
-      "destination": "https://www.guiadecorte.cl/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/carrito/:path*",
