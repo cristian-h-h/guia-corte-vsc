@@ -3,31 +3,20 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "guiadecorte.cl"
         }
       ],
-      "destination": "https://www.guiadecorte.cl/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "protocol",
-          "value": "http"
-        }
-      ],
-      "destination": "https://www.guiadecorte.cl/$1",
+      "destination": "https://www.guiadecorte.cl/:path*",
       "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/(carrito|search|admin|blog-preview|gracias|pagorechazado)(.*)",
+      "source": "/carrito/:path*",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -36,7 +25,52 @@
       ]
     },
     {
-      "source": "/blog/slug-por-defecto(.*)",
+      "source": "/search/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/admin/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/blog-preview/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/gracias/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/pagorechazado/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/blog/slug-por-defecto*",
       "headers": [
         {
           "key": "X-Robots-Tag",
