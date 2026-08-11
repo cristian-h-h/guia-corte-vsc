@@ -4,14 +4,11 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "guiadecorte.cl"
-        }
-      ],
       "destination": "https://www.guiadecorte.cl/:path*",
-      "permanent": true
+      "permanent": true,
+      "conditions": {
+        "Host": "guiadecorte.cl"
+      }
     }
   ],
   "headers": [
