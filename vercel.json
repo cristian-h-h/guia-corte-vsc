@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/carrito/:path*",
+      "source": "/carrito",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/search/:path*",
+      "source": "/search",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "source": "/admin/:path*",
+      "source": "/admin",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "source": "/blog-preview/:path*",
+      "source": "/blog-preview",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "source": "/gracias/:path*",
+      "source": "/gracias",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "source": "/pagorechazado/:path*",
+      "source": "/pagorechazado",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "source": "/blog/slug-por-defecto*",
+      "source": "/blog/slug-por-defecto-1",
       "headers": [
         {
           "key": "X-Robots-Tag",
