@@ -3,6 +3,11 @@ import { ArrowRight, Check, MessageSquare, ShoppingCart, Ruler, ShieldCheck, Tru
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import { supportGuides } from "@/data/supportGuides";
+import {
+  buildBreadcrumbList,
+  buildFAQPage,
+  buildHowTo,
+} from "@/utils/schema";
 
 const SupportGuideDetail = () => {
   const { slug } = useParams();
@@ -25,35 +30,84 @@ const SupportGuideDetail = () => {
     );
   }
 
-  const schema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: guide.title,
-      description: guide.description,
-      author: {
-        "@type": "Organization",
-        name: "GuiaDeCorte.cl",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "GuiaDeCorte.cl",
-      },
-      mainEntityOfPage: `https://www.guiadecorte.cl${guide.path}`,
+  const absoluteUrl = `https://www.guiadecorte.cl${guide.path}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    author: {
+      "@type": "Organization",
+      name: "GuiaDeCorte.cl",
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: guide.faq.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer,
-        },
-      })),
+    publisher: {
+      "@type": "Organization",
+      name: "GuiaDeCorte.cl",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.guiadecorte.cl/guia-imagenes/profix-126-logo.webp",
+      },
     },
+    image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+    mainEntityOfPage: absoluteUrl,
+  };
+
+  const breadcrumbSchema = buildBreadcrumbList([
+    { name: "Inicio", url: "https://www.guiadecorte.cl/" },
+    { name: "Guias", url: "https://www.guiadecorte.cl/guias" },
+    { name: guide.shortTitle, url: absoluteUrl },
+  ]);
+
+  const faqSchema = buildFAQPage(guide.faq);
+
+  const schema: object[] = [articleSchema, breadcrumbSchema, faqSchema];
+
+  const technicalSlugs = [
+    "como-hacer-cortes-rectos-con-sierra-circular",
+    "cortes-en-melamina-mdf-terciado",
+    "guia-de-corte-para-router",
+    "guia-de-corte-para-melamina-122x244",
+    "profix-126-sierra-circular-vs-router",
   ];
+
+  const isTechnicalGuide = technicalSlugs.includes(guide.slug);
+  if (isTechnicalGuide && guide.sections && guide.sections.length > 0) {
+    const howtoSteps = guide.sections
+      .filter((section) => section.bullets && section.bullets.length > 0)
+      .flatMap((section) =>
+        section.bullets!.map((bullet, idx) => ({
+          name: `${section.title} — Paso ${idx + 1}`,
+          text: bullet,
+          image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+        }))
+      );
+
+    if (howtoSteps.length === 0) {
+      guide.sections.slice(0, 5).forEach((section, idx) => {
+        howtoSteps.push({
+          name: section.title,
+          text: section.paragraphs.join(" "),
+          image: "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
+        });
+      });
+    }
+
+    if (howtoSteps.length > 0) {
+      schema.push(
+        buildHowTo({
+          name: guide.title,
+          description: guide.summary,
+          image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+          totalTime: "PT15M",
+          tool: [{ name: "Sierra circular o router" }, { name: "Guía ProFix 126 1.26m" }],
+          supply: [{ name: "Melamina, MDF, terciado o madera" }],
+          estimatedCost: { currency: "CLP", value: "35000" },
+          steps: howtoSteps.slice(0, 8),
+        })
+      );
+    }
+  }
 
   const trustBadges = [
     {
@@ -84,7 +138,7 @@ const SupportGuideDetail = () => {
         title={guide.title}
         description={guide.description}
         keywords={guide.keywords}
-        url={`https://www.guiadecorte.cl${guide.path}`}
+        url={absoluteUrl}
         type="article"
         schema={schema}
       />
@@ -490,6 +544,96 @@ const SupportGuideDetail = () => {
               </div>
             </section>
           )}
+
+          <section className="max-w-6xl mx-auto mb-14">
+            <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-wide text-herramienta-700 mb-2">
+                  Del blog · Interlinking
+                </p>
+                <h2 className="text-2xl md:text-3xl font-bold text-gris-900">
+                  Tips reales de taller que complementan esta guía
+                </h2>
+              </div>
+              <Link to="/blog" className="inline-flex items-center gap-2 text-naranja-600 hover:text-naranja-700 font-semibold">
+                Ir al blog <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <Link
+                to="/blog/5-proyectos-carpinteria-principiantes-guia-corte"
+                className="group bg-white border border-gris-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow hover:border-naranja-200"
+              >
+                <div className="aspect-video overflow-hidden bg-madera-100">
+                  <img
+                    src="/guia-imagenes/terciado-melamina-blanco.webp"
+                    alt="5 proyectos de carpintería para principiantes con ProFix 126"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5 space-y-3">
+                  <span className="inline-block bg-herramienta-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-sm">
+                    Gratis · Nivel principiante
+                  </span>
+                  <h3 className="text-xl font-bold text-gris-900 group-hover:text-naranja-700 transition-colors leading-snug">
+                    5 proyectos de carpintería para principiantes usando guía de corte
+                  </h3>
+                  <p className="text-sm text-gris-600 leading-relaxed">
+                    Empieza con repisas, banco pequeño, organizador de taller, estante y macetero usando la ProFix 126 sobre melamina o madera.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                to="/guias/cortes-en-melamina-mdf-terciado"
+                className="group bg-white border border-gris-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow hover:border-naranja-200"
+              >
+                <div className="aspect-video overflow-hidden bg-madera-100">
+                  <img
+                    src="/guia-imagenes/terciado-melamina-15mm.webp"
+                    alt="Cómo cortar melamina MDF terciado sin astillar"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5 space-y-3">
+                  <span className="inline-block bg-taller-800 text-white rounded-full px-3 py-1 text-xs font-bold shadow-sm">
+                    Técnica · Materiales
+                  </span>
+                  <h3 className="text-xl font-bold text-gris-900 group-hover:text-naranja-700 transition-colors leading-snug">
+                    Cortes en melamina, MDF y terciado sin astillar
+                  </h3>
+                  <p className="text-sm text-gris-600 leading-relaxed">
+                    Aprende la combinación de hoja, velocidad, apoyo y guía para que el terminado de la melamina salga limpio y sin mella.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                to="/guias/compatibilidad-por-modelo-de-herramienta"
+                className="group bg-white border border-gris-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow hover:border-naranja-200"
+              >
+                <div className="aspect-video overflow-hidden bg-madera-100">
+                  <img
+                    src="/guia-imagenes/ajuste-recto-profix-126.webp"
+                    alt="Compatibilidad de ProFix 126 por marca y modelo de herramienta"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-5 space-y-3">
+                  <span className="inline-block bg-naranja-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-sm">
+                    Compatibilidad · Marcas
+                  </span>
+                  <h3 className="text-xl font-bold text-gris-900 group-hover:text-naranja-700 transition-colors leading-snug">
+                    Valida compatibilidad por marca y modelo antes de comprar
+                  </h3>
+                  <p className="text-sm text-gris-600 leading-relaxed">
+                    Makita, DeWalt, Bosch, Ubermann y otras. Te explicamos qué foto y datos enviar para confirmar acople sin sorpresas.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </section>
 
           <section className="relative overflow-hidden bg-gradient-to-r from-herramienta-600 to-herramienta-700 rounded-3xl p-8 md:p-10 shadow-2xl text-white border-2 border-white/60">
             <div className="absolute inset-0 z-0 opacity-20">

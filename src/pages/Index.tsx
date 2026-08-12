@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
 import SEO from "@/components/SEO";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
+import { buildBreadcrumbList, buildHowTo } from "@/utils/schema";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -55,7 +56,80 @@ const realClientShowcase = [
   },
 ];
 
+const featuredBlogPosts = [
+  {
+    slug: "5-proyectos-carpinteria-principiantes-guia-corte",
+    title: "5 proyectos de carpintería para principiantes",
+    excerpt:
+      "5 proyectos sencillos (repisa, organizador, banco, estante y macetero) usando la ProFix 126 como guía de corte recto sobre melamina y madera.",
+    image: "/guia-imagenes/terciado-melamina-blanco.webp",
+    badge: "Gratis — Nivel principiante",
+    category: "Proyectos",
+  },
+  {
+    slug: "guia-de-corte-para-melamina-122x244",
+    title: "Cómo cortar melamina 122x244 sin astillar",
+    excerpt:
+      "Consejos prácticos para planchar la plancha completa de 1.22x2.44m usando la ProFix 126 de 1.26m de una sola pasada.",
+    image: "/guia-imagenes/terciado-melamina-15mm.webp",
+    badge: "Materiales",
+    category: "Técnica de corte",
+  },
+  {
+    slug: "compatibilidad-profix-126-makita-hs7600",
+    title: "ProFix 126 + Makita HS7600: Guía de compatibilidad",
+    excerpt:
+      "Validación de base plana, apoyo, recorrido y corte real con la sierra Makita HS7600 sobre melamina y MDF.",
+    image: "/guia-imagenes/ajuste-recto-profix-126.webp",
+    badge: "Compatibilidad",
+    category: "Marca y modelo",
+  },
+];
+
 const Index = () => {
+  const homeBreadcrumbSchema = buildBreadcrumbList([
+    { name: "Inicio", url: "https://www.guiadecorte.cl/" },
+  ]);
+
+  const homeHowToSchema = buildHowTo({
+    name: "Cómo usar la Guía de Corte ProFix 126",
+    description:
+      "Guía paso a paso para utilizar correctamente la Guía de Corte ProFix 126 de 1.26m sobre planchas de melamina, MDF, terciado y madera con sierra circular o router.",
+    image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+    totalTime: "PT5M",
+    estimatedCost: { currency: "CLP", value: "35000" },
+    supply: [
+      { name: "Guía de Corte ProFix 126" },
+      { name: "Sierra circular, router o caladora" },
+      { name: "Material a cortar (madera, melamina, etc.)" },
+    ],
+    tool: [
+      { name: "Sierra circular" },
+      { name: "Router" },
+      { name: "Caladora" },
+    ],
+    steps: [
+      {
+        name: "Ajustar la guía",
+        text: "Coloca la guía sobre tu material y ajústala a la medida deseada con el sistema de bloqueo rápido.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
+        url: "https://www.guiadecorte.cl/galeria#ajuste",
+      },
+      {
+        name: "Fijar la guía",
+        text: "Asegura la guía al material con las pinzas de sujeción integradas para un agarre firme.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
+        url: "https://www.guiadecorte.cl/galeria#fijacion",
+      },
+      {
+        name: "Realizar el corte",
+        text: "Utiliza tu herramienta deslizándola a lo largo de la guía para conseguir un corte perfecto de hasta 1.26m en planchas de 1.22m de una sola pasada.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+        url: "https://www.guiadecorte.cl/galeria#corte",
+      },
+    ],
+  });
+
   const topSearchPhrases = [
     "guia de corte recto para sierra circular",
     "guia de corte para sierra circular",
@@ -100,70 +174,13 @@ const Index = () => {
         keywords="guia de corte recto, guia de corte para sierra circular, guia de aluminio para sierra circular, guia recta para sierra circular, guia corte sierra circular, guia corte madera, guia de corte Ubermann, guia de corte Makita, guia de corte Bosch, guia de corte DeWalt, melamina, MDF, terciado, profix 126, 1.26 metros, Chile"
         image="https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"
         url="https://www.guiadecorte.cl/"
-        schema={[organizationSchema, websiteSchema, productSchema, {
-          "@context": "https://schema.org",
-          "@type": "HowTo",
-          "name": "Cómo usar la Guía de Corte ProFix 126",
-          "description": "Guía paso a paso para utilizar correctamente la Guía de Corte ProFix 126",
-          "image": "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
-          "totalTime": "PT5M",
-          "estimatedCost": {
-            "@type": "MonetaryAmount",
-            "currency": "CLP",
-            "value": "35000"
-          },
-          "supply": [
-            {
-              "@type": "HowToSupply",
-              "name": "Guía de Corte ProFix 126"
-            },
-            {
-              "@type": "HowToSupply",
-              "name": "Sierra circular, router o caladora"
-            },
-            {
-              "@type": "HowToSupply",
-              "name": "Material a cortar (madera, melamina, etc.)"
-            }
-          ],
-          "tool": [
-            {
-              "@type": "HowToTool",
-              "name": "Sierra circular"
-            },
-            {
-              "@type": "HowToTool",
-              "name": "Router"
-            },
-            {
-              "@type": "HowToTool",
-              "name": "Caladora"
-            }
-          ],
-          "step": [
-            {
-              "@type": "HowToStep",
-              "name": "Ajustar la guía",
-              "text": "Coloca la guía sobre tu material y ajústala a la medida deseada con el sistema de bloqueo rápido.",
-              "image": "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
-              "url": "https://www.guiadecorte.cl/galeria#ajuste"
-            },
-            {
-              "@type": "HowToStep",
-              "name": "Fijar la guía",
-              "text": "Asegura la guía al material con las pinzas de sujeción integradas para un agarre firme.",
-              "image": "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
-              "url": "https://www.guiadecorte.cl/galeria#fijacion"
-            },
-            {
-              "@type": "HowToStep",
-              "name": "Realizar el corte",
-              "text": "Utiliza tu herramienta deslizándola a lo largo de la guía para conseguir un corte perfecto.",
-              "image": "https://www.guiadecorte.cl/guia-imagenes/guia-profix-126.webp",
-              "url": "https://www.guiadecorte.cl/galeria#corte"
-            }
-          ]
-        }]}
+        schema={[
+          organizationSchema,
+          websiteSchema,
+          productSchema,
+          homeBreadcrumbSchema,
+          homeHowToSchema,
+        ]}
       />
       {/* Hero Section - Mejorado con nuevos colores */}
       <section className="relative overflow-hidden bg-gradient-to-b from-madera-200 to-madera-100 py-16 md:py-24 border-b-4 border-herramienta-300">
@@ -273,7 +290,10 @@ const Index = () => {
                   <img
                     src="/guia-imagenes/guia-corte-profix-126.webp"
                     alt="Guía de corte ProFix 126 - Guía banco sierra de aluminio para corte recto con sierra circular"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
+                    width={1200}
+                    height={800}
                     className="w-full h-auto rounded-lg"
                   />
 
@@ -293,6 +313,9 @@ const Index = () => {
                   <img
                     src="/guia-imagenes/corte-sierra-circular-profix-126.webp"
                     alt="Guía de corte recto para sierra circular - Uso de guía banco sierra ProFix 126"
+                    loading="lazy"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -301,6 +324,9 @@ const Index = () => {
                   <img
                     src="/guia-imagenes/ajuste-recto-profix-126.webp"
                     alt="Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra"
+                    loading="lazy"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -892,6 +918,95 @@ const Index = () => {
             >
               <Button variant="outline" className="w-full sm:w-auto border-2 border-naranja-600 text-naranja-700 hover:bg-naranja-50 py-6 px-8 rounded-xl text-lg shadow-md">
                 Pedir link de compra
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog destacado / Interlinking */}
+      <section id="blog-destacado" className="py-16 bg-gradient-to-b from-white to-madera-50 border-y border-madera-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-10">
+            <p className="text-sm font-bold uppercase tracking-wide text-herramienta-700 mb-3">
+              Consejo de taller · Contenido real
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gris-900 mb-4">
+              Tips de corte, proyectos y compatibilidad desde el blog
+            </h2>
+            <p className="text-lg text-gris-700 leading-relaxed">
+              Guías prácticas pensadas para quien usa sierra circular, melamina, MDF o madera en taller o instalación.
+              Cada post se arma con casos reales y termina vinculado a la ficha producto, a las guías o a WhatsApp.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
+            {featuredBlogPosts.map((post, idx) => {
+              const isBlog = idx === 0;
+              const href = isBlog
+                ? `/blog/${post.slug}`
+                : `/guias/${post.slug}`;
+              return (
+                <Link
+                  key={post.slug}
+                  to={href}
+                  className="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-naranja-200"
+                >
+                  <div className="relative">
+                    <img
+                      src={post.image}
+                      alt={`${post.title} — ProFix 126 guía de corte`}
+                      loading="lazy"
+                      className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                      <span className="bg-herramienta-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md animate-pulse">
+                        {post.badge}
+                      </span>
+                    </div>
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-white/90 text-madera-800 rounded-full px-3 py-1 text-xs font-semibold shadow-sm border border-madera-200">
+                        {post.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-5 space-y-3">
+                    <h3 className="font-extrabold text-lg text-gris-900 leading-snug group-hover:text-naranja-700 transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-gris-700 text-sm leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <div className="pt-3 flex items-center justify-between border-t border-gris-100">
+                      <span className="inline-flex items-center gap-2 text-naranja-600 hover:text-naranja-700 font-semibold group-hover:gap-3 transition-all text-sm">
+                        Abrir contenido <ArrowRight className="h-4 w-4" />
+                      </span>
+                      <BadgeCheck className="h-5 w-5 text-herramienta-600" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/blog">
+              <Button className="bg-taller-700 hover:bg-taller-800 text-white py-6 px-8 rounded-xl text-lg shadow-md flex items-center gap-2">
+                Ver todo el blog <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/guias">
+              <Button variant="outline" className="w-full sm:w-auto border-2 border-herramienta-600 text-herramienta-700 hover:bg-herramienta-50 py-6 px-8 rounded-xl text-lg shadow-md">
+                Ir al centro de guías
+              </Button>
+            </Link>
+            <a
+              href="https://wa.me/56935777727?text=Hola,%20tengo%20stock%20para%20envio%20inmediato%20en%20Chile%20y%20somos%20los%20unicos%20con%201.26m%20de%20largo.%20Vine%20del%20blog%20destacado%20y%20quiero%20validar%20compatibilidad%20de%20la%20guia%20de%20corte%20ProFix%20126."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="w-full sm:w-auto border-2 border-naranja-600 text-naranja-700 hover:bg-naranja-50 py-6 px-8 rounded-xl text-lg shadow-md flex items-center gap-2">
+                <MessageSquare className="h-5 w-5" /> Resolver duda por WhatsApp
               </Button>
             </a>
           </div>

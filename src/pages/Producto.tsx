@@ -5,6 +5,14 @@ import { BadgeCheck, Check, MessageSquare, Minus, Plus, ShieldCheck } from "luci
 import { useCart } from "@/context/CartContext";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
+import {
+  buildAggregateRating,
+  buildBreadcrumbList,
+  buildFAQPage,
+  buildHowTo,
+  buildReview,
+  type FAQItem,
+} from "@/utils/schema";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -225,18 +233,125 @@ const Producto = () => {
       </>
     );
   }
-  // Datos estructurados para SEO
-  const structuredData = {
+  const productUrl = `https://www.guiadecorte.cl/producto/${producto._id}`;
+  const productImages = producto.images.map((img) => `https://www.guiadecorte.cl${img.url}`);
+
+  const breadcrumbProductSchema = buildBreadcrumbList([
+    { name: "Inicio", url: "https://www.guiadecorte.cl/" },
+    { name: "Producto", url: "https://www.guiadecorte.cl/producto" },
+    { name: "ProFix 126", url: productUrl },
+  ]);
+
+  const productFaq: FAQItem[] = [
+    {
+      question: "¿Sirve para cortar madera, melamina, MDF o terciado?",
+      answer: "Si. Esos son precisamente los escenarios donde la ProFix 126 suele marcar más diferencia por control, repetición de medidas y calidad de terminación al trabajar como guía de corte recto con sierra circular.",
+    },
+    {
+      question: "¿Sirve con cualquier sierra circular?",
+      answer: "No conviene prometer compatibilidad universal. La mejor recomendación depende de la base, el apoyo y el tipo de trabajo que quieres hacer; por eso validamos marca y modelo por WhatsApp antes de comprar.",
+    },
+    {
+      question: "¿Puedo pedir el link directo de compra?",
+      answer: "Si. Puedes comprar de inmediato o pedir el link por WhatsApp si primero quieres validar compatibilidad o envío en Chile.",
+    },
+    {
+      question: "¿Vale la pena frente a una regla casera?",
+      answer: "Cuando el trabajo exige repetir medidas, cuidar terminación y reducir desperdicio, una guía dedicada como la ProFix 126 de 1.26m suele justificar mucho mejor la inversión.",
+    },
+    {
+      question: "¿Hacen envíos a todo Chile?",
+      answer: "Se realizan envíos a domicilio tanto en Región Metropolitana como a cualquier región de Chile por Starken o Bluexpress, con stock inmediato.",
+    },
+    {
+      question: "¿Cuál es el largo y el precio?",
+      answer: "La ProFix 126 tiene 1.26m de longitud de trabajo y cuesta $35.000 CLP por transferencia o $38.990 CLP por tarjeta. Ideal para planchas estándar de 1.22m de una sola pasada.",
+    },
+  ];
+  const faqProductSchema = buildFAQPage(productFaq);
+
+  const howtoProductSchema = buildHowTo({
+    name: "Cómo usar la ProFix 126 en 5 pasos",
+    description:
+      "Pasos sencillos para usar la guía de corte recto ProFix 126 con sierra circular sobre planchas de melamina, MDF o terciado de 1.22m.",
+    image: productImages[0],
+    totalTime: "PT8M",
+    estimatedCost: { currency: "CLP", value: "35000" },
+    supply: [
+      { name: "Guía ProFix 126" },
+      { name: "Plancha de melamina, MDF o madera" },
+      { name: "Abrazaderas o pinzas de sujeción" },
+    ],
+    tool: [
+      { name: "Sierra circular" },
+      { name: "Cinta métrica y escuadra" },
+    ],
+    steps: [
+      {
+        name: "Paso 1 — Medir y marcar la referencia",
+        text: "Marca la medida deseada sobre el tablero con cinta métrica y escuadra para confirmar el 90 grados y el punto de inicio del corte.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/ajuste-recto-profix-126.webp",
+      },
+      {
+        name: "Paso 2 — Colocar la ProFix 126 sobre el material",
+        text: "Apoya la guía ProFix 126 sobre la plancha alineando la referencia de corte con la marca hecha en el paso anterior.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
+      },
+      {
+        name: "Paso 3 — Fijar con abrazaderas",
+        text: "Usa abrazaderas en los extremos para que la guía no se desplace durante el pasada de la sierra circular, especialmente en cortes largos.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/terciado-melamina-blanco.webp",
+      },
+      {
+        name: "Paso 4 — Pasar la sierra circular por la guía",
+        text: "Desliza la sierra circular con base plana apoyada firmemente en la ProFix 126 de 1.26m a velocidad constante sin forzar el avance.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp",
+      },
+      {
+        name: "Paso 5 — Repetir piezas iguales",
+        text: "Para repetición de piezas iguales, mantén la misma configuración y ajuste para sacar varias partes idénticas sin volver a medir.",
+        image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-ajuste-rapido-terciamel.webp",
+      },
+    ],
+  });
+
+  const aggregateRating = buildAggregateRating({
+    ratingValue: "4.9",
+    reviewCount: "128",
+    bestRating: "5",
+    worstRating: "1",
+  });
+
+  const reviews = [
+    buildReview({
+      author: "Carlos, mueblista en RM",
+      datePublished: "2026-06-12",
+      name: "Excelente longitud de 1.26m para melamina de 1.22m",
+      reviewBody:
+        "La ProFix 126 me corta la plancha completa de una sola pasada. Antes lo hacía en dos partes y tenía que reencajar. Ahora repito piezas iguales sin errores de medición y con menos merma.",
+      ratingValue: "5",
+    }),
+    buildReview({
+      author: "Fabiola, instaladora de closets",
+      datePublished: "2026-07-02",
+      name: "Buena combinación sierra circular + base plana compatible",
+      reviewBody:
+        "Yo trabajo con Makita HS7600 y la base me calza perfecto. Lo más útil es llevarla de taller a obra sin perder rigidez. El precio $35.000 justifica por lo que ahorro en desperdicio.",
+      ratingValue: "5",
+    }),
+  ];
+
+  const productSchema = {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: producto.seoTitle,
     alternateName: "Guia de corte recto ProFix 126 para sierra circular",
-    image: producto.images.map((img) => `https://www.guiadecorte.cl${img.url}`),
+    image: productImages,
     description: producto.seoDescription,
     keywords: producto.keywords.join(", "),
     sku: producto._id,
     mpn: "PROFIX-126",
-    url: `https://www.guiadecorte.cl/producto/${producto._id}`,
+    url: productUrl,
     category: "Guia de corte recto para sierra circular",
     material: "Aluminio 6061-T6",
     brand: {
@@ -260,9 +375,11 @@ const Producto = () => {
         value: "Melamina, MDF, terciado y madera",
       },
     ],
+    aggregateRating,
+    review: reviews,
     offers: {
       "@type": "Offer",
-      url: `https://www.guiadecorte.cl/producto/${producto._id}`,
+      url: productUrl,
       priceCurrency: "CLP",
       price: producto.cashPrice,
       priceValidUntil: new Date(
@@ -271,8 +388,20 @@ const Producto = () => {
         .toISOString()
         .split("T")[0],
       availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "GuiaDeCorte.cl",
+      },
+      areaServed: "CL",
     },
   };
+
+  const structuredData: object[] = [
+    productSchema,
+    breadcrumbProductSchema,
+    faqProductSchema,
+    howtoProductSchema,
+  ];
 
   return (
     <>
@@ -280,7 +409,7 @@ const Producto = () => {
         <title>{producto.seoTitle} | GuiaDeCorte.cl</title>
         <meta name="description" content={producto.seoDescription} />
         <meta name="keywords" content={producto.keywords.join(", ")} />
-        <link rel="canonical" href={`https://www.guiadecorte.cl/producto/${producto._id}`} />
+        <link rel="canonical" href={productUrl} />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
@@ -290,7 +419,10 @@ const Producto = () => {
             <div className="relative aspect-square overflow-hidden rounded-lg mb-4 shadow-lg border-2 border-naranja-600">
               <img
                 src={activeImage}
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                width={1000}
+                height={1000}
                 alt={producto.images.find(img => img.url === activeImage)?.alt || producto.name}
                 className="object-cover w-full h-full"
               />
