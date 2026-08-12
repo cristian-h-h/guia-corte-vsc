@@ -301,6 +301,65 @@ const manualPrerenderPages = {
       </section>
     </article>
   `,
+  "/search": `
+    <section class="container mx-auto px-4 py-14 md:py-16 max-w-4xl">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <span>Buscar</span></nav>
+      <header class="text-center mb-10">
+        <span class="inline-flex items-center gap-3 mb-6">
+          <span class="inline-block bg-herramienta-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            Busqueda en el sitio
+          </span>
+          <span class="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-madera-800 shadow-sm border border-madera-200">
+            Resultados por Google Site Search
+          </span>
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold text-madera-800 leading-tight mb-5">
+          Busca dentro de GuiaDeCorte.cl con Google
+        </h1>
+        <p class="text-lg text-madera-700 mb-8 leading-relaxed">
+          Si llegaste desde una URL de busqueda del sitio, aqui puedes encontrar informacion sobre la guia
+          ProFix 126, compatibilidad por marca, uso con sierra circular o router y materiales como melamina, MDF y terciado.
+        </p>
+        <form role="search" method="get" action="https://www.google.com/search" target="_blank" rel="noopener noreferrer" class="max-w-3xl mx-auto">
+          <input type="hidden" name="q" value="site:www.guiadecorte.cl" />
+          <div class="flex flex-col sm:flex-row gap-3 items-stretch">
+            <div class="flex-1 relative">
+              <input
+                type="search"
+                name="q"
+                aria-label="Buscar en GuiaDeCorte.cl"
+                placeholder="Ej: guia de corte para sierra circular, router, Makita, melamina, 1.26m"
+                class="h-16 w-full pl-12 pr-4 rounded-xl border-2 border-madera-300 shadow-md bg-white text-lg focus:border-naranja-500 focus:ring-2 focus:ring-naranja-300"
+              />
+            </div>
+            <button
+              type="submit"
+              class="bg-naranja-600 hover:bg-naranja-700 text-white h-16 px-8 rounded-xl text-lg shadow-md flex items-center justify-center gap-2"
+            >
+              Buscar
+            </button>
+          </div>
+        </form>
+      </header>
+      <section class="bg-white border border-gris-200 rounded-2xl p-6 md:p-8 shadow-sm mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gris-900 mb-6">Enlaces rapidos para no perderte con la busqueda</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <a href="/producto/profix-126" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">Producto principal</h3>
+            <p class="text-gris-700 text-base leading-relaxed">Ficha comercial de la ProFix 126, precios, medidas y ficha tecnica.</p>
+          </a>
+          <a href="/blog" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">Blog de carpinteria y uso real</h3>
+            <p class="text-gris-700 text-base leading-relaxed">Articulos sobre sierra circular, compatibilidad, materiales y flujo de taller.</p>
+          </a>
+          <a href="/guias" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">Centro de guias y compatibilidad</h3>
+            <p class="text-gris-700 text-base leading-relaxed">Guias por herramienta, materiales y comparativas para decidir mejor.</p>
+          </a>
+        </div>
+      </section>
+    </section>
+  `,
   "/guias": `
     <div class="container mx-auto px-4 py-12">
       <header class="text-center max-w-4xl mx-auto mb-12">
