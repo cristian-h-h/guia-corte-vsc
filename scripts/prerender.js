@@ -256,6 +256,15 @@ const routeMetaFallbacks = {
     image: DEFAULT_SOCIAL_IMAGE,
     noindex: true,
   },
+  "/blog/slug-por-defecto-1": {
+    title: "Articulo de prueba (sin publicar) | GuiaDeCorte.cl",
+    description:
+      "Post placeholder de prueba. No es contenido real, no se indexa y es solo para uso interno.",
+    canonical: `${BASE_URL}/blog/slug-por-defecto-1`,
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+    noindex: true,
+  },
 };
 
 const manualPrerenderPages = {
@@ -359,6 +368,55 @@ const manualPrerenderPages = {
         </div>
       </section>
     </section>
+  `,
+  "/blog/slug-por-defecto-1": `
+    <article class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/blog">Blog</a> / <span>Articulo de prueba</span></nav>
+      <header class="mb-10">
+        <span class="inline-flex items-center rounded-full bg-madera-50 px-3 py-1 text-xs font-semibold text-madera-800 border border-madera-200 mb-5">
+          Articulo interno de prueba · No indexado
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gris-900 leading-tight mb-5">
+          Articulo de prueba sin publicar
+        </h1>
+        <p class="text-lg text-gris-600 mb-5 leading-relaxed">
+          Este post es un placeholder interno y no contiene contenido real para usuarios ni para buscadores.
+          No se indexa en Google ni aparece en el listado publico del blog.
+        </p>
+      </header>
+      <section class="bg-gris-50 border border-gris-200 rounded-2xl p-6 md:p-8 mb-10">
+        <h2 class="text-2xl font-bold text-gris-900 mb-4">Por que esta pagina existe</h2>
+        <p class="text-gris-700 leading-relaxed mb-5">
+          Se usa para validar internamente rutas y plantillas de blog durante el desarrollo. Si llegaste
+          aqui por error, vuelve al blog o a secciones con contenido real.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/blog" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">
+            Volver al blog
+          </a>
+          <a href="/" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">
+            Ir al inicio
+          </a>
+        </div>
+      </section>
+      <section class="bg-white border border-gris-200 rounded-2xl p-6 md:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gris-900 mb-4">Contenido real que te puede interesar</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <a href="/blog/5-proyectos-carpinteria-principiantes-guia-corte" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">5 proyectos de carpinteria para principiantes</h3>
+            <p class="text-gris-700 leading-relaxed">Ideas sencillas para empezar con sierra circular, melamina y buenas referencias de corte.</p>
+          </a>
+          <a href="/guias" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">Guias de compatibilidad y uso</h3>
+            <p class="text-gris-700 leading-relaxed">Fichas orientadas a decidir antes de comprar una guia de corte recto para tu herramienta.</p>
+          </a>
+          <a href="/producto/profix-126" class="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <h3 class="text-xl font-extrabold text-gris-900 group-hover:text-naranja-700 transition-colors">Producto Profix 126</h3>
+            <p class="text-gris-700 leading-relaxed">Ficha tecnica, precios, garantia y proceso de compra de la guia de corte ProFix 126 1.26m.</p>
+          </a>
+        </div>
+      </section>
+    </article>
   `,
   "/guias": `
     <div class="container mx-auto px-4 py-12">
