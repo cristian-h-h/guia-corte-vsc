@@ -1285,6 +1285,500 @@ export const supportGuides: SupportGuide[] = [
       "cortes-en-melamina-mdf-terciado",
     ],
   },
+  {
+    slug: "guia-de-corte-para-melamina-122x244",
+    path: "/guias/guia-de-corte-para-melamina-122x244",
+    title: "Guía de corte para melamina 122x244: cómo cortar plancha completa de 1.22x2.44m sin astillar",
+    shortTitle: "Melamina 122x244",
+    category: "materiales",
+    categoryLabel: "Materiales",
+    description:
+      "Aprende cómo cortar melamina de 122x244 sin astillar usando la guía de corte ProFix 126 (1.26m) sobre plancha estándar de 1.22x2.44m. Consejos de hoja, velocidad y apoyo para tablero completo.",
+    keywords:
+      "guia de corte para melamina 122x244, como cortar melamina 122x244, corte de plancha de melamina 1.22x2.44, cortar melamina sin astillar, guia corte melamina, profix 126 melamina 122x244",
+    primaryKeyword: "cortar melamina 122x244 sin astillar",
+    searchIntent:
+      "Aprender a cortar la plancha completa de melamina 1.22x2.44 con una sola pasada y sin astillar, usando una guía que cubra los 1.22m de ancho.",
+    audience:
+      "Mueblistas, talleres pequeños, instaladores de closets y aficionados avanzados que trabajan con planchas completas de melamina de 122x244.",
+    summary:
+      "Esta guía práctica explica por qué una guía de 1.26m como la ProFix 126 es la mejor aliada para trabajar la plancha estándar de melamina de 122x244, cubriendo el ancho completo sin necesidad de cortes intermedios.",
+    problemStatement:
+      "Cortar la plancha completa de melamina 122x244 suele generar astillas, desviaciones o cortes intermedios que obligan a re-encajar piezas. El problema empeora cuando la guía queda corta en relación al ancho de 1.22m o no se apoya correctamente sobre la cara visible.",
+    useCases: [
+      "Corte del ancho completo de la plancha 1.22x2.44m de una sola pasada.",
+      "Despiece de muebles, closets y rack directamente sobre plancha completa.",
+      "Cortes repetidos en melamina blanca o decorada sin astillar en la cara vista.",
+    ],
+    toolFocus: ["Sierra circular con hoja para melamina", "Guía ProFix 126 1.26m", "Abrazaderas de sujeción", "Escuadra y cinta métrica"],
+    relatedSearches: [
+      "como cortar plancha de melamina 122x244 sin astillar",
+      "guia de corte para melamina de 1.22x2.44m",
+      "cortar melamina con sierra circular sin astillar",
+      "corte de plancha completa melamina 1220x2440",
+      "profix 126 melamina 1.22m",
+      "mejor hoja para cortar melamina",
+    ],
+    sections: [
+      {
+        title: "Por qué la ProFix 126 (1.26m) funciona con planchas de 1.22m",
+        paragraphs: [
+          "La plancha estándar de melamina más usada en Chile mide 1.22m de ancho por 2.44m de largo. Una guía de 1.00m o incluso de 1.22m exactos suele quedar corta, obligando a re-apoyar o a ejecutar dos pasadas que nunca calzan igual.",
+          "La ProFix 126 con 1.26m entrega esos 4cm de margen extra para abarcar el ancho completo de la melamina 122x244, dejando espacio tanto al inicio como al final del recorrido. Ese margen es clave para evitar cortes intermedios.",
+        ],
+        bullets: [
+          "1.26m reales de longitud de trabajo vs 1.22m de ancho de plancha estándar.",
+          "4cm de margen para apoyar la entrada y salida de la sierra sin desviar.",
+          "Ideal para melamina blanca, decorada, MDF, terciado fenólico y tableros de mueblería.",
+          "Despiece directo desde la plancha sin sub-medir ni re-encajar.",
+        ],
+      },
+      {
+        title: "Preparación de la plancha y la referencia de corte",
+        paragraphs: [
+          "Antes de cortar melamina 122x244 deja la plancha apoyada sobre caballetes o una mesa estable. Nunca dejes el tablero flotando en una zona que pueda hundirse mientras pasas la sierra circular.",
+          "Marca la referencia inicial con escuadra de 90° y cinta métrica. Para piezas largas usa una línea de referencia continua o scribe fino. Luego alinea la ProFix 126 sobre esa marca y fija con abrazaderas en ambos extremos.",
+        ],
+        bullets: [
+          "Marca siempre con escuadra para conservar el ángulo de 90°.",
+          "Usa al menos 2 abrazaderas por extremo en cortes de más de 1m.",
+          "Deja el material de desecho colgando para no rozar contra el apoyo.",
+          "Confirma alineación en los 3 puntos: inicio, medio y fin del corte.",
+        ],
+      },
+      {
+        title: "Cómo evitar astillas en la cara visible de la melamina",
+        paragraphs: [
+          "La melamina astilla cuando la hoja de la sierra circular levanta la capa decorativa en la salida del corte. La solución combina hoja adecuada, orientación del tablero, velocidad de avance y una guía que mantenga la referencia constante.",
+          "Usa una hoja con 60 a 80 dientes para melamina, o una sierra especial con diente biselado fino. Coloca la cara bonita hacia abajo cuando cortes por arriba (lo normal en sierra circular portátil). Avanza con ritmo constante sin empujar ni frenar en medio del corte.",
+        ],
+        bullets: [
+          "Hoja de 60–80 dientes con geometría para melamina o tripe corte.",
+          "Cara visible de la melamina hacia abajo si cortas por arriba.",
+          "Avance fluido y sin empuje excesivo en la sierra.",
+          "Guía larga como la ProFix 126 para no perder referencia en el medio.",
+          "Si puedes, aplica cinta masking tape sobre la línea para reducir astillas.",
+        ],
+      },
+      {
+        title: "Cortes a largo y despiece del tablero 1.22x2.44",
+        paragraphs: [
+          "Cuando debes sacar varias piezas iguales desde una plancha de 122x244, empieza por los cortes longitudinales (paralelos a la fibra de la melamina) y luego pasa a los transversales. Usa el mismo ajuste de la ProFix 126 para sacar piezas idénticas sin volver a medir cada vez.",
+          "No muevas la guía entre piezas iguales. Si debes medir nuevamente, siempre anota la referencia sobre la misma cara de la plancha y valida con escuadra antes de volver a cortar. Así mantienes uniformidad en todo el despiece.",
+        ],
+        bullets: [
+          "Primero cortes longitudinales, luego transversales.",
+          "Repite el mismo set up de la guía para todas las piezas iguales.",
+          "Saca primero las piezas grandes, después las secundarias.",
+          "Valida escuadra y longitud en la primera pieza antes de repetir.",
+        ],
+      },
+      {
+        title: "Errores frecuentes al cortar melamina grande",
+        paragraphs: [
+          "El error más común es empezar el corte sin apoyar bien la guía en todo el largo o sin verificar el punto final del recorrido. También pasa mucho que la persona intenta cortar demasiado rápido o usa una hoja desgastada que genera astillas en los bordes.",
+          "Otro error de principiante es fijar la guía solo por un lado en planchas completas de 1.22x2.44. Siempre fija ambos extremos y, si puedes, agrega un apoyo central en cortes de más de 1.5m. Así evitas vibraciones que arruinan el término.",
+        ],
+        bullets: [
+          "No fijar la guía en los dos extremos.",
+          "Usar hoja desgastada o con pocos dientes.",
+          "Avanzar la sierra demasiado rápido.",
+          "Apoyar la plancha solo en dos puntos sin soporte central.",
+          "Cambiar de referencia entre piezas iguales.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿Puedo cortar la plancha completa de melamina 122x244 sin guía larga?",
+        answer:
+          "Se puede, pero el riesgo de desviación y astillas crece mucho. Para trabajo profesional o repetitivo en melamina de 1.22x2.44, conviene usar una guía de por lo menos 1.26m que cubra todo el ancho del tablero.",
+      },
+      {
+        question: "¿Qué hoja es mejor para cortar melamina 1220x2440?",
+        answer:
+          "Una hoja de sierra circular de 60 a 80 dientes con dientes finos y biselada, específicamente para melamina o tripe corte. Reduce mucho las astillas y mejora la terminación en la cara visible.",
+      },
+      {
+        question: "¿Necesito cortar siempre por el lado bonito hacia abajo?",
+        answer:
+          "Cuando usas sierra circular portátil, el corte limpio suele quedar en la cara inferior de la hoja. Por eso se recomienda dejar la cara visible hacia abajo al cortar melamina por arriba.",
+      },
+      {
+        question: "¿La ProFix 126 sirve tanto para melamina como para MDF y terciado?",
+        answer:
+          "Sí. La guía entrega la misma referencia estable en melamina 122x244, MDF, terciado, madera y otros tableros de mueblería, siempre que la herramienta tenga base plana compatible.",
+      },
+      {
+        question: "¿Cuántas abrazaderas necesito para una plancha completa?",
+        answer:
+          "Para una plancha de melamina 1.22x2.44 con corte completo, recomendamos mínimo 4 abrazaderas: 2 por cada extremo de la ProFix 126. Si el corte es muy largo, agrega una quinta en el centro para evitar vibración.",
+      },
+    ],
+    relatedGuideSlugs: [
+      "cortes-en-melamina-mdf-terciado",
+      "como-hacer-cortes-rectos-con-sierra-circular",
+      "profix-126-vs-regla-casera",
+      "profix-126-sierra-circular-vs-router",
+    ],
+  },
+  {
+    slug: "compatibilidad-profix-126-makita-hs7600",
+    path: "/guias/compatibilidad-profix-126-makita-hs7600",
+    title: "Compatibilidad ProFix 126 con Makita HS7600: guía de validación base plana y corte real",
+    shortTitle: "Makita HS7600",
+    category: "compatibilidad",
+    categoryLabel: "Compatibilidad por modelo",
+    description:
+      "Validación práctica de la compatibilidad entre la guía de corte ProFix 126 y la sierra circular Makita HS7600: base plana, recorrido, foto del apoyo, uso sobre melamina 1.22m y flujo de 3 pasos antes de comprar en Chile.",
+    keywords:
+      "compatibilidad profix 126 makita hs7600, makita hs7600 guia de corte, guia de corte para makita hs7600, sierra makita hs7600 base, profix 126 con makita, makita hs7600 melamina 1.22m",
+    primaryKeyword: "ProFix 126 compatible con Makita HS7600",
+    searchIntent:
+      "Confirmar con datos reales si la sierra circular Makita HS7600 trabaja bien con la guía de corte ProFix 126 para cortar melamina y MDF en planchas de 1.22m.",
+    audience:
+      "Carpinteros, mueblistas e instaladores que ya tienen una Makita HS7600 y buscan una guía de 1.26m para melamina sin invertir en otra máquina.",
+    summary:
+      "Esta ficha explica paso a paso por qué la Makita HS7600 suele ser compatible con la ProFix 126 cuando la base es plana, qué fotos enviar para validar antes de comprar y cómo preparar el primer corte en melamina 1.22x2.44.",
+    problemStatement:
+      "Quienes tienen una Makita HS7600 suelen preguntar si pueden usar la ProFix 126 sin medir la base a ciegas. La duda no es la marca, sino la geometría real de la base, el apoyo sobre el borde de la guía y el recorrido sin interferencias al cortar planchas de 1.22m.",
+    useCases: [
+      "Cortar melamina 1.22x2.44 de una sola pasada con Makita HS7600.",
+      "Repetir piezas iguales para closet o muebles usando la misma referencia.",
+      "Confirmar compatibilidad antes de comprar la ProFix 126 por WhatsApp.",
+    ],
+    toolFocus: ["Sierra circular Makita HS7600", "Guía de corte ProFix 126 1.26m", "Abrazaderas", "Escuadra 90°"],
+    relatedSearches: [
+      "makita hs7600 sirve con guia de corte",
+      "guia de corte para sierra makita hs7600",
+      "base plana makita hs7600",
+      "profix 126 con makita hs7600",
+      "compatibilidad profix makita",
+      "melamina 1.22m makita hs7600",
+    ],
+    sections: [
+      {
+        title: "La Makita HS7600 desde el punto de vista de la guía",
+        paragraphs: [
+          "La Makita HS7600 es una sierra circular de trabajo muy frecuente en talleres chilenos, con potencia suficiente para melamina, MDF y madera. Lo más importante para la compatibilidad no es solo su potencia, sino su base plana de apoyo contra la ProFix 126.",
+          "En la mayoría de unidades, la base inferior de la Makita HS7600 presenta un apoyo suficientemente plano para deslizarse contra el borde vertical de una guía recta como la ProFix 126, siempre que la persona no tenga instalados accesorios que sobresalgan y limiten el recorrido.",
+        ],
+        bullets: [
+          "Base plana habitual en Makita HS7600 (validar cada unidad).",
+          "Ancho de disco y profundidad compatible con melamina 15–18mm y MDF 18–25mm.",
+          "Mango y cuerpo no suelen interferir en planchas estándar.",
+          "Peso equilibrado ideal para cortes largos sin cansancio excesivo.",
+        ],
+      },
+      {
+        title: "Qué revisar en tu Makita HS7600 antes de validar",
+        paragraphs: [
+          "Antes de comprar una guía de corte para tu Makita HS7600, fíjate que la base esté en buen estado, sin golpes ni rebordes que impidan el apoyo limpio contra el borde de la ProFix 126. También confirma que no haya un protector o accesorio de extracción de polvo que sobresalga lateralmente.",
+          "Si tu unidad tiene zapatas o inserts aftermarket, retíralos temporalmente para ver la geometría real de la base. Lo ideal es que la base haga contacto en toda una franja plana contra la guía, no solo en dos puntas.",
+        ],
+        bullets: [
+          "Base plana, sin golpes ni deformaciones.",
+          "Sin accesorios laterales que sobresalgan o limiten el recorrido.",
+          "Disco alineado y sin excentricidad visible.",
+          "Protector inferior funcionando sin rozar la guía.",
+        ],
+      },
+      {
+        title: "Fotos y datos que te pedimos por WhatsApp para validar",
+        paragraphs: [
+          "Para responder rápido sobre compatibilidad entre tu Makita HS7600 y la ProFix 126, enviamos un pequeño check list por WhatsApp. No necesitas medir con micrómetro: con 2 fotos claras y el modelo basta para el 95% de los casos.",
+          "Primero, una foto de la base vista directamente desde abajo. Segundo, una foto lateral de la sierra apoyada sobre un tablero plano. Tercero, si la tienes, la foto del nombre del modelo o la etiqueta de la carcasa. Con eso resolvemos en minutos.",
+        ],
+        bullets: [
+          "Paso 1: foto de la base inferior desde abajo.",
+          "Paso 2: foto lateral apoyada sobre material plano.",
+          "Paso 3: modelo exacto y, si aplica, foto de accesorios instalados.",
+          "Paso 4: mención del tipo de trabajo: melamina, MDF, madera, obra o taller.",
+        ],
+      },
+      {
+        title: "Primer corte real con Makita HS7600 + ProFix 126",
+        paragraphs: [
+          "Una vez confirmada la compatibilidad básica, recomiendo probar primero con una tira corta de melamina o MDF antes de pasar a una plancha 122x244 completa. Así ajustas presión y velocidad sin arriesgar material caro.",
+          "Coloca la ProFix 126 sobre el tablero, fija con 4 abrazaderas, marca línea de referencia y pasa la Makita HS7600 manteniendo la base presionada suavemente contra el borde vertical de la guía. Avanza con ritmo constante sin forzar.",
+        ],
+        bullets: [
+          "Prueba inicial en tira corta antes de plancha 1.22m.",
+          "Apoya la base completamente plana contra la guía.",
+          "Usa disco para melamina 60–80 dientes si cortarás tablero decorado.",
+          "Mantén 2 abrazaderas por extremo en cortes de ancho completo.",
+        ],
+      },
+      {
+        title: "Qué pasa si la compatibilidad no funciona en tu unidad",
+        paragraphs: [
+          "En la práctica, la Makita HS7600 suele funcionar muy bien, pero en algunas unidades la base puede tener soportes o accesorios que cambian la geometría. Por eso no prometeremos compatibilidad universal a ciegas: primero validamos contigo.",
+          "Si después de validar compras la ProFix 126 y por algún motivo la combinación no te funciona como esperabas para tu uso real con Makita HS7600, resolvemos cambio o devolución dentro de nuestro flujo comercial en Chile, siempre y cuando esté dentro del plazo y condiciones habituales.",
+        ],
+        bullets: [
+          "Validación previa por foto para reducir sorpresas.",
+          "No hacemos promesas ciegas de compatibilidad universal.",
+          "Cambio o alternativa si el uso real no se ajusta a tu modelo.",
+          "Soporte antes y después de comprar en Chile.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿Todas las Makita HS7600 son compatibles con la ProFix 126?",
+        answer:
+          "La mayoría sí, pero no es una promesa matemática. Lo correcto es validar la base real de tu unidad con 2 fotos por WhatsApp antes de comprar, por si la tuya tiene accesorios o detalles que cambian la geometría.",
+      },
+      {
+        question: "¿Puedo cortar plancha de melamina 1.22x2.44 con Makita HS7600 y la ProFix 126?",
+        answer:
+          "Sí, siempre que la base plana esté confirmada. La ProFix 126 con sus 1.26m cubre el ancho estándar de 1.22m de la plancha de melamina de una sola pasada.",
+      },
+      {
+        question: "¿Necesito un accesorio extra para unir la guía con la Makita HS7600?",
+        answer:
+          "No. El funcionamiento recomendado es por apoyo de la base contra el borde vertical de la ProFix 126, sin adaptadores ni piezas intermedias que puedan introducir juego.",
+      },
+      {
+        question: "¿Qué disco me recomiendan en la Makita HS7600 para melamina?",
+        answer:
+          "Una hoja de 60 a 80 dientes específica para melamina o tripe corte, con diente biselado. Así reduces astillas y mantienes el borde limpio al cortar planchas de 1220x2440.",
+      },
+      {
+        question: "¿Validad compatibilidad por WhatsApp antes de comprar?",
+        answer:
+          "Sí. Envía foto de la base inferior, una foto lateral y mención de tu modelo Makita HS7600. Respondemos rápido en horario de atención en Chile.",
+      },
+    ],
+    compatibilityMatrix: {
+      title: "Resumen de compatibilidad por marcas habituales",
+      intro:
+        "Junto a Makita, existen otras marcas con base plana que también funcionan muy bien con la ProFix 126 después de la misma validación por foto y modelo.",
+      brands: [
+        {
+          brand: "Makita (HS7600 y similares)",
+          toolTypes: ["Sierra circular portátil", "Algunas unidades de router Makita"],
+          validationLevel: "Nivel alto — Validar cada unidad",
+          guidance:
+            "Base plana frecuente en HS7600. Confirmar bordes y accesorios laterales. Flujo de foto inferior + lateral + modelo basta para el 95% de casos.",
+        },
+        {
+          brand: "DeWalt",
+          toolTypes: ["Sierra circular 7-1/4", "Sierras inalámbricas XR"],
+          validationLevel: "Nivel alto — Validar base",
+          guidance:
+            "Muchas sierras DeWalt tienen base plana muy buena para guiado. Igual validamos foto de la base inferior para descartar ranuras excesivas.",
+        },
+        {
+          brand: "Bosch",
+          toolTypes: ["Sierra circular portátil", "Fresadoras con apoyo plano"],
+          validationLevel: "Nivel medio-alto — Depende de línea",
+          guidance:
+            "Algunas líneas Bosch tienen base plana excelente. Otras usan apoyos con más relieve. Confirmamos por foto y modelo.",
+        },
+        {
+          brand: "Ubermann",
+          toolTypes: ["Sierra circular Ubermann", "Accesorios de taller"],
+          validationLevel: "Nivel medio — Validación obligatoria",
+          guidance:
+            "No es uniforme por modelo. Recomendamos siempre validar base inferior, ranuras y apoyo antes de comprar para evitar sorpresas.",
+        },
+      ],
+      validationSteps: [
+        "1 foto de la base inferior de la Makita HS7600 directamente desde abajo.",
+        "1 foto lateral apoyando la sierra sobre un tablero plano.",
+        "Indicar modelo exacto y accesorios instalados (extracción, guías aftermarket).",
+        "Mencionar tipo de trabajo principal (melamina, MDF, madera, obra).",
+        "Especificar si cortarás planchas 1.22x2.44 completas o piezas menores.",
+      ],
+    },
+    relatedGuideSlugs: [
+      "compatibilidad-por-modelo-de-herramienta",
+      "compatibilidad-por-marcas-frecuentes",
+      "guia-de-corte-para-melamina-122x244",
+      "como-hacer-cortes-rectos-con-sierra-circular",
+    ],
+  },
+  {
+    slug: "profix-126-sierra-circular-vs-router",
+    path: "/guias/profix-126-sierra-circular-vs-router",
+    title: "ProFix 126: sierra circular vs router — cuándo usar cada herramienta con la guía de 1.26m",
+    shortTitle: "Sierra circular vs router",
+    category: "comparativa",
+    categoryLabel: "Comparativa de uso",
+    description:
+      "Comparativa práctica para decidir cuándo usar sierra circular y cuándo router con la guía de corte ProFix 126. Corte vs ranurado, velocidad, tipo de borde, material y resultados en melamina, MDF, terciado y madera.",
+    keywords:
+      "profix 126 sierra circular vs router, guia de corte sierra vs router, cuando usar sierra circular y cuando router, sierra circular vs router melamina, profix 126 router, guia de 1.26m sierra o router",
+    primaryKeyword: "ProFix 126 — sierra circular vs router",
+    searchIntent:
+      "Entender cuándo conviene usar sierra circular y cuándo router con la misma guía ProFix 126, según el tipo de trabajo, material y resultado buscado.",
+    audience:
+      "Talleres chicos, mueblistas, instaladores y aficionados avanzados que tienen ambas herramientas y quieren decidir antes de empezar el proyecto.",
+    summary:
+      "Esta comparativa despeja la duda de cuándo es mejor usar sierra circular y cuándo router con la ProFix 126. Ambas herramientas se benefician de la misma referencia de 1.26m, pero cada una domina escenarios distintos: corte completo vs ranurado, borde terminado, velocidad y control.",
+    problemStatement:
+      "Muchas personas llegan preguntándose si la ProFix 126 es una guía para sierra circular o una guía para router. La respuesta es que sirve para ambas, pero con objetivos diferentes. Si no distingues cuándo usar cada una, terminas con bordes gruesos donde querías un ranurado, o con tiempos más largos donde una sierra corta en una sola pasada.",
+    useCases: [
+      "Decidir herramienta antes de cortar melamina 122x244 para un closet.",
+      "Elegir entre sierra o router para hacer canalizaciones o ranuras largas.",
+      "Saber cuando combinar ambas en el mismo proyecto (corte + perfilado).",
+    ],
+    toolFocus: ["Sierra circular", "Router o fresadora", "Guía ProFix 126", "Abrazaderas y accesorios de fijación"],
+    relatedSearches: [
+      "diferencia entre sierra circular y router con guia",
+      "cuando usar sierra circular y cuando router",
+      "profix 126 para router",
+      "melamina sierra circular vs router",
+      "corte vs ranurado guia 1.26m",
+      "sierra o router para muebles de melamina",
+    ],
+    sections: [
+      {
+        title: "Qué hace bien la sierra circular con la ProFix 126",
+        paragraphs: [
+          "La sierra circular es la herramienta principal con la que la ProFix 126 entrega el máximo valor comercial. Sirve para cortar planchas completas, despiezar muebles, sacar piezas largas y repetir medidas sin errores en melamina, MDF, terciado y madera.",
+          "Con una sola pasada puedes cortar todo el ancho de la plancha 122x244 y luego repetir la referencia para las siguientes piezas sin volver a medir. El borde de salida se mejora con una buena hoja de 60–80 dientes para melamina.",
+        ],
+        bullets: [
+          "Corte completo de plancha 1.22x2.44 de una sola pasada.",
+          "Despiece de muebles, closets, repisas y piezas grandes.",
+          "Alta velocidad en cortes rectos repetibles.",
+          "Buen control de escuadra cuando la guía está bien fijada.",
+        ],
+      },
+      {
+        title: "Qué hace bien el router con la ProFix 126",
+        paragraphs: [
+          "El router o fresadora brilla cuando no quieres cortar completamente el material, sino hacer ranuras, rebajes, guías, panelados o perfilados de borde. En esos casos, la ProFix 126 sirve de referencia larga para recorridos controlados de hasta 1.26m.",
+          "No esperes del router la misma productividad en cortes completos que una sierra circular. Pero en ranuras para fondos de cajón, regletas o canales de 6, 8 o 10mm, es la combinación ideal si la base del router apoya bien y usas fresa adecuada.",
+        ],
+        bullets: [
+          "Ranuras largas y guiadas de hasta 1.26m.",
+          "Rebajes, perfilados y canales en MDF, melamina o madera.",
+          "Mejor control lateral en pasadas múltiples y pocas profundidades.",
+          "Acabado más fino en bordes cuando se usa fresa de filo recto.",
+        ],
+      },
+      {
+        title: "Comparativa rápida por tipo de trabajo",
+        paragraphs: [
+          "Si tu objetivo es separar el tablero en dos piezas (corte total), empieza siempre por sierra circular. Si quieres quitar una capa o abrir una canal sin atravesar todo el espesor, la herramienta correcta es el router.",
+          "También influye el espesor. En melamina de 15 o 18mm, la sierra corta en una pasada, mientras que el router generalmente requiere varias pasadas de profundidad creciente. Para trabajos largos y productivos, ese tiempo extra suma mucho.",
+        ],
+        bullets: [
+          "Corte completo del material → Sierra circular primero.",
+          "Ranura o rebaje parcial → Router.",
+          "Bisel o perfil decorativo → Router con fresa adecuada.",
+          "Despiece rápido de plancha 1.22x2.44 → Sierra circular.",
+          "Canales para fondos de cajón o regletas → Router.",
+        ],
+      },
+      {
+        title: "Combinar ambas en el mismo proyecto",
+        paragraphs: [
+          "La combinación ganadora en mueblería es usar la sierra circular + ProFix 126 para sacar todas las piezas principales (laterales, estantes, tapas) y luego pasar al router con la misma guía para hacer ranuras de fondo, rebajes de marco o perfilados finos.",
+          "Mantener la misma referencia de 1.26m para ambas etapas reduce errores. Si alineas bien la ProFix 126 para el despiece inicial, luego puedes reutilizarla o reposicionarla en la misma línea para las operaciones de router sin re-medir desde cero.",
+        ],
+        bullets: [
+          "Paso 1: Sierra circular para sacar todas las piezas del despiece.",
+          "Paso 2: Router para ranuras, rebajes y perfilado de bordes.",
+          "Reutiliza la misma referencia de 1.26m en las tareas compatibles.",
+          "Cambia la herramienta, no la metodología de trabajo.",
+        ],
+      },
+      {
+        title: "Errores frecuentes al elegir una u otra",
+        paragraphs: [
+          "Error muy común: querer cortar plancha completa con router pensando que queda más limpio. Termina siendo 3 a 5 veces más lento y si apuras el paso se quema la fresa o se astilla la melamina.",
+          "Error opuesto: intentar hacer una ranura estrecha con sierra circular de disco grande. El corte sale más ancho de lo necesario y el control lateral es peor que con una fresa pequeña y una guía larga.",
+        ],
+        bullets: [
+          "Usar router para corte completo de planchas grandes.",
+          "Usar sierra circular para ranuras finas o poco profundas.",
+          "Olvidar pasar varias pasadas al router en espesores altos.",
+          "No validar la base del router antes de comprar una guía.",
+          "Elegir hoja o fresa equivocada para melamina.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿Puedo usar la misma ProFix 126 tanto con sierra como con router?",
+        answer:
+          "Sí. El principio de referencia es el mismo: borde vertical estable y 1.26m de recorrido. Lo que cambia es la herramienta, la fresa/hoja y la profundidad de trabajo.",
+      },
+      {
+        question: "¿Qué herramienta corta mejor melamina de 1.22x2.44?",
+        answer:
+          "Para corte completo y rápido, sierra circular con hoja para melamina de 60–80 dientes. Para terminación adicional o ranuras, usa router después.",
+      },
+      {
+        question: "¿El router necesariamente funciona con cualquier base?",
+        answer:
+          "No. Para router la validación de base plana es especialmente importante. Recomendamos enviar foto de la base inferior por WhatsApp antes de comprarla pensando solo en router.",
+      },
+      {
+        question: "¿Cuál de las dos deja un borde más limpio?",
+        answer:
+          "Depende del parámetro. En corte transversal limpio de melamina, sierra con buena hoja. En perfilados, filos de fresa o ranuras finas, router suele dejar un acabado más fino.",
+      },
+      {
+        question: "¿Conviene tener ambas herramientas en un taller pequeño?",
+        answer:
+          "Sí, porque se complementan muy bien. Sierra para productividad en cortes y router para precision en ranuras y perfilado. La ProFix 126 acompaña ambos flujos sin tener que duplicar guías.",
+      },
+    ],
+    comparison: {
+      title: "Tabla comparativa: sierra circular vs router con ProFix 126",
+      alternativeLabel: "Router / Fresadora",
+      intro:
+        "La tabla siguiente resume cuándo conviene usar sierra circular y cuándo router con la misma guía de 1.26m en escenarios típicos de taller o instalación en Chile.",
+      rows: [
+        {
+          feature: "Objetivo principal",
+          profix126: "Corte completo o despiece rápido del material.",
+          alternative: "Ranuras, rebajes, perfilados y canales parciales.",
+        },
+        {
+          feature: "Velocidad en plancha 122x244",
+          profix126: "Muy alta: 1 sola pasada en espesores normales.",
+          alternative: "Baja: suele requerir varias pasadas de profundidad.",
+        },
+        {
+          feature: "Espesor parcial (ranurado)",
+          profix126: "Poco preciso y no tan limpio con disco grueso.",
+          alternative: "Excelente con fresa adecuada y varias pasadas.",
+        },
+        {
+          feature: "Acabado de borde en melamina",
+          profix126: "Muy bueno con hoja 60-80 dientes para melamina.",
+          alternative: "Excelente en perfilados y filos rectos con fresa.",
+        },
+        {
+          feature: "Control lateral en recorridos de 1.26m",
+          profix126: "Bueno si la base apoya plana contra la guía.",
+          alternative: "Muy bueno si base plana y fresa centrada.",
+        },
+        {
+          feature: "Recomendación para principiantes",
+          profix126: "Empieza por sierra: resultados rápidos y menos variables.",
+          alternative: "Empieza con router solo en pasadas superficiales.",
+        },
+        {
+          feature: "Ideal para proyecto típico",
+          profix126: "Closet, rack, mesón, carro, repisas, muebles.",
+          alternative: "Fondos de cajón, panelados, canales, perfilados.",
+        },
+      ],
+    },
+    relatedGuideSlugs: [
+      "como-hacer-cortes-rectos-con-sierra-circular",
+      "guia-de-corte-para-router",
+      "cortes-en-melamina-mdf-terciado",
+      "guia-de-corte-para-melamina-122x244",
+    ],
+  },
 ];
 
 export const supportGuidePaths = supportGuides.map((guide) => guide.path);

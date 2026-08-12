@@ -179,6 +179,36 @@ const routeMetaFallbacks = {
     type: "article",
     image: DEFAULT_SOCIAL_IMAGE,
   },
+  "/guias/guia-de-corte-para-melamina-122x244": {
+    title: "Guia de corte para melamina 122x244: cortes rectos y sin astillas con ProFix 126 | GuiaDeCorte.cl",
+    description:
+      "Aprende a cortar planchas de melamina 122x244 con sierra circular, evitando astillas, desviaciones y desperdicio. Incluye consejos de soporte, hoja de sierra y velocidad.",
+    canonical: `${BASE_URL}/guias/guia-de-corte-para-melamina-122x244`,
+    keywords:
+      "cortar melamina 122x244, guia de corte melamina 1220x2440, corte recto melamina sierra circular, no astillar melamina, corte tablero melamina completo",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
+  "/guias/compatibilidad-profix-126-makita-hs7600": {
+    title: "Compatibilidad ProFix 126 con Makita HS7600: validacion paso a paso | GuiaDeCorte.cl",
+    description:
+      "Revisa paso a paso la compatibilidad de la guia ProFix 126 con la sierra circular Makita HS7600. Incluye checklist de base, apoyo, recorrido y consulta gratuita por WhatsApp.",
+    canonical: `${BASE_URL}/guias/compatibilidad-profix-126-makita-hs7600`,
+    keywords:
+      "Makita HS7600 compatibilidad ProFix 126, guia de corte para Makita HS7600, Makita HS7600 base compatible, sierra circular Makita guia recta",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
+  "/guias/profix-126-sierra-circular-vs-router": {
+    title: "ProFix 126: Sierra circular vs router — cual usar y cuando combinarlas | GuiaDeCorte.cl",
+    description:
+      "Comparativa detallada del uso de ProFix 126 con sierra circular frente a router. Incluye tabla por operacion (corte, rebaje, ranurado), ventajas de cada herramienta y como combinarlas en taller.",
+    canonical: `${BASE_URL}/guias/profix-126-sierra-circular-vs-router`,
+    keywords:
+      "sierra circular vs router, guia de corte sierra vs router, ProFix 126 router, cortar o rebajar con sierra circular, ranurado con guia recta",
+    type: "article",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
   "/galeria": {
     title: "Galeria de Uso de la Guia ProFix 126 | GuiaDeCorte.cl",
     description:
@@ -869,6 +899,129 @@ const manualPrerenderPages = {
         <div class="flex flex-col sm:flex-row gap-3">
           <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
           <a href="/guias/cortes-en-melamina-mdf-terciado" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver materiales</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/guia-de-corte-para-melamina-122x244": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Corte melamina 122x244</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">guia de corte para melamina 122x244</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Guia de corte para melamina 122x244: cortes rectos y sin astillas con ProFix 126</h1>
+        <p class="text-xl text-gris-600 mb-5">Aprende a cortar planchas completas de melamina 1220x2440 con sierra circular, evitando astillas, desviaciones y desperdicio de material.</p>
+      </header>
+      <section class="bg-gris-50 border border-gris-200 rounded-xl p-6 mb-10">
+        <h2 class="text-2xl font-bold mb-3">Por que el formato 122x244 es el mas dificil</h2>
+        <p class="text-gris-700">Una plancha completa exige apoyo solido, recorrido largo y referencia estable. Si falla cualquiera de esos tres, aparecen desviaciones y astillas.</p>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Pilares de un buen corte de melamina</h2>
+        <ul class="list-disc pl-6 text-gris-700 space-y-2 text-lg">
+          <li>Soporte por ambos lados de la linea de corte, sin volcado al final.</li>
+          <li>Hoja de sierra con muchas puntas, afilada y especifica para melamina.</li>
+          <li>Velocidad de avance constante y sin empujar mas de la cuenta.</li>
+          <li>Cinta masking tape sobre la linea cuando la terminacion es critica.</li>
+          <li>Guia recta de 1.26m para asegurar el recorrido completo.</li>
+        </ul>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Despiece tipico de una plancha 122x244</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">Empieza por los cortes transversales mas largos y sigue por los longitudinales. Deja siempre un margen de ~10mm para desbastar si el proyecto tolera retrabajo.</p>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Siguiente paso</h2>
+        <p class="text-gris-700 mb-4">Si cortas planchas 122x244 con frecuencia, la ProFix 126 te ahorra material y tiempo desde el primer uso.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/guias/cortes-en-melamina-mdf-terciado" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver materiales</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/compatibilidad-profix-126-makita-hs7600": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Makita HS7600</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">compatibilidad ProFix 126 Makita HS7600</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Compatibilidad ProFix 126 con Makita HS7600: validacion paso a paso</h1>
+        <p class="text-xl text-gris-600 mb-5">Checklist concreto para evaluar si tu sierra circular Makita HS7600 trabaja bien con la guia ProFix 126 antes de comprar.</p>
+      </header>
+      <section class="bg-gris-50 border border-gris-200 rounded-xl p-6 mb-10">
+        <h2 class="text-2xl font-bold mb-3">La HS7600 es una sierra muy frecuente en Chile</h2>
+        <p class="text-gris-700">Por potencia, peso y precio se usa mucho en taller y obra. La compatibilidad con guias depende de base, apoyo y recorrido — no de la marca sola.</p>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Checklist de 5 pasos para validar</h2>
+        <ol class="list-decimal pl-6 text-gris-700 space-y-3 text-lg">
+          <li>Revisa que la base plana tenga al menos 60mm de apoyo continuo a un lado del zapata.</li>
+          <li>Confirma que la suela no tenga pestañas o rebordes que enreden con la guia en el recorrido.</li>
+          <li>Ubica el centro de la hoja y marca la distancia hasta el borde exterior de la base.</li>
+          <li>Haz una pasada en seco sobre melamina o MDF sin encender: el movimiento debe ser fluido y sin trabar.</li>
+          <li>Si tienes dudas en el paso 4, envía foto por WhatsApp para cotejar antes de comprar.</li>
+        </ol>
+      </section>
+      <section class="max-w-5xl mb-10 overflow-x-auto border border-gris-200 rounded-xl">
+        <table class="w-full text-left">
+          <thead class="bg-gris-50">
+            <tr><th class="px-4 py-3 font-semibold">Marca / Modelo</th><th class="px-4 py-3 font-semibold">Uso tipico</th><th class="px-4 py-3 font-semibold">Compatibilidad estimada</th><th class="px-4 py-3 font-semibold">Validacion final</th></tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Makita HS7600</td><td class="px-4 py-3">Corte general en taller y obra</td><td class="px-4 py-3">Muy alta en bases estandar</td><td class="px-4 py-3">Confirmar por foto</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">DeWalt DWE575</td><td class="px-4 py-3">Uso intensivo carpinteria</td><td class="px-4 py-3">Alta</td><td class="px-4 py-3">Confirmar por foto</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Bosch GKS 190</td><td class="px-4 py-3">Carpinteria media y melamina</td><td class="px-4 py-3">Alta</td><td class="px-4 py-3">Confirmar por foto</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Ubermann UBS185</td><td class="px-4 py-3">Gama media entrada Sodimac</td><td class="px-4 py-3">Media</td><td class="px-4 py-3">Confirmar por foto</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Consulta gratuita por WhatsApp</h2>
+        <p class="text-gris-700 mb-4">Si tu modelo es HS7600 o similar, envía una foto de la base por WhatsApp y te respondemos en horario de taller.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/contacto" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Resolver compatibilidad</a>
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+        </div>
+      </section>
+    </article>
+  `,
+  "/guias/profix-126-sierra-circular-vs-router": `
+    <article class="container mx-auto px-4 py-12">
+      <nav class="text-sm text-gris-500 mb-6"><a href="/">Inicio</a> / <a href="/guias">Guias</a> / <span>Sierra vs router</span></nav>
+      <header class="max-w-4xl mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wide text-naranja-600 mb-3">sierra circular vs router ProFix 126</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">ProFix 126: Sierra circular vs router — cual usar y cuando combinarlas</h1>
+        <p class="text-xl text-gris-600 mb-5">Comparativa por operacion para decidir cuando cortar con sierra, cuando rebajar con router y cuando combinar ambas herramientas con la misma guia.</p>
+      </header>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">No se reemplazan, se complementan</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">La sierra circular corta rapido y limpio sobre distancia larga. El router gana en precision de rebaje, ranurado y terminacion. La misma ProFix 126 puede servir para ambos si la base acompaña.</p>
+      </section>
+      <section class="max-w-5xl mb-10 overflow-x-auto border border-gris-200 rounded-xl">
+        <table class="w-full text-left">
+          <thead class="bg-gris-50">
+            <tr><th class="px-4 py-3 font-semibold">Operacion</th><th class="px-4 py-3 font-semibold">Sierra circular + ProFix</th><th class="px-4 py-3 font-semibold">Router + ProFix</th></tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Corte longitudinal largo</td><td class="px-4 py-3">Ideal. Rapido, estable y repetible.</td><td class="px-4 py-3">No recomendado por tiempo y profundidad.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Corte transversal 122x244</td><td class="px-4 py-3">Muy buena opcion de punta a punta.</td><td class="px-4 py-3">Solo valido para ranuras finas.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Rebaje a escuadra</td><td class="px-4 py-3">No es su fuerte.</td><td class="px-4 py-3">Ideal con fresa recta o copiadora.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Ranurado para cajones / paneles</td><td class="px-4 py-3">Precario si exige mismo ancho repetido.</td><td class="px-4 py-3">Ideal, repetible y de calibre constante.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Corte de melamina cara vista</td><td class="px-4 py-3">Muy bueno con hoja fina y guia.</td><td class="px-4 py-3">Solo para terminaciones o rebajes marginales.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Trabajo en obra / portable</td><td class="px-4 py-3">Muy fuerte.</td><td class="px-4 py-3">Bueno con tomacorriente o bateria.</td></tr>
+            <tr class="border-t border-gris-200"><td class="px-4 py-3 font-medium">Corte a inglete angulado</td><td class="px-4 py-3">Factible con plantilla adicional.</td><td class="px-4 py-3">No es su uso principal.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="max-w-4xl mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Flujo ideal en taller: sierra primero, router despues</h2>
+        <p class="text-gris-700 text-lg leading-relaxed mb-4">Despieza primero todas tus piezas con sierra circular y ProFix. Luego pasa a router para ranuras, rebajes y detalles de terminacion. Así la guia se usa en toda la linea y no tienes que cambiar de referencia.</p>
+      </section>
+      <section class="bg-madera-50 border border-madera-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-3">Lista de decision rapida</h2>
+        <p class="text-gris-700 mb-4">Si tu duda es cual herramienta priorizar con la ProFix 126: empieza por sierra circular y valida router por base antes de expandir usos.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/producto/profix-126" class="inline-flex items-center justify-center bg-herramienta-600 hover:bg-herramienta-700 text-white px-5 py-3 rounded-md font-medium">Ver ProFix 126</a>
+          <a href="/guias/guia-de-corte-para-router" class="inline-flex items-center justify-center border border-gris-300 px-5 py-3 rounded-md font-medium">Router + ProFix</a>
         </div>
       </section>
     </article>
