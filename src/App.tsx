@@ -93,12 +93,21 @@ const routes: RouteObject[] = [
   },
 ];
 
-const router = createBrowserRouter(routes);
+/**
+ * El router de navegador se crea de forma perezosa: `createBrowserRouter` toca
+ * `document` y no puede ejecutarse en el bundle SSR/prerender, que importa
+ * `AppProviders` desde este mismo archivo.
+ */
+let browserRouter: ReturnType<typeof createBrowserRouter> | null = null;
+function getBrowserRouter() {
+  if (!browserRouter) browserRouter = createBrowserRouter(routes);
+  return browserRouter;
+}
 
 export default function App() {
   return (
     <AppProviders>
-      <RouterProvider router={router} />
+      <RouterProvider router={getBrowserRouter()} />
     </AppProviders>
   );
 }
