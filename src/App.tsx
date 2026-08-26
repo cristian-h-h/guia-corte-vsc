@@ -3,7 +3,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider, Navigate, type RouteObject } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+  Outlet,
+  type RouteObject,
+} from "react-router-dom";
 import { CartProvider } from "@/context/CartContext";
 import { HelmetProvider } from "react-helmet-async";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,71 +22,83 @@ import "@/styles/accessibility.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
+import Producto from "./pages/Producto";
+import Contacto from "./pages/Contacto";
+import NotFound from "./pages/NotFound";
 
 const TestimonialsCarousel = lazy(() => import("@/components/TestimonialsCarousel"));
 const AccessibilityPanel = lazy(() => import("@/components/AccessibilityPanel"));
 
 const queryClient = new QueryClient();
 
-interface LayoutProps {
+/**
+ * Providers compartidos entre el bundle de cliente (App) y el bundle SSR
+ * (src/entry-server.tsx). entry-server importa AppProviders y le pasa
+ * `helmetContext` para poder extraer los meta tags durante el prerender.
+ */
+export function AppProviders({
+  children,
+  helmetContext,
+}: {
   children: React.ReactNode;
-  showTestimonials?: boolean;
-  title?: string;
-  description?: string;
-  image?: string;
+  helmetContext?: Record<string, unknown>;
+}) {
+  return (
+    <HelmetProvider context={helmetContext}>
+      <QueryClientProvider client={queryClient}>
+        <AccessibilityProvider>
+          <TooltipProvider>
+            <CartProvider>{children}</CartProvider>
+          </TooltipProvider>
+        </AccessibilityProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  );
 }
 
-const Layout = ({
-  children,
-  showTestimonials = false,
-  title,
-  description,
-  image,
-}: LayoutProps) => (
+const Layout = ({ showTestimonials = false }: { showTestimonials?: boolean }) => (
   <>
     <ScrollToTop />
     <SkipLink />
     <Navbar />
-    <main id="main-content">{children}</main>
+    <main id="main-content" className="min-h-screen">
+      <Outlet />
+    </main>
     {showTestimonials && (
       <Suspense fallback={null}>
         <TestimonialsCarousel />
       </Suspense>
     )}
     <Footer />
-    <TooltipProvider>
-      <Suspense fallback={null}>
-        <AccessibilityPanel />
-      </Suspense>
-    </TooltipProvider>
+    <Suspense fallback={null}>
+      <AccessibilityPanel />
+    </Suspense>
     <Toaster />
     <Sonner />
     <WhatsAppButton />
   </>
 );
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: "/",
-    element: (
-      <Layout title="Guía de Corte" description="Guía de corte profesional para sierra circular" />
-    ),
+    element: <Layout showTestimonials />,
     children: [
       { index: true, element: <Index /> },
-      // Aquí pueden añadirse más rutas hijas
+      { path: "producto/:id", element: <Producto /> },
+      { path: "producto", element: <Navigate to="/producto/profix-126" replace /> },
+      { path: "contacto", element: <Contacto /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
-  { path: "*", element: <Navigate to="/" replace /> },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <CartProvider>
-          <RouterProvider router={router} />
-        </CartProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
   );
 }
