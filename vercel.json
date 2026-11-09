@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/producto",
+      "destination": "/producto/profix-126",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/carrito",
@@ -82,7 +89,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index"
     }
   ]
 }
