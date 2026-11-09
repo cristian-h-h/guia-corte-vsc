@@ -25,7 +25,7 @@ const RelatedCompaniesCarousel = () => {
     {
       name: "guiadecorte.cl",
       logo: "/guia-imagenes/profix-126-logo.webp",
-      url: "https://guiadecorte.cl",
+      url: "https://www.guiadecorte.cl",
       alt: "Logo Guía de Corte - Guia de precisión para cortes rectos, carpintería, bricolage"
     }
   ];
