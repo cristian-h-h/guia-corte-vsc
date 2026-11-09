@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeCheck, Check, MessageSquare, ShieldCheck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, Flame, MessageSquare, Package, ShieldCheck, Store, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
 import SEO from "@/components/SEO";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
 import { buildBreadcrumbList, buildHowTo } from "@/utils/schema";
+import {
+  ofertaLiquidacion,
+  formatCLP,
+  descuentoOfertaPct,
+  ofertaAgotadoPct,
+} from "@/data/ofertaLiquidacion";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -97,7 +103,7 @@ const Index = () => {
       "Guía paso a paso para utilizar correctamente la Guía de Corte ProFix 126 de 1.26m sobre planchas de melamina, MDF, terciado y madera con sierra circular o router.",
     image: "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp",
     totalTime: "PT5M",
-    estimatedCost: { currency: "CLP", value: "35000" },
+    estimatedCost: { currency: "CLP", value: String(ofertaLiquidacion.packs[0].precioUnitario) },
     supply: [
       { name: "Guía de Corte ProFix 126" },
       { name: "Sierra circular, router o caladora" },
@@ -298,8 +304,10 @@ const Index = () => {
                   />
 
                   {/* Etiqueta de precio */}
-                  <div className="absolute top-4 right-4 bg-taller-800 text-white px-4 py-2 rounded-full font-bold shadow-lg transform rotate-12 border-2 border-white">
-                    $35.000 efectivo
+                  <div className="absolute top-4 right-4 bg-taller-800 text-white px-4 py-2 rounded-full font-bold shadow-lg transform rotate-12 border-2 border-white text-center leading-tight">
+                    <span className="block text-[11px] uppercase tracking-wide text-naranja-200">Liquidación</span>
+                    <span className="block text-sm text-naranja-200 line-through">{formatCLP(ofertaLiquidacion.precioNormalUnitario)}</span>
+                    <span className="block text-xl">{formatCLP(ofertaLiquidacion.packs[0].precioUnitario)}</span>
                   </div>
                 </div>
 
@@ -358,6 +366,111 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Oferta de liquidación de inventario */}
+      <section id="liquidacion" className="py-14 bg-gradient-to-br from-gris-900 via-gris-800 to-gris-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-naranja-600 px-4 py-1.5 text-sm font-bold uppercase tracking-wide shadow-lg">
+                <Flame className="h-4 w-4" /> {ofertaLiquidacion.titulo}
+              </span>
+              <h2 className="mt-5 text-3xl font-extrabold leading-tight md:text-5xl">
+                {ofertaLiquidacion.titular}
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-lg text-gris-300">
+                {ofertaLiquidacion.descripcion}
+              </p>
+            </div>
+
+            <div className="mx-auto mb-10 max-w-2xl rounded-2xl border border-gris-700 bg-gris-800/60 p-5">
+              <div className="mb-2 flex items-center justify-between text-sm font-semibold">
+                <span className="inline-flex items-center gap-2 text-naranja-200">
+                  <Package className="h-4 w-4" /> Quedan {ofertaLiquidacion.stockRestante} de {ofertaLiquidacion.stockTotal} unidades
+                </span>
+                <span className="text-naranja-200">{ofertaAgotadoPct()}% vendido</span>
+              </div>
+              <div className="h-3 w-full overflow-hidden rounded-full bg-gris-900">
+                <div
+                  className="h-full bg-gradient-to-r from-naranja-400 to-naranja-600"
+                  style={{ width: `${ofertaAgotadoPct()}%` }}
+                />
+              </div>
+              <p className="mt-3 text-center text-sm text-gris-300">
+                Última partida: al agotarse no habrá reposición a este precio.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {ofertaLiquidacion.packs.map((pack) => {
+                const descuento = descuentoOfertaPct(
+                  ofertaLiquidacion.precioNormalUnitario,
+                  pack.precioUnitario
+                );
+                return (
+                  <div
+                    key={pack.id}
+                    className={`relative flex flex-col rounded-2xl border-2 bg-white p-5 text-gris-900 shadow-xl ${
+                      pack.destacado ? "border-naranja-500 ring-4 ring-naranja-500/30" : "border-gris-200"
+                    }`}
+                  >
+                    {pack.cinta && (
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-naranja-600 px-3 py-1 text-[11px] font-bold uppercase text-white shadow">
+                        {pack.cinta}
+                      </span>
+                    )}
+                    <h3 className="mt-2 text-lg font-extrabold">{pack.etiqueta}</h3>
+                    <p className="text-sm text-gris-600">{pack.publico}</p>
+                    <div className="mt-4 flex items-end gap-2">
+                      <span className="text-3xl font-extrabold text-naranja-600">{formatCLP(pack.precioUnitario)}</span>
+                      <span className="text-sm text-gris-500 line-through">{formatCLP(ofertaLiquidacion.precioNormalUnitario)}</span>
+                    </div>
+                    <span className="text-xs text-gris-600">por unidad · ahorras {descuento}%</span>
+                    <p className="mt-3 rounded-lg bg-gris-50 px-3 py-2 text-sm font-semibold">
+                      Total {formatCLP(pack.precioUnitario * pack.unidades)} · tarjeta {formatCLP(pack.precioUnitarioTarjeta * pack.unidades)}
+                    </p>
+                    <Link to="/producto/profix-126" className="mt-4">
+                      <Button className="w-full bg-naranja-600 font-bold text-white hover:bg-naranja-700">
+                        Quiero {pack.etiqueta}
+                      </Button>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gris-300">
+              <span className="inline-flex items-center gap-2">
+                <Truck className="h-4 w-4 text-naranja-300" /> Despacho gratis desde {ofertaLiquidacion.despachoGratisDesde} unidades en todo Chile
+              </span>
+              {ofertaLiquidacion.retiroEnRM && (
+                <span className="inline-flex items-center gap-2">
+                  <Store className="h-4 w-4 text-naranja-300" /> Retiro en Región Metropolitana
+                </span>
+              )}
+              <span className="inline-flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-naranja-300" /> {ofertaLiquidacion.vigencia}
+              </span>
+            </div>
+
+            <div className="mt-8 text-center">
+              <a
+                href="https://wa.me/56935777727?text=Hola,%20quiero%20aprovechar%20la%20liquidaci%C3%B3n%20de%20la%20guia%20de%20corte%20ProFix%20126.%20%C2%BFA%C3%BAn%20tienen%20stock%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outline"
+                  className="border-2 border-white bg-transparent px-8 py-6 text-lg font-bold text-white hover:bg-white hover:text-gris-900"
+                >
+                  <MessageSquare className="mr-2 h-5 w-5" /> Consultar stock por WhatsApp
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Descripción SEO del producto principal */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
@@ -722,7 +835,7 @@ const Index = () => {
                 <tr className="border-b border-gris-200">
                   <td className="py-3 px-4 font-semibold text-gris-900">Precio</td>
                   <td className="py-3 px-4 text-gris-700">$43.990+ o $300.000+ en opciones premium</td>
-                  <td className="py-3 px-4 font-bold text-naranja-700">$35.000 por transferencia. Ahorro real.</td>
+                  <td className="py-3 px-4 font-bold text-naranja-700">{formatCLP(ofertaLiquidacion.packs[0].precioUnitario)} por transferencia en liquidación. Ahorro real.</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-4 font-semibold text-gris-900">Despacho</td>
@@ -1036,6 +1149,12 @@ const Index = () => {
           <p className="text-base max-w-3xl mx-auto mb-8 text-naranja-50">
             Si llegaste buscando "guia de corte recto", "guia de corte para sierra circular" o incluso "tienes link",
             aqui puedes pasar directo a compra, producto o compatibilidad segun el punto en que estes de la decision.
+          </p>
+          <p className="mx-auto mb-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-white/15 px-6 py-3 text-lg font-bold">
+            <Flame className="h-5 w-5" />
+            Liquidación: {formatCLP(ofertaLiquidacion.packs[0].precioUnitario)} por unidad
+            <span className="text-naranja-100 line-through">{formatCLP(ofertaLiquidacion.precioNormalUnitario)}</span>
+            <span className="text-naranja-50 font-semibold">· envío gratis desde {ofertaLiquidacion.despachoGratisDesde} unidades</span>
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/producto/profix-126">

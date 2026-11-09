@@ -1,3 +1,5 @@
+import { precioOfertaUnitario } from "./ofertaLiquidacion";
+
 const siteKeywordList = [
   "guia de corte recto",
   "guia de corte",
@@ -139,7 +141,7 @@ export const productSchema = {
     "@type": "Offer",
     "url": "https://www.guiadecorte.cl/producto/profix-126",
     "priceCurrency": "CLP",
-    "price": "35000",
+    "price": String(precioOfertaUnitario),
     "priceValidUntil": "2026-12-31",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",

@@ -1244,9 +1244,12 @@ async function prerender() {
       let finalHtml;
 
       if (manualPrerenderPages[route]) {
+        // Estas rutas ya tienen su componente React (Blog, Galeria, Guias...).
+        // Se marcan como "replace" para que el cliente monte la app real en vez
+        // de hidratar sobre un marcado estatico distinto (evita mismatch y soft 404).
         const hydratedTemplate = template.replace(
           /<div id="root"><\/div>/,
-          `<div id="root">${manualPrerenderPages[route]}</div>`
+          `<div id="root" data-render-mode="replace">${manualPrerenderPages[route]}</div>`
         );
         finalHtml = applyHelmet(hydratedTemplate, null, route);
       } else {

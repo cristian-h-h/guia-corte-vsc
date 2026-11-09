@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { BadgeCheck, Check, MessageSquare, Minus, Plus, ShieldCheck } from "lucide-react";
+import { BadgeCheck, Check, Flame, MessageSquare, Minus, Package, Plus, ShieldCheck, Store, Truck } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
@@ -13,6 +13,13 @@ import {
   buildReview,
   type FAQItem,
 } from "@/utils/schema";
+import {
+  ofertaLiquidacion,
+  getPackLiquidacion,
+  formatCLP,
+  descuentoOfertaPct,
+  ofertaAgotadoPct,
+} from "@/data/ofertaLiquidacion";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -182,6 +189,14 @@ const Producto = () => {
   const [activeImage, setActiveImage] = useState(producto.images[0].url);
   const { addToCart } = useCart();
 
+  const packActivo = getPackLiquidacion(quantity) ?? ofertaLiquidacion.packs[0];
+  const precioUnitarioOferta = packActivo.precioUnitario;
+  const precioUnitarioTarjetaOferta = packActivo.precioUnitarioTarjeta;
+  const descuentoActual = descuentoOfertaPct(
+    ofertaLiquidacion.precioNormalUnitario,
+    precioUnitarioOferta
+  );
+
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
@@ -189,19 +204,16 @@ const Producto = () => {
     addToCart({
       id: producto._id,
       name: producto.name,
-      price: producto.cashPrice,
-      priceCard: producto.cardPrice,
+      price: precioUnitarioOferta,
+      priceCard: precioUnitarioTarjetaOferta,
       quantity: quantity,
       image: producto.images[0].url,
     });
     toast({
       title: "Producto agregado al carrito",
-      description: `${quantity} x ${producto.name}`,
+      description: `${quantity} x ${producto.name} · ${formatCLP(precioUnitarioOferta)} c/u`,
     });
   };
-
-  const formatPrice = (price: number) =>
-    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     // Solo muestra el producto si el id es "profix-126"
   if (id !== "profix-126") {
@@ -265,7 +277,7 @@ const Producto = () => {
     },
     {
       question: "¿Cuál es el largo y el precio?",
-      answer: "La ProFix 126 tiene 1.26m de longitud de trabajo y cuesta $35.000 CLP por transferencia o $38.990 CLP por tarjeta. Ideal para planchas estándar de 1.22m de una sola pasada.",
+      answer: `La ProFix 126 tiene 1.26m de longitud de trabajo y hoy está en liquidación: ${formatCLP(ofertaLiquidacion.packs[0].precioUnitario)} CLP por unidad por transferencia o efectivo (antes ${formatCLP(ofertaLiquidacion.precioNormalUnitario)}) y ${formatCLP(ofertaLiquidacion.packs[0].precioUnitarioTarjeta)} CLP por tarjeta. Hay packs por volumen desde 2 unidades con mejor precio unitario. Ideal para planchas estándar de 1.22m de una sola pasada.`,
     },
   ];
   const faqProductSchema = buildFAQPage(productFaq);
@@ -276,7 +288,7 @@ const Producto = () => {
       "Pasos sencillos para usar la guía de corte recto ProFix 126 con sierra circular sobre planchas de melamina, MDF o terciado de 1.22m.",
     image: productImages[0],
     totalTime: "PT8M",
-    estimatedCost: { currency: "CLP", value: "35000" },
+    estimatedCost: { currency: "CLP", value: String(ofertaLiquidacion.packs[0].precioUnitario) },
     supply: [
       { name: "Guía ProFix 126" },
       { name: "Plancha de melamina, MDF o madera" },
@@ -381,7 +393,7 @@ const Producto = () => {
       "@type": "Offer",
       url: productUrl,
       priceCurrency: "CLP",
-      price: producto.cashPrice,
+      price: ofertaLiquidacion.packs[0].precioUnitario,
       priceValidUntil: new Date(
         new Date().setFullYear(new Date().getFullYear() + 1)
       )
@@ -477,28 +489,84 @@ const Producto = () => {
               </div>
             </div>
 
-            <div className="mb-4">
-              <div className="flex items-center gap-4">
-                <span className="text-2xl font-bold text-naranja-600">
-                  ${formatPrice(producto.cashPrice)}
+            <div className="mb-6 rounded-2xl border-2 border-naranja-500 bg-gradient-to-br from-naranja-50 via-white to-white p-5 shadow-lg">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-naranja-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                  <Flame className="h-3.5 w-3.5" /> {ofertaLiquidacion.titulo}
                 </span>
-                <span className="text-gris-500 line-through">
-                  ${formatPrice(producto.cardPrice)}
-                </span>
+                <span className="text-xs font-semibold text-gris-600">{ofertaLiquidacion.vigencia}</span>
               </div>
-              <div className="mt-2 bg-yellow-50 rounded px-3 py-2">
-                <span className="text-lg font-bold text-green-700">Oferta web vigente</span>
-                <div className="mt-1">
-                  <span className="font-semibold text-black">
-                    ${formatPrice(producto.cashPrice)} (efectivo o transferencia)
+
+              <div className="flex flex-wrap items-end gap-3">
+                <span className="text-4xl font-extrabold text-naranja-600">{formatCLP(precioUnitarioOferta)}</span>
+                <span className="text-lg text-gris-500 line-through">{formatCLP(ofertaLiquidacion.precioNormalUnitario)}</span>
+                <span className="rounded-md bg-green-600 px-2 py-1 text-sm font-bold text-white">-{descuentoActual}%</span>
+                <span className="text-sm text-gris-600">por unidad (efectivo o transferencia)</span>
+              </div>
+
+              <p className="mt-2 text-sm text-gris-700">
+                Con tarjeta: <span className="font-semibold">{formatCLP(precioUnitarioTarjetaOferta)}</span> por unidad
+                {" "}(precio normal {formatCLP(ofertaLiquidacion.precioNormalTarjeta)}).
+              </p>
+
+              <div className="mt-4">
+                <div className="mb-1 flex items-center justify-between text-xs font-semibold text-gris-700">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Package className="h-3.5 w-3.5 text-naranja-600" />
+                    Quedan {ofertaLiquidacion.stockRestante} de {ofertaLiquidacion.stockTotal} unidades de la partida
                   </span>
-                  <span className="text-green-700 font-bold ml-2">Ahorras ${formatPrice(producto.cardPrice - producto.cashPrice)}</span>
+                  <span>{ofertaAgotadoPct()}% vendido</span>
                 </div>
-                <div>
-                  <span className="font-semibold text-black">
-                    ${formatPrice(producto.cardPrice)} (tarjeta)
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-gris-200">
+                  <div
+                    className="h-full bg-gradient-to-r from-naranja-500 to-naranja-700"
+                    style={{ width: `${ofertaAgotadoPct()}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="mb-2 text-sm font-bold text-gris-900">Elige tu pack por volumen:</p>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                  {ofertaLiquidacion.packs.map((pack) => {
+                    const activo = pack.unidades === quantity;
+                    return (
+                      <button
+                        key={pack.id}
+                        type="button"
+                        onClick={() => setQuantity(pack.unidades)}
+                        className={`relative rounded-xl border-2 p-3 text-left transition-all ${
+                          activo
+                            ? "border-naranja-600 bg-naranja-50 shadow-md"
+                            : "border-gris-200 bg-white hover:border-naranja-400"
+                        }`}
+                      >
+                        {pack.cinta && (
+                          <span className="absolute -top-2 left-2 rounded-full bg-herramienta-600 px-2 py-0.5 text-[10px] font-bold uppercase text-white">
+                            {pack.cinta}
+                          </span>
+                        )}
+                        <span className="mt-1 block text-sm font-bold text-gris-900">{pack.etiqueta}</span>
+                        <span className="block text-lg font-extrabold text-naranja-600">{formatCLP(pack.precioUnitario)}</span>
+                        <span className="block text-[11px] text-gris-500">c/u · {pack.publico}</span>
+                        <span className="mt-1 block text-[11px] font-semibold text-gris-700">
+                          Total {formatCLP(pack.precioUnitario * pack.unidades)}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gris-700">
+                <span className="inline-flex items-center gap-1.5">
+                  <Truck className="h-4 w-4 text-herramienta-600" /> Despacho gratis desde {ofertaLiquidacion.despachoGratisDesde} unidades en todo Chile
+                </span>
+                {ofertaLiquidacion.retiroEnRM && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <Store className="h-4 w-4 text-herramienta-600" /> Retiro en Región Metropolitana
                   </span>
-                </div>
+                )}
               </div>
             </div>
 

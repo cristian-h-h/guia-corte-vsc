@@ -395,6 +395,48 @@ async function generateSitemap() {
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Guia: guia de corte para sierra circular -->
+  <url>
+    <loc>${BASE_URL}/guias/guia-de-corte-para-sierra-circular</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: guia recta para sierra circular -->
+  <url>
+    <loc>${BASE_URL}/guias/guia-recta-para-sierra-circular</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: guia de aluminio para sierra circular -->
+  <url>
+    <loc>${BASE_URL}/guias/guia-de-aluminio-para-sierra-circular</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: guia de corte para melamina 122x244 -->
+  <url>
+    <loc>${BASE_URL}/guias/guia-de-corte-para-melamina-122x244</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: compatibilidad ProFix 126 Makita HS7600 -->
+  <url>
+    <loc>${BASE_URL}/guias/compatibilidad-profix-126-makita-hs7600</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Guia: ProFix 126 sierra circular vs router -->
+  <url>
+    <loc>${BASE_URL}/guias/profix-126-sierra-circular-vs-router</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 `;
     
     // ============================================
@@ -496,7 +538,7 @@ async function generateSitemap() {
     
     console.log('✅ Sitemap generado correctamente en:', sitemapPath);
     console.log(`📊 Estadísticas:`);
-    console.log(`   - Páginas web: 14`);
+    console.log(`   - Páginas web: 20`);
     console.log(`   - Productos: ${products?.length || 0}`);
     console.log(`   - Blogs: ${blogPosts?.length || 0}`);
     console.log(`   - Imágenes de productos: ${productImages?.length || 0}`);

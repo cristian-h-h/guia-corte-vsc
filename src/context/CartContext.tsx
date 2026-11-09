@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 export type CartItem = {
-  id: number;
+  id: string | number;
   name: string;
   price: number;
   priceCard?: number;
@@ -13,10 +13,10 @@ export type CartItem = {
 type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (id: string | number) => void;
   clearCart: () => void;
-  increaseQuantity: (id: number) => void;
-  decreaseQuantity: (id: number) => void;
+  increaseQuantity: (id: string | number) => void;
+  decreaseQuantity: (id: string | number) => void;
   getCartTotal: (paymentMethod?: "cash" | "card") => number;
 };
 
@@ -64,7 +64,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id: string | number) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
@@ -72,7 +72,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCartItems([]);
   };
 
-  const increaseQuantity = (id: number) => {
+  const increaseQuantity = (id: string | number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
@@ -80,7 +80,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  const decreaseQuantity = (id: number) => {
+  const decreaseQuantity = (id: string | number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id && item.quantity > 1
