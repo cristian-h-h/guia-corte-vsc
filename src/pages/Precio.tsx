@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { preciosProducto, formatCLP } from "@/data/precioProducto";
+import { trackContact, trackInitiateCheckout } from "@/utils/tracking";
 
 const ahorro = preciosProducto.precioTarjeta - preciosProducto.precioEfectivo;
 const ahorroPct = Math.round((ahorro / preciosProducto.precioTarjeta) * 100);
@@ -115,12 +116,22 @@ const Precio = () => {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/producto/profix-126" className="sm:w-auto">
+                <Link
+                  to="/producto/profix-126"
+                  className="sm:w-auto"
+                  onClick={() => trackInitiateCheckout("precio-hero", preciosProducto.precioEfectivo)}
+                >
                   <Button className="h-auto w-full whitespace-normal rounded-xl bg-naranja-600 px-6 py-4 text-base font-bold text-white hover:bg-naranja-700 sm:w-auto">
                     Comprar al mejor precio <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="sm:w-auto">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sm:w-auto"
+                  onClick={() => trackContact("precio-hero")}
+                >
                   <Button
                     variant="outline"
                     className="h-auto w-full whitespace-normal rounded-xl border-2 border-white/40 bg-transparent px-6 py-4 text-base font-bold text-white hover:bg-white/10 sm:w-auto"
@@ -316,12 +327,22 @@ const Precio = () => {
             tarjeta y factura. Envío a todo Chile y retiro en {preciosProducto.direccionRetiro}.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link to="/producto/profix-126" className="w-full sm:w-auto">
+            <Link
+              to="/producto/profix-126"
+              className="w-full sm:w-auto"
+              onClick={() => trackInitiateCheckout("precio-cta", preciosProducto.precioEfectivo)}
+            >
               <Button className="h-auto w-full whitespace-normal rounded-xl bg-white px-8 py-4 text-base font-extrabold text-naranja-700 hover:bg-naranja-50 sm:w-auto">
                 Comprar ProFix 126 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+              onClick={() => trackContact("precio-cta")}
+            >
               <Button
                 variant="outline"
                 className="h-auto w-full whitespace-normal rounded-xl border-2 border-white/60 bg-transparent px-8 py-4 text-base font-extrabold text-white hover:bg-white/10 sm:w-auto"
