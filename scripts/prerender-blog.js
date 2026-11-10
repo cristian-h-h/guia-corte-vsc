@@ -32,6 +32,7 @@ const PLACEHOLDER_PATTERNS = [
   /contenido del artículo en desarrollo/i,
   /próximamente publicaremos/i,
 ];
+const BLOCKED_SLUG_PATTERN = /^slug-por-defecto/i;
 const IMAGE_URL_REPLACEMENTS = new Map([
   ["https://www.guiadecorte.cl/blog-imagenes/cortes-perfectos-guia.webp", "https://www.guiadecorte.cl/guia-imagenes/corte-sierra-circular-profix-126.webp"],
   ["https://www.guiadecorte.cl/blog-imagenes/proyectos-principiantes.webp", "https://www.guiadecorte.cl/guia-imagenes/guia-corte-profix-126.webp"],
@@ -91,7 +92,13 @@ const normalizeImageUrl = (value) => {
 };
 
 const isIndexableBlog = (blog) => {
-  if (!blog?.slug || !blog?.title || PLACEHOLDER_TITLES.has(blog.title) || blog.is_published === false) {
+  if (
+    !blog?.slug ||
+    !blog?.title ||
+    PLACEHOLDER_TITLES.has(blog.title) ||
+    blog.is_published === false ||
+    BLOCKED_SLUG_PATTERN.test(blog.slug)
+  ) {
     return false;
   }
 
@@ -123,6 +130,32 @@ const formatDate = (dateString) =>
     month: "long",
     day: "numeric",
   });
+
+const normalizeTag = (tag) => String(tag || "").trim().toLowerCase();
+
+/**
+ * Selecciona los posts relacionados priorizando etiquetas y categoría en común
+ * (enlazado interno temático). Si no hay coincidencias, cae al orden por fecha.
+ */
+const selectRelatedPosts = (posts, currentSlug, limit = 3) => {
+  const current = posts.find((post) => post.slug === currentSlug);
+  const currentTags = new Set((current?.tags || []).map(normalizeTag).filter(Boolean));
+  const currentCategory = normalizeTag(current?.category);
+
+  return posts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const sharedTags = (post.tags || []).map(normalizeTag).filter((tag) => currentTags.has(tag)).length;
+      const sameCategory = currentCategory && normalizeTag(post.category) === currentCategory ? 1 : 0;
+      return { post, score: sharedTags * 3 + sameCategory * 2 };
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.post.publishedAt).getTime() - new Date(a.post.publishedAt).getTime();
+    })
+    .slice(0, limit)
+    .map((entry) => entry.post);
+};
 
 const ensureDir = (dirPath) => {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -431,8 +464,7 @@ async function prerenderBlog() {
   console.log("Prerender OK: /blog");
 
   posts.forEach((post) => {
-    const related = posts.filter((candidate) => candidate.slug !== post.slug).slice(0, 3);
-    const blockedSlug = typeof post.slug === "string" && /^slug-por-defecto/i.test(post.slug);
+    const related = selectRelatedPosts(posts, post.slug, 3);
     const articleHead = buildHead({
       title: `${post.metaTitle || post.title} | GuiaDeCorte.cl`,
       description: post.metaDescription || post.excerpt,
@@ -441,7 +473,6 @@ async function prerenderBlog() {
       image: post.imageUrl,
       schema: buildBlogPostingSchema(post),
       ogType: "article",
-      noindex: blockedSlug,
     });
 
     const articleHtml = injectPage(template, articleHead, renderArticle(post, related));

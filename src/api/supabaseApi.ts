@@ -90,6 +90,8 @@ const normalizeImageUrl = (value: unknown) => {
   );
 };
 
+const normalizeTag = (tag: unknown) => String(tag || "").trim().toLowerCase();
+
 const transformBlog = (blog: any) => ({
   _id: blog.id,
   title: blog.title,
@@ -145,30 +147,42 @@ export async function fetchBlogBySlug(slug: string) {
   return transformBlog(data);
 }
 
-// Obtener blogs relacionados (excluyendo el actual)
+// Obtener blogs relacionados priorizando etiquetas y categoría en común
 export async function fetchRelatedBlogs(currentSlug: string, limit: number = 3) {
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('is_published', true)
-    .neq('slug', currentSlug)
-    .order('published_at', { ascending: false })
-    .limit(limit * 3);
+    .order('published_at', { ascending: false });
   
   if (error) {
     console.error('Error al obtener blogs relacionados:', error);
     return [];
   }
-  
-  return data
-    .filter(isIndexableBlog)
+
+  const posts = data.filter(isIndexableBlog);
+  const current = posts.find((post) => post.slug === currentSlug);
+  const currentTags = new Set((current?.tags || []).map(normalizeTag).filter(Boolean));
+  const currentCategory = normalizeTag(current?.category);
+
+  return posts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const sharedTags = (post.tags || []).map(normalizeTag).filter((tag) => currentTags.has(tag)).length;
+      const sameCategory = currentCategory && normalizeTag(post.category) === currentCategory ? 1 : 0;
+      return { post, score: sharedTags * 3 + sameCategory * 2 };
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.post.published_at).getTime() - new Date(a.post.published_at).getTime();
+    })
     .slice(0, limit)
-    .map(blog => ({
-      _id: blog.id,
-      title: blog.title,
-      slug: { current: blog.slug },
-      mainImage: normalizeImageUrl(blog.image_url) ? { asset: { url: normalizeImageUrl(blog.image_url)! } } : undefined,
-      publishedAt: blog.published_at
+    .map(({ post }) => ({
+      _id: post.id,
+      title: post.title,
+      slug: { current: post.slug },
+      mainImage: normalizeImageUrl(post.image_url) ? { asset: { url: normalizeImageUrl(post.image_url)! } } : undefined,
+      publishedAt: post.published_at
     }));
 }
 

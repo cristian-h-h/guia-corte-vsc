@@ -64,15 +64,6 @@
       ]
     },
     {
-      "source": "/blog/slug-por-defecto-1",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
       "source": "/sitemap.xml",
       "headers": [
         {

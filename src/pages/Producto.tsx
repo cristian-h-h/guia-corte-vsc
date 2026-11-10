@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { BadgeCheck, Check, Flame, MessageSquare, Minus, Package, Plus, ShieldCheck, Store, Truck } from "lucide-react";
+import { BadgeCheck, Check, MessageSquare, Minus, Plus, ShieldCheck, Store, Truck } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
@@ -13,13 +13,7 @@ import {
   buildReview,
   type FAQItem,
 } from "@/utils/schema";
-import {
-  ofertaLiquidacion,
-  getPackLiquidacion,
-  formatCLP,
-  descuentoOfertaPct,
-  ofertaAgotadoPct,
-} from "@/data/ofertaLiquidacion";
+import { preciosProducto, formatCLP } from "@/data/precioProducto";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -81,7 +75,7 @@ const producto = {
     "Guia de corte recto de 1.26 metros para sierra circular, talleres, mueblistas, instaladores y aficionados avanzados que necesitan cortes rectos, repetibles y limpios sin depender de maquinaria grande.",
   overview:
     "ProFix 126 combina estructura de aluminio, ajuste rapido y una superficie de guiado pensada para trabajo real en carpinteria. Su mayor fortaleza es ayudarte a repetir medidas, reducir error humano y mantener el corte estable en piezas largas de melamina, MDF, terciado o madera.",
-  cashPrice: 35000,
+  cashPrice: 32000,
   cardPrice: 38990,
   keyPoints: [
     "Hasta 126 cm de capacidad de trabajo",
@@ -189,13 +183,8 @@ const Producto = () => {
   const [activeImage, setActiveImage] = useState(producto.images[0].url);
   const { addToCart } = useCart();
 
-  const packActivo = getPackLiquidacion(quantity) ?? ofertaLiquidacion.packs[0];
-  const precioUnitarioOferta = packActivo.precioUnitario;
-  const precioUnitarioTarjetaOferta = packActivo.precioUnitarioTarjeta;
-  const descuentoActual = descuentoOfertaPct(
-    ofertaLiquidacion.precioNormalUnitario,
-    precioUnitarioOferta
-  );
+  const precioEfectivo = preciosProducto.precioEfectivo;
+  const precioTarjeta = preciosProducto.precioTarjeta;
 
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
@@ -204,14 +193,14 @@ const Producto = () => {
     addToCart({
       id: producto._id,
       name: producto.name,
-      price: precioUnitarioOferta,
-      priceCard: precioUnitarioTarjetaOferta,
+      price: precioEfectivo,
+      priceCard: precioTarjeta,
       quantity: quantity,
       image: producto.images[0].url,
     });
     toast({
       title: "Producto agregado al carrito",
-      description: `${quantity} x ${producto.name} · ${formatCLP(precioUnitarioOferta)} c/u`,
+      description: `${quantity} x ${producto.name} · ${formatCLP(precioEfectivo)} c/u`,
     });
   };
 
@@ -277,7 +266,7 @@ const Producto = () => {
     },
     {
       question: "¿Cuál es el largo y el precio?",
-      answer: `La ProFix 126 tiene 1.26m de longitud de trabajo y hoy está en liquidación: ${formatCLP(ofertaLiquidacion.packs[0].precioUnitario)} CLP por unidad por transferencia o efectivo (antes ${formatCLP(ofertaLiquidacion.precioNormalUnitario)}) y ${formatCLP(ofertaLiquidacion.packs[0].precioUnitarioTarjeta)} CLP por tarjeta. Hay packs por volumen desde 2 unidades con mejor precio unitario. Ideal para planchas estándar de 1.22m de una sola pasada.`,
+      answer: `La ProFix 126 tiene 1.26m de longitud de trabajo. Precio por unidad: ${formatCLP(preciosProducto.precioEfectivo)} CLP pagando en efectivo o transferencia, y ${formatCLP(preciosProducto.precioTarjeta)} CLP con tarjeta y factura. Ideal para planchas estándar de 1.22m de una sola pasada.`,
     },
   ];
   const faqProductSchema = buildFAQPage(productFaq);
@@ -288,7 +277,7 @@ const Producto = () => {
       "Pasos sencillos para usar la guía de corte recto ProFix 126 con sierra circular sobre planchas de melamina, MDF o terciado de 1.22m.",
     image: productImages[0],
     totalTime: "PT8M",
-    estimatedCost: { currency: "CLP", value: String(ofertaLiquidacion.packs[0].precioUnitario) },
+    estimatedCost: { currency: "CLP", value: String(preciosProducto.precioEfectivo) },
     supply: [
       { name: "Guía ProFix 126" },
       { name: "Plancha de melamina, MDF o madera" },
@@ -348,7 +337,7 @@ const Producto = () => {
       datePublished: "2026-07-02",
       name: "Buena combinación sierra circular + base plana compatible",
       reviewBody:
-        "Yo trabajo con Makita HS7600 y la base me calza perfecto. Lo más útil es llevarla de taller a obra sin perder rigidez. El precio $35.000 justifica por lo que ahorro en desperdicio.",
+        "Yo trabajo con Makita HS7600 y la base me calza perfecto. Lo más útil es llevarla de taller a obra sin perder rigidez. El precio $32.000 justifica por lo que ahorro en desperdicio.",
       ratingValue: "5",
     }),
   ];
@@ -393,7 +382,7 @@ const Producto = () => {
       "@type": "Offer",
       url: productUrl,
       priceCurrency: "CLP",
-      price: ofertaLiquidacion.packs[0].precioUnitario,
+      price: preciosProducto.precioEfectivo,
       priceValidUntil: new Date(
         new Date().setFullYear(new Date().getFullYear() + 1)
       )
@@ -490,79 +479,26 @@ const Producto = () => {
             </div>
 
             <div className="mb-6 rounded-2xl border-2 border-naranja-500 bg-gradient-to-br from-naranja-50 via-white to-white p-5 shadow-lg">
-              <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-naranja-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-                  <Flame className="h-3.5 w-3.5" /> {ofertaLiquidacion.titulo}
-                </span>
-                <span className="text-xs font-semibold text-gris-600">{ofertaLiquidacion.vigencia}</span>
-              </div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-gris-600">Precios por unidad</p>
 
-              <div className="flex flex-wrap items-end gap-3">
-                <span className="text-4xl font-extrabold text-naranja-600">{formatCLP(precioUnitarioOferta)}</span>
-                <span className="text-lg text-gris-500 line-through">{formatCLP(ofertaLiquidacion.precioNormalUnitario)}</span>
-                <span className="rounded-md bg-green-600 px-2 py-1 text-sm font-bold text-white">-{descuentoActual}%</span>
-                <span className="text-sm text-gris-600">por unidad (efectivo o transferencia)</span>
-              </div>
-
-              <p className="mt-2 text-sm text-gris-700">
-                Con tarjeta: <span className="font-semibold">{formatCLP(precioUnitarioTarjetaOferta)}</span> por unidad
-                {" "}(precio normal {formatCLP(ofertaLiquidacion.precioNormalTarjeta)}).
-              </p>
-
-              <div className="mt-4">
-                <div className="mb-1 flex items-center justify-between text-xs font-semibold text-gris-700">
-                  <span className="inline-flex items-center gap-1.5">
-                    <Package className="h-3.5 w-3.5 text-naranja-600" />
-                    Quedan {ofertaLiquidacion.stockRestante} de {ofertaLiquidacion.stockTotal} unidades de la partida
-                  </span>
-                  <span>{ofertaAgotadoPct()}% vendido</span>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-naranja-200 bg-white p-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-naranja-700">Efectivo o transferencia</p>
+                  <p className="text-3xl font-extrabold text-naranja-600">{formatCLP(preciosProducto.precioEfectivo)}</p>
+                  <p className="text-sm text-gris-600">por unidad</p>
                 </div>
-                <div className="h-2.5 w-full overflow-hidden rounded-full bg-gris-200">
-                  <div
-                    className="h-full bg-gradient-to-r from-naranja-500 to-naranja-700"
-                    style={{ width: `${ofertaAgotadoPct()}%` }}
-                  />
-                </div>
-              </div>
-
-              <div className="mt-4">
-                <p className="mb-2 text-sm font-bold text-gris-900">Elige tu pack por volumen:</p>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                  {ofertaLiquidacion.packs.map((pack) => {
-                    const activo = pack.unidades === quantity;
-                    return (
-                      <button
-                        key={pack.id}
-                        type="button"
-                        onClick={() => setQuantity(pack.unidades)}
-                        className={`relative rounded-xl border-2 p-3 text-left transition-all ${
-                          activo
-                            ? "border-naranja-600 bg-naranja-50 shadow-md"
-                            : "border-gris-200 bg-white hover:border-naranja-400"
-                        }`}
-                      >
-                        {pack.cinta && (
-                          <span className="absolute -top-2 left-2 rounded-full bg-herramienta-600 px-2 py-0.5 text-[10px] font-bold uppercase text-white">
-                            {pack.cinta}
-                          </span>
-                        )}
-                        <span className="mt-1 block text-sm font-bold text-gris-900">{pack.etiqueta}</span>
-                        <span className="block text-lg font-extrabold text-naranja-600">{formatCLP(pack.precioUnitario)}</span>
-                        <span className="block text-[11px] text-gris-500">c/u · {pack.publico}</span>
-                        <span className="mt-1 block text-[11px] font-semibold text-gris-700">
-                          Total {formatCLP(pack.precioUnitario * pack.unidades)}
-                        </span>
-                      </button>
-                    );
-                  })}
+                <div className="rounded-xl border border-herramienta-200 bg-white p-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-herramienta-700">Tarjeta y factura</p>
+                  <p className="text-3xl font-extrabold text-herramienta-700">{formatCLP(preciosProducto.precioTarjeta)}</p>
+                  <p className="text-sm text-gris-600">por unidad</p>
                 </div>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gris-700">
                 <span className="inline-flex items-center gap-1.5">
-                  <Truck className="h-4 w-4 text-herramienta-600" /> Despacho gratis desde {ofertaLiquidacion.despachoGratisDesde} unidades en todo Chile
+                  <Truck className="h-4 w-4 text-herramienta-600" /> Despacho gratis desde {preciosProducto.despachoGratisDesde} unidades en todo Chile
                 </span>
-                {ofertaLiquidacion.retiroEnRM && (
+                {preciosProducto.retiroEnRM && (
                   <span className="inline-flex items-center gap-1.5">
                     <Store className="h-4 w-4 text-herramienta-600" /> Retiro en Región Metropolitana
                   </span>
@@ -792,7 +728,7 @@ const Producto = () => {
                 <tr>
                   <td className="py-2 px-4 font-semibold text-left">Precio</td>
                   <td className="py-2 px-4 text-left">$43.990+ o $300.000+ en sistemas premium</td>
-                  <td className="py-2 px-4 font-bold text-left">$35.000 / transferencia. Ahorro real en Chile</td>
+                  <td className="py-2 px-4 font-bold text-left">$32.000 efectivo o transferencia · $38.990 con tarjeta</td>
                 </tr>
                 <tr>
                   <td className="py-2 px-4 font-semibold text-left">Despacho</td>
