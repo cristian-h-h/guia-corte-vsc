@@ -23,18 +23,22 @@ const WHATSAPP_PHONE = "56935777727";
 const baseWhatsappText = `Hola, quiero comprar la Guía de Corte ProFix 126 pagando en efectivo o transferencia a ${formatCLP(
   preciosProducto.precioEfectivo
 )}.`;
+const promoWhatsappText = `Hola, quiero comprar la Guía de Corte ProFix 126 a precio promoción de ${formatCLP(
+  preciosProducto.precioEfectivo
+)}. ¿Me indicas los datos para pagar por transferencia o en efectivo al retirar?`;
+
 const baseWhatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(baseWhatsappText)}`;
+const basePromoWhatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(promoWhatsappText)}`;
 
 /**
  * Agrega el origen de campana al mensaje, para saber de que red viene el
  * visitante (ej. "... (vengo de TikTok / campana-liquidacion)").
  */
-const buildWhatsappUrl = () => {
+const buildWhatsappUrl = (texto: string) => {
   const { utm_source, utm_campaign } = getCampaign();
-  if (!utm_source) return baseWhatsappUrl;
+  if (!utm_source) return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(texto)}`;
   const origen = utm_campaign ? `${utm_source} / ${utm_campaign}` : utm_source;
-  const texto = `${baseWhatsappText} (vengo de ${origen})`;
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(texto)}`;
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(`${texto} (vengo de ${origen})`)}`;
 };
 
 const marcas = ["Makita", "DeWalt", "Bosch", "Ubermann", "Stanley", "Ingco", "Skil", "Einhell"];
@@ -88,9 +92,11 @@ const Precio = () => {
   // El href base (sin campana) se usa en el render inicial para no romper la
   // hidratacion; recien tras montar se agrega el origen de campana.
   const [whatsappUrl, setWhatsappUrl] = useState(baseWhatsappUrl);
+  const [promoWhatsappUrl, setPromoWhatsappUrl] = useState(basePromoWhatsappUrl);
 
   useEffect(() => {
-    setWhatsappUrl(buildWhatsappUrl());
+    setWhatsappUrl(buildWhatsappUrl(baseWhatsappText));
+    setPromoWhatsappUrl(buildWhatsappUrl(promoWhatsappText));
   }, []);
 
   return (
@@ -389,13 +395,15 @@ const Precio = () => {
           >
             <MessageSquare className="h-5 w-5" /> WhatsApp
           </a>
-          <Link
-            to="/producto/profix-126"
+          <a
+            href={promoWhatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-naranja-600 px-3 py-3 text-sm font-extrabold text-white"
-            onClick={() => trackInitiateCheckout("precio-bar", preciosProducto.precioEfectivo)}
+            onClick={() => trackContact("precio-bar-comprar")}
           >
             Comprar a {formatCLP(preciosProducto.precioEfectivo)} <ArrowRight className="h-5 w-5" />
-          </Link>
+          </a>
         </div>
       </div>
       {/* Espacio para que la barra fija no tape el contenido */}
