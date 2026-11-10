@@ -97,6 +97,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- Precio -->
+  <url>
+    <loc>https://www.guiadecorte.cl/precio</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Centro de guias -->
   <url>
     <loc>https://www.guiadecorte.cl/guias</loc>

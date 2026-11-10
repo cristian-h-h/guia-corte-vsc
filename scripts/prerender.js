@@ -59,6 +59,16 @@ const routeMetaFallbacks = {
     type: "website",
     image: DEFAULT_SOCIAL_IMAGE,
   },
+  "/precio": {
+    title: "ProFix 126: $32.000 en efectivo o transferencia (ahorra $6.990) | GuiaDeCorte.cl",
+    description:
+      "Guia de corte ProFix 126 de 1.26m. Paga en efectivo o transferencia a $32.000 y ahorra $6.990 frente al pago con tarjeta y factura a $38.990. Envio a todo Chile.",
+    canonical: `${BASE_URL}/precio`,
+    keywords:
+      "precio guia de corte profix 126, guia de corte precio efectivo, guia de corte transferencia, guia de corte tarjeta factura, guia de corte 1.26m Chile",
+    type: "website",
+    image: DEFAULT_SOCIAL_IMAGE,
+  },
   "/guias": {
     title: "Guias de Corte, Compatibilidad y Usos Reales | GuiaDeCorte.cl",
     description:

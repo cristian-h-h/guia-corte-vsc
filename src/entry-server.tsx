@@ -9,6 +9,7 @@ import SkipLink from "@/components/SkipLink";
 import Index from "./pages/Index";
 import Producto from "./pages/Producto";
 import Contacto from "./pages/Contacto";
+import Precio from "./pages/Precio";
 
 const StaticLayout = ({
   children,
@@ -56,6 +57,14 @@ const prerenderRoutes: RouteObject[] = [
       </StaticLayout>
     ),
   },
+  {
+    path: "/precio",
+    element: (
+      <StaticLayout>
+        <Precio />
+      </StaticLayout>
+    ),
+  },
 ];
 
 export async function render(url: string) {
@@ -85,5 +94,6 @@ export async function getPrerenderRoutes() {
     "/",
     "/producto/profix-126",
     "/contacto",
+    "/precio",
   ];
 }

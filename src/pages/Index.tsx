@@ -392,13 +392,19 @@ const Index = () => {
 
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gris-600">
             <span className="inline-flex items-center gap-2">
-              <Truck className="h-4 w-4 text-herramienta-600" /> Despacho gratis desde {preciosProducto.despachoGratisDesde} unidades en todo Chile
+              <Truck className="h-4 w-4 text-herramienta-600" /> Envío a todo Chile mediante {preciosProducto.envioNacional}
             </span>
-            {preciosProducto.retiroEnRM && (
-              <span className="inline-flex items-center gap-2">
-                <Store className="h-4 w-4 text-herramienta-600" /> Retiro en Región Metropolitana
-              </span>
-            )}
+            <span className="inline-flex items-center gap-2">
+              <Store className="h-4 w-4 text-herramienta-600" /> Retiros en{" "}
+              <a
+                href={preciosProducto.mapaRetiroUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-herramienta-700 underline decoration-dotted underline-offset-2 hover:text-herramienta-800"
+              >
+                {preciosProducto.direccionRetiro}
+              </a>
+            </span>
           </div>
 
           <div className="mt-8 text-center">
@@ -833,7 +839,7 @@ const Index = () => {
                 </ul>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Link to="/guias/compatibilidad-por-modelo-de-herramienta">
-                    <Button variant="outline" className="w-full border-2 border-herramienta-600 text-herramienta-700 hover:bg-herramienta-50 py-6 rounded-xl shadow-md">
+                    <Button variant="outline" className="w-full h-auto whitespace-normal text-center leading-tight border-2 border-herramienta-600 text-herramienta-700 hover:bg-herramienta-50 py-3 rounded-xl shadow-md">
                       Revisar compatibilidad
                     </Button>
                   </Link>
@@ -842,8 +848,9 @@ const Index = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button className="w-full bg-naranja-600 hover:bg-naranja-700 text-white py-6 rounded-xl shadow-md flex items-center justify-center gap-2">
-                      <MessageSquare className="h-5 w-5" /> Validar por WhatsApp
+                    <Button className="w-full h-auto whitespace-normal leading-tight bg-naranja-600 hover:bg-naranja-700 text-white py-3 rounded-xl shadow-md flex items-center justify-center gap-2">
+                      <MessageSquare className="h-5 w-5" />
+                      <span className="text-center">Validar por WhatsApp</span>
                     </Button>
                   </a>
                 </div>

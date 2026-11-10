@@ -25,6 +25,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import Producto from "./pages/Producto";
 import Contacto from "./pages/Contacto";
+import Precio from "./pages/Precio";
 import NotFound from "./pages/NotFound";
 
 const TestimonialsCarousel = lazy(() => import("@/components/TestimonialsCarousel"));
@@ -99,6 +100,7 @@ const routes: RouteObject[] = [
       { path: "producto/:id", element: <Producto /> },
       { path: "producto", element: <Navigate to="/producto/profix-126" replace /> },
       { path: "contacto", element: <Contacto /> },
+      { path: "precio", element: <Precio /> },
       {
         path: "carrito",
         lazy: async () => ({ Component: (await import("./pages/Carrito")).default }),

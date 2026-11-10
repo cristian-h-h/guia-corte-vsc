@@ -331,6 +331,16 @@ async function generateSitemap() {
   </url>
 `;
 
+    // Landing de precio (efectivo/transferencia vs tarjeta/factura)
+    sitemap += `  <!-- Precio -->
+  <url>
+    <loc>${BASE_URL}/precio</loc>
+    <lastmod>${getCurrentDate()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+
     // Centro de guias y paginas soporte SEO
     sitemap += `  <!-- Centro de guias -->
   <url>

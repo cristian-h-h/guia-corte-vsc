@@ -41,6 +41,9 @@ const Navbar = () => {
             <Link to="/producto/profix-126" className="text-madera-600 hover:text-herramienta-600 font-medium transition-colors text-lg hover:scale-105 transform duration-200">
               Producto
             </Link>
+            <Link to="/precio" className="text-herramienta-600 font-bold transition-colors text-lg hover:scale-105 transform duration-200">
+              Precio
+            </Link>
             <Link to="/galeria" className="text-madera-600 hover:text-herramienta-600 font-medium transition-colors text-lg hover:scale-105 transform duration-200">
               Galería
             </Link>
@@ -101,6 +104,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Producto
+            </Link>
+            <Link
+              to="/precio"
+              className="text-herramienta-600 py-2 text-center font-bold"
+              onClick={toggleMenu}
+            >
+              Precio
             </Link>
             <Link
               to="/galeria"
