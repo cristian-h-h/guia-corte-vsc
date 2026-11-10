@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Banknote,
@@ -14,7 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { preciosProducto, formatCLP } from "@/data/precioProducto";
-import { trackContact, trackInitiateCheckout, getCampaign } from "@/utils/tracking";
+import { trackContact, getCampaign } from "@/utils/tracking";
 
 const ahorro = preciosProducto.precioTarjeta - preciosProducto.precioEfectivo;
 const ahorroPct = Math.round((ahorro / preciosProducto.precioTarjeta) * 100);
@@ -145,15 +144,17 @@ const Precio = () => {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to="/producto/profix-126"
+                <a
+                  href={promoWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="sm:w-auto"
-                  onClick={() => trackInitiateCheckout("precio-hero", preciosProducto.precioEfectivo)}
+                  onClick={() => trackContact("precio-hero-comprar")}
                 >
                   <Button className="h-auto w-full whitespace-normal rounded-xl bg-naranja-600 px-6 py-4 text-base font-bold text-white hover:bg-naranja-700 sm:w-auto">
                     Comprar al mejor precio <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                </Link>
+                </a>
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -356,15 +357,17 @@ const Precio = () => {
             tarjeta y factura. Envío a todo Chile y retiro en {preciosProducto.direccionRetiro}.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/producto/profix-126"
+            <a
+              href={promoWhatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto"
-              onClick={() => trackInitiateCheckout("precio-cta", preciosProducto.precioEfectivo)}
+              onClick={() => trackContact("precio-cta-comprar")}
             >
               <Button className="h-auto w-full whitespace-normal rounded-xl bg-white px-8 py-4 text-base font-extrabold text-naranja-700 hover:bg-naranja-50 sm:w-auto">
                 Comprar ProFix 126 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </Link>
+            </a>
             <a
               href={whatsappUrl}
               target="_blank"
