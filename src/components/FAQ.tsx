@@ -35,7 +35,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: "¿Hacen envíos a domicilio?",
-    answer: "Se realizan envios a domicilio tanto en Region Metropolitana como a cualquier region de Chile. Se utiliza Starken o Bluexpress y puedes recibir en tu domicilio o retirar en agencia segun disponibilidad."
+    answer: "Se realizan envios a domicilio tanto en Region Metropolitana como a cualquier region de Chile mediante Starken, y puedes recibir en tu domicilio o retirar en agencia segun disponibilidad."
   },
   {
     question: "¿La ProFix 126 sirve como guia recta para sierra circular en melamina y MDF?",

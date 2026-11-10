@@ -2,9 +2,10 @@ import { hydrateRoot, createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './styles/custom-colors.css'
-import { initTracking } from './utils/tracking'
+import { initTracking, captureCampaign } from './utils/tracking'
 
 initTracking()
+captureCampaign()
 
 const container = document.getElementById("root")!;
 const shouldReplaceStaticMarkup = container.dataset.renderMode === "replace";

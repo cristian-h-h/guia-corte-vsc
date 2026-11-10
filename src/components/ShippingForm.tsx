@@ -123,7 +123,7 @@ const ShippingForm = ({
       <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-md">
         <p className="text-amber-800 text-sm">
           <strong>Nota:</strong> El costo de envío se paga al recibir el producto. 
-          Trabajamos con las agencias Starken y BluExpress.
+          Los envíos se realizan mediante Starken.
         </p>
       </div>
       

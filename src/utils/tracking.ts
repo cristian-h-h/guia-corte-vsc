@@ -13,6 +13,58 @@
 const META_PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID?.trim();
 const TIKTOK_PIXEL_ID = import.meta.env.VITE_TIKTOK_PIXEL_ID?.trim();
 
+const CAMPAIGN_KEY = "gdc_campaign";
+const CAMPAIGN_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "gclid",
+  "fbclid",
+  "ttclid",
+] as const;
+
+/** Lee los parametros de campana directamente desde la URL actual. */
+const readCampaignFromUrl = (): Record<string, string> => {
+  const found: Record<string, string> = {};
+  if (typeof window === "undefined") return found;
+  const params = new URLSearchParams(window.location.search);
+  for (const key of CAMPAIGN_KEYS) {
+    const value = params.get(key);
+    if (value) found[key] = value;
+  }
+  return found;
+};
+
+/**
+ * Guarda en localStorage los parametros de campana (utm_*, gclid, fbclid, ttclid)
+ * de la URL, para saber de que red/anuncio viene cada visitante incluso si luego
+ * navega a otra pagina. Se llama una vez al cargar la app.
+ */
+export function captureCampaign() {
+  if (typeof window === "undefined") return;
+  const found = readCampaignFromUrl();
+  if (Object.keys(found).length === 0) return;
+  try {
+    localStorage.setItem(CAMPAIGN_KEY, JSON.stringify(found));
+  } catch {
+    // localStorage no disponible (modo privado, etc.): no es critico.
+  }
+}
+
+/** Devuelve los parametros de campana guardados (o los de la URL como respaldo). */
+export function getCampaign(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(CAMPAIGN_KEY);
+    if (raw) return JSON.parse(raw) as Record<string, string>;
+  } catch {
+    // Ignora errores de lectura.
+  }
+  return readCampaignFromUrl();
+}
+
 let initialized = false;
 
 const injectMetaPixel = (w: any, pixelId: string) => {
@@ -114,8 +166,9 @@ export function initTracking() {
 export function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
   const w = window as any;
-  if (typeof w.fbq === "function") w.fbq("track", eventName, params);
-  if (w.ttq && typeof w.ttq.track === "function") w.ttq.track(eventName, params);
+  const payload = { ...getCampaign(), ...params };
+  if (typeof w.fbq === "function") w.fbq("track", eventName, payload);
+  if (w.ttq && typeof w.ttq.track === "function") w.ttq.track(eventName, payload);
 }
 
 /** Clic en un contacto (WhatsApp). Evento estandar "Contact". */

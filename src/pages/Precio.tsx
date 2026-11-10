@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
@@ -13,14 +14,28 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { preciosProducto, formatCLP } from "@/data/precioProducto";
-import { trackContact, trackInitiateCheckout } from "@/utils/tracking";
+import { trackContact, trackInitiateCheckout, getCampaign } from "@/utils/tracking";
 
 const ahorro = preciosProducto.precioTarjeta - preciosProducto.precioEfectivo;
 const ahorroPct = Math.round((ahorro / preciosProducto.precioTarjeta) * 100);
 
-const whatsappUrl = `https://wa.me/56935777727?text=${encodeURIComponent(
-  `Hola, quiero comprar la Guía de Corte ProFix 126 pagando en efectivo o transferencia a ${formatCLP(preciosProducto.precioEfectivo)}.`
-)}`;
+const WHATSAPP_PHONE = "56935777727";
+const baseWhatsappText = `Hola, quiero comprar la Guía de Corte ProFix 126 pagando en efectivo o transferencia a ${formatCLP(
+  preciosProducto.precioEfectivo
+)}.`;
+const baseWhatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(baseWhatsappText)}`;
+
+/**
+ * Agrega el origen de campana al mensaje, para saber de que red viene el
+ * visitante (ej. "... (vengo de TikTok / campana-liquidacion)").
+ */
+const buildWhatsappUrl = () => {
+  const { utm_source, utm_campaign } = getCampaign();
+  if (!utm_source) return baseWhatsappUrl;
+  const origen = utm_campaign ? `${utm_source} / ${utm_campaign}` : utm_source;
+  const texto = `${baseWhatsappText} (vengo de ${origen})`;
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(texto)}`;
+};
 
 const marcas = ["Makita", "DeWalt", "Bosch", "Ubermann", "Stanley", "Ingco", "Skil", "Einhell"];
 
@@ -70,6 +85,14 @@ const metodosPago = [
 ];
 
 const Precio = () => {
+  // El href base (sin campana) se usa en el render inicial para no romper la
+  // hidratacion; recien tras montar se agrega el origen de campana.
+  const [whatsappUrl, setWhatsappUrl] = useState(baseWhatsappUrl);
+
+  useEffect(() => {
+    setWhatsappUrl(buildWhatsappUrl());
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -353,6 +376,30 @@ const Precio = () => {
           </div>
         </div>
       </section>
+
+      {/* BARRA CTA FIJA (solo movil, para trafico de TikTok / Instagram) */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gris-200 bg-white/95 px-3 py-2.5 shadow-[0_-4px_16px_rgba(0,0,0,0.12)] backdrop-blur md:hidden">
+        <div className="flex items-center gap-2">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 rounded-xl border-2 border-herramienta-600 px-3 py-3 text-sm font-bold text-herramienta-700"
+            onClick={() => trackContact("precio-bar")}
+          >
+            <MessageSquare className="h-5 w-5" /> WhatsApp
+          </a>
+          <Link
+            to="/producto/profix-126"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-naranja-600 px-3 py-3 text-sm font-extrabold text-white"
+            onClick={() => trackInitiateCheckout("precio-bar", preciosProducto.precioEfectivo)}
+          >
+            Comprar a {formatCLP(preciosProducto.precioEfectivo)} <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
+      </div>
+      {/* Espacio para que la barra fija no tape el contenido */}
+      <div className="h-20 md:hidden" />
     </>
   );
 };

@@ -262,7 +262,7 @@ const Producto = () => {
     },
     {
       question: "¿Hacen envíos a todo Chile?",
-      answer: "Se realizan envíos a domicilio tanto en Región Metropolitana como a cualquier región de Chile por Starken o Bluexpress, con stock inmediato.",
+      answer: "Se realizan envíos a domicilio tanto en Región Metropolitana como a cualquier región de Chile por Starken, con stock inmediato.",
     },
     {
       question: "¿Cuál es el largo y el precio?",
