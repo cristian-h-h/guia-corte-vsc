@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { generateArticleSchema } from '@/utils/schemaGenerator';
+import FramedImage from '@/components/FramedImage';
 
 /**
  * Componente para previsualizar los artículos de blog de ejemplo
@@ -107,10 +108,10 @@ const BlogPreview: React.FC = () => {
 
           {/* Imagen principal */}
           <div className="mb-8">
-            <img
+            <FramedImage
               src={currentPost.main_image_url}
               alt={`Guía de corte ProFix 126 - Guía banco sierra - ${currentPost.title}`}
-              className="w-full h-auto rounded-lg shadow-md"
+              className="w-full rounded-lg shadow-md"
             />
             <p className="text-sm text-gray-500 mt-2 italic">
               Nota: Esta es una imagen de ejemplo. Reemplázala con una imagen real relacionada con el artículo.

@@ -15,6 +15,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import ShippingForm, { ShippingFormData } from "@/components/ShippingForm";
+import FramedImage from "@/components/FramedImage";
 // // import { createOrder } from "@/api/sanityApi"; // Eliminado - ahora usamos Supabase // Eliminado - ahora usamos Supabase
 
 const Carrito = () => {
@@ -219,10 +220,10 @@ const handleCheckout = async () => {
                 {cartItems.map((item) => (
                   <div key={item.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 border-b items-center">
                     <div className="col-span-6 flex items-center gap-4">
-                      <img
+                      <FramedImage
                         src={item.image}
                         alt={item.name}
-                        className="w-20 h-20 object-cover rounded"
+                        className="w-20 shrink-0 rounded"
                       />
                       <div>
                         <h3 className="font-medium">{item.name}</h3>

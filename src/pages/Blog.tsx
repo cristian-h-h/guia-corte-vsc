@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { fetchBlogs } from "@/api/supabaseApi";
 import { blogTopicClusters, internalLinkObjectives, priorityBlogBriefs, recommendedReadingPaths } from "@/data/blogEditorialPlan";
 import { supportGuides } from "@/data/supportGuides";
+import FramedImage from "@/components/FramedImage";
 
 type BlogPost = {
   _id: string;
@@ -226,10 +227,11 @@ const Blog = () => {
         <div className="mb-12 bg-white rounded-lg shadow-md overflow-hidden">
           <div className="lg:flex">
             <div className="lg:w-1/2">
-              <img
+              <FramedImage
                 src={blogPosts[0].mainImage?.asset?.url}
                 alt={`Guía de corte ProFix 126 - Guía banco sierra - ${blogPosts[0].title}`}
-                className="w-full h-full object-cover object-center"
+                className="w-full"
+                loading="eager"
               />
             </div>
             <div className="lg:w-1/2 p-6 md:p-8 lg:p-12 flex flex-col justify-center">
@@ -267,13 +269,11 @@ const Blog = () => {
               key={post._id}
               className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
             >
-              <div className="aspect-video overflow-hidden">
-                <img
-                  src={post.mainImage?.asset?.url}
-                  alt={`Guía de corte ProFix 126 - Guía banco sierra - ${post.title}`}
-                  className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
-                />
-              </div>
+              <FramedImage
+                src={post.mainImage?.asset?.url}
+                alt={`Guía de corte ProFix 126 - Guía banco sierra - ${post.title}`}
+                imgClassName="transition-transform hover:scale-105 duration-300"
+              />
               <div className="p-6">
                 <div className="flex items-center text-sm text-gris-500 mb-3">
                   {post.tags && post.tags.length > 0 && (

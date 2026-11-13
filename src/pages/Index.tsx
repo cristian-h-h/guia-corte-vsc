@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BadgeCheck, Check, MessageSquare, ShieldCheck, Store, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQ from "@/components/FAQ";
+import FramedImage from "@/components/FramedImage";
 import SEO from "@/components/SEO";
 import { organizationSchema, websiteSchema, productSchema } from "@/data/organizationSchema";
 import { buildBreadcrumbList, buildHowTo } from "@/utils/schema";
@@ -288,14 +289,13 @@ const Index = () => {
               <div className="relative">
                 {/* Imagen principal del producto */}
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-105">
-                  <img
+                  <FramedImage
                     src="/guia-imagenes/guia-corte-profix-126.webp"
                     alt="Guía de corte ProFix 126 - Guía banco sierra de aluminio para corte recto con sierra circular"
                     loading="eager"
                     fetchPriority="high"
                     width={1200}
                     height={800}
-                    className="w-full h-auto rounded-lg"
                   />
 
                   {/* Etiqueta de precio */}
@@ -312,25 +312,21 @@ const Index = () => {
                 </div>
 
                 {/* Imágenes pequeñas de uso del producto */}
-                <div className="absolute -right-4 top-1/4 w-24 h-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform rotate-6">
-                  <img
+                <div className="absolute -right-4 top-1/4 w-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform rotate-6">
+                  <FramedImage
                     src="/guia-imagenes/corte-sierra-circular-profix-126.webp"
                     alt="Guía de corte recto para sierra circular - Uso de guía banco sierra ProFix 126"
-                    loading="lazy"
                     width={96}
-                    height={96}
-                    className="w-full h-full object-cover"
+                    height={64}
                   />
                 </div>
 
-                <div className="absolute -left-4 bottom-1/4 w-24 h-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform -rotate-6">
-                  <img
+                <div className="absolute -left-4 bottom-1/4 w-24 rounded-lg overflow-hidden border-4 border-white shadow-lg z-20 transform -rotate-6">
+                  <FramedImage
                     src="/guia-imagenes/ajuste-recto-profix-126.webp"
                     alt="Guía de corte ProFix 126 - Sistema de ajuste rápido de guía banco sierra"
-                    loading="lazy"
                     width={96}
-                    height={96}
-                    className="w-full h-full object-cover"
+                    height={64}
                   />
                 </div>
 
@@ -698,11 +694,10 @@ const Index = () => {
               <p className="text-madera-700 mb-4">
                 Coloca la guía sobre tu material y ajústala a la medida deseada con el sistema de bloqueo rápido.
               </p>
-              <img
+              <FramedImage
                 src="/guia-imagenes/ajuste-recto-profix-126.webp"
                 alt="Guía de corte ProFix 126 - Ajuste rápido de guía banco sierra para corte recto"
-                loading="lazy"
-                className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
+                className="mt-4 rounded-lg shadow-md mx-auto hover:shadow-xl transition-shadow duration-300"
               />
             </div>
 
@@ -714,11 +709,10 @@ const Index = () => {
               <p className="text-madera-700 mb-4">
                 Asegura la guía al material con las pinzas de sujeción integradas para un agarre firme.
               </p>
-              <img
+              <FramedImage
                 src="/guia-imagenes/corte-sierra-circular-profix-126.webp"
                 alt="Guía de corte recto para sierra circular - Fijación de guía banco sierra ProFix 126"
-                loading="lazy"
-                className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
+                className="mt-4 rounded-lg shadow-md mx-auto hover:shadow-xl transition-shadow duration-300"
               />
             </div>
 
@@ -730,11 +724,10 @@ const Index = () => {
               <p className="text-madera-700 mb-4">
                 Utiliza tu sierra circular u otra herramienta eléctrica deslizándola a lo largo de la guía de corte recto para conseguir un corte perfecto. Esta guía para realizar cortes con sierra circular garantiza precisión profesional en cada proyecto.
               </p>
-              <img
+              <FramedImage
                 src="/guia-imagenes/guia-profix-126.webp"
                 alt="Guía de corte ProFix 126 - Realizando cortes con guía banco sierra de aluminio"
-                loading="lazy"
-                className="mt-4 rounded-lg shadow-md max-h-48 mx-auto object-cover hover:shadow-xl transition-shadow duration-300"
+                className="mt-4 rounded-lg shadow-md mx-auto hover:shadow-xl transition-shadow duration-300"
               />
             </div>
           </div>
@@ -941,11 +934,10 @@ const Index = () => {
                 className="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative">
-                  <img
+                  <FramedImage
                     src={item.image}
                     alt={item.alt}
-                    loading="lazy"
-                    className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                    imgClassName="group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-1 bg-naranja-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md">
                     <BadgeCheck className="h-4 w-4" />
@@ -1013,11 +1005,10 @@ const Index = () => {
                   className="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-naranja-200"
                 >
                   <div className="relative">
-                    <img
+                    <FramedImage
                       src={post.image}
                       alt={`${post.title} — ProFix 126 guía de corte`}
-                      loading="lazy"
-                      className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                      imgClassName="group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                       <span className="bg-herramienta-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md animate-pulse">

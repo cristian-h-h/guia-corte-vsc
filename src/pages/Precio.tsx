@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { preciosProducto, formatCLP } from "@/data/precioProducto";
+import FramedImage from "@/components/FramedImage";
 import { trackContact, getCampaign } from "@/utils/tracking";
 
 const ahorro = preciosProducto.precioTarjeta - preciosProducto.precioEfectivo;
@@ -173,7 +174,7 @@ const Precio = () => {
             </div>
 
             <div className="relative">
-              <img
+              <FramedImage
                 src="/guia-imagenes/guia-corte-profix-126.webp"
                 alt="Guía de corte recto ProFix 126 de 1.26m para sierra circular"
                 className="w-full rounded-3xl border border-white/10 shadow-2xl"

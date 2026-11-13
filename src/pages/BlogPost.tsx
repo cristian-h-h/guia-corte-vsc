@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { fetchBlogBySlug, fetchRelatedBlogs } from "@/api/supabaseApi";
 import SimpleSocialButtons from "@/components/SimpleSocialButtons";
 import CommentSection from "@/components/CommentSection";
+import FramedImage from "@/components/FramedImage";
 import {
   buildBreadcrumbList,
   buildFAQPage,
@@ -311,10 +312,11 @@ const BlogPost = () => {
           {/* Imagen principal */}
           {post.mainImage?.asset?.url && (
             <div className="mb-8">
-              <img
+              <FramedImage
                 src={post.mainImage.asset.url}
                 alt={`Guía de corte ProFix 126 - Guía banco sierra - ${post.title}`}
-                className="w-full h-auto rounded-lg shadow-md"
+                className="w-full rounded-lg shadow-md"
+                loading="eager"
               />
             </div>
           )}
@@ -450,15 +452,13 @@ const BlogPost = () => {
                 related.slug?.current ? (
                   <Link to={`/blog/${related.slug.current}`} key={related._id} className="group block">
                     <div className="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                      <div className="aspect-video overflow-hidden">
-                        {related.mainImage?.asset?.url && (
-                          <img
-                            src={related.mainImage.asset.url}
-                            alt={`Guía de corte ProFix 126 - Guía banco sierra - ${related.title}`}
-                            className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
-                          />
-                        )}
-                      </div>
+                      {related.mainImage?.asset?.url && (
+                        <FramedImage
+                          src={related.mainImage.asset.url}
+                          alt={`Guía de corte ProFix 126 - Guía banco sierra - ${related.title}`}
+                          imgClassName="transition-transform group-hover:scale-105 duration-300"
+                        />
+                      )}
                       <div className="p-4">
                         <h4 className="font-medium">{related.title}</h4>
                         <p className="text-sm text-gris-500 mt-1">{formatDate(related.publishedAt)}</p>

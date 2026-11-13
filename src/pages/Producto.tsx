@@ -14,6 +14,7 @@ import {
   type FAQItem,
 } from "@/utils/schema";
 import { preciosProducto, formatCLP } from "@/data/precioProducto";
+import FramedImage from "@/components/FramedImage";
 
 const compatibilityBrands = [
   { name: "Makita", tone: "bg-madera-50 border-madera-200 text-madera-800" },
@@ -417,34 +418,32 @@ const Producto = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/2">
-            <div className="relative aspect-square overflow-hidden rounded-lg mb-4 shadow-lg border-2 border-naranja-600">
-              <img
+            <div className="relative rounded-lg mb-4 shadow-lg border-2 border-naranja-600 overflow-hidden">
+              <FramedImage
                 src={activeImage}
+                alt={producto.images.find(img => img.url === activeImage)?.alt || producto.name}
                 loading="eager"
                 fetchPriority="high"
                 width={1000}
                 height={1000}
-                alt={producto.images.find(img => img.url === activeImage)?.alt || producto.name}
-                className="object-cover w-full h-full"
               />
           </div>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
               {producto.images.map((image, index) => (
                 <div
                   key={index}
-                  className={`aspect-square rounded-md overflow-hidden border-2 cursor-pointer transition-all duration-200 ${
+                  className={`rounded-md overflow-hidden border-2 cursor-pointer transition-all duration-200 ${
                     activeImage === image.url
                       ? "border-naranja-600 scale-105 shadow-lg"
                       : "border-transparent"
       }`}
           onClick={() => setActiveImage(image.url)}
           >
-              <img
+              <FramedImage
                 src={image.url}
                 alt={image.alt}
                 loading="lazy"
-                className="object-cover w-full h-full"
-            />
+              />
           </div>
               ))}
             </div>
@@ -969,11 +968,10 @@ const Producto = () => {
                   className="group bg-white rounded-2xl border border-gris-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="relative">
-                    <img
+                    <FramedImage
                       src={item.image}
                       alt={item.alt}
-                      loading="lazy"
-                      className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                      imgClassName="group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3 flex items-center gap-1 bg-naranja-600 text-white rounded-full px-3 py-1 text-xs font-bold shadow-md">
                       <BadgeCheck className="h-4 w-4" />

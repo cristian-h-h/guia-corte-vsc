@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
 import { supabase } from "@/supabaseClient";
 import { Button } from "@/components/ui/button";
+import FramedImage from "@/components/FramedImage";
 
 // Definición de tipos para las imágenes y videos
 interface GalleryImage {
@@ -239,18 +240,14 @@ const Galeria = () => {
                   className="overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-transform hover:scale-105 bg-white border-2 border-madera-200 hover:border-herramienta-600"
                   onClick={() => setSelectedImage(image)}
                 >
-                  <div className="aspect-square overflow-hidden">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt} 
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "/guia-imagenes/profix-126-logo.webp";
-                      }}
-                    />
-                  </div>
+                  <FramedImage
+                    src={image.src}
+                    alt={image.alt}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/guia-imagenes/profix-126-logo.webp";
+                    }}
+                  />
                   <div className="p-4 bg-madera-100">
                     <p className="text-sm text-madera-800 line-clamp-2 font-medium">{image.alt}</p>
                   </div>
@@ -349,10 +346,9 @@ const Galeria = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
-              <img 
-                src={selectedImage.src} 
-                alt={selectedImage.alt} 
-                className="w-full h-auto"
+              <FramedImage
+                src={selectedImage.src}
+                alt={selectedImage.alt}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = "/guia-imagenes/profix-126-logo.webp";
